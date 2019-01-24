@@ -19,23 +19,39 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
     <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyBhP34e7RgCh0Od0Pz9_X0bj1ZKFLEZVrc",
+            authDomain: "bocce-28d45.firebaseapp.com",
+            databaseURL: "https://bocce-28d45.firebaseio.com",
+            projectId: "bocce-28d45",
+            storageBucket: "bocce-28d45.appspot.com",
+            messagingSenderId: "693347823168"
+        };
+        if (!firebase.apps.length) {
+            firebase.initializeApp(config);
+        }
+    </script>
     <title>Bocce</title>
 </head>
 
 <body>
-    <form>
-        <div class="container">
-            <h1>Accedi</h1>
+    <div class="container">
+        <h1>Accedi</h1>
 
-            <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Inserisci Email" name="email" required>
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Inserisci Email" id="email" required>
 
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Inserisci Password" name="psw" required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Inserisci Password" id="psw" required>
 
-            <button type="submit" class="formButton">Accedi</button>
-        </div>
-    </form>
+        <button type="submit" class="formButton">Accedi</button>
+    </div>
+    <div class="erroriRegistrazione">
+        <p class="errori"></p>
+    </div>
+    <script type="text/javascript" src="js/login.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
 </body>
 

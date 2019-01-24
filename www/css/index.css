@@ -1,6 +1,7 @@
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
     box-sizing: border-box;
+    margin: 0 0;
 }
 
 body {
@@ -27,7 +28,99 @@ body {
   overflow: hidden;
 }
 
-/*Home Page*/
+/*Header*/
+.statusBar {
+    background-color: #4CAF50;
+    height: 10%;
+    position: fixed;
+    top : 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.backButton {
+    height: 100%;
+    border: none;
+    width: 15%;
+    background-image: url('../img/left-arrow.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #4CAF50;
+}
+
+.titoloPagina {
+    height: 100%;
+    width: 85%;
+    float: right;
+    display:table;
+}
+
+.titoloPagina h1 {
+    text-transform: none;
+    color: white;
+    display:table-cell;
+    vertical-align:middle;
+    padding-left: 10%;
+}
+
+/*Nav*/
+.menuBar {
+    z-index: 1;
+    width: 100%;
+    background-color: lightgray;
+    overflow: auto;
+    height: 8%;
+    position: fixed;
+    bottom: 0;
+    border-top: 0.2px solid gray;
+    border-bottom: 0.2px solid gray;
+}
+
+.menuBar div {
+    float: left;
+    text-align: center;
+    width: 20%;
+    height: 100%;
+    background-size: contain;
+}
+
+.statistiche {
+    background-image: url('../img/stats.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.homepage {
+    background-image: url('../img/home.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.risultati {
+    background-image: url('../img/result.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.classifiche {
+    background-image: url('../img/standing.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.utente {
+    background-image: url('../img/team.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.active {
+    background-color: #4CAF50; /* Add an active/current color */
+}
+
+
+/*Index*/
 #logo {
     background-image: url('../img/bowling.png');
     background-repeat: no-repeat;
@@ -39,6 +132,7 @@ body {
 
 #login{
     padding: 1em;
+    display: none;
 }
 
 .loginButton {
@@ -56,6 +150,10 @@ body {
 /*Registrazione and Login*/
 .container {
     padding: 16px;
+}
+
+.container h1 {
+    margin: 15px 0;
 }
 
 input[type=text], input[type=password] {
@@ -82,4 +180,162 @@ input[type=text]:focus, input[type=password]:focus {
     opacity: 0.9;
 }
 
-/*Login*/
+.erroriRegistrazione {
+    margin: 2.5% 5%;
+    width: auto;
+}
+
+.erroriRegistrazione p {
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/*Homepage*/
+
+/*Utente*/
+#user {
+    height: 50vh;
+    margin-top: 40%;
+}
+
+#user h1 {
+    height:50%;
+    background-image: url('../img/user.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 60%;
+    margin: 10% 20%;
+    background-position: center;
+}
+
+.userButton {
+    padding: 16px 20px;
+    border: none;
+    width: 80%;
+    opacity: 0.9;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+}
+
+#logoutButton {
+    background-color: red;
+    margin: 3% 10% 20% 10%;
+}
+
+#pswButton {
+    background-color: darkslategray;
+    margin: 3% 10%;
+}
+
+#newPswButton {
+    background-color: green;
+    margin: 5% 0;
+    width: 100%;
+}
+
+#changePsw {
+    width: 80%;
+    margin: 4% 10%;
+    display: none;
+}
+
+/*Classifiche*/
+#selCampionato {
+    width: 100%;
+    background-color: lightgray;
+    height: 2em;
+    color: white;
+    font-size: 14pt;
+}
+
+#classifica {
+    margin: 25% 1%;
+}
+
+#tableClassifiche {
+    margin-top: 5%; 
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    border: 1px solid black;
+    border-collapse: collapse;
+    table-layout: fixed;
+    overflow: hidden;
+}
+
+#tableClassifiche thead {
+    font-weight: bold;
+   
+}
+
+#tableClassifiche th {
+    padding: 0.5em 0;
+}
+
+#tableClassifiche th {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#tableClassifiche th td {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+#tableClassifiche tbody tr:nth-child(odd){
+    background-color: lightgrey;
+}
+
+#tableClassifiche caption {
+    margin: 1em 0;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.posizione {
+    width: 10%; 
+    border-right: 1px solid black;
+}
+
+.squadra {
+    width: 40%;
+    color: black;
+    border-right: 1px solid black;
+}
+
+.vittorie {
+    width: 8%;
+    color: green;
+}
+
+.pareggi {
+    width: 8%;
+    color: darkorange;
+}
+
+.sconfitte {
+    width: 8%;
+    color: red;
+}
+
+.p_fatti {
+    width: 8%;
+    color: forestgreen;
+}
+
+.p_subiti {
+    width: 8%;
+    color: red;
+}
+
+.punti {
+    width: 10%;
+    color: black;
+    font-weight: bold;
+    border-left: 1px solid black;
+}

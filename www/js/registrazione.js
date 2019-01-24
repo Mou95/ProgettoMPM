@@ -1,4 +1,5 @@
-var regist = document.getElementByClassName('registerButton')
+var regist = document.getElementsByClassName('formButton')[0]
+var errore = document.getElementsByClassName('errori')[0]
 regist.addEventListener('touchend', function() {
         //Take value from form
         let email = document.getElementById("email").value;
@@ -7,22 +8,27 @@ regist.addEventListener('touchend', function() {
 
         //Manage and control password
         if (psw != r_psw) {
-            //gestire password sbagliata
-            alert("Password errata")
             console.log("ERRORE")
+            errore.innerHTML = "ATTENZIONE: Le due password inserite non coincidono"
         } else {
-            firebase.auth().createUserWithEmailAndPassword(email, psw).catch(function(error) {
+            firebase.auth().createUserWithEmailAndPassword(email, psw).then(function() {
+                console.log("Chiamata a firebase con successo")
+                window.open("index.html", "_self")
+            }).catch(function(error) {
+                console.log("Chiamata a firebase")
                 // Handle Errors here.
                 var errorCode = error.code;
-                var errorMessage = error.message;
-                if (errorCode === 'auth/weak-password') {
-                    alert('Wrong password.');
-                } else {
-                    alert(errorMessage);
+                switch (errorCode) {
+                    case "auth/email-already-in-use":
+                        errore.innerHTML = "ATTENZIONE: Questa mail è già associata ad un utente"
+                        break;
+                    case "auth/invalid-email":
+                        errore.innerHTML = "ATTENZIONE: L'email inserita non esiste"
+                        break;
+                    case "auth/weak-password":
+                        errore.innerHTML = "ATTENZIONE: La password deve contenere almeno 6 caratteri"
+                        break;
                 }
             });
-            window.open("index.html", "_self");
         }
-
-
     }, false);

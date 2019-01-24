@@ -19,33 +19,33 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
     <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <title>Bocce</title>
-</head>
-
-<body>
-    <h1 id="logo" class="hide">BOCCIA</h1>
-    <div id="login">
-        <button id="accedi" class="loginButton">ACCEDI</button>
-        <button id="registrati" class="loginButton">REGISTRATI</button>
-    </div>
     <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
     <script>
-        // Initialize Firebase
         var config = {
-        apiKey: "AIzaSyBhP34e7RgCh0Od0Pz9_X0bj1ZKFLEZVrc",
-        authDomain: "bocce-28d45.firebaseapp.com",
-        databaseURL: "https://bocce-28d45.firebaseio.com",
-        projectId: "bocce-28d45",
-        storageBucket: "bocce-28d45.appspot.com",
-        messagingSenderId: "693347823168"
+            apiKey: "AIzaSyBhP34e7RgCh0Od0Pz9_X0bj1ZKFLEZVrc",
+            authDomain: "bocce-28d45.firebaseapp.com",
+            databaseURL: "https://bocce-28d45.firebaseio.com",
+            projectId: "bocce-28d45",
+            storageBucket: "bocce-28d45.appspot.com",
+            messagingSenderId: "693347823168"
         };
-        firebase.initializeApp(config);
+        if (!firebase.apps.length) {
+            firebase.initializeApp(config);
+        }
     </script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
-        app.initialize();
-    </script>
+    
+    <title>Bocce</title>
+
+</head>
+
+<body onload="onLoad()">
+    <h1 id="logo" class="hide">BOCCIA</h1>
+    <div id="login">
+        <button id="accedi" class="loginButton" onclick="location.href='login.html'">ACCEDI</button>
+        <button id="registrati" class="loginButton" onclick="location.href='registrazione.html'">REGISTRATI</button>
+    </div>
 </body>
 
 </html>
