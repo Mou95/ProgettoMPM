@@ -7,7 +7,7 @@
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data:" />
 
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
@@ -24,6 +24,8 @@
             firebase.initializeApp(config);
         }
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
     <title>Bocce</title>
 </head>
 
@@ -34,252 +36,70 @@
     </div>
     <div class="menuBar">
         <div class="statistiche" onclick="location.href='stat.html'"></div>
-        <div class="risultati" onclick="location.href='index.html'"></div>
+        <div class="risultati" onclick="location.href='calendario.html'"></div>
         <div class="homepage" onclick="location.href='home.html'"></div>
         <div class="active classifiche" ></div>
         <div class="utente" onclick="location.href='user.html'"></div>
     </div>
-    <div id="classifica">
-        <select class="selCampionato">
-            <option value="A">Serie A1</option>
-            <option value="B">Serie A2</option>
-        </select>
-        <table id="tableClassifiche" summary="Tabella della classifica relativa al campionato scelto">
-            <caption>Serie A2 2108/19</caption>
-            <colgroup>
-                <col class="posizione" >
-                <col class="squadra" >
-                <col class="vittorie" >
-                <col class="pareggi" >
-                <col class="sconfitte" >
-                <col class="p_fatti" >
-                <col class="p_subiti" >
-                <col class="punti" >
-            </colgroup>
-            <thead>
-                <tr>
-                    <th scope="col">Pos</th>
-                    <th scope="col">Squadra</th>
-                    <th scope="col">V</th>
-                    <th scole="col">N</th>
-                    <th scope="col">P</th>
-                    <th scole="col">+</th>
-                    <th scope="col">-</th>
-                    <th scole="col">Pt</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="posizione">1</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-                <tr>
-                    <td class="posizione">1</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-                <tr>
-                    <td class="posizione">1</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-                <tr>
-                    <td class="posizione">1</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-                <tr>
-                    <td class="posizione">1</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-                <tr>
-                    <td class="posizione">1</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-                <tr>
-                    <td class="posizione">1</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-                
-                <tr>
-                    <td class="posizione">1</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-                <tr>
-                    <td class="posizione">10</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-            </tbody>
-        </table>
-        <table id="tableClassifiche" summary="Tabella della classifica relativa al campionato scelto">
-            <caption>Serie A2 2108/19</caption>
-            <colgroup>
-                <col class="posizione" >
-                <col class="squadra" >
-                <col class="vittorie" >
-                <col class="pareggi" >
-                <col class="sconfitte" >
-                <col class="p_fatti" >
-                <col class="p_subiti" >
-                <col class="punti" >
-            </colgroup>
-            <thead>
-                <tr>
-                    <th scope="col">Pos</th>
-                    <th scope="col">Squadra</th>
-                    <th scope="col">V</th>
-                    <th scole="col">N</th>
-                    <th scope="col">P</th>
-                    <th scole="col">+</th>
-                    <th scope="col">-</th>
-                    <th scole="col">Pt</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="posizione">1</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-                <tr>
-                    <td class="posizione">1</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-                <tr>
-                    <td class="posizione">1</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-                <tr>
-                    <td class="posizione">1</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-                <tr>
-                    <td class="posizione">1</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-                <tr>
-                    <td class="posizione">1</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-                <tr>
-                    <td class="posizione">1</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-                
-                <tr>
-                    <td class="posizione">1</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-                <tr>
-                    <td class="posizione">10</td>
-                    <td >Dolada</td>
-                    <td class="vittorie">4</td>
-                    <td class="pareggi">1</td>
-                    <td class="sconfitte">8</td>
-                    <td class="p_fatti">100</td>
-                    <td class="p_subiti" >120</td>
-                    <td class="punti">9</td>
-                </tr>
-            </tbody>
-        </table>
+    <div id="classifica-slider">
+        <div class="classifica show fade">
+            <table id="A1_1819" class="tableClassifiche" >
+                <caption>Serie A1 2018/19</caption>
+                <colgroup>
+                    <col class="posizione" >
+                    <col class="squadra" >
+                    <col class="vittorie" >
+                    <col class="pareggi" >
+                    <col class="sconfitte" >
+                    <col class="p_fatti" >
+                    <col class="p_subiti" >
+                    <col class="punti" >
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">Pos</th>
+                        <th scope="col">Squadra</th>
+                        <th scope="col">V</th>
+                        <th scole="col">N</th>
+                        <th scope="col">P</th>
+                        <th scole="col">+</th>
+                        <th scope="col">-</th>
+                        <th scole="col">Pt</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="classifica fade">
+            <table id="A2_1819_est" class="tableClassifiche" summary="Tabella della classifica relativa al campionato scelto">
+                <caption>Serie A2 2018/19</caption>
+                <colgroup>
+                    <col class="posizione" >
+                    <col class="squadra" >
+                    <col class="vittorie" >
+                    <col class="pareggi" >
+                    <col class="sconfitte" >
+                    <col class="punti_fatti" >
+                    <col class="punti_subiti" >
+                    <col class="punti" >
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">Pos</th>
+                        <th scope="col">Squadra</th>
+                        <th scope="col">V</th>
+                        <th scole="col">N</th>
+                        <th scope="col">P</th>
+                        <th scole="col">+</th>
+                        <th scope="col">-</th>
+                        <th scole="col">Pt</th>
+                    </tr>
+                </thead>            
+            </table>
+        </div>
+    </div>
+    <div id="dot-slider">
+        <span class="dot active-dot"></span> 
+        <span class="dot"></span> 
     </div>
     <script type="text/javascript" src="js/classifiche.js"></script>
     <script type="text/javascript" src="js/menu.js"></script>

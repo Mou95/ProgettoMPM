@@ -30,35 +30,40 @@
 <body>
     <div class="statusBar">
         <button type="button" class="backButton" onclick="goBack()"></button>
-        <div class="titoloPagina"><h1>Utente</h1></div>
+        <div class="titoloPagina"><h1>Calendario</h1></div>
     </div>
     <div class="menuBar">
         <div class="statistiche" onclick="location.href='stat.html'"></div>
-        <div class="risultati" onclick="location.href='caledario.html'"></div>
+        <div class="active risultati"></div>
         <div class="homepage" onclick="location.href='home.html'"></div>
         <div class="classifiche" onclick="location.href='classifiche.html'"></div>
-        <div class="active utente"></div>
+        <div class="utente" onclick="location.href='user.html'"></div>
     </div>
-    <div id="user">
-        <h1 class="hide">Immagine Utente</h1>
-        <button class="userButton" id="pswButton">Cambia Password</button>
-        <div id="changePsw">
-            <label for="psw"><b>Vecchia Password</b></label>
-            <input type="password" placeholder="Inserisci vecchia Password" id="old_psw" required>
-
-            <label for="psw"><b>Nuova Password</b></label>
-            <input type="password" placeholder="Inserisci nuova Password" id="new_psw" required>
-            
-            <button class="userButton" id="newPswButton">Conferma</button>
-            
-            <div class="erroriRegistrazione">
-                <p class="errori"></p>
-            </div>
+    
+    <div id="header_calendario" class="">
+        <select class="selCampionato">
+            <option value="A1">Serie A1</option>
+            <option value="A2 Est">Serie A2 Est</option>
+        </select>
+        <div class="NavGiornate">
+            <ul>
+                <li class="NumeroGiornata selected">GIORNATA 1</li>
+                <li class="NumeroGiornata">GIORNATA 2</li>
+                <li class="NumeroGiornata">GIORNATA 3</li>
+                <li class="NumeroGiornata">GIORNATA 4</li>
+                <li class="NumeroGiornata">GIORNATA 5</li>
+                <li class="NumeroGiornata">GIORNATA 6</li>
+                <li class="NumeroGiornata">GIORNATA 7</li>
+                <li class="NumeroGiornata">GIORNATA 8</li>
+                <li class="NumeroGiornata">GIORNATA 9</li>
+            </ul>
         </div>
-        <button class="userButton" id="logoutButton">Logout</button>
     </div>
-    <script type="text/javascript" src="js/user.js"></script>
+    
+    
+    
     <script type="text/javascript" src="js/menu.js"></script>
+    
 </body>
 
 </html>

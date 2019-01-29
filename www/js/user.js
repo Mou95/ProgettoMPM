@@ -26,8 +26,8 @@ firebase.auth().onAuthStateChanged(function(user) {
         
     } else {
         //user is signed out
-        console.log("user not logged")
         window.open("index.html", "_self")
+        console.log("user not logged")
     }
 });
 
