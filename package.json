@@ -1,1 +1,13 @@
-{"name":"com.phonegap.helloworld","version":"1.0.0","displayName":"Bocce_ITA","cordova":{"platforms":["android"]},"dependencies":{"cordova-android":"~7.1.4"}}
+{
+  "name": "com.phonegap.helloworld",
+  "version": "1.0.0",
+  "displayName": "Bocce_ITA",
+  "cordova": {
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {
+    "cordova-android": "~7.1.4"
+  }
+}
