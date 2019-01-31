@@ -3,6 +3,8 @@
 - FILTRARE TABELLE PER NOME DEL GIOCATORE
 - PREVEDERE PULSANTE CERCA
 - GESTIONE ERRORI
+- FILTERING PRIMA DI CREAZIONE TABELLA
+- ELIMINARE GIOCATORI CHE NON HANNO FATTO QUELLE PROVE
 */
 
 var campionato = document.getElementById("selCampionato");
@@ -10,7 +12,7 @@ var specialita = document.getElementById("selSpecialita");
 var tableProve = document.getElementById("tableStatProve");
 var tableTiri = document.getElementById("tableStatTiri");
 var tables = document.getElementsByClassName("classifica");
-var nome = document.getElementById("nomeGiocatore")
+var nome = document.getElementById("nomeGiocatore");
 var db = firebase.firestore();
 
 var squadre = db.collection("squadre");
@@ -24,28 +26,17 @@ function refreshTable() {
         
         deleteTable();
         
-        if (nome.value == "") {
-        
-            /*Calcola statistiche*/
-            console.log("Entrato")
-            var camp_id = campionato.value;
-            var spec_id = specialita.value;
-            
-            console.log("Filtro "+camp_id+" "+spec_id)
+        /*Calcola statistiche*/
+        console.log("Entrato")
+        var camp_id = campionato.value;
+        var spec_id = specialita.value;
 
-            /*Cerco tutti i giocatori delle sqaudre che fanno parte del campionato scelto*/
-            var squadre_camp = squadre.where("campionato","==",camp_id)
-            
-            createTable(squadre_camp, spec_id)
+        console.log("Filtro "+camp_id+" "+spec_id)
 
-            
-        
-        } else {
-            
-            /**/
-            
-        }
-        
+        /*Cerco tutti i giocatori delle squadre che fanno parte del campionato scelto*/
+        var squadre_camp = squadre.where("campionato","==",camp_id)
+
+        createTable(squadre_camp, spec_id)
         
     } else {
         
@@ -105,18 +96,22 @@ function createTable(squadre_camp, spec_id) {
                         console.log("Error getting document:", error);
                     });
                 })
-    
-                if (medie)
-                    tables[1].classList.add("show");
-                else
-                    tables[0].classList.add("show");
                 
             })
             .catch(function(error) {
                 console.log("Error getting documents: ", error);
             });
-
         })
+        
+        if (medie)
+            tables[1].classList.add("show");
+        else
+            tables[0].classList.add("show");
+        console.log("Set show")
+        
+        /*Filtro*/
+        if (nome.value != "") 
+            filterTable();
         
     })
     .catch(function(error) {
@@ -168,5 +163,36 @@ function createTableRow(risultati, player, medie) {
         
     }
     
+    console.log("wow")
+    
     return tr
+}
+
+
+function filterTable() {
+    console.log("Filtering")
+    
+      // Declare variables 
+    var input, filter, table, tr, td, i, txtValue;
+    input = nome.value;
+    filter = input.toUpperCase();
+    table = document.getElementsByClassName("show")[0];
+    tr = table.getElementsByTagName("tr");
+    
+    console.log("TR ", tr.length)
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        } 
+
+}
+    
 }

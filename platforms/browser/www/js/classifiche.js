@@ -104,7 +104,7 @@ var n = classifiche.length;
 var active = 0;
 
 $(function(){
-    // Bind the swipeHandler callback function to the swipe event on div.box
+    // Bind the swipeHandler callback function to the swipe event on classifica-slider
     console.log("swiped");
     $( "#classifica-slider" ).on( "swiperight", swipeRight );
     $( "#classifica-slider" ).on( "swipeleft", swipeLeft );
