@@ -442,23 +442,26 @@ to {opacity: 1}
 
 .NavGiornate {
     background-color: #4CAF50;
+    border-collapse: collapse;
 }
 
 .NavGiornate ul {
     list-style-type: none;
     overflow-x: scroll;
     overflow-y: hidden;
-    white-space: nowrap;  
-    padding-left: -40px;
+    white-space: nowrap; 
+    font-size: 0;
 }
 
 .NavGiornate ul li {
+    font-size: 12px;
+    width: 24%;
     color: white;
     text-align: center;
     text-decoration: none;
     padding: 1.1em;
     display: inline-block;
-    border-left: 1px solid white;
+    border-top: 3px solid #4CAF50; 
 }
 
 .giornataIntera {
@@ -511,6 +514,75 @@ to {opacity: 1}
 
 .SecondaSquadra {
     width: 30%;
+}
+
+.selected {
+    border-bottom: 3px solid green; 
+}
+
+/*Tabellino*/
+
+#headerTabellino {
+    display: block;
+    position: fixed;
+    top: 63px;
+    width: 100%;
+    background-color: #A7A7A7;
+}
+
+#headerTabellino p {
+    width: 50%;
+    font-size: 14px;
+    overflow: hidden;
+    padding: 1em 0.3em;
+    z-index: 1;
+    display: block;
+    text-align: center;
+    float: left;
+}
+
+#TableIncontro {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    background-color: white;
+    border-collapse: collapse;
+    margin-top: 110px;
+    margin-bottom: 55px;
+    text-transform: none;
+    table-layout: fixed;
+    overflow: hidden;
+}
+
+#TableIncontro td {
+    font-size: 10pt;
+    border: 0.1em solid gray;
+    overflow: hidden;
+    padding: 0.7em 0.2em;
+}
+
+
+
+.Giocatore1Squadra {
+    width: 33%;
+}
+
+.Giocatore2Squadra {
+    width: 33%;
+}
+
+.Specialita {
+    width: 33%;
+    font-weight: bold;
+}
+
+.PrimoPunteggio {
+    width: 16.5%;
+}
+
+#Totale td {
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .show {

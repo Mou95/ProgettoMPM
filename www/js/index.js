@@ -6,18 +6,20 @@ function onLoad() {
 function onDeviceReady() {
     console.log('Received Event:');
 
-    var login = document.getElementById('login');
-    var user = firebase.auth().currentUser;
-    console.log(user)
-    if (user) {
-        //logged in
-        console.log('user logged');
-        window.open('home.html');
-    } else {
-        //logged out
-        login.style.display = "block";
-    }
+    
     //console.log("plat"+device.platform)
+}
+
+var login = document.getElementById('login');
+var user = firebase.auth().currentUser;
+console.log(user)
+if (user) {
+    //logged in
+    console.log('user logged');
+    window.open('home.html');
+} else {
+    //logged out
+    login.style.display = "block";
 }
 
 /*Login page*/
