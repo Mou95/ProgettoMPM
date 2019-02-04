@@ -1,4 +1,5 @@
 
+
 function refreshMatches() {
     var tr = document.getElementsByTagName("tr")
 
@@ -56,3 +57,12 @@ function refreshMatches() {
 function countTotal() {
     
 }
+
+function addResult() {
+    /*pass reference del documento nel db*/
+    var domain = window.location.href
+    var open = window.open("addResult.html", "_self")
+    console.log("Set opener "+domain)
+    //open.postMessage(document.getElementById("Squadra1"), )
+}
+

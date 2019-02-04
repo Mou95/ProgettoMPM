@@ -1,5 +1,5 @@
 function goBack() {
-    var user = firebase.auth().currentUser;
-    if (user)
+    /*var user = firebase.auth().currentUser;
+    if (user)*/
         window.history.back();
 }

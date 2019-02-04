@@ -50,11 +50,27 @@ body {
     background-color: #4CAF50;
 }
 
+#addButton {
+    height: 10%;
+    border: none;
+    width: 10%;
+    background-image: url('../img/add.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #4CAF50;
+    float: right;
+    position: fixed;
+    top : 0;
+    right: 15px;
+    z-index: 2;
+}
+
 .titoloPagina {
     height: 100%;
     width: 85%;
     float: right;
-    display:table;
+    display: table;
 }
 
 .titoloPagina h1 {
@@ -457,9 +473,9 @@ to {opacity: 1}
     font-size: 12px;
     width: 24%;
     color: white;
-    text-align: center;
     text-decoration: none;
-    padding: 1.1em;
+    padding: 1.1em 0;
+    text-align: center;
     display: inline-block;
     border-top: 3px solid #4CAF50; 
 }
@@ -561,7 +577,10 @@ to {opacity: 1}
     padding: 0.7em 0.2em;
 }
 
-
+#TableIncontro td span {
+    text-align: center;
+    display: block;
+}
 
 .Giocatore1Squadra {
     width: 33%;
