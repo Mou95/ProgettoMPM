@@ -66,3 +66,64 @@ function addResult() {
     //open.postMessage(document.getElementById("Squadra1"), )
 }
 
+function createTabellino() {
+    
+    var s_1 = "BRB Ivrea"
+    var s_2 = "Mondovì"
+    
+    var t_1 = 20;
+    var t_2 = 6;
+    document.getElementById("Squadra1").appendChild(document.createTextNode(s_1));
+     document.getElementById("Squadra2").appendChild(document.createTextNode(s_2));
+    
+    document.getElementById("PrimaSquadraTot").appendChild(document.createTextNode(t_1));
+     document.getElementById("SecondaSquadraTot").appendChild(document.createTextNode(t_2));
+    
+    /*Serve il riferimento al documento*/
+    /*var tabellino = db.collection("giornate/giornata.id/partite/partita.id")*/
+    
+    var table = document.getElementById("TableIncontro");
+    
+    var tr = table.getElementsByTagName("tr");
+    var prova = 1;
+    
+    for (var i = 0; i < tr.length - 1; i+= 2) {
+        var map = {
+            "g_1" : ["Ballabene C.","Carlin C."],
+            "g_2" : ["Graziano G."],
+            "p_1" : 25,
+            "p_2" : 22
+        };
+        if (map != null) {
+            
+            var g_1 = map["g_1"]
+            var g_2 = map["g_2"]
+            var p_1 = map["p_1"]
+            var p_2 = map["p_2"]
+            
+            var g_1_html = tr[i].getElementsByClassName("Giocatore1Squadra")[0]
+            var g_2_html = tr[i].getElementsByClassName("Giocatore2Squadra")[0]
+            var p_1_html = tr[i+1].getElementsByClassName("PrimoPunteggio")[0]
+            var p_2_html = tr[i+1].getElementsByClassName("SecondoPunteggio")[0]
+            
+            g_1.forEach(function(giocatore) {
+                var span = document.createElement("span");
+                span.innerHTML = giocatore
+                g_1_html.appendChild(span)
+            })
+            
+            g_2.forEach(function(giocatore) {
+                var span = document.createElement("span");
+                span.innerHTML = giocatore
+                g_2_html.appendChild(span)
+            })
+            
+            p_1_html.appendChild(document.createTextNode(p_1));
+            p_2_html.appendChild(document.createTextNode(p_2));
+            
+        }
+    }
+    
+    refreshMatches()
+    
+}

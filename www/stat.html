@@ -46,7 +46,7 @@
                 <option value="A1_1819">Serie A1</option>
                 <option value="A2_1819_est">Serie A2 Est</option>
             </select>
-            <select multiple class="selezioneStat" id="selSpecialita" onchange=refreshTable()>
+            <select class="selezioneStat" id="selSpecialita" onchange=refreshTable()>
                 <option value="" disabled selected>Seleziona la prova</option>
                 <option value="individuale">Individuale</option>
                 <option value="coppia">Coppia</option>
@@ -59,7 +59,7 @@
             </select>
             <input id="nomeGiocatore" type="search" onchange=filterTable() placeholder="Cerca un giocatore per congnome...">
         </div>
-        <div class="classifica show">
+        <div class="classifica">
             <table id="tableStatProve" class="statistiche_t" summary="Tabella della statistiche scelte">
                 <caption>Serie A2 2108/19</caption>
                 <colgroup>
