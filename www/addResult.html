@@ -24,6 +24,8 @@
             firebase.initializeApp(config);
         }
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
     <title>Bocce</title>
 </head>
 
@@ -42,65 +44,38 @@
       
     <div id="formResult">
 
-        <select >
+        <select id="provaForm">
             <option value="" disabled selected>Seleziona la prova</option>
-            <option value="individuale">Combinato</option>
-            <option value="coppia">Coppia</option>
-            <option value="individuale">1&#176 Individuale</option>
-            <option value="terna">Terna</option>
-            <option value="staffetta">Staffetta</option>
-            <option value="tiro_tecnico">1&#176 Tiro Tecnico</option>
-            <option value="tiro_tecnico">2&#176 Tiro Tecnico</option>
-            <option value="progressivo_6">Progressivo a 6</option>
-            <option value="progressivo_3">Progressivo a 3</option>
-            <option value="individuale">2&#176 Coppia</option>
-            <option value="coppia">2&#176 Individuale</option>
-            <option value="individuale">3&#176 Individuale</option>
-            <option value="terna">3&#176 Coppia</option>
+            <option value="1">Combinato</option>
+            <option value="2">Coppia</option>
+            <option value="3">1&#176 Individuale</option>
+            <option value="4">Terna</option>
+            <option value="5">Staffetta</option>
+            <option value="6">1&#176 Tiro Tecnico</option>
+            <option value="7">2&#176 Tiro Tecnico</option>
+            <option value="8">Progressivo a 6</option>
+            <option value="9">Progressivo a 3</option>
+            <option value="10">2&#176 Coppia</option>
+            <option value="11">2&#176 Individuale</option>
+            <option value="12">3&#176 Individuale</option>
+            <option value="13">3&#176 Coppia</option>
         </select>
         
         <form>
-            <fieldset id="form1Squadra" class="formSquadre">
-                <legend>BRB</legend>
-                <select multiple>
-                    <option value="" disabled selected>Seleziona la prova</option>
-                    <option value="individuale">Combinato</option>
-                    <option value="coppia">Coppia</option>
-                    <option value="individuale">1&#176 Individuale</option>
-                    <option value="terna">Terna</option>
-                    <option value="staffetta">Staffetta</option>
-                    <option value="tiro_tecnico">1&#176 Tiro Tecnico</option>
-                    <option value="tiro_tecnico">2&#176 Tiro Tecnico</option>
-                    <option value="progressivo_6">Progressivo a 6</option>
-                    <option value="progressivo_3">Progressivo a 3</option>
-                    <option value="individuale">2&#176 Coppia</option>
-                    <option value="coppia">2&#176 Individuale</option>
-                    <option value="individuale">3&#176 Individuale</option>
-                    <option value="terna">3&#176 Coppia</option>
+            <fieldset class="formSquadre">
+                <legend>BRB Ivrea</legend>
+                <select multiple="multiple" id="form1Squadra">
+                    
                 </select>
-                <textarea></textarea>
+                <input id="punteggio1Squadra" type="number" />
             </fieldset>
-            <fieldset id="form2Squadra" class="formSquadre">
+            <fieldset class="formSquadre">
                 <legend>Borgonese</legend>
-                <select multiple>
-                    <option value="" disabled selected>Seleziona la prova</option>
-                    <option value="individuale">Combinato</option>
-                    <option value="coppia">Coppia</option>
-                    <option value="individuale">1&#176 Individuale</option>
-                    <option value="terna">Terna</option>
-                    <option value="staffetta">Staffetta</option>
-                    <option value="tiro_tecnico">1&#176 Tiro Tecnico</option>
-                    <option value="tiro_tecnico">2&#176 Tiro Tecnico</option>
-                    <option value="progressivo_6">Progressivo a 6</option>
-                    <option value="progressivo_3">Progressivo a 3</option>
-                    <option value="individuale">2&#176 Coppia</option>
-                    <option value="coppia">2&#176 Individuale</option>
-                    <option value="individuale">3&#176 Individuale</option>
-                    <option value="terna">3&#176 Coppia</option>
+                <select multiple="multiple" id="form2Squadra">
                 </select>
-                <textarea></textarea>
+                <input id="punteggio2Squadra" type="number" />
             </fieldset>
-            <input type="submit" value="INVIA">
+            <input id="inviaResult" type="submit" value="INVIA">
         </form>
     </div>
     
