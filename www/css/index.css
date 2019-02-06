@@ -43,7 +43,7 @@ body {
     height: 100%;
     border: none;
     width: 15%;
-    background-image: url('../../img/left-arrow.png');
+    background-image: url('../img/left-arrow.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -54,7 +54,7 @@ body {
     height: 10%;
     border: none;
     width: 10%;
-    background-image: url('../../img/add.png');
+    background-image: url('../img/add.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -103,31 +103,31 @@ body {
 }
 
 .statistiche {
-    background-image: url('../../img/stats.png');
+    background-image: url('../img/stats.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .homepage {
-    background-image: url('../../img/home.png');
+    background-image: url('../img/home.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .risultati {
-    background-image: url('../../img/result.png');
+    background-image: url('../img/result.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .classifiche {
-    background-image: url('../../img/standing.png');
+    background-image: url('../img/standing.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .utente {
-    background-image: url('../../img/team.png');
+    background-image: url('../img/team.png');
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -139,7 +139,7 @@ body {
 
 /*Index*/
 #logo {
-    background-image: url('../../img/bowling.png');
+    background-image: url('../img/bowling.png');
     background-repeat: no-repeat;
     background-size: 50%;
     background-position: center;
@@ -218,7 +218,7 @@ input[type=text]:focus, input[type=password]:focus {
 
 #user h1 {
     height:60%;
-    background-image: url('../../img/user.png');
+    background-image: url('../img/user.png');
     background-repeat: no-repeat;
     background-size: contain;
     width: 60%;
