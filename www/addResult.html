@@ -43,34 +43,33 @@
     </div>
       
     <div id="formResult">
-
-        <select id="provaForm">
-            <option value="" disabled selected>Seleziona la prova</option>
-            <option value="1">Combinato</option>
-            <option value="2">Coppia</option>
-            <option value="3">1&#176 Individuale</option>
-            <option value="4">Terna</option>
-            <option value="5">Staffetta</option>
-            <option value="6">1&#176 Tiro Tecnico</option>
-            <option value="7">2&#176 Tiro Tecnico</option>
-            <option value="8">Progressivo a 6</option>
-            <option value="9">Progressivo a 3</option>
-            <option value="10">2&#176 Coppia</option>
-            <option value="11">2&#176 Individuale</option>
-            <option value="12">3&#176 Individuale</option>
-            <option value="13">3&#176 Coppia</option>
-        </select>
         
         <form>
+            <select id="provaForm">
+                <option value="" disabled selected>Seleziona la prova</option>
+                <option class="combinato" value="1">Combinato</option>
+                <option class="coppia" value="2">Coppia</option>
+                <option class="individuale" value="3">1&#176 Individuale</option>
+                <option class="terna" value="4">Terna</option>
+                <option class="staffetta" value="5">Staffetta</option>
+                <option class="tiro_tecnico" value="6">1&#176 Tiro Tecnico</option>
+                <option class="tiro_tecnico" value="7">2&#176 Tiro Tecnico</option>
+                <option class="progressivo_6" value="8">Progressivo a 6</option>
+                <option class="progressivo_3" value="9">Progressivo a 3</option>
+                <option class="coppia" value="10">2&#176 Coppia</option>
+                <option class="individuale" value="11">2&#176 Individuale</option>
+                <option class="individuale" value="12">3&#176 Individuale</option>
+                <option class="coppia" value="13">3&#176 Coppia</option>
+            </select>
             <fieldset class="formSquadre">
-                <legend>BRB Ivrea</legend>
+                <legend></legend>
                 <select multiple="multiple" id="form1Squadra">
                     
                 </select>
                 <input id="punteggio1Squadra" type="number" />
             </fieldset>
             <fieldset class="formSquadre">
-                <legend>Borgonese</legend>
+                <legend></legend>
                 <select multiple="multiple" id="form2Squadra">
                 </select>
                 <input id="punteggio2Squadra" type="number" />
