@@ -87,17 +87,20 @@ function createTable(squadre_camp, spec_id) {
             players.get()   
             .then(function(querySnapshot) {
                 querySnapshot.forEach(function(pl) {
+                    
+                    if(pl.data()["name"].includes(nome.value)) {
 
-                    var stat = db.doc("giocatori/"+pl.id+"/statistiche_1819/"+spec_id)
+                        var stat = db.doc("giocatori/"+pl.id+"/statistiche_1819/"+spec_id)
 
-                    stat.get()
-                    .then(function(risultati) {
-                        
-                        tbody.appendChild(createTableRow(risultati, pl, medie))
-                        
-                    }).catch(function(error) {
-                        console.log("Error getting document:", error);
-                    });
+                        stat.get()
+                        .then(function(risultati) {
+
+                            tbody.appendChild(createTableRow(risultati, pl, medie))
+
+                        }).catch(function(error) {
+                            console.log("Error getting document:", error);
+                        });
+                    }
                 })
                 
             })
@@ -111,10 +114,6 @@ function createTable(squadre_camp, spec_id) {
         else
             tables[0].classList.add("show");
         console.log("Set show")
-        
-        /*Filtro*/
-        if (nome.value != "") 
-            filterTable();
         
     })
     .catch(function(error) {
@@ -166,36 +165,6 @@ function createTableRow(risultati, player, medie) {
         
     }
     
-    console.log("wow")
-    
     return tr
 }
 
-
-function filterTable() {
-    console.log("Filtering")
-    
-      // Declare variables 
-    var input, filter, table, tr, td, i, txtValue;
-    input = nome.value;
-    filter = input.toUpperCase();
-    table = document.getElementsByClassName("show")[0];
-    tr = table.getElementsByTagName("tr");
-    
-    console.log("TR ", tr.length)
-
-    // Loop through all table rows, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-        } 
-
-}
-    
-}

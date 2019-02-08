@@ -54,7 +54,7 @@ function selectTable( event ) {
 
 function createPage() {
     var giornate = db.collection("giornate").orderBy("numero", "asc");
-    var body = document.getElementsByTagName("body")[0]
+    var body = document.getElementById("allGiornate")
     var nav = document.getElementById("ulGiornate")
     
     giornate.get()   

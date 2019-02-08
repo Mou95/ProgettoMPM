@@ -84,6 +84,7 @@
     <plugin name="cordova-plugin-console" spec="~1.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="~2.4.2" />
     <plugin name="cordova-plugin-dialogs" spec="~2.0.1" />
+    <plugin name="cordova-plugin-device" spec="~2.0.2" />
     <preference name="StatusBarStyle" value="default" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

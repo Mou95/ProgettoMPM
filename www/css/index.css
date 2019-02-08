@@ -5,20 +5,21 @@
     padding: 0;
 }
 
+:root {
+    --top: 100px;
+    --bottom: 0px;
+    
+}
+
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-color: white;
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
     height:100%;
-    margin-top: 15%; 
-    padding:0px;
     text-transform:uppercase;
     width:100%;
 }
@@ -32,7 +33,7 @@ body {
 /*Header*/
 .statusBar {
     background-color: #4CAF50;
-    height: 10%;
+    height: 50px;
     position: fixed;
     top : 0;
     width: 100%;
@@ -40,21 +41,26 @@ body {
 }
 
 .backButton {
-    height: 100%;
+    height: 50px;
     border: none;
-    width: 15%;
-    background-image: url('../res/img/left-arrow.png');
+    width: 10%;
+    background-image: url('../img/left-arrow.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     background-color: #4CAF50;
+    float: left;
+    position: fixed;
+    top : 0;
+    left: 10px;
+    z-index: 1;
 }
 
 #addButton {
-    height: 10%;
+    height: 50px;
     border: none;
     width: 10%;
-    background-image: url('../res/img/add.png');
+    background-image: url('../img/add.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -63,7 +69,7 @@ body {
     position: fixed;
     top : 0;
     right: 15px;
-    z-index: 2;
+    z-index: 1;
 }
 
 .titoloPagina {
@@ -87,9 +93,9 @@ body {
     width: 100%;
     background-color: lightgray;
     overflow: auto;
-    height: 8%;
+    height: 50px;
     position: fixed;
-    bottom: 0;
+    top: 50px;
     border-top: 0.2px solid gray;
     border-bottom: 0.2px solid gray;
 }
@@ -99,35 +105,35 @@ body {
     text-align: center;
     width: 20%;
     height: 100%;
-    background-size: contain;
+    background-size: 10vw;
 }
 
 .statistiche {
-    background-image: url('../res/img/stats.png');
+    background-image: url('../img/stats.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .homepage {
-    background-image: url('../res/img/home.png');
+    background-image: url('../img/home.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .risultati {
-    background-image: url('../res/img/result.png');
+    background-image: url('../img/result.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .classifiche {
-    background-image: url('../res/img/standing.png');
+    background-image: url('../img/standing.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .utente {
-    background-image: url('../res/img/team.png');
+    background-image: url('../img/team.png');
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -136,10 +142,16 @@ body {
     background-color: #4CAF50; /* Add an active/current color */
 }
 
+.marginBarTop {
+    height: var(--top);
+}
 
+.marginBarBottom {
+    height: var(--bottom);
+}
 /*Index*/
 #logo {
-    background-image: url('../res/img/logo.png');
+    background-image: url('../img/logo.png');
     background-repeat: no-repeat;
     background-size: 50%;
     background-position: center;
@@ -218,7 +230,7 @@ input[type=text]:focus, input[type=password]:focus {
 
 #user h1 {
     height:60%;
-    background-image: url('../res/img/user.png');
+    background-image: url('../img/user.png');
     background-repeat: no-repeat;
     background-size: contain;
     width: 60%;
@@ -260,12 +272,12 @@ input[type=text]:focus, input[type=password]:focus {
 
 /*Classifiche*/
 #classifica-slider {
-    height: 85vh;
+    height: 80vh;
     touch-action: manipulation;
 }
 
 .classifica {
-    padding: 10% 1%;
+    padding: 3% 1%;
     text-transform: none;
     display: none;
 }
@@ -358,7 +370,7 @@ input[type=text]:focus, input[type=password]:focus {
 #dot-slider {
     text-align:center;
     position: fixed;
-    bottom: 12%;
+    bottom: calc(var(--bottom) + 25px);
     width: 100%;
 }
 
@@ -397,7 +409,7 @@ to {opacity: 1}
 
 /*Statistiche*/
 #containerStatistiche {
-    padding: 10% 1%;
+    padding: 10% 1% 3% 1%;
     text-transform: none;
 }
 
@@ -452,7 +464,7 @@ to {opacity: 1}
 /*Calendario*/
 #header_calendario {
     width: 100%;
-    margin: 80px 0 2% 0;
+    margin: 4% 0 2% 0;
     display: block;
 }
 
@@ -541,9 +553,10 @@ to {opacity: 1}
 #headerTabellino {
     display: block;
     position: fixed;
-    top: 63px;
+    top: var(--top);
     width: 100%;
     background-color: #A7A7A7;
+    height: 40px;
 }
 
 #headerTabellino p {
@@ -563,8 +576,8 @@ to {opacity: 1}
     text-align: center;
     background-color: white;
     border-collapse: collapse;
-    margin-top: 110px;
-    margin-bottom: 55px;
+    margin-top: calc(var(--top) + 40px);
+    margin-bottom: var(--bottom);
     text-transform: none;
     table-layout: fixed;
     overflow: hidden;
@@ -606,7 +619,7 @@ to {opacity: 1}
 
 /*Aggiungi Risultati*/
 #formResult {
-    margin-top: 90px;
+    margin-top: 4%;
 }
 
 .show {

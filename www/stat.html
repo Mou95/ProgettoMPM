@@ -39,6 +39,7 @@
         <div class="classifiche" onclick="location.href='classifiche.html'"></div>
         <div class="utente" onclick="location.href='user.html'"></div>
     </div>
+    <div class="marginBarTop"></div>
     <div id="containerStatistiche">
         <div id="scegliStat">
             <select class="selezioneStat" id="selCampionato" onchange=refreshTable()>
@@ -57,11 +58,11 @@
                 <option value="progressivo_3">Progressivo a 3</option>
                 <option value="tiro_tecnico">Tiro Tecnico</option>
             </select>
-            <input id="nomeGiocatore" type="search" onchange=filterTable() placeholder="Cerca un giocatore per congnome...">
+            <input id="nomeGiocatore" type="search" onchange=refreshTable() placeholder="Cerca un giocatore per congnome...">
         </div>
         <div class="classifica">
             <table id="tableStatProve" class="statistiche_t" summary="Tabella della statistiche scelte">
-                <caption>Serie A2 2108/19</caption>
+                <caption>Serie A2 2018/19</caption>
                 <colgroup>
                     <col class="giocatore_s" >
                     <col class="squadra_s" >
@@ -108,6 +109,7 @@
             </table>
         </div>
     </div>
+    <div class="marginBarBottom"></div>
     <script type="text/javascript" src="js/menu.js"></script>
     <script type="text/javascript" src="js/statistiche.js"></script>
 </body>
