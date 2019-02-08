@@ -39,17 +39,15 @@
 <body>
     <div class="container">
         <h1>Accedi</h1>
+        <form>
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Inserisci Email" id="email" required>
 
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Inserisci Email" id="email" required>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Inserisci Password" id="psw" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Inserisci Password" id="psw" required>
-
-        <button type="submit" class="formButton">Accedi</button>
-    </div>
-    <div class="erroriRegistrazione">
-        <p class="errori"></p>
+            <button type="submit" class="formButton">Accedi</button>
+        </form>
     </div>
     <script type="text/javascript" src="js/login.js"></script>
     <script type="text/javascript" src="cordova.js"></script>

@@ -29,7 +29,7 @@
     <title>Bocce</title>
 </head>
 
-<body onload=loadTable()>
+<body onload=createPage()>
     <div class="statusBar">
         <button type="button" class="backButton" onclick="goBack()"></button>
         <div class="titoloPagina"><h1>Calendario</h1></div>
@@ -44,13 +44,13 @@
     
     <div id="header_calendario" class="">
         <select class="selCampionato">
-            <option value="" >Scegli capionato...</option>
+            <option value="" >Scegli campionato...</option>
             <option value="A1">Serie A1</option>
             <option value="A2 Est">Serie A2 Est</option>
         </select>
         <div class="NavGiornate">
-            <ul>
-                <li class="NumeroGiornata selected">GIORNATA 1</li>
+            <ul id="ulGiornate">
+                <!--<li class="NumeroGiornata selected">GIORNATA 1</li>
                 <li class="NumeroGiornata">GIORNATA 2</li>
                 <li class="NumeroGiornata">GIORNATA 3</li>
                 <li class="NumeroGiornata">GIORNATA 4</li>
@@ -59,29 +59,13 @@
                 <li class="NumeroGiornata">GIORNATA 7</li>
                 <li class="NumeroGiornata">GIORNATA 8</li>
                 <li class="NumeroGiornata">GIORNATA 9</li>
-                <li class="NumeroGiornata">GIORNATA 10</li>
+                <li class="NumeroGiornata">GIORNATA 10</li>-->
             </ul>
         </div>
     </div>
-    <div class="giornataIntera">
-        <table class="tableGiornata" summary="Tabella che mostra i risultati della giornata selezionata">
+    <!--<div class="giornataIntera">
+        <table class="tableGiornata">
             <caption>Serie A2 2108/19</caption>
-                <colgroup>
-                    <col class="PrimaSquadra" >
-                    <col class="PunteggioPrimaSquadra" >
-                    <col class="StatoPartita" >
-                    <col class="PunteggioSecondaSquadra" >
-                    <col class="SecondaSquadra" >
-                </colgroup>
-            <thead>
-                <tr>
-                    <th scope="col">Prima Squadra</th>
-                    <th scope="col">Punteggio Prima Squadra</th>
-                    <th scope="col">Stato</th>
-                    <th scope="col">Punteggio Seconda Squadra</th>
-                    <th scope="col">Seconda Squadra</th>
-                </tr>
-            </thead>
             <tbody>
                 <tr onclick="location.href='tabellino.html'">
                     <td class="PrimaSquadra">Dolada</td>
@@ -642,7 +626,7 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div>-->
     
     <script type="text/javascript" src="js/menu.js"></script>
     <script type="text/javascript" src="js/calendario.js"></script>

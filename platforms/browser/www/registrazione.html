@@ -30,21 +30,20 @@
 <body>
     <div class="container">
         <h1>Registrati</h1>
+        <form>
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Inserisci Email" id="email" required>
 
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Inserisci Email" id="email" required>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Inserisci Password" id="psw" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Inserisci Password" id="psw" required>
+            <label for="psw-repeat"><b>Ripeti Password</b></label>
+            <input type="password" placeholder="Ripeti Password" id="psw-repeat" required>
 
-        <label for="psw-repeat"><b>Ripeti Password</b></label>
-        <input type="password" placeholder="Ripeti Password" id="psw-repeat" required>
-
-        <button class="formButton">Registrati</button>
+            <button class="formButton">Registrati</button>
+        </form>
     </div>
-    <div class="erroriRegistrazione">
-        <p class="errori"></p>
-    </div>
+
     <script type="text/javascript" src="js/registrazione.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
 </body>

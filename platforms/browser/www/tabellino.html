@@ -27,10 +27,11 @@
     <title>Bocce</title>
 </head>
 
-<body onload=refreshMatches()>
+<body onload="createTabellino()">
     <div class="statusBar">
         <button type="button" class="backButton" onclick="goBack()"></button>
         <div class="titoloPagina"><h1>Calendario</h1></div>
+        <button type="button" id="addButton" onclick="addResult()"></button>
     </div>
     <div class="menuBar">
         <div class="statistiche" onclick="location.href='stat.html'"></div>
@@ -40,8 +41,8 @@
         <div class="utente" onclick="location.href='user.html'"></div>
     </div>
     <div id="headerTabellino">
-        <p id="Squadra1">BRB</p>
-        <p id="Squadra2">Borgonese</p>
+        <p id="Squadra1"></p>
+        <p id="Squadra2"></p>
     </div>   
     <table id="TableIncontro" summary="Tabella che mostra il tabellino della partita selezionata">
         <tbody>
@@ -51,119 +52,120 @@
                 <td rowspan="2" class="Giocatore2Squadra"></td>
             </tr>
             <tr>
-                <td class="PrimoPunteggio">13</td>
-                <td class="SecondoPunteggio">12</td>
+                <td class="PrimoPunteggio"></td>
+                <td class="SecondoPunteggio"></td>
             </tr>
             <tr>
-                <td rowspan="2" class="Giocatore1Squadra">M. Carlin A.Carlin zfsfgs </td>
+                <td rowspan="2" class="Giocatore1Squadra">
+                </td>
                 <td colspan="2" class="Specialita">Coppia</td>
-                <td rowspan="2" class="Giocatore2Squadra">F. Rossettini Ballabene sfgsdfgsgsdfg</td>
+                <td rowspan="2" class="Giocatore2Squadra"></td>
             </tr>
             <tr>
-                <td class="PrimoPunteggio">13</td>
-                <td class="SecondoPunteggio">12</td>
+                <td class="PrimoPunteggio"></td>
+                <td class="SecondoPunteggio"></td>
             </tr>
             <tr>
-                <td rowspan="2" class="Giocatore1Squadra">M. Carlin</td>
+                <td rowspan="2" class="Giocatore1Squadra"></td>
                 <td colspan="2" class="Specialita">Individuale</td>
-                <td rowspan="2" class="Giocatore2Squadra">F. Rossettini</td>
+                <td rowspan="2" class="Giocatore2Squadra"></td>
             </tr>
             <tr>
-                <td class="PrimoPunteggio">8</td>
-                <td class="SecondoPunteggio">12</td>
+                <td class="PrimoPunteggio"></td>
+                <td class="SecondoPunteggio"></td>
             </tr>
             <tr>
-                <td rowspan="2" class="Giocatore1Squadra">M. Carlin</td>
+                <td rowspan="2" class="Giocatore1Squadra"></td>
                 <td colspan="2" class="Specialita">Terna</td>
-                <td rowspan="2" class="Giocatore2Squadra">F. Rossettini</td>
+                <td rowspan="2" class="Giocatore2Squadra"></td>
             </tr>
             <tr>
-                <td class="PrimoPunteggio">13</td>
-                <td class="SecondoPunteggio">12</td>
+                <td class="PrimoPunteggio"></td>
+                <td class="SecondoPunteggio"></td>
             </tr>
             <tr>
-                <td rowspan="2" class="Giocatore1Squadra">M. Carlin</td>
+                <td rowspan="2" class="Giocatore1Squadra"></td>
                 <td colspan="2" class="Specialita">Staffetta</td>
-                <td rowspan="2" class="Giocatore2Squadra">F. Rossettini</td>
+                <td rowspan="2" class="Giocatore2Squadra"></td>
             </tr>
             <tr>
-                <td class="PrimoPunteggio">12</td>
-                <td class="SecondoPunteggio">12</td>
+                <td class="PrimoPunteggio"></td>
+                <td class="SecondoPunteggio"></td>
             </tr>
             <tr>
-                <td rowspan="2" class="Giocatore1Squadra">M. Carlin</td>
+                <td rowspan="2" class="Giocatore1Squadra"></td>
                 <td colspan="2" class="Specialita">Tiro Tecnico</td>
-                <td rowspan="2" class="Giocatore2Squadra">F. Rossettini</td>
+                <td rowspan="2" class="Giocatore2Squadra"></td>
             </tr>
             <tr>
-                <td class="PrimoPunteggio">13</td>
-                <td class="SecondoPunteggio">12</td>
+                <td class="PrimoPunteggio"></td>
+                <td class="SecondoPunteggio"></td>
             </tr>
             <tr>
-                <td rowspan="2" class="Giocatore1Squadra">M. Carlin</td>
+                <td rowspan="2" class="Giocatore1Squadra"></td>
                 <td colspan="2" class="Specialita">Tiro Tecnico</td>
-                <td rowspan="2" class="Giocatore2Squadra">F. Rossettini</td>
+                <td rowspan="2" class="Giocatore2Squadra"></td>
             </tr>
             <tr>
-                <td class="PrimoPunteggio">13</td>
-                <td class="SecondoPunteggio">12</td>
+                <td class="PrimoPunteggio"></td>
+                <td class="SecondoPunteggio"></td>
             </tr>
             <tr>
-                <td rowspan="2" class="Giocatore1Squadra">M. Carlin</td>
+                <td rowspan="2" class="Giocatore1Squadra"></td>
                 <td colspan="2" class="Specialita">Progressivo 6</td>
-                <td rowspan="2" class="Giocatore2Squadra">F. Rossettini</td>
+                <td rowspan="2" class="Giocatore2Squadra"></td>
             </tr>
             <tr>
-                <td class="PrimoPunteggio">13</td>
-                <td class="SecondoPunteggio">12</td>
+                <td class="PrimoPunteggio"></td>
+                <td class="SecondoPunteggio"></td>
             </tr>
             <tr>
-                <td rowspan="2" class="Giocatore1Squadra">M. Carlin</td>
+                <td rowspan="2" class="Giocatore1Squadra"></td>
                 <td colspan="2" class="Specialita">Progressivo 3</td>
-                <td rowspan="2" class="Giocatore2Squadra">F. Rossettini</td>
+                <td rowspan="2" class="Giocatore2Squadra"></td>
             </tr>
             <tr>
-                <td class="PrimoPunteggio">13</td>
-                <td class="SecondoPunteggio">12</td>
+                <td class="PrimoPunteggio"></td>
+                <td class="SecondoPunteggio"></td>
             </tr>
             <tr>
-                <td rowspan="2" class="Giocatore1Squadra">M. Carlin</td>
+                <td rowspan="2" class="Giocatore1Squadra"></td>
                 <td colspan="2" class="Specialita">Coppia</td>
-                <td rowspan="2" class="Giocatore2Squadra">F. Rossettini</td>
+                <td rowspan="2" class="Giocatore2Squadra"></td>
             </tr>
             <tr>
-                <td class="PrimoPunteggio">13</td>
-                <td class="SecondoPunteggio">12</td>
+                <td class="PrimoPunteggio"></td>
+                <td class="SecondoPunteggio"></td>
             </tr>
             <tr>
-                <td rowspan="2" class="Giocatore1Squadra">M. Carlin</td>
+                <td rowspan="2" class="Giocatore1Squadra"></td>
                 <td colspan="2" class="Specialita">Individuale</td>
-                <td rowspan="2" class="Giocatore2Squadra">F. Rossettini</td>
+                <td rowspan="2" class="Giocatore2Squadra"></td>
             </tr>
             <tr>
-                <td class="PrimoPunteggio">13</td>
-                <td class="SecondoPunteggio">12</td>
+                <td class="PrimoPunteggio"></td>
+                <td class="SecondoPunteggio"></td>
             </tr><tr>
-                <td rowspan="2" class="Giocatore1Squadra">M. Carlin</td>
+                <td rowspan="2" class="Giocatore1Squadra"></td>
                 <td colspan="2" class="Specialita">Individuale</td>
-                <td rowspan="2" class="Giocatore2Squadra">F. Rossettini</td>
+                <td rowspan="2" class="Giocatore2Squadra"></td>
             </tr>
             <tr>
-                <td class="PrimoPunteggio">13</td>
-                <td class="SecondoPunteggio">12</td>
+                <td class="PrimoPunteggio"></td>
+                <td class="SecondoPunteggio"></td>
             </tr>
             <tr>
-                <td rowspan="2" class="Giocatore1Squadra">M. Carlin</td>
+                <td rowspan="2" class="Giocatore1Squadra"></td>
                 <td colspan="2" class="Specialita">Coppia</td>
-                <td rowspan="2" class="Giocatore2Squadra">F. Rossettini</td>
+                <td rowspan="2" class="Giocatore2Squadra"></td>
             </tr>
             <tr>
-                <td class="PrimoPunteggio">13</td>
-                <td class="SecondoPunteggio">12</td>
+                <td class="PrimoPunteggio"></td>
+                <td class="SecondoPunteggio"></td>
             </tr>
             <tr id="Totale">
-                <td colspan="2" class="PrimaSquadraTot">20</td>
-                <td colspan="2" class="SecondaSquadraTot">6</td>
+                <td colspan="2" id="PrimaSquadraTot"></td>
+                <td colspan="2" id="SecondaSquadraTot"></td>
             </tr>
         </tbody>
     </table>

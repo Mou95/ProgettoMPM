@@ -47,14 +47,17 @@ function refreshTable() {
 
 function deleteTable() {
     var table_active = document.getElementsByClassName("show")[0]
-    var tbody = table_active.getElementsByTagName('tbody')[0]
     
-    while (tbody.firstChild) {
-        tbody.removeChild(tbody.firstChild);
+    if (table_active != null) {
+        var tbody = table_active.getElementsByTagName('tbody')[0]
+
+        while (tbody.firstChild) {
+            tbody.removeChild(tbody.firstChild);
+        }
+
+        table_active.classList.remove("show");
+        console.log("Eliminato body della tabella attiva")
     }
-    
-    table_active.classList.remove("show");
-    console.log("Eliminato body della tabella attiva")
 }
     
 function createTable(squadre_camp, spec_id) {

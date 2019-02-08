@@ -2,7 +2,6 @@
 /* 
 GESTIRE ERRORI DB
 CREARE FUNZIONE DEDICATA A UNICO CAMPIONATO COSì PER RENDERE + SEMPLICE UPDATE
-SE AGGIORNAMENTO LIVE GESTIRE ELIMINAZIONE/AGGIORNAMENTO TBODY
 */
 
 
@@ -11,15 +10,6 @@ $.mobile.autoInitializePage = false;
 
 
 var db = firebase.firestore();
-
-/*db.collection("campionati/A1_1819/classifica")
-    .onSnapshot(function(querySnapshot) {
-        var cities = [];
-        aggiornaView()
-        
-    });*/
-
-aggiornaView()
 
 var property_table = [
     "squadra" ,
@@ -36,66 +26,66 @@ function aggiornaView() {
     var leagues = db.collection("campionati")
 
     leagues.get()
-        .then(function(querySnapshot) {
-            querySnapshot.forEach(function(campionato) {
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(campionato) {
 
-                if (campionato.exists) {
-                    console.log("Document data:", campionato.data()["nome"]);
+            if (campionato.exists) {
+                console.log("Document data:", campionato.data()["nome"]);
 
-                    /*Create standing*/
-                    var standing = db.collection("campionati/"+campionato.id+"/classifica").orderBy("punti","desc")
+                /*Create standing*/
+                var standing = db.collection("campionati/"+campionato.id+"/classifica").orderBy("punti","desc")
 
-                    standing.get()
-                        .then(function(squadre) {
+                standing.get()
+                .then(function(squadre) {
 
-                            var table = document.getElementById(campionato.id)
-                            var tbody = document.createElement('tbody')
-                            var i = 1;
+                    var table = document.getElementById(campionato.id)
+                    var tbody = document.createElement('tbody')
+                    var i = 1;
 
-                            squadre.forEach(function(doc) {
+                    squadre.forEach(function(doc) {
 
-                                var tr = document.createElement('tr');
+                        var tr = document.createElement('tr');
 
-                                var td = document.createElement('td');
+                        var td = document.createElement('td');
 
-                                td.classList.add("posizione"); 
+                        td.classList.add("posizione"); 
 
-                                td.appendChild(document.createTextNode(i))
+                        td.appendChild(document.createTextNode(i))
 
-                                tr.appendChild(td);
+                        tr.appendChild(td);
 
-                                for (var key in property_table) {
+                        for (var key in property_table) {
 
-                                    td = document.createElement('td');
-                                    td.classList.add(property_table[key]);  
+                            td = document.createElement('td');
+                            td.classList.add(property_table[key]);  
 
-                                    td.appendChild(document.createTextNode(doc.data()[property_table[key]]))
+                            td.appendChild(document.createTextNode(doc.data()[property_table[key]]))
 
-                                    tr.appendChild(td);
-                                }
+                            tr.appendChild(td);
+                        }
 
-                                tbody.appendChild(tr);
+                        tbody.appendChild(tr);
 
-                                i++;
+                        i++;
 
-                            })
+                    })
 
-                            table.appendChild(tbody);
+                    table.appendChild(tbody);
 
-                        }).catch(function(error) {
-                            console.log("Error getting document:", error);
-                        });
+                }).catch(function(error) {
+                    console.log("Error getting document:", error);
+                });
 
 
-                } else {
-                    // doc.data() will be undefined in this case
+            } else {
+                // doc.data() will be undefined in this case
 
-                    console.log("No such document!");
-                }
-            })
-        }).catch(function(error) {
-            console.log("Error getting document:", error);
-        });
+                console.log("No such document!");
+            }
+        })
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
 }
 
 var classifiche = document.getElementsByClassName("classifica")

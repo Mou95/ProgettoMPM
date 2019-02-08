@@ -1,26 +1,22 @@
-function onLoad() {
-    document.addEventListener("deviceready", onDeviceReady, false);
-    console.log("createlistenter")
-}
+document.addEventListener("deviceready", onDeviceReady, false);
 
-function onDeviceReady() {
-    console.log('Received Event:');
-
-    
+function onDeviceReady( event ) {
+    console.log('Received Event:'+ event );
+    var login = document.getElementById('login');
+    var user = firebase.auth().currentUser;
+    console.log(user)
+    if (user) {
+        //logged in
+        console.log('user logged');
+        window.open('home.html', "_self");
+    } else {
+        //logged out
+        login.style.display = "block";
+    }
     //console.log("plat"+device.platform)
 }
 
-var login = document.getElementById('login');
-var user = firebase.auth().currentUser;
-console.log(user)
-if (user) {
-    //logged in
-    console.log('user logged');
-    window.open('home.html');
-} else {
-    //logged out
-    login.style.display = "block";
-}
+
 
 /*Login page*/
 /*var login = document.getElementById('accedi')
