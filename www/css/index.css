@@ -11,13 +11,31 @@
     
 }
 
+@font-face {
+  font-family: fontPersonalizzato;
+  src: url(../font/Montserrat-Regular.otf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: fontPersonalizzato;
+  src: url(../font/Montserrat-Bold.otf);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: fontPersonalizzato;
+  src: url(../font/Montserrat-Light.otf);
+  font-weight: lighter;
+}
+
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     background-color: white;
     background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family:fontPersonalizzato, 'Helvetica';
     font-size:12px;
     height:100%;
     text-transform:uppercase;
