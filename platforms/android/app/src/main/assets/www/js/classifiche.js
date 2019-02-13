@@ -49,62 +49,53 @@ function createStandings() {
                     /*Create standing*/
                     var standing = db.collection("campionati/"+campionato.id+"/classifica").orderBy("punti","desc")
                     
+                    var table = document.getElementById(campionato.id)
+                    var tbody = document.createElement('tbody')
+                    var i = 1;
+                    
                     /*Add listener to change table on database modify*/
                     standing
                     .onSnapshot(function(snapshot) {
                         snapshot.docChanges().forEach(function(change) {
                             if (change.type === "modified") {
-                                console.log("Modified city: ", change.doc.data());
+                                console.log("Modified data: ", change.doc.data());
                                 
                                 changeEntryTable(campionato.id, change)
                                 
                             }
-                        })
-                    });
+                            
+                            if (change.type === "added") {
+                                console.log("Added data: ", change.doc.data());
+                                
+                                var tr = document.createElement('tr');
 
+                                var td = document.createElement('td');
 
-                    standing.get()
-                    .then(function(squadre) {
+                                td.classList.add("posizione"); 
 
-                        var table = document.getElementById(campionato.id)
-                        var tbody = document.createElement('tbody')
-                        var i = 1;
-
-                        squadre.forEach(function(doc) {
-
-                            var tr = document.createElement('tr');
-
-                            var td = document.createElement('td');
-
-                            td.classList.add("posizione"); 
-
-                            td.appendChild(document.createTextNode(i))
-
-                            tr.appendChild(td);
-
-                            for (var key in property_table) {
-
-                                td = document.createElement('td');
-                                td.classList.add(property_table[key]);  
-
-                                td.appendChild(document.createTextNode(doc.data()[property_table[key]]))
+                                td.appendChild(document.createTextNode(i))
 
                                 tr.appendChild(td);
+
+                                for (var key in property_table) {
+
+                                    td = document.createElement('td');
+                                    td.classList.add(property_table[key]);  
+
+                                    td.appendChild(document.createTextNode(change.doc.data()[property_table[key]]))
+
+                                    tr.appendChild(td);
+                                }
+
+                                tbody.appendChild(tr);
+
+                                i++; 
                             }
-
-                            tbody.appendChild(tr);
-
-                            i++;
-
                         })
-
+                        
                         table.appendChild(tbody);
-
-                    }).catch(function(error) {
-                        created = false;
-                        console.log("Error getting document:", error);
+                        
                     });
-
 
                 } else {
                     // doc.data() will be undefined in this case
@@ -177,9 +168,6 @@ function setArrows() {
 function changeEntryTable(id, change) {
     
     var squadra = change.doc.data()["squadra"];
-    
-    
-    console.log();
     
     for (var key in property_table) {
 

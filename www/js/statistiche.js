@@ -100,16 +100,22 @@ function createVariable() {
                 console.log("Squadra ", doc.data()["squadra"])
                 var players = giocatori.where("squadra","==",doc.data()["squadra"])
 
-                players.get()   
-                .then(function(querySnapshot) {
-                    querySnapshot.forEach(function(pl) {
+                
+                players.onSnapshot(function(snapshot) {
+                    snapshot.docChanges().forEach(function(change) {
+                        if (change.type === "modified") {
 
-                        array_player[camp].push(pl.data())
+                            changeEntryTableStat(camp, change)
+                            
+
+                        }
+                        if (change.type === "added") {
+
+                            array_player[camp].push(change.doc.data())
+
+                        }
+                        
                     })
-
-                })
-                .catch(function(error) {
-                    console.log("Error getting documents: ", error);
                 });
             })
 
@@ -122,6 +128,20 @@ function createVariable() {
         i++;    
     }) 
     
+}
+
+function changeEntryTableStat(campionato, change) {
+    console.log(campionato+" "+change.doc.data()["name"])
+    var squadra = change.doc.data()["squadra"];  
+    var name = change.doc.data()["name"]; 
+
+    array_player[campionato].forEach(function(player) {
+        if (player["name"] == name && player["squadra"] == squadra) {
+            array_player[campionato][array_player[campionato].indexOf(player)] = change.doc.data()
+        }
+    })
+    
+    refreshTable();
 }
 
 function refreshTable() {
