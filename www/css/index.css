@@ -6,9 +6,8 @@
 }
 
 :root {
-    --top: 100px;
+    --top: 90px;
     --bottom: 0px;
-    
 }
 
 @font-face {
@@ -33,13 +32,15 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color: white;
-    background-attachment:fixed;
     font-family:fontPersonalizzato, 'Helvetica';
-    font-size:12px;
+    font-size:12pt;
     height:100%;
-    text-transform:uppercase;
     width:100%;
+    background-color: white;
+}
+
+button {
+    outline: none;
 }
 
 .hide {
@@ -48,14 +49,30 @@ body {
     overflow: hidden;
 }
 
+.page_show {
+    display: block;
+}
+
+.no_page_show {
+    display: none;
+}
+
 /*Header*/
 .statusBar {
-    background-color: #4CAF50;
-    height: 50px;
+    background-color: #f59c00;
+    height: 40px;
     position: fixed;
     top : 0;
     width: 100%;
     z-index: 1;
+    display: table;
+}
+
+.statusBar h1 {
+    color: white;
+    display:table-cell;
+    vertical-align:middle;
+    text-align: center;
 }
 
 .backButton {
@@ -90,35 +107,19 @@ body {
     z-index: 1;
 }
 
-.titoloPagina {
-    height: 100%;
-    width: 85%;
-    float: right;
-    display: table;
-}
-
-.titoloPagina h1 {
-    text-transform: none;
-    color: white;
-    display:table-cell;
-    vertical-align:middle;
-    padding-left: 10%;
-}
-
 /*Nav*/
-.menuBar {
+.menuBarAndroid {
     z-index: 1;
     width: 100%;
-    background-color: lightgray;
+    background-color: white;
     overflow: auto;
     height: 50px;
     position: fixed;
-    top: 50px;
-    border-top: 0.2px solid gray;
-    border-bottom: 0.2px solid gray;
+    top: 40px;
+    border-bottom: 1px solid #f59c00;
 }
 
-.menuBar div {
+.menuBarAndroid div {
     float: left;
     text-align: center;
     width: 20%;
@@ -126,39 +127,40 @@ body {
     background-size: 10vw;
 }
 
-.statistiche {
+.active {
+    background-color: #f59c00;
+}
+
+.menuBarAndroid .statistiche {
     background-image: url('../img/stats.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.homepage {
+.menuBarAndroid .homepage {
     background-image: url('../img/home.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.risultati {
+.menuBarAndroid .risultati {
     background-image: url('../img/result.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.classifiche {
+.menuBarAndroid .classifiche {
     background-image: url('../img/standing.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.utente {
+.menuBarAndroid .utente {
     background-image: url('../img/team.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.active {
-    background-color: #4CAF50; /* Add an active/current color */
-}
 
 .marginBarTop {
     height: var(--top);
@@ -168,112 +170,143 @@ body {
     height: var(--bottom);
 }
 /*Index*/
+#bodyIndex {
+    background-color: #f59c00;
+}
+
 #logo {
     background-image: url('../img/logo.png');
     background-repeat: no-repeat;
-    background-size: 50%;
+    background-size:cover;
     background-position: center;
     height: 256px;
     width: 100%;
+    margin-top: 10%;
 }
 
 #login{
-    padding: 1em;
-    display: none;
+    margin-top: 10%;
+    margin-left: 10%;
+    width: 80%;
 }
 
 .loginButton {
-    background-color: #4CAF50;
+    background-color: white;
     border: none;
-    color: white;
-    padding: 16px 20px;
+    color: #f59c00;
     display: block;
-    margin: 1.5em 0;
-    opacity: 0.9;
+    margin: 15px 0 0 0;
     width: 100%;
+    font-size: 24pt;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 0;
 }
 
 
 /*Registrazione and Login*/
-.container {
-    padding: 16px;
+.bodyLogin {
+    background-color: #ededed;
 }
 
-.container h1 {
-    margin: 15px 0;
+.logoLogin {
+    height: 170px;
+    background-image: url('../img/logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-input[type=text], input[type=password] {
+.container {    
+    margin: 0 10%;
+    width: 80%; 
+}
+
+.container label {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 11pt;
+}
+
+.input_login {
     width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
+    padding: 8px 0;
+    margin: 0 0 15px 0;
     display: inline-block;
     border: none;
-    background: #f1f1f1;
+    background: white;
+    text-align: center;
+    font-weight: lighter;
+    color: #3c3c3b;
+    font-size: 14pt;
 }
 
-input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-}
+.fixfixed .formButton {
+    position: absolute; 
+} 
 
 .formButton {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px 20px;
-    margin: 8px 0;
+    background-color: #f59c00;
     border: none;
-    width: 100%;
-    opacity: 0.9;
-}
-
-.erroriRegistrazione {
-    margin: 2.5% 5%;
-    width: auto;
-}
-
-.erroriRegistrazione p {
-    color: red;
-    font-size: 12px;
+    color: white;
+    display: block;
+    width: 80%;
+    font-size: 24pt;
+    text-transform: uppercase;
     font-weight: bold;
+    padding: 5px 0;
+    position: fixed;
+    bottom: 7%;
+    left: 10%;
 }
-
 /*Homepage*/
 
 /*Utente*/
 #user {
-    height: 50vh;
-    padding-top: 10%; 
+    height: 80vh; 
+}
+
+#dati_user {
+    height: 35%;
+    display: flex;
+    align-items:center;
+    background-color: #ededed;
 }
 
 #user h1 {
-    height:60%;
+    height:100%;
     background-image: url('../img/user.png');
     background-repeat: no-repeat;
     background-size: contain;
-    width: 60%;
-    margin: 0% 20% 10% 20%;
+    width: 30%;
+    margin-left: 10%;
     background-position: center;
+    float: left;
+}
+
+#nome_user {
+    margin-left: 7%;
+    color: #3c3c3b;
+}
+
+#username_user {
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+#email_user {
+    font-size: 7pt;
 }
 
 .userButton {
     padding: 16px 20px;
     border: none;
-    width: 80%;
-    opacity: 0.9;
+    width: 100%;
     text-transform: uppercase;
-    color: white;
+    color: #3c3c3b;
     font-weight: bold;
-}
-
-#logoutButton {
-    background-color: red;
-    margin: 3% 10% 20% 10%;
-}
-
-#pswButton {
-    background-color: darkslategray;
-    margin: 3% 10%;
+    font-size: 11pt;
+    text-align: left;
+    background-color: white;
 }
 
 #newPswButton {
@@ -283,129 +316,209 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 #changePsw {
-    width: 80%;
-    margin: 4% 10%;
+    width: 100%;
     display: none;
+}
+
+#changePsw label {
+    display: none;
+}
+
+.psw_input {
+    background-color: #ededed;
+    color: #c6c6c6;
+    text-align: left;
+    width: 90%;
+    margin: 5px 5%;
+    padding: 8px;
+    display: inline-block;
+    border: none;font-weight: lighter;
+    font-size: 13pt;
+}
+
+#newPswButton {
+    background-color: #f59c00;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 50%;
+    margin: 10px 5% 5% 45%;
+    padding: 5px;
+    text-align: center;
+}
+
+#logoutButton {
+    border-top: 2px solid #ededed;
+    border-bottom: 2px solid #ededed;
 }
 
 /*Classifiche*/
+#page_classifiche {
+    
+}
+
 #classifica-slider {
-    height: 80vh;
+    height: 70vh;
     touch-action: manipulation;
 }
 
-.classifica {
-    padding: 3% 1%;
-    text-transform: none;
-    display: none;
+.titleTabelle {
+    background-color: #3c3c3b;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    font-size: 16pt;
+    font-weight: bold;
+    height: 50px;
+    position: fixed;
+    top: var(--top);
+    width: 100%;
+    z-index: 1;
+    display: table;
 }
 
-.tableClassifiche {
+.arrowClass {
+    display: none; 
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 10%;
+    border: none;
+    position: fixed;
+    top : var(--top);
+    z-index: 1;
+}
+
+#backArrow_class {
+    background-image: url(../img/left-arrow.png);
+    left: 15px;
+    float: left;
+}
+
+#forwArrow_class {
+    background-image: url(../img/right-arrow.png);
+    right: 15px;
+    float: right;
+}
+
+.titleTabelle p {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.classifica {
+    text-transform: none;
+    display: none;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.table {
     width: 100%;
-    background-color: white;
     text-align: center;
-    border: 1px solid black;
     border-collapse: collapse;
     table-layout: fixed;
     overflow: hidden;
+    color: black;
+    margin-bottom: 95px;
 }
 
-.tableClassifiche thead {
+.table thead {
     font-weight: bold;
-   
+    background-color: #f59c00;
 }
 
-.tableClassifiche th {
-    padding: 0.5em 0;
-}
-
-.tableClassifiche th {
+.table th {
+    padding: 2px 0;
+    color: white;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.tableClassifiche th td {
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+.table tbody tr:nth-child(odd){
+    background-color: white;
 }
 
-.tableClassifiche tbody tr:nth-child(odd){
-    background-color: lightgrey;
+.table tbody tr:nth-child(even){
+    background-color: #ededed;
 }
 
-.tableClassifiche caption {
-    margin: 1em 0;
-    width: 100%;
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
+.table tbody {
+    font-size: 10pt;
+}
+
+.table tbody td {
+    padding: 4px 5px;
 }
 
 .posizione {
     width: 10%; 
-    border-right: 1px solid black;
 }
 
 .squadra {
     width: 40%;
-    color: black;
-    border-right: 1px solid black;
+    text-align: left;
+    padding-left: 5px;
 }
 
 .vittorie {
     width: 8%;
-    color: green;
+    color: #0f961f;
 }
 
 .pareggi {
     width: 8%;
-    color: darkorange;
+    color: #f59c00;
 }
 
 .sconfitte {
     width: 8%;
-    color: red;
+    color: #be1622;
 }
 
 .punti_fatti {
     width: 8%;
-    color: forestgreen;
 }
 
 .punti_subiti {
     width: 8%;
-    color: red;
 }
 
 .punti {
     width: 10%;
     color: black;
     font-weight: bold;
-    border-left: 1px solid black;
 }
 
-#dot-slider {
-    text-align:center;
+.dot-slider {
+    text-align: center;
     position: fixed;
-    bottom: calc(var(--bottom) + 25px);
+    bottom: var(--bottom);
     width: 100%;
+    z-index: 1;
+    background-color: white;
+    padding-bottom: 5px;
+}
+
+.legendaClassifica {
+    text-transform: uppercase;
 }
 
 .dot {
     cursor: pointer;
-    height: 15px;
-    width: 15px;
+    height: 10px;
+    width: 10px;
     margin: 0 2px;
-    background-color: #bbb;
+    background-color: #c6c6c6;
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.6s ease;
-
 }
 
 .active-dot {
-    background-color: #717171;
+    background-color: #3c3c3b;
 }
 
 .fade {
@@ -425,58 +538,94 @@ to {opacity: 1}
     to {opacity: 1}
 }
 
+.dot-slider p {
+    font-size: 7pt;
+    width: 100%;
+}
+
 /*Statistiche*/
-#containerStatistiche {
-    padding: 10% 1% 3% 1%;
-    text-transform: none;
+#page_statistiche {
+
 }
 
-.statistiche_t {
-    width: 100%;
-    text-align: center;
-    background-color: white;
+#stat-slider {
+    height: 70vh;
+    touch-action: manipulation;
 }
 
-.statistiche_t caption {
-    margin: 1em 0;
-    width: 100%;
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
+#backArrow_stat {
+    background-image: url(../img/left-arrow.png);
+    left: 15px;
+    float: left;
 }
 
-.statistiche_t tbody tr:nth-child(odd){
-    background-color: lightgrey;
+#forwArrow_stat {
+    background-image: url(../img/right-arrow.png);
+    right: 15px;
+    float: right;
 }
 
 .giocatore_s {
-    width: 25%;
+    width: 33%;
+    text-align: left;
 }
 
 .squadra_s {
-    width: 25%;
-    color: black;
+    width: 29%;
+    text-align: left;
 }
 
 .vittorie_s {
-    width: 12%;
-    color: green;
+    width: 8%;
+    color: #0f961f;
 }
 
 .pareggi_s {
-    width: 12%;
-    color: darkorange;
+    width: 8%;
+    color: #f59c00;
 }
 
 .sconfitte_s {
-    width: 12%;
-    color: red;
+    width: 8%;
+    color: #be1622;
 }
 
 .media_s {
-    width: 15%;
+    width: 14%;
 }
 
+#filtraStat{
+    margin-top: 10px;
+    margin-bottom: 6px;
+    font-size: 8pt;
+}
+
+#selSpecialita {
+    padding: 2px;
+    background-color: #f59c00;
+    color: white;
+    width: 40%;
+    margin-right: 5%;
+    font-weight: lighter;
+    border: 1px solid #f59c00;
+    font-family: fontPersonalizzato;
+    font-size: 9pt;
+}
+
+#nomeGiocatore {
+    background-color: white;
+    color: #f59c00;
+    width: 40%;
+    border: 1px solid #f59c00;
+    font-weight: lighter;
+    padding: 2px 3px;
+    font-family: fontPersonalizzato;
+    font-size: 9pt;
+}
+
+#nomeGiocatore::placeholder {
+    color: #f59c00;
+}
 
 
 /*Calendario*/
@@ -643,5 +792,4 @@ to {opacity: 1}
 .show {
     display: block;
 }
-
 

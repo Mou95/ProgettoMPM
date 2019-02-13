@@ -1,42 +1,45 @@
-function onLoad(){
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            console.log("user logged")
-            
-            // User is signed in.
-            var log = document.getElementById("logoutButton");
-            var change = document.getElementById("pswButton");
-            var conferma = document.getElementById("newPswButton");
+function loadUser(){
+    var user = firebase.auth().currentUser;
+    
+    if (user) {
+        console.log(user)
 
-            log.addEventListener("touchend", function() {
-                
-                navigator.notification.confirm("Vuoi fare il logout?", function(buttonIndex) {
-                    
-                    if (buttonIndex == 1) {
-                        firebase.auth().signOut();
-                        window.open("index.html", "_self")
-                    }
-                    
-                }, "Conferma", ["Sì", "No"]) 
-                
-            }, false);
+        document.getElementById("username_user").innerHTML = user.displayName;
 
-            change.addEventListener("touchend", function() {
-                var psw = document.getElementById("changePsw");
-                if (psw.style.display === "block")
-                    psw.style.display = "none";
-                else
-                    psw.style.display = "block";
-            }, false);
+        document.getElementById("email_user").innerHTML = user.email;
+        // User is signed in.
+        var log = document.getElementById("logoutButton");
+        var change = document.getElementById("pswButton");
+        var conferma = document.getElementById("newPswButton");
 
-            conferma.addEventListener("touchend", changePsw, false);
+        log.addEventListener("touchend", function() {
 
-        } else {
-            //user is signed out
-            window.open("index.html", "_self")
-            console.log("user not logged")
-        }
-    });
+            navigator.notification.confirm("Vuoi fare il logout?", function(buttonIndex) {
+
+                if (buttonIndex == 1) {
+                    firebase.auth().signOut();
+                    window.open("index.html", "_self")
+                }
+
+            }, "Conferma", ["Sì", "No"]) 
+
+        }, false);
+
+        change.addEventListener("touchend", function() {
+            var psw = document.getElementById("changePsw");
+            if (psw.style.display === "block")
+                psw.style.display = "none";
+            else
+                psw.style.display = "block";
+        }, false);
+
+        conferma.addEventListener("touchend", changePsw, false);
+
+    } else {
+        //user is signed out
+        window.open("index.html", "_self")
+        console.log("user not logged")
+    }
 }
 
 function changePsw() {

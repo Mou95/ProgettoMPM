@@ -5,11 +5,15 @@ CREARE FUNZIONE DEDICATA A UNICO CAMPIONATO COSì PER RENDERE + SEMPLICE UPDATE
 */
 
 
-//apply overrides here
-$.mobile.autoInitializePage = false;
-
-
+var created = false;
 var db = firebase.firestore();
+var classifiche = document.getElementById("page_classifiche").getElementsByClassName("classifica")
+var dots = document.getElementById("page_classifiche").getElementsByClassName("dot")
+var n = classifiche.length;
+var active_class = 0;
+var title = document.getElementById("titleClass");
+var backArrow = document.getElementById("backArrow_class");
+var forwArrow = document.getElementById("forwArrow_class");
 
 var property_table = [
     "squadra" ,
@@ -21,101 +25,211 @@ var property_table = [
     "punti"
 ]
 
-function aggiornaView() {
-    console.log("Creando le tabelle");
-    var leagues = db.collection("campionati")
+var championship = [
+    "Serie A1 18/19",
+    "Serie A2 Est 18/19"
+]
 
-    leagues.get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(campionato) {
+function createStandings() {
+    if (!created) {
+        created = true;
+        console.log("Creando le tabelle");
+        
+        title.innerHTML = championship[active_class];
+        
+        var leagues = db.collection("campionati");
 
-            if (campionato.exists) {
-                console.log("Document data:", campionato.data()["nome"]);
+        leagues.get()
+        .then(function(querySnapshot) {
+            querySnapshot.forEach(function(campionato) {
 
-                /*Create standing*/
-                var standing = db.collection("campionati/"+campionato.id+"/classifica").orderBy("punti","desc")
+                if (campionato.exists) {
+                    console.log("Document data:", campionato.data()["nome"]);
 
-                standing.get()
-                .then(function(squadre) {
+                    /*Create standing*/
+                    var standing = db.collection("campionati/"+campionato.id+"/classifica").orderBy("punti","desc")
+                    
+                    /*Add listener to change table on database modify*/
+                    standing
+                    .onSnapshot(function(snapshot) {
+                        snapshot.docChanges().forEach(function(change) {
+                            if (change.type === "modified") {
+                                console.log("Modified city: ", change.doc.data());
+                                
+                                changeEntryTable(campionato.id, change)
+                                
+                            }
+                        })
+                    });
 
-                    var table = document.getElementById(campionato.id)
-                    var tbody = document.createElement('tbody')
-                    var i = 1;
 
-                    squadre.forEach(function(doc) {
+                    standing.get()
+                    .then(function(squadre) {
 
-                        var tr = document.createElement('tr');
+                        var table = document.getElementById(campionato.id)
+                        var tbody = document.createElement('tbody')
+                        var i = 1;
 
-                        var td = document.createElement('td');
+                        squadre.forEach(function(doc) {
 
-                        td.classList.add("posizione"); 
+                            var tr = document.createElement('tr');
 
-                        td.appendChild(document.createTextNode(i))
+                            var td = document.createElement('td');
 
-                        tr.appendChild(td);
+                            td.classList.add("posizione"); 
 
-                        for (var key in property_table) {
-
-                            td = document.createElement('td');
-                            td.classList.add(property_table[key]);  
-
-                            td.appendChild(document.createTextNode(doc.data()[property_table[key]]))
+                            td.appendChild(document.createTextNode(i))
 
                             tr.appendChild(td);
-                        }
 
-                        tbody.appendChild(tr);
+                            for (var key in property_table) {
 
-                        i++;
+                                td = document.createElement('td');
+                                td.classList.add(property_table[key]);  
 
-                    })
+                                td.appendChild(document.createTextNode(doc.data()[property_table[key]]))
 
-                    table.appendChild(tbody);
+                                tr.appendChild(td);
+                            }
 
-                }).catch(function(error) {
-                    console.log("Error getting document:", error);
-                });
+                            tbody.appendChild(tr);
+
+                            i++;
+
+                        })
+
+                        table.appendChild(tbody);
+
+                    }).catch(function(error) {
+                        created = false;
+                        console.log("Error getting document:", error);
+                    });
 
 
-            } else {
-                // doc.data() will be undefined in this case
-
-                console.log("No such document!");
-            }
-        })
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
-    });
+                } else {
+                    // doc.data() will be undefined in this case
+                    created = false;
+                    console.log("No such document!");
+                }
+                
+            })
+        }).catch(function(error) {
+            created = false;
+            console.log("Error getting document:", error);
+        });
+    }
 }
-
-var classifiche = document.getElementsByClassName("classifica")
-var dots = document.getElementsByClassName("dot")
-var n = classifiche.length;
-var active = 0;
 
 $(function(){
     // Bind the swipeHandler callback function to the swipe event on classifica-slider
     console.log("swiped");
     $( "#classifica-slider" ).on( "swiperight", swipeRight );
     $( "#classifica-slider" ).on( "swipeleft", swipeLeft );
+    $( "#backArrow_class" ).on( "touchend", swipeRight );
+    $( "#forwArrow_class" ).on( "touchend", swipeLeft );
 });
 
 function swipeRight( event ){
-    if (active > 0) {
-        classifiche[active].classList.remove("show")
-        dots[active].classList.remove("active-dot")
-        active -= 1;
-        classifiche[active].classList.add("show")
-        dots[active].classList.add("active-dot")
+    console.log(event.message)
+    
+    if (active_class > 0) {
+        classifiche[active_class].classList.remove("show")
+        dots[active_class].classList.remove("active-dot")
+        active_class -= 1;
+        classifiche[active_class].classList.add("show")
+        dots[active_class].classList.add("active-dot") 
+        title.innerHTML = championship[active_class]
     }
+    
+    setArrows()
 }
 
 function swipeLeft( event ){
-    if (active < n - 1) {
-        classifiche[active].classList.remove("show")
-        dots[active].classList.remove("active-dot")
-        active += 1;
-        classifiche[active].classList.add("show")
-        dots[active].classList.add("active-dot")
+    if (active_class < n - 1) {
+        classifiche[active_class].classList.remove("show")
+        dots[active_class].classList.remove("active-dot")
+        active_class += 1;
+        classifiche[active_class].classList.add("show")
+        dots[active_class].classList.add("active-dot")
+        title.innerHTML = championship[active_class]
     }
+    
+    setArrows()
+}
+
+function setArrows() {
+    
+    if (active_class == 0) {
+        backArrow.classList.remove("show");
+        forwArrow.classList.add("show");
+        
+    } else if (active_class == n-1) {
+        backArrow.classList.add("show");
+        forwArrow.classList.remove("show");
+        
+    } else {
+        /*Both arrow*/
+        backArrow.classList.add("show");
+        forwArrow.classList.add("show");
+    } 
+}
+
+function changeEntryTable(id, change) {
+    
+    var squadra = change.doc.data()["squadra"];
+    
+    
+    console.log();
+    
+    for (var key in property_table) {
+
+        $("#"+id+ " tr:contains('"+squadra+"') td."+property_table[key]).html(change.doc.data()[property_table[key]]);
+        
+    }
+    
+    sortPoint(id)
+    
+}
+
+function sortPoint(id) {
+    
+    var table, rows, switching, i, x, y, shouldSwitch, t;
+    table = document.getElementById(id);
+    switching = true;
+
+    while (switching) {
+
+        switching = false;
+        rows = table.rows;
+        for (i = 1; i < (rows.length - 1); i++) {
+          
+            shouldSwitch = false;
+
+            x = rows[i].getElementsByTagName("TD")[7];
+            y = rows[i + 1].getElementsByTagName("TD")[7];
+
+            if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
+
+                console.log(x.innerHTML.toLowerCase()+" "+y.innerHTML.toLowerCase())
+                shouldSwitch = true;
+                break;
+            }
+        }
+        if (shouldSwitch) {
+             
+            t = rows[i].getElementsByTagName("TD")[0].innerHTML;
+            
+            rows[i].getElementsByTagName("TD")[0].innerHTML = 
+            rows[i+1].getElementsByTagName("TD")[0].innerHTML;
+            
+            rows[i+1].getElementsByTagName("TD")[0].innerHTML = t;
+            
+            console.log(rows[i].getElementsByTagName("TD")[1].innerHTML+ " "+rows[i+1].getElementsByTagName("TD")[1].innerHTML)
+        
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            
+            switching = true;
+        }
+    }
+
 }

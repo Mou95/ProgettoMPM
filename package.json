@@ -1,7 +1,7 @@
 {
   "name": "com.phonegap.helloworld",
   "version": "1.0.0",
-  "displayName": "Bocce_ITA",
+  "displayName": "TuttoBOCCE",
   "cordova": {
     "platforms": [
       "android"
