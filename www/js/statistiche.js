@@ -45,7 +45,6 @@ $(function(){
 });
 
 function swipeRightStat( event ){
-    console.log(event.message)
     
     if (active_stat > 0) {
         dots_stat[active_stat].classList.remove("active-dot")

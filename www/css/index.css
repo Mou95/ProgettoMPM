@@ -6,8 +6,8 @@
 }
 
 :root {
-    --top: 90px;
-    --bottom: 0px;
+    --top: 40px;
+    --bottom: 50px;
 }
 
 @font-face {
@@ -119,7 +119,7 @@ button {
     border-bottom: 1px solid #f59c00;
 }
 
-.menuBarAndroid div {
+#navMenu div {
     float: left;
     text-align: center;
     width: 20%;
@@ -127,7 +127,17 @@ button {
     background-size: 10vw;
 }
 
-.active {
+.menuBarIos {
+    z-index: 1;
+    width: 100%;
+    background-color: #f59c00;
+    overflow: auto;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+}
+
+.menuBarAndroid .active {
     background-color: #f59c00;
 }
 
@@ -156,6 +166,40 @@ button {
 }
 
 .menuBarAndroid .utente {
+    background-image: url('../img/team.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menuBarIos .active {
+    background-color: white;
+}
+
+.menuBarIos .statistiche {
+    background-image: url('../img/stats.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menuBarIos .homepage {
+    background-image: url('../img/home.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menuBarIos .risultati {
+    background-image: url('../img/result.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menuBarIos .classifiche {
+    background-image: url('../img/standing.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menuBarIos .utente {
     background-image: url('../img/team.png');
     background-repeat: no-repeat;
     background-position: center;
@@ -422,7 +466,7 @@ button {
     table-layout: fixed;
     overflow: hidden;
     color: black;
-    margin-bottom: 95px;
+    margin-bottom: calc(var(--bottom) + 95px);
 }
 
 .table thead {
