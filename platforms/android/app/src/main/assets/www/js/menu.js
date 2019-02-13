@@ -1,13 +1,11 @@
-var activePage = 2;
-var navs = document.getElementById("navMenu").getElementsByTagName("div")
-
 function goBack() {
     /*var user = firebase.auth().currentUser;
     if (user)*/
         window.history.back();
 }
 
-function getQueryVariable(variable) {
+function getQueryVariable(variable)
+{
     var query = window.location.search.substring(1);
     console.log(decodeURI(query))
     var vars = query.split("&");
@@ -20,43 +18,4 @@ function getQueryVariable(variable) {
        }
     }
     return(false);
-}
-
-function manageNav(index) {
-    console.log(navs)
-    if (activePage != index) {
-        /*Devo cambiare pagina*/
-        navs[activePage].classList.remove("active");
-        
-        activePage = index;
-        navs[activePage].classList.add("active");
-        var show = document.getElementsByClassName("page_show")[0]
-        show.classList.remove("page_show");
-        show.classList.add("no_page_show");
-        switch (index) {
-            case 0:
-                document.getElementById("page_statistiche").classList.add("page_show")
-                document.getElementById("page_statistiche").classList.remove("no_page_show")
-                
-                break;
-            case 1: 
-                break;
-            case 2:
-                document.getElementById("page_home").classList.add("page_show")
-                document.getElementById("page_home").classList.remove("no_page_show")
-
-                break;
-            case 3:
-                document.getElementById("page_classifiche").classList.add("page_show")
-                document.getElementById("page_classifiche").classList.remove("no_page_show")
-                
-                break;
-            case 4: 
-                document.getElementById("page_user").classList.add("page_show")
-                document.getElementById("page_user").classList.remove("no_page_show")
-                
-                break;
-        }
-        
-    }
 }

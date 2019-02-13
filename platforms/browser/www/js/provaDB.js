@@ -112,60 +112,55 @@ giocatori.get()
         querySnapshot.forEach(function(doc) {
             
             console.log(doc.id, "=>", doc.data() )
+            db.collection("giocatori").doc(doc.id).collection('statistiche_1819').doc("individuale").set({
+                vinte: Math.floor(Math.random() * 10),
+                pareggiate: Math.floor(Math.random() * 3),
+                perse: Math.floor(Math.random() * 10)
+            })
             
-            var update_giocatore = {}
-            update_giocatore["statistiche_1819"] = {
-                "combinato" : {
-                    vinte: Math.floor(Math.random() * 10),
-                    pareggiate: Math.floor(Math.random() * 3),
-                    perse: Math.floor(Math.random() * 10),
-                    media: getRndInteger(18,26)
-                },
-                "coppia" : {
-                    vinte: Math.floor(Math.random() * 10),
-                    pareggiate: Math.floor(Math.random() * 3),
-                    perse: Math.floor(Math.random() * 10)
-                },
-                "individuale" : {
-                    vinte: Math.floor(Math.random() * 10),
-                    pareggiate: Math.floor(Math.random() * 3),
-                    perse: Math.floor(Math.random() * 10)
-                },
-                "progressivo_3" : {
-                    vinte: Math.floor(Math.random() * 10),
-                    pareggiate: Math.floor(Math.random() * 3),
-                    perse: Math.floor(Math.random() * 10),
-                    media: getRndInteger(28,46)
-                },
-                "progressivo_6" : {
-                    vinte: Math.floor(Math.random() * 10),
-                    pareggiate: Math.floor(Math.random() * 3),
-                    perse: Math.floor(Math.random() * 10),
-                    media: getRndInteger(25,45)
-                },
-                "staffetta" : {
-                    vinte: Math.floor(Math.random() * 10),
-                    pareggiate: Math.floor(Math.random() * 3),
-                    perse: Math.floor(Math.random() * 10),
-                    media: getRndInteger(30,50)
-                },
-                "terna" : {
-                    vinte: Math.floor(Math.random() * 10),
-                    pareggiate: Math.floor(Math.random() * 3),
-                    perse: Math.floor(Math.random() * 10)
-                },
-                "tiro_tecnico" : {
-                    vinte: Math.floor(Math.random() * 10),
-                    pareggiate: Math.floor(Math.random() * 3),
-                    perse: Math.floor(Math.random() * 10),
-                    media: getRndInteger(10,25)
-                }
-            }
+            db.collection("giocatori").doc(doc.id).collection('statistiche_1819').doc("coppia").set({
+                vinte: Math.floor(Math.random() * 10),
+                pareggiate: Math.floor(Math.random() * 3),
+                perse: Math.floor(Math.random() * 10)
+            })
             
-            db.doc("giocatori/"+doc.id).update(update_giocatore)
-            .then(function() {
-                console.log("Document successfully updated!");
-            });
+            db.collection("giocatori").doc(doc.id).collection('statistiche_1819').doc("terna").set({
+                vinte: Math.floor(Math.random() * 10),
+                pareggiate: Math.floor(Math.random() * 3),
+                perse: Math.floor(Math.random() * 10)
+            })
+            
+            db.collection("giocatori").doc(doc.id).collection('statistiche_1819').doc("combinato").set({
+                vinte: Math.floor(Math.random() * 10),
+                pareggiate: Math.floor(Math.random() * 3),
+                perse: Math.floor(Math.random() * 10),
+                media: getRndInteger(18,26)
+            })
+            
+            db.collection("giocatori").doc(doc.id).collection('statistiche_1819').doc("staffetta").set({
+                vinte: Math.floor(Math.random() * 10),
+                pareggiate: Math.floor(Math.random() * 3),
+                perse: Math.floor(Math.random() * 10),
+                media: getRndInteger(30,50)
+            })
+            db.collection("giocatori").doc(doc.id).collection('statistiche_1819').doc("progressivo_6").set({
+                vinte: Math.floor(Math.random() * 10),
+                pareggiate: Math.floor(Math.random() * 3),
+                perse: Math.floor(Math.random() * 10),
+                media: getRndInteger(25,45)
+            })
+            db.collection("giocatori").doc(doc.id).collection('statistiche_1819').doc("progressivo_3").set({
+                vinte: Math.floor(Math.random() * 10),
+                pareggiate: Math.floor(Math.random() * 3),
+                perse: Math.floor(Math.random() * 10),
+                media: getRndInteger(28,46)
+            })
+            db.collection("giocatori").doc(doc.id).collection('statistiche_1819').doc("tiro_tecnico").set({
+                vinte: Math.floor(Math.random() * 10),
+                pareggiate: Math.floor(Math.random() * 3),
+                perse: Math.floor(Math.random() * 10),
+                media: getRndInteger(10,25)
+            })
             
         })
     }).catch(function(error) {

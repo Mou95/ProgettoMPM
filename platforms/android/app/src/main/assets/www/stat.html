@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyBhP34e7RgCh0Od0Pz9_X0bj1ZKFLEZVrc",
+            authDomain: "bocce-28d45.firebaseapp.com",
+            databaseURL: "https://bocce-28d45.firebaseio.com",
+            projectId: "bocce-28d45",
+            storageBucket: "bocce-28d45.appspot.com",
+            messagingSenderId: "693347823168"
+        };
+        if (!firebase.apps.length) {
+            firebase.initializeApp(config);
+        }
+    </script>
+    <title>Bocce</title>
+</head>
+
+<body>
+    <div class="statusBar">
+        <button type="button" class="backButton" onclick="goBack()"></button>
+        <div class="titoloPagina"><h1>Statistiche</h1></div>
+    </div>
+    <div class="menuBar">
+        <div class="statistiche active"></div>
+        <div class="risultati" onclick="location.href='calendario.html'"></div>
+        <div class="homepage" onclick="location.href='home.html'"></div>
+        <div class="classifiche" onclick="location.href='classifiche.html'"></div>
+        <div class="utente" onclick="location.href='user.html'"></div>
+    </div>
+    <div class="marginBarTop"></div>
+    <div id="containerStatistiche">
+        <div id="scegliStat">
+            <select class="selezioneStat" id="selCampionato" onchange=refreshTable()>
+                <option value="" disabled selected>Seleziona il campionato</option>
+                <option value="A1_1819">Serie A1</option>
+                <option value="A2_1819_est">Serie A2 Est</option>
+            </select>
+            <select class="selezioneStat" id="selSpecialita" onchange=refreshTable()>
+                <option value="" disabled selected>Seleziona la prova</option>
+                <option value="individuale">Individuale</option>
+                <option value="coppia">Coppia</option>
+                <option value="terna">Terna</option>
+                <option value="combinato">Combinato</option>
+                <option value="staffetta">Staffetta</option>
+                <option value="progressivo_6">Progressivo a 6</option>
+                <option value="progressivo_3">Progressivo a 3</option>
+                <option value="tiro_tecnico">Tiro Tecnico</option>
+            </select>
+            <input id="nomeGiocatore" type="search" onchange=refreshTable() placeholder="Cerca un giocatore per congnome...">
+        </div>
+        <div class="classifica">
+            <table id="tableStatProve" class="statistiche_t" summary="Tabella della statistiche scelte">
+                <caption>Serie A2 2018/19</caption>
+                <colgroup>
+                    <col class="giocatore_s" >
+                    <col class="squadra_s" >
+                    <col class="vittorie_s" >
+                    <col class="pareggi_s" >
+                    <col class="sconfitte_s" >
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">Giocatore</th>
+                        <th scope="col">Squadra</th>
+                        <th scope="col">V</th>
+                        <th scole="col">N</th>
+                        <th scope="col">P</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="classifica">
+            <table id="tableStatTiri" class="statistiche_t" summary="Tabella della statistiche scelte">
+                <caption>Serie A2 2108/19</caption>
+                <colgroup>
+                    <col class="giocatore_s" >
+                    <col class="squadra_s" >
+                    <col class="vittorie_s" >
+                    <col class="pareggi_s" >
+                    <col class="sconfitte_s" >
+                    <col class="media_s" >
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">Giocatore</th>
+                        <th scope="col">Squadra</th>
+                        <th scope="col">V</th>
+                        <th scole="col">N</th>
+                        <th scope="col">P</th>
+                        <th scope="col">M</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="marginBarBottom"></div>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="js/statistiche.js"></script>
+</body>
+
+</html>

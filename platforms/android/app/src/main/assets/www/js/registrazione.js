@@ -1,5 +1,3 @@
-$.mobile.autoInitializePage = false;
-
 var regist = document.getElementsByClassName('formButton')[0]
 regist.addEventListener('touchend', function(e) {
         e.preventDefault();
@@ -16,35 +14,7 @@ regist.addEventListener('touchend', function(e) {
             firebase.auth().createUserWithEmailAndPassword(email, psw)
             .then(function() {
                 
-                firebase.auth().signInWithEmailAndPassword(email, psw).then(function(user) {
-                    
-                    navigator.notification.alert("L'utente è stato creato con successo", function(){
-                        
-                        firebase.auth().onAuthStateChanged(function(user) {
-                            if (user) {
-                            // User is signed in.
-                                user.updateProfile({
-                                    displayName: document.getElementById("username").value
-                                }).then(function() {
-                                    window.open("home.html", "_self")
-                                  // Update successful.
-                                }).catch(function(error) {
-                                  // An error happened.
-                                });
-                            }
-                        });
-
-                       
-                        
-                    }, "Attenzione")
-                    
-                }).catch(function(error) {
-                    //Handle errors
-                    
-                });
-                
-                
-                
+                window.open("index.html", "_self")
                 
             }).catch(function(error) {
                 // Handle Errors here.
