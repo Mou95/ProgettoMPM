@@ -7,6 +7,7 @@
     <author email="mauro.carlin3@gmail.com">
         Mauro Carlin
     </author>
+    <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
     <preference name="orientation" value="portrait" />
@@ -83,7 +84,6 @@
     <plugin name="cordova-plugin-dialogs" spec="~2.0.1" />
     <plugin name="cordova-plugin-device" spec="~2.0.2" />
     <preference name="StatusBarStyle" value="default" />
-    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

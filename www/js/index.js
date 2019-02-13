@@ -1,6 +1,8 @@
 document.addEventListener("deviceready", onDeviceReady, false);
+navigator.notification.alert("wow", function(){})
 
 function onDeviceReady( event ) {
+    navigator.notification.alert("logged", function(){})
     console.log('Received Event:'+ event );
     setCSSPlatform()
     var login = document.getElementById('login');
@@ -22,7 +24,7 @@ function onDeviceReady( event ) {
 
 function setCSSPlatform() {
     console.log(device.platform)
-    //navigator.notification.alert(device.platform, function(){})
+    navigator.notification.alert(device.platform, function(){})
     if (device.platform == "Android") {
     
         document.documentElement.style.setProperty('--bottom', '0px');
