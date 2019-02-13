@@ -188,6 +188,7 @@ button {
     margin-top: 10%;
     margin-left: 10%;
     width: 80%;
+    display: none;
 }
 
 .loginButton {

@@ -83,6 +83,7 @@
     <plugin name="cordova-plugin-dialogs" spec="~2.0.1" />
     <plugin name="cordova-plugin-device" spec="~2.0.2" />
     <preference name="StatusBarStyle" value="default" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

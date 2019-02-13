@@ -15,7 +15,6 @@ function onDeviceReady( event ) {
         
     } else {
         //logged out
-        navigator.notification.alert("logout", function(){})
         login.style.display = "block";
     }
     //console.log("plat"+device.platform)
