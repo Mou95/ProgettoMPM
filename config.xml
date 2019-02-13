@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget  version="1.0.0" xmlns="http://www.w3.org/ns/widgets" >
+<widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>TuttoBOCCE</name>
     <description>
-        L'app per restare aggiornato sul mondo delle Bocce italiane.
+        L'app che ti terrà aggiornato sul mondo delle bocce italiane.
     </description>
     <author email="mauro.carlin3@gmail.com">
         Mauro Carlin
@@ -80,6 +80,8 @@
         <icon height="360" platform="windows" src="www/res/icon/windows/Wide310x150Logo.scale-240.png" width="744" />
         <splash height="1920" platform="windows" src="www/res/screen/windows/SplashScreenPhone.scale-240.png" width="1152" />
     </platform>
+    <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
+    <plugin name="cordova-plugin-console" spec="~1.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="~2.4.2" />
     <plugin name="cordova-plugin-dialogs" spec="~2.0.1" />
     <plugin name="cordova-plugin-device" spec="~2.0.2" />
@@ -87,6 +89,10 @@
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>

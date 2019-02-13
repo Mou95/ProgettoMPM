@@ -38,7 +38,9 @@ module.exports.metadata =
 {
   "cordova-plugin-device": "2.0.2",
   "cordova-plugin-dialogs": "2.0.1",
-  "cordova-plugin-statusbar": "2.4.2"
+  "cordova-plugin-statusbar": "2.4.2",
+  "cordova-plugin-whitelist": "1.2.2",
+  "cordova-plugin-console": "1.0.7"
 };
 // BOTTOM OF METADATA
 });
