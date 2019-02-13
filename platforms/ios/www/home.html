@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data:" />
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyBhP34e7RgCh0Od0Pz9_X0bj1ZKFLEZVrc",
+            authDomain: "bocce-28d45.firebaseapp.com",
+            databaseURL: "https://bocce-28d45.firebaseio.com",
+            projectId: "bocce-28d45",
+            storageBucket: "bocce-28d45.appspot.com",
+            messagingSenderId: "693347823168"
+        };
+        if (!firebase.apps.length) {
+            firebase.initializeApp(config);
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+    <title>TuttoBOCCE</title>
+</head>
+
+<body onload=onLoad()>
+   
+    <div class="statusBar">
+        <h1>TuttoBOCCE</h1>
+    </div>
+    <div id="navMenu" class="menuBarAndroid">
+        <div class="statistiche" onclick="manageNav(0)"></div>
+        <div class="risultati" onclick="manageNav(1)"></div>
+        <div class="active homepage" onclick="manageNav(2)"></div>
+        <div class="classifiche" onclick="manageNav(3)"></div>
+        <div class="utente" onclick="manageNav(4)"></div>
+    </div>
+    <div class="marginBarTop"></div>
+    
+    <div id="page_statistiche" class="no_page_show">
+        <div class="titleTabelle">
+            <button class="arrowClass" id="backArrow_stat"></button>
+            <p id="titleStat">Serie A1 18/19</p>
+            <button class="arrowClass show" id="forwArrow_stat"></button>
+        </div>
+        <div id="stat-slider">
+            <div class="classifica ">
+                <table id="tableStatProve" class="table" summary="Tabella della statistiche scelte">
+                    <colgroup>
+                        <col class="giocatore_s" >
+                        <col class="squadra_s" >
+                        <col class="vittorie_s" >
+                        <col class="pareggi_s" >
+                        <col class="sconfitte_s" >
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">Giocatore</th>
+                            <th scope="col">Squadra</th>
+                            <th scope="col">V</th>
+                            <th scole="col">N</th>
+                            <th scope="col">P</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="classifica">
+                <table id="tableStatTiri" class="table" summary="Tabella della statistiche scelte">
+                    <colgroup>
+                        <col class="giocatore_s" >
+                        <col class="squadra_s" >
+                        <col class="vittorie_s" >
+                        <col class="pareggi_s" >
+                        <col class="sconfitte_s" >
+                        <col class="media_s" >
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">Giocatore</th>
+                            <th scope="col">Squadra</th>
+                            <th scope="col">V</th>
+                            <th scole="col">N</th>
+                            <th scope="col">P</th>
+                            <th scope="col">M</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="dot-slider">
+            <div id="filtraStat">
+                <select class="selezioneStat" id="selSpecialita" onchange=refreshTable()>
+                    <option value="" disabled selected>Specialità</option>
+                    <option value="individuale">Individuale</option>
+                    <option value="coppia">Coppia</option>
+                    <option value="terna">Terna</option>
+                    <option value="combinato">Combinato</option>
+                    <option value="staffetta">Staffetta</option>
+                    <option value="progressivo_6">Progressivo a 6</option>
+                    <option value="progressivo_3">Progressivo a 3</option>
+                    <option value="tiro_tecnico">Tiro Tecnico</option>
+                </select>
+                <input id="nomeGiocatore" type="search" onchange=refreshTable() placeholder="Cerca giocatore...">
+            </div>
+            <p class="legendaClassifica">V vittorie / n pareggi / p sconfitte / m punteggio medio</p>
+            <span class="dot active-dot"></span> 
+            <span class="dot"></span> 
+            <p>Scorri a destra/sinistra per cambiare campionato</p>
+        </div>
+    
+    </div>
+    
+    <div id="page_home" class="page_show">
+        <div>
+            Ciao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfg
+        </div>
+    </div>
+    
+    <div id="page_classifiche" class="no_page_show">
+        <div id="classifica-slider">
+            <div class="titleTabelle">
+                <button class="arrowClass" id="backArrow_class"></button>
+                <p id="titleClass"></p>
+                <button class="arrowClass show" id="forwArrow_class"></button>
+            </div>
+            <div class="classifica show fade">
+                <table id="A1_1819" class="table" >
+                    <colgroup>
+                        <col class="posizione" >
+                        <col class="squadra" >
+                        <col class="vittorie" >
+                        <col class="pareggi" >
+                        <col class="sconfitte" >
+                        <col class="p_fatti" >
+                        <col class="p_subiti" >
+                        <col class="punti" >
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Squadra</th>
+                            <th scope="col">V</th>
+                            <th scole="col">N</th>
+                            <th scope="col">P</th>
+                            <th scole="col">+</th>
+                            <th scope="col">-</th>
+                            <th scole="col">Pt</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="classifica fade">
+                <table id="A2_1819_est" class="table" summary="Tabella della classifica relativa al campionato scelto">
+                    <colgroup>
+                        <col class="posizione" >
+                        <col class="squadra" >
+                        <col class="vittorie" >
+                        <col class="pareggi" >
+                        <col class="sconfitte" >
+                        <col class="punti_fatti" >
+                        <col class="punti_subiti" >
+                        <col class="punti" >
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Squadra</th>
+                            <th scope="col">V</th>
+                            <th scole="col">N</th>
+                            <th scope="col">P</th>
+                            <th scole="col">+</th>
+                            <th scope="col">-</th>
+                            <th scole="col">Pt</th>
+                        </tr>
+                    </thead>            
+                </table>
+            </div>
+        </div>
+        <div class="dot-slider">
+            <p class="legendaClassifica">V vittorie / n pareggi / p sconfitte</p>
+            <p class="legendaClassifica">+ punti fatti / - punti subiti / pt punti totali</p>
+            <span class="dot active-dot"></span> 
+            <span class="dot"></span> 
+            <p>Scorri a destra/sinistra per vedere tutte le classifiche</p>
+        </div>
+    
+    </div>
+    
+    <div id="page_user" class="no_page_show">
+        <div id="user">
+            <div id="dati_user">
+                <h1 class="hide">Immagine Utente</h1>
+                <div id="nome_user">
+                    <p id="username_user"></p>
+                    <p id="email_user"></p>
+                </div>
+            </div>
+            
+            <button class="userButton" id="pswButton">Cambia Password</button>
+            <div id="changePsw">
+                <label for="psw"><b>Vecchia Password</b></label>
+                <input type="password" placeholder="Vecchia Password" id="old_psw" class="psw_input" required>
+
+                <label for="psw"><b>Nuova Password</b></label>
+                <input type="password" placeholder="Nuova Password" id="new_psw" class="psw_input" required>
+
+                <button class="userButton" id="newPswButton">Conferma</button>
+
+            </div>
+            <button class="userButton" id="logoutButton">Logout</button>
+        </div>
+    </div>
+    
+     <div class="marginBarBottom"></div>
+    
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
+    <script type="text/javascript" src="js/classifiche.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="js/user.js"></script>
+    <script type="text/javascript" src="js/statistiche.js"></script>
+</body>
+
+</html>

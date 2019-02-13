@@ -4,6 +4,7 @@ navigator.notification.alert("wow", function(){})
 function onDeviceReady( event ) {
     navigator.notification.alert("logged", function(){})
     console.log('Received Event:'+ event );
+    window.open('home.html', "_self");
     setCSSPlatform()
     var login = document.getElementById('login');
     var user = firebase.auth().currentUser;
@@ -11,7 +12,7 @@ function onDeviceReady( event ) {
         //logged in
         navigator.notification.alert("logged", function(){})
         console.log('user logged');
-        window.open('home.html', "_self");
+        
         
         
         
