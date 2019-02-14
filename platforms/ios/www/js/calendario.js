@@ -1,15 +1,8 @@
 /*GESTIRE LOGICA CON NUMERI CALCOLATI DOPO CREAZIONE TABELLE*/
 
-var active = 0;
-var giornate = document.getElementsByClassName("giornataIntera")
-var n_giornate = document.getElementsByClassName("NumeroGiornata")
-var n = giornate.length;
 var db = firebase.firestore();
 
-//apply overrides here
-$.mobile.autoInitializePage = false;
-
-function loadLogic() {
+/*function loadLogic() {
     console.log("dfs");
     giornate[active].classList.add("show");
     $( ".giornataIntera" ).on( "swiperight", swipeRight );
@@ -49,92 +42,116 @@ function selectTable( event ) {
         giornate[active].classList.add("show");
         n_giornate[active].classList.add("selected");
     } 
+}*/
+
+var array_giornate = {
+    A1_1819: [],
+    A2_1819_est: []
 }
 
+var titleC = {
+    A1_1819: "Serie A1 18/19",
+    A2_1819_est: "Serie A2 Est 18/19"
+}
 
-function createPage() {
+var tableCalendar = document.getElementById("tableGiornate");
+var navCalendar = document.getElementById("ulGiornate")
+var titleCalendar = document.getElementById("titleCalendar")
+
+
+function createCalendar() {
     var giornate = db.collection("giornate").orderBy("numero", "asc");
-    var body = document.getElementById("allGiornate")
-    var nav = document.getElementById("ulGiornate")
     
     giornate.get()   
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
-            
-            addLi(nav, doc.data()["numero"])
-            createTableGiornata(body, doc)
+            //addLi(nav, doc.data()["numero"])
+            //createTableGiornata(body, doc)
+            array_giornate[doc.data()["campionato"]].push(doc.data()["partite"])
         
         })
     }).catch(function(error) {
         console.log("Error getting documents: ", error);
     });
 
-    loadLogic()
+    //loadLogic()
 }
 
-function addLi(nav, index) {
-    var li = document.createElement("li");
-    li.classList.add("NumeroGiornata");
-    li.appendChild(document.createTextNode("Giornata "+ index))
-    nav.appendChild(li)
+function addLi(n) {
+    
+    for (var i = 0; i < n; i++) {
+        var li = document.createElement("li");
+        li.classList.add("NumeroGiornata");
+        li.appendChild(document.createTextNode("Giornata "+ (i+1)))
+        navCalendar.appendChild(li)
+    }
 }
 
-function createTableGiornata(body, giornata) {
-    /*div contenente tabella*/
-    var div = document.createElement("div");
-    div.classList.add("giornataIntera");
-    div.classList.add("show");
+function createTableGiornate() {
+    
+    console.log("start")
     
     /*Tabella*/
-    var table = document.createElement("table");
-    table.classList.add("tableGiornata")
     
-    var partite = db.collection("giornate/"+giornata.id+"/partite");
+    var camp = document.getElementById("selCampionato").value;
     
-    partite.get()   
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
+    addLi(array_giornate[camp].length)
+    
+    array_giornate[camp].forEach(function(partite) {
+        
+        console.log("new body")
+        
+        var tbody = document.createElement("tbody");
+        
+        partite.forEach(function(partita) {
             
-            console.log("row of "+doc.data())
-            var row = table.insertRow(0);
-            
-            var uri = "tabellino.html?idg="+giornata.id+"&idp="+doc.id;
+            var row = tbody.insertRow(0);
+
+            /*var uri = "tabellino.html?idg="+giornata.id+"&idp="+doc.id;
             var res = uri;
-            
-            row.onclick = function(){window.open(res, "_self")}
+
+            row.onclick = function(){window.open(res, "_self")}*/
 
             var td = row.insertCell(0);
             td.classList.add("PrimaSquadra");
-            td.appendChild(document.createTextNode(doc.data()["prima_squadra"]));
+            td.appendChild(document.createTextNode(partita["prima_squadra"]));
 
             var td = row.insertCell(1);
             td.classList.add("PunteggioPrimaSquadra");
-            td.appendChild(document.createTextNode(doc.data()["punteggio_1"]));
+            td.appendChild(document.createTextNode(partita["punteggio_1"]));
 
             var td = row.insertCell(2);
-            td.classList.add("StatoPartita");
-            td.appendChild(document.createTextNode("22/11"));
+            td.classList.add("PunteggioSecondaSquadra");
+            td.appendChild(document.createTextNode(partita["punteggio_2"]));
 
             var td = row.insertCell(3);
-            td.classList.add("PunteggioSecondaSquadra");
-            td.appendChild(document.createTextNode(doc.data()["punteggio_2"]));
-
-            var td = row.insertCell(4);
             td.classList.add("SecondaSquadra");
-            td.appendChild(document.createTextNode(doc.data()["seconda_squadra"]));
-            
-            div.appendChild(table)
-            body.appendChild(div)
-        
+            td.appendChild(document.createTextNode(partita["seconda_squadra"]));
+
         })
-    }).catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
+        
+        tableCalendar.appendChild(tbody)
+    })
     
-    
-    
+    tableCalendar.getElementsByTagName("tbody")[0].style.display = "table-row-group";
+
     console.log("Create table ")
     
 }
 
+function refreshCalendar() {
+    
+    tableCalendar.querySelectorAll('tbody').forEach(function(tbody) {
+        tableCalendar.removeChild(tbody);
+    });
+    
+    navCalendar.querySelectorAll('li').forEach(function(li) {
+        navCalendar.removeChild(li);
+    }); 
+    
+    console.log(titleC[document.getElementById("selCampionato").value])
+    
+    titleCalendar.innerHTML = titleC[document.getElementById("selCampionato").value]
+    createTableGiornate()
+}
 

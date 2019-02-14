@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.cordova.helloCordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
+<widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
@@ -31,7 +31,7 @@
     </feature>
     <name>TuttoBOCCE</name>
     <description>
-        L'app per restare aggiornato sul mondo delle Bocce italiane.
+        L'app che ti terrà aggiornato sul mondo delle bocce italiane.
     </description>
     <author email="mauro.carlin3@gmail.com">
         Mauro Carlin
@@ -40,6 +40,10 @@
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
     <icon height="57" platform="ios" src="www/res/icon/ios/icon.png" width="57" />
     <icon height="114" platform="ios" src="www/res/icon/ios/icon@2x.png" width="114" />
     <icon height="40" platform="ios" src="www/res/icon/ios/icon-40.png" width="40" />

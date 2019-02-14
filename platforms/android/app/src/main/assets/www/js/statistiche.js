@@ -28,7 +28,7 @@ var campionati = db.collection("campionati")
 var squadre = db.collection("squadre");
 var giocatori = db.collection("giocatori");
 
-var tiri = ["staffetta", "progressivo_6", "progressivo_3", "tiro_tecnico"]
+var tiri = ["staffetta", "progressivo_6", "progressivo_3", "tiro_tecnico", "combinato"]
 
 var array_player = {
     A1_1819: [],

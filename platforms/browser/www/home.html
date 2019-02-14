@@ -121,6 +121,57 @@
     
     </div>
     
+    <div id="page_calendario" class="no_page_show">
+        <div class="titleTabelle">
+            <p id="titleCalendar">Serie A1 18/19</p>
+        </div>
+        <div id="header_calendario" class="">
+            <div class="NavGiornate">
+                <ul id="ulGiornate">
+                    <!--<li class="NumeroGiornata selected">GIORNATA 1</li>
+                    <li class="NumeroGiornata">GIORNATA 2</li>
+                    <li class="NumeroGiornata">GIORNATA 3</li>
+                    <li class="NumeroGiornata">GIORNATA 4</li>
+                    <li class="NumeroGiornata ">GIORNATA 5</li>
+                    <li class="NumeroGiornata">GIORNATA 6</li>
+                    <li class="NumeroGiornata">GIORNATA 7</li>
+                    <li class="NumeroGiornata">GIORNATA 8</li>-->
+                </ul>
+            </div>
+        </div>
+        <div class="giornataIntera">
+            <table id="tableGiornate">
+                <colgroup>
+                    <col class="PrimaSquadra" >
+                    <col class="PunteggioPrimaSquadra" >
+                    <col class="PunteggioSecondaSquadra" >
+                    <col class="SecondaSquadra" >
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scole="col"></th>
+                    </tr>
+                </thead>
+
+            </table>
+
+        </div>
+        
+        <div class="dot-slider">
+            <p>Clicca sul match per visualizzare il tabellino</p>
+            <div id="filtraCalendar">
+                <select class="selezioneStat" id="selCampionato" onchange=refreshCalendar()>
+                    <option value="A1_1819" selected>Serie A1 18/19</option>
+                    <option value="A2_1819_est">Serie A2 Est 18/19</option>
+                </select>
+            </div> 
+            <p>Scorri a destra/sinistra per cambiare giornata</p>
+        </div>
+    </div>
+    
     <div id="page_home" class="page_show">
         <div>
             Ciao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfg
@@ -222,7 +273,7 @@
         </div>
     </div>
     
-     <div class="marginBarBottom"></div>
+    <div class="marginBarBottom"></div>
     
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/home.js"></script>
@@ -230,6 +281,7 @@
     <script type="text/javascript" src="js/menu.js"></script>
     <script type="text/javascript" src="js/user.js"></script>
     <script type="text/javascript" src="js/statistiche.js"></script>
+    <script type="text/javascript" src="js/calendario.js"></script>
 </body>
 
 </html>

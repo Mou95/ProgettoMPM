@@ -40,6 +40,9 @@ function manageNav(index) {
                 
                 break;
             case 1: 
+                 document.getElementById("page_calendario").classList.add("page_show")
+                document.getElementById("page_calendario").classList.remove("no_page_show")
+                createTableGiornate()
                 break;
             case 2:
                 document.getElementById("page_home").classList.add("page_show")

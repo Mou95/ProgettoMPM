@@ -20,9 +20,10 @@ function onLoad() {
                 document.getElementById("navMenu").classList.add("menuBarIos")
                 console.log("Not Android")
             }
-            createStandings()
-            loadUser()
-            createVariable()
+            //createStandings()
+            //loadUser()
+            //createVariable()
+            createCalendar()
         } else {
             //user is signed out
             window.open("index.html", "_self")

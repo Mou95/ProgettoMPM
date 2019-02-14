@@ -589,10 +589,6 @@ to {opacity: 1}
 }
 
 /*Statistiche*/
-#page_statistiche {
-
-}
-
 #stat-slider {
     height: 70vh;
     touch-action: manipulation;
@@ -676,12 +672,12 @@ to {opacity: 1}
 /*Calendario*/
 #header_calendario {
     width: 100%;
-    margin: 4% 0 2% 0;
     display: block;
+    margin-top: 50px;
 }
 
 .NavGiornate {
-    background-color: #4CAF50;
+    background-color: #ededed;
     border-collapse: collapse;
 }
 
@@ -696,22 +692,21 @@ to {opacity: 1}
 .NavGiornate ul li {
     font-size: 12px;
     width: 24%;
-    color: white;
+    color: #f59c00;
     text-decoration: none;
     padding: 1.1em 0;
     text-align: center;
     display: inline-block;
-    border-top: 3px solid #4CAF50; 
+    font-weight: bold;
 }
 
 .giornataIntera {
     width: 100%; 
     touch-action: manipulation;
     height: 70vh;
-    display: none;
 }
 
-.tableGiornata {
+#tableGiornate {
     width: 100%;
     height: auto;
     text-align: center;
@@ -720,20 +715,32 @@ to {opacity: 1}
     margin-top: 3%;
 }
 
-.tableGiornata thead {
+#tableGiornate thead {
     display: none;
 }
 
-.tableGiornata caption {
+#tableGiornate caption {
     height: 20px;
     font-size: 13pt;
     margin-bottom: 20px;
 }
 
-.tableGiornata td {
+#tableGiornate tbody {
+    display: none;
+}
+
+#tableGiornate tbody tr:nth-child(odd){
+    background-color: white;
+}
+
+#tableGiornate tbody tr:nth-child(even){
+    background-color: #ededed;
+}
+
+#tableGiornate td {
     border: 0.1em solid gray;
     overflow: hidden;
-    padding: 1.5em 0.2em;
+    padding: 15px 0.2em;
 }
 
 .PrimaSquadra {
