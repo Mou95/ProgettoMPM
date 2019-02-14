@@ -76,19 +76,20 @@ button {
 }
 
 .backButton {
-    height: 50px;
+    height: 40px;
     border: none;
     width: 10%;
     background-image: url('../img/left-arrow.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    background-color: #4CAF50;
+    background-color: #f59c00;
     float: left;
     position: fixed;
     top : 0;
     left: 10px;
     z-index: 1;
+    display: none;
 }
 
 #addButton {
@@ -712,17 +713,10 @@ to {opacity: 1}
     text-align: center;
     background-color: white;
     border-collapse: collapse;
-    margin-top: 3%;
 }
 
 #tableGiornate thead {
     display: none;
-}
-
-#tableGiornate caption {
-    height: 20px;
-    font-size: 13pt;
-    margin-bottom: 20px;
 }
 
 #tableGiornate tbody {
@@ -774,19 +768,25 @@ to {opacity: 1}
     position: fixed;
     top: var(--top);
     width: 100%;
-    background-color: #A7A7A7;
+    background-color: #3c3c3b;
     height: 40px;
 }
 
 #headerTabellino p {
     width: 50%;
-    font-size: 14px;
+    font-size: 15pt;
     overflow: hidden;
-    padding: 1em 0.3em;
     z-index: 1;
     display: block;
     text-align: center;
     float: left;
+    font-weight: bold;
+    color: white;
+    padding: 8px 0;
+}
+
+#Squadra1 {
+    border-right: 1px solid white;
 }
 
 #TableIncontro {
@@ -795,8 +795,7 @@ to {opacity: 1}
     text-align: center;
     background-color: white;
     border-collapse: collapse;
-    margin-top: calc(var(--top) + 40px);
-    margin-bottom: var(--bottom);
+    margin-top: 40px;
     text-transform: none;
     table-layout: fixed;
     overflow: hidden;
@@ -807,6 +806,7 @@ to {opacity: 1}
     border: 0.1em solid gray;
     overflow: hidden;
     padding: 0.7em 0.2em;
+    font-weight: bold;
 }
 
 #TableIncontro td span {
@@ -825,6 +825,8 @@ to {opacity: 1}
 .Specialita {
     width: 33%;
     font-weight: bold;
+    color: #f59c00;
+    background-color: #ededed;
 }
 
 .PrimoPunteggio {

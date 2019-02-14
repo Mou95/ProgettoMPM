@@ -31,14 +31,10 @@ function onLoad() {
     });
 }
 
-function loadClassifiche() {
+/*function loadClassifiche() {
     document.getElementById("home").style.display = "none";
     document.getElementById("classifiche").style.display = "block";
     
-}
+}*/
 
-window.addEventListener("deviceready", CSSSetup, false)
 
-function CSSSetup() {
-   
-}

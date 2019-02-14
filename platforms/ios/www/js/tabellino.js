@@ -1,9 +1,28 @@
 var db = firebase.firestore();
-var id_giornata = getQueryVariable("idg")
-var id_partita = getQueryVariable("idp")
+
+function logicTabellino() {
+    document.getElementsByClassName("backButton")[0].addEventListener("touchend", closeTabellino, false);
+
+    document.addEventListener("backbutton", closeTabellino, false); 
+    
+    document.getElementsByClassName("backButton")[0].style.display = "block";
+}
+
+function closeTabellino(e) {
+    e.preventDefault(); 
+    document.getElementById("page_calendario").classList.add("page_show")
+    document.getElementById("page_calendario").classList.remove("no_page_show")
+    
+    document.getElementById("page_tabellino").classList.remove("page_show")
+    document.getElementById("page_tabellino").classList.add("no_page_show")
+    
+    document.removeEventListener("backbutton", closeTabellino);  
+    document.getElementsByClassName("backButton")[0].style.display = "none";
+    
+}
 
 function refreshMatches() {
-    var tr = document.getElementsByTagName("tr")
+    var tr = document.getElementById("TableIncontro").getElementsByTagName("tr")
 
     for (var i = 0; i < tr.length - 1; i += 2 ) {
         
@@ -12,22 +31,25 @@ function refreshMatches() {
         var points_1 = parseInt(tr[i+1].getElementsByTagName("td")[0].innerHTML);
         var points_2 = parseInt(tr[i+1].getElementsByTagName("td")[1].innerHTML);
         
+        td_sq[0].style.backgroundColor = "white";
+        td_sq[2].style.backgroundColor = "white";
+        
         if (!isNaN(points_1) && !isNaN(points_2)) {
             console.log(points_1+" "+points_2)
 
             if (points_1 > points_2) {
                 /*First team win*/
-                td_sq[0].style.backgroundColor = "#99ff99";
+                td_sq[0].style.backgroundColor = "#33d641";
                 console.log("1")
             } else if (points_1 < points_2) {
                 /*Second team win*/
-                td_sq[2].style.backgroundColor = "#99ff99";
+                td_sq[2].style.backgroundColor = "#33d641";
                 console.log("2")
             } else {
                 /*Tie game*/
                 console.log("3")
-                td_sq[0].style.backgroundColor = "#ffff66";
-                td_sq[2].style.backgroundColor = "#ffff66";
+                td_sq[0].style.backgroundColor = "#f7f302";
+                td_sq[2].style.backgroundColor = "#f7f302";
             }
             
         }
@@ -39,25 +61,24 @@ function refreshMatches() {
     points_1 = parseInt(tot[0].innerHTML);
     points_2 = parseInt(tot[1].innerHTML);
     
+    tot[0].style.backgroundColor = "white";
+    tot[1].style.backgroundColor = "white";
+    
     if (points_1 > points_2) {
         /*First team win*/
-        tot[0].style.backgroundColor = "#99ff99";
+        tot[0].style.backgroundColor = "#33d641";
         console.log("1")
     } else if (points_1 < points_2) {
         /*Second team win*/
-        tot[1].style.backgroundColor = "#99ff99";
+        tot[1].style.backgroundColor = "#33d641";
         console.log("2")
     } else {
         /*Tie game*/
         console.log("3")
-        tot[0].style.backgroundColor = "#ffff66";
-        tot[1].style.backgroundColor = "#ffff66";
+        tot[0].style.backgroundColor = "#fffa00";
+        tot[1].style.backgroundColor = "#fffa00";
     }
 
-}
-
-function countTotal() {
-    
 }
 
 function addResult() {
@@ -66,73 +87,71 @@ function addResult() {
     //open.postMessage(document.getElementById("Squadra1"), )
 }
 
-function createTabellino() {
+function createTabellino(id, camp, giornata, index) {
     
-    var partita = db.doc("giornate/"+id_giornata+"/partite/"+id_partita)
+    var table = document.getElementById("TableIncontro");
+    console.log(array_giornate);
     
-    partita.get()
-    .then(function(doc) {
+    var match = array_giornate[camp][giornata][index]
+    console.log("MATCH " +match)
         
-        var s_1 = doc.data()["prima_squadra"]
-        var s_2 = doc.data()["seconda_squadra"]
+    var s_1 = match["prima_squadra"]
+    var s_2 = match["seconda_squadra"]
 
-        console.log(s_1+" "+s_2)
+    console.log(s_1+" "+s_2)
 
-        var t_1 = doc.data()["punteggio_1"];
-        var t_2 = doc.data()["punteggio_2"];
-        document.getElementById("Squadra1").appendChild(document.createTextNode(s_1));
-         document.getElementById("Squadra2").appendChild(document.createTextNode(s_2));
+    var t_1 = match["punteggio_1"];
+    var t_2 = match["punteggio_2"];
+    document.getElementById("Squadra1").innerHTML = s_1;
+    document.getElementById("Squadra2").innerHTML = s_2;
 
-        document.getElementById("PrimaSquadraTot").appendChild(document.createTextNode(t_1));
-         document.getElementById("SecondaSquadraTot").appendChild(document.createTextNode(t_2));
+    document.getElementById("PrimaSquadraTot").innerHTML = t_1;
+    document.getElementById("SecondaSquadraTot").innerHTML = t_2;
+    
+    var tr = table.getElementsByTagName("tr");
+    var prova = 1;
 
-        var table = document.getElementById("TableIncontro");
+    for (var i = 0; i < tr.length - 1; i+= 2) {
+        
+        var g_1_html = tr[i].getElementsByClassName("Giocatore1Squadra")[0]
+        var g_2_html = tr[i].getElementsByClassName("Giocatore2Squadra")[0]
+        var p_1_html = tr[i+1].getElementsByClassName("PrimoPunteggio")[0]
+        var p_2_html = tr[i+1].getElementsByClassName("SecondoPunteggio")[0]
 
-        var tr = table.getElementsByTagName("tr");
-        var prova = 1;
-
-        for (var i = 0; i < tr.length - 1; i+= 2) {
-            var map = doc.data()[prova]
-            if (map != null) {
-
-                var g_1 = map["g_1"]
-                var g_2 = map["g_2"]
-                var p_1 = map["p_1"]
-                var p_2 = map["p_2"]
-
-                var g_1_html = tr[i].getElementsByClassName("Giocatore1Squadra")[0]
-                var g_2_html = tr[i].getElementsByClassName("Giocatore2Squadra")[0]
-                var p_1_html = tr[i+1].getElementsByClassName("PrimoPunteggio")[0]
-                var p_2_html = tr[i+1].getElementsByClassName("SecondoPunteggio")[0]
-
-                g_1.forEach(function(giocatore) {
-                    var span = document.createElement("span");
-                    span.innerHTML = giocatore
-                    g_1_html.appendChild(span)
-                })
-
-                g_2.forEach(function(giocatore) {
-                    var span = document.createElement("span");
-                    span.innerHTML = giocatore
-                    g_2_html.appendChild(span)
-                })
-
-                p_1_html.appendChild(document.createTextNode(p_1));
-                p_2_html.appendChild(document.createTextNode(p_2));
-
-            }
+        g_1_html.innerHTML = ""
+        g_2_html.innerHTML = ""
+        p_1_html.innerHTML = ""
+        p_2_html.innerHTML = ""
+        
+        var map = match["tabellino"][prova]
+        if (map != null) {
             
-            prova++
-            
+            var g_1 = map["g_1"]
+            var g_2 = map["g_2"]
+            var p_1 = map["p_1"]
+            var p_2 = map["p_2"]
+
+            g_1.forEach(function(giocatore) {
+                var span = document.createElement("span");
+                span.innerHTML = giocatore
+                g_1_html.appendChild(span)
+            })
+
+            g_2.forEach(function(giocatore) {
+                var span = document.createElement("span");
+                span.innerHTML = giocatore
+                g_2_html.appendChild(span)
+            })
+
+            p_1_html.innerHTML = p_1;
+            p_2_html.innerHTML = p_2;
+
         }
 
-        refreshMatches()
-        
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
-    });
-    
-    
+        prova++
+
+    }
+
+    refreshMatches()
     
 }
-

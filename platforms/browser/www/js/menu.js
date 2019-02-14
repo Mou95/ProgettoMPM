@@ -1,12 +1,6 @@
 var activePage = 2;
 var navs = document.getElementById("navMenu").getElementsByTagName("div")
 
-function goBack() {
-    /*var user = firebase.auth().currentUser;
-    if (user)*/
-        window.history.back();
-}
-
 function getQueryVariable(variable) {
     var query = window.location.search.substring(1);
     console.log(decodeURI(query))

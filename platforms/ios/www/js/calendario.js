@@ -62,19 +62,39 @@ var titleCalendar = document.getElementById("titleCalendar")
 function createCalendar() {
     var giornate = db.collection("giornate").orderBy("numero", "asc");
     
-    giornate.get()   
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            //addLi(nav, doc.data()["numero"])
-            //createTableGiornata(body, doc)
-            array_giornate[doc.data()["campionato"]].push(doc.data()["partite"])
-        
+    giornate.onSnapshot(function(snapshot) {
+        snapshot.docChanges().forEach(function(change) {
+            if (change.type === "modified") {
+
+                changeEntryTableCalendar(change)
+
+            }
+            if (change.type === "added") {
+
+                var add = change.doc.data()["partite"];
+                add["id"] = change.doc.id;
+
+                array_giornate[change.doc.data()["campionato"]].push(add)
+
+            }
+
         })
-    }).catch(function(error) {
-        console.log("Error getting documents: ", error);
     });
 
     //loadLogic()
+}
+
+function changeEntryTableCalendar(change) {
+    
+    console.log(change.doc.data())
+    var campionato = change.doc.data()["campionato"];  
+    var giornata = change.doc.data()["numero"]-1; 
+    
+    //var id = array_giornate[campionato][giornata]["id"]
+    array_giornate[campionato][giornata] = change.doc.data()["partite"]
+    array_giornate[campionato][giornata]["id"] = change.doc.id;
+    
+    refreshCalendar();
 }
 
 function addLi(n) {
@@ -97,13 +117,15 @@ function createTableGiornate() {
     
     addLi(array_giornate[camp].length)
     
-    array_giornate[camp].forEach(function(partite) {
+    array_giornate[camp].forEach(function(partite, index_giornata) {
         
         console.log("new body")
         
         var tbody = document.createElement("tbody");
         
-        partite.forEach(function(partita) {
+        partite.forEach(function(partita, index) {
+            
+            console.log("Id "+partite["id"]+" "+index)
             
             var row = tbody.insertRow(0);
 
@@ -127,6 +149,11 @@ function createTableGiornate() {
             var td = row.insertCell(3);
             td.classList.add("SecondaSquadra");
             td.appendChild(document.createTextNode(partita["seconda_squadra"]));
+            
+            row.addEventListener("touchend", function() {
+                openTabellino()
+                createTabellino(partita["id"], camp, index_giornata, index)
+            }, false)
 
         })
         
@@ -136,6 +163,17 @@ function createTableGiornate() {
     tableCalendar.getElementsByTagName("tbody")[0].style.display = "table-row-group";
 
     console.log("Create table ")
+    
+}
+
+function openTabellino() {
+    
+    document.getElementById("page_calendario").classList.remove("page_show")
+    document.getElementById("page_calendario").classList.add("no_page_show")
+    
+    document.getElementById("page_tabellino").classList.add("page_show")
+    document.getElementById("page_tabellino").classList.remove("no_page_show")
+    logicTabellino()
     
 }
 

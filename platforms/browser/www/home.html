@@ -32,6 +32,7 @@
 <body onload=onLoad()>
    
     <div class="statusBar">
+        <button type="button" class="backButton" ></button>
         <h1>TuttoBOCCE</h1>
     </div>
     <div id="navMenu" class="">
@@ -172,6 +173,138 @@
         </div>
     </div>
     
+    <div id="page_tabellino" class="no_page_show">
+        <div id="headerTabellino">
+            <p id="Squadra1"></p>
+            <p id="Squadra2"></p>
+        </div>   
+        <table id="TableIncontro" summary="Tabella che mostra il tabellino della partita selezionata">
+            <tbody>
+                <tr>
+                    <td rowspan="2" class="Giocatore1Squadra"></td>
+                    <td colspan="2" class="Specialita">Combinato</td>
+                    <td rowspan="2" class="Giocatore2Squadra"></td>
+                </tr>
+                <tr>
+                    <td class="PrimoPunteggio"></td>
+                    <td class="SecondoPunteggio"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2" class="Giocatore1Squadra">
+                    </td>
+                    <td colspan="2" class="Specialita">Coppia</td>
+                    <td rowspan="2" class="Giocatore2Squadra"></td>
+                </tr>
+                <tr>
+                    <td class="PrimoPunteggio"></td>
+                    <td class="SecondoPunteggio"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2" class="Giocatore1Squadra"></td>
+                    <td colspan="2" class="Specialita">Individuale</td>
+                    <td rowspan="2" class="Giocatore2Squadra"></td>
+                </tr>
+                <tr>
+                    <td class="PrimoPunteggio"></td>
+                    <td class="SecondoPunteggio"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2" class="Giocatore1Squadra"></td>
+                    <td colspan="2" class="Specialita">Terna</td>
+                    <td rowspan="2" class="Giocatore2Squadra"></td>
+                </tr>
+                <tr>
+                    <td class="PrimoPunteggio"></td>
+                    <td class="SecondoPunteggio"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2" class="Giocatore1Squadra"></td>
+                    <td colspan="2" class="Specialita">Staffetta</td>
+                    <td rowspan="2" class="Giocatore2Squadra"></td>
+                </tr>
+                <tr>
+                    <td class="PrimoPunteggio"></td>
+                    <td class="SecondoPunteggio"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2" class="Giocatore1Squadra"></td>
+                    <td colspan="2" class="Specialita">Tiro Tecnico</td>
+                    <td rowspan="2" class="Giocatore2Squadra"></td>
+                </tr>
+                <tr>
+                    <td class="PrimoPunteggio"></td>
+                    <td class="SecondoPunteggio"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2" class="Giocatore1Squadra"></td>
+                    <td colspan="2" class="Specialita">Tiro Tecnico</td>
+                    <td rowspan="2" class="Giocatore2Squadra"></td>
+                </tr>
+                <tr>
+                    <td class="PrimoPunteggio"></td>
+                    <td class="SecondoPunteggio"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2" class="Giocatore1Squadra"></td>
+                    <td colspan="2" class="Specialita">Progressivo 6</td>
+                    <td rowspan="2" class="Giocatore2Squadra"></td>
+                </tr>
+                <tr>
+                    <td class="PrimoPunteggio"></td>
+                    <td class="SecondoPunteggio"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2" class="Giocatore1Squadra"></td>
+                    <td colspan="2" class="Specialita">Progressivo 3</td>
+                    <td rowspan="2" class="Giocatore2Squadra"></td>
+                </tr>
+                <tr>
+                    <td class="PrimoPunteggio"></td>
+                    <td class="SecondoPunteggio"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2" class="Giocatore1Squadra"></td>
+                    <td colspan="2" class="Specialita">Coppia</td>
+                    <td rowspan="2" class="Giocatore2Squadra"></td>
+                </tr>
+                <tr>
+                    <td class="PrimoPunteggio"></td>
+                    <td class="SecondoPunteggio"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2" class="Giocatore1Squadra"></td>
+                    <td colspan="2" class="Specialita">Individuale</td>
+                    <td rowspan="2" class="Giocatore2Squadra"></td>
+                </tr>
+                <tr>
+                    <td class="PrimoPunteggio"></td>
+                    <td class="SecondoPunteggio"></td>
+                </tr><tr>
+                    <td rowspan="2" class="Giocatore1Squadra"></td>
+                    <td colspan="2" class="Specialita">Individuale</td>
+                    <td rowspan="2" class="Giocatore2Squadra"></td>
+                </tr>
+                <tr>
+                    <td class="PrimoPunteggio"></td>
+                    <td class="SecondoPunteggio"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2" class="Giocatore1Squadra"></td>
+                    <td colspan="2" class="Specialita">Coppia</td>
+                    <td rowspan="2" class="Giocatore2Squadra"></td>
+                </tr>
+                <tr>
+                    <td class="PrimoPunteggio"></td>
+                    <td class="SecondoPunteggio"></td>
+                </tr>
+                <tr id="Totale">
+                    <td colspan="2" id="PrimaSquadraTot"></td>
+                    <td colspan="2" id="SecondaSquadraTot"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
     <div id="page_home" class="page_show">
         <div>
             Ciao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfg
@@ -282,6 +415,7 @@
     <script type="text/javascript" src="js/user.js"></script>
     <script type="text/javascript" src="js/statistiche.js"></script>
     <script type="text/javascript" src="js/calendario.js"></script>
+    <script type="text/javascript" src="js/tabellino.js"></script>
 </body>
 
 </html>
