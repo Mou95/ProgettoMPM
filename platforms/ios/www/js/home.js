@@ -8,7 +8,7 @@ function onLoad() {
             console.log(device.platform)
             //navigator.notification.alert(device.platform, function(){})
             if (device.platform == "Android") {
-
+                StatusBar.styleBlackTranslucent();
                 document.documentElement.style.setProperty('--bottom', '0px');
                 document.documentElement.style.setProperty('--top', '90px');
                 document.getElementById("navMenu").classList.add("menuBarAndroid")
@@ -20,9 +20,9 @@ function onLoad() {
                 document.getElementById("navMenu").classList.add("menuBarIos")
                 console.log("Not Android")
             }
-            //createStandings()
-            //loadUser()
-            //createVariable()
+            createStandings()
+            loadUser()
+            createVariable()
             createCalendar()
         } else {
             //user is signed out
@@ -31,10 +31,5 @@ function onLoad() {
     });
 }
 
-/*function loadClassifiche() {
-    document.getElementById("home").style.display = "none";
-    document.getElementById("classifiche").style.display = "block";
-    
-}*/
 
 

@@ -14,6 +14,11 @@ function onDeviceReady( event ) {
         //logged out
         login.style.display = "block";
     }
+    
+    if (device.platform == "Android") {
+        StatusBar.overlaysWebView(false);
+        StatusBar.styleLightContent();
+    }
 }
 
 
