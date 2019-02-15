@@ -92,8 +92,8 @@ button {
     display: none;
 }
 
-#addButton {
-    height: 50px;
+.addButton {
+    height: 40px;
     border: none;
     width: 10%;
     background-image: url('../img/add.png');
@@ -106,6 +106,7 @@ button {
     top : 0;
     right: 15px;
     z-index: 1;
+    display: none;
 }
 
 /*Nav*/
@@ -761,6 +762,18 @@ to {opacity: 1}
     border-bottom: 3px solid green; 
 }
 
+#selCampionato {
+    padding: 2px;
+    background-color: #f59c00;
+    color: white;
+    width: 40%;
+    font-weight: lighter;
+    border: 1px solid #f59c00;
+    font-family: fontPersonalizzato;
+    font-size: 9pt;
+    margin: 7px 0;
+}
+
 /*Tabellino*/
 
 #headerTabellino {
@@ -799,6 +812,7 @@ to {opacity: 1}
     text-transform: none;
     table-layout: fixed;
     overflow: hidden;
+    margin-bottom: 20px;
 }
 
 #TableIncontro td {
@@ -840,7 +854,55 @@ to {opacity: 1}
 
 /*Aggiungi Risultati*/
 #formResult {
-    margin-top: 4%;
+    margin-top: 10%;
+    background-color: #ededed;
+}
+
+#provaForm {
+    padding: 4px;
+    background-color: #f59c00;
+    color: white;
+    width: 60%;
+    margin: 5% 20%;
+    font-weight: lighter;
+    font-family: fontPersonalizzato;
+}
+
+.formSquadre {
+    margin: 5% 10%;
+    border: none;
+    
+}
+
+.formSquadre legend {
+    text-align: center;
+    
+    font-weight: bold;
+}
+
+.formSquadre select {
+    width: 60%;
+    margin: 5% 20%;
+    padding: 5px;
+}
+
+.punteggio {
+    width: 30%;
+    margin-left: 35%;
+    padding: 10px;
+}
+
+#inviaResult {
+    background-color: #f59c00;
+    border: none;
+    color: white;
+    display: block;
+    width: 80%;
+    font-size: 15pt;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 0;
+    margin-left: 10%;
 }
 
 .show {

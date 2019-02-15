@@ -16,6 +16,11 @@ function getQueryVariable(variable) {
     return(false);
 }
 
+function removeButtonNavigation() {
+    document.getElementsByClassName("backButton")[0].style.display = "none";
+    document.getElementsByClassName("addButton")[0].style.display = "none";
+}
+
 function manageNav(index) {
     console.log(navs)
     if (activePage != index) {
@@ -27,6 +32,7 @@ function manageNav(index) {
         var show = document.getElementsByClassName("page_show")[0]
         show.classList.remove("page_show");
         show.classList.add("no_page_show");
+        removeButtonNavigation()
         switch (index) {
             case 0:
                 document.getElementById("page_statistiche").classList.add("page_show")

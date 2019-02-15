@@ -34,6 +34,7 @@
     <div class="statusBar">
         <button type="button" class="backButton" ></button>
         <h1>TuttoBOCCE</h1>
+        <button type="button" class="addButton" ></button>
     </div>
     <div id="navMenu" class="">
         <div class="statistiche" onclick="manageNav(0)"></div>
@@ -122,7 +123,7 @@
     
     </div>
     
-    <div id="page_calendario" class="no_page_show">
+    <div id="page_calendario" class="page_show">
         <div class="titleTabelle">
             <p id="titleCalendar">Serie A1 18/19</p>
         </div>
@@ -164,7 +165,7 @@
         <div class="dot-slider">
             <p>Clicca sul match per visualizzare il tabellino</p>
             <div id="filtraCalendar">
-                <select class="selezioneStat" id="selCampionato" onchange=refreshCalendar()>
+                <select id="selCampionato" onchange=refreshCalendar()>
                     <option value="A1_1819" selected>Serie A1 18/19</option>
                     <option value="A2_1819_est">Serie A2 Est 18/19</option>
                 </select>
@@ -303,9 +304,52 @@
                 </tr>
             </tbody>
         </table>
+        <div class="dot-slider">
+            <p>Clicca sul + per aggiungere i risultati mancanti</p>
+        </div>
     </div>
     
-    <div id="page_home" class="page_show">
+    <div id="page_result" class="no_page_show">
+        <div id="formResult">
+        
+            <form>
+                <select id="provaForm">
+                    <option value="" disabled selected>Seleziona la prova</option>
+                    <option class="combinato" value="1">Combinato</option>
+                    <option class="coppia" value="2">1&#176 Coppia</option>
+                    <option class="individuale" value="3">1&#176 Individuale</option>
+                    <option class="terna" value="4">Terna</option>
+                    <option class="staffetta" value="5">Staffetta</option>
+                    <option class="tiro_tecnico" value="6">1&#176 Tiro Tecnico</option>
+                    <option class="tiro_tecnico" value="7">2&#176 Tiro Tecnico</option>
+                    <option class="progressivo_6" value="8">Progressivo a 6</option>
+                    <option class="progressivo_3" value="9">Progressivo a 3</option>
+                    <option class="coppia" value="10">2&#176 Coppia</option>
+                    <option class="individuale" value="11">2&#176 Individuale</option>
+                    <option class="individuale" value="12">3&#176 Individuale</option>
+                    <option class="coppia" value="13">3&#176 Coppia</option>
+                </select>
+                <fieldset class="formSquadre">
+                    <legend></legend>
+                    <select multiple="multiple" id="form1Squadra" >
+                    </select>
+                    <input class="punteggio" id="punteggio1Squadra" type="number" placeholder="Punti..."/>
+                </fieldset>
+                <fieldset class="formSquadre">
+                    <legend></legend>
+                    <select multiple="multiple" id="form2Squadra">
+                    </select>
+                    <input class="punteggio"  id="punteggio2Squadra" type="number" placeholder="Punti..."/>
+                </fieldset>
+                <input id="inviaResult" type="submit" value="INVIA">
+            </form>
+        </div>
+        <div class="dot-slider">
+            <p>Inserire solamente i risultati finali delle partite!</p>
+        </div>
+    </div>
+    
+    <div id="page_home" class="no_page_show">
         <div>
             Ciao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfgCiao osno mautsrgdfg
         </div>
@@ -416,6 +460,7 @@
     <script type="text/javascript" src="js/statistiche.js"></script>
     <script type="text/javascript" src="js/calendario.js"></script>
     <script type="text/javascript" src="js/tabellino.js"></script>
+    <script type="text/javascript" src="js/result.js"></script>
 </body>
 
 </html>

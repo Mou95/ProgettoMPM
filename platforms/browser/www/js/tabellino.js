@@ -1,4 +1,16 @@
 var db = firebase.firestore();
+var id_giornata, id_campionato, numero_giornata, numero_partita;
+
+document.getElementsByClassName("addButton")[0].addEventListener("touchend", function() {
+        document.getElementById("page_tabellino").classList.remove("page_show")
+        document.getElementById("page_tabellino").classList.add("no_page_show")
+        document.getElementById("page_result").classList.add("page_show")
+        document.getElementById("page_result").classList.remove("no_page_show")
+
+        logicAddResult()
+        loadTeams(id_giornata, id_campionato, numero_giornata, numero_partita)
+
+    }, false)
 
 function logicTabellino() {
     document.getElementsByClassName("backButton")[0].addEventListener("touchend", closeTabellino, false);
@@ -6,6 +18,7 @@ function logicTabellino() {
     document.addEventListener("backbutton", closeTabellino, false); 
     
     document.getElementsByClassName("backButton")[0].style.display = "block";
+    
 }
 
 function closeTabellino(e) {
@@ -18,6 +31,7 @@ function closeTabellino(e) {
     
     document.removeEventListener("backbutton", closeTabellino);  
     document.getElementsByClassName("backButton")[0].style.display = "none";
+    document.getElementsByClassName("addButton")[0].style.display = "none";
     
 }
 
@@ -81,18 +95,25 @@ function refreshMatches() {
 
 }
 
-function addResult() {
-    /*pass reference del documento nel db*/
-    var open = window.open("addResult.html?idg="+id_giornata+"&idp="+id_partita, "_self")
-    //open.postMessage(document.getElementById("Squadra1"), )
-}
-
 function createTabellino(id, camp, giornata, index) {
+    var match = array_giornate[camp][giornata][index]
+    
+    id_giornata = id
+    id_campionato = camp
+    numero_giornata = giornata
+    numero_partita = index
+    completo = match["completo"]
+    
+    if (!completo) {
+        document.getElementsByClassName("addButton")[0].style.display = "block";
+        
+    } else {
+        document.getElementsByClassName("addButton")[0].style.display = "none";
+    }
     
     var table = document.getElementById("TableIncontro");
     console.log(array_giornate);
     
-    var match = array_giornate[camp][giornata][index]
     console.log("MATCH " +match)
         
     var s_1 = match["prima_squadra"]
@@ -155,3 +176,16 @@ function createTabellino(id, camp, giornata, index) {
     refreshMatches()
     
 }
+
+function refreshTabellino() {
+    createTabellino(id_giornata, id_campionato, numero_giornata, numero_partita)
+    
+    if (!completo) {
+        document.getElementsByClassName("addButton")[0].style.display = "block";
+        
+    } else {
+        document.getElementsByClassName("addButton")[0].style.display = "none";
+    }
+}
+
+

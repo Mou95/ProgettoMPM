@@ -1,20 +1,38 @@
 var db = firebase.firestore()
-var id_giornata = getQueryVariable("idg")
-var id_partita = getQueryVariable("idp")
-var partita = db.doc("giornate/"+id_giornata+"/partite/"+id_partita)
 var form = document.getElementsByTagName("form")[0]
-$.mobile.autoInitializePage = false;
+var prima_s, seconda_s;
 
-window.onload = function() {
+document.getElementById("inviaResult").addEventListener("touchend", sendResult, false)
 
-    window.addEventListener("message", function(event) {
-        console.log("MEssaggio ricevuto")
-        console.log(event.data)
-    }, false)
+function logicAddResult() {
     
-    document.getElementById("inviaResult").addEventListener("touchend", sendResult, false)
+    document.getElementsByClassName("addButton")[0].style.display = "none";
     
-    optionSelect()
+    document.removeEventListener("backbutton", closeTabellino); 
+    document.getElementsByClassName("backButton")[0].removeEventListener("touchend", closeTabellino); 
+    
+    document.getElementsByClassName("backButton")[0].addEventListener("touchend", closeResult, false);
+
+    document.addEventListener("backbutton", closeResult, false); 
+    
+    document.getElementsByClassName("backButton")[0].style.display = "block";
+    
+}
+
+function closeResult(e) {
+    e.preventDefault(); 
+        
+    document.getElementById("page_result").classList.remove("page_show")
+    document.getElementById("page_result").classList.add("no_page_show")
+    
+    document.getElementById("page_tabellino").classList.add("page_show")
+    document.getElementById("page_tabellino").classList.remove("no_page_show")
+  
+    document.removeEventListener("backbutton", closeResult);  
+    document.getElementsByClassName("backButton")[0].removeEventListener("touchend", closeResult); 
+
+    logicTabellino()
+    refreshTabellino()
     
 }
 
@@ -76,14 +94,18 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
         - aggioranre punteggio totale partita V
         - aggioranre se tabellino completo o no
         */
+        console.log(id_giornata)
+        var partita = db.doc("giornate/"+id_giornata)
         
         partita.get()
         .then(function(doc) {
-            if (doc.data()[prova] == null) {
+            var tabellino = doc.data()["partite"][numero_partita]["tabellino"] 
+            
+            if (tabellino[prova] == null) {
                 
                 /*Update tabellino*/
-                var update_tabellino = {}
-                update_tabellino[prova] = {
+                var update_tabellino = doc.data()
+                update_tabellino["partite"][numero_partita]["tabellino"] [prova] = {
                     "g_1" : g_1,
                     "g_2" : g_2,
                     "p_1" : p_1,
@@ -92,24 +114,40 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
                 
                 /*Update risultato totale e statistiche giocatori*/
                 if (p_1 > p_2) {
-                    
-                    update_tabellino["punteggio_1"] = doc.data()["punteggio_1"] + p_vittoria;
-                    updateStats(g_1, tipo, "w")
-                    updateStats(g_2, tipo, "l")
+                    /*Vinto prima squadra*/
+                    update_tabellino["partite"][numero_partita]["punteggio_1"] = doc.data()["partite"][numero_partita]["punteggio_1"] + p_vittoria;
+                    updateStats(g_1, prima_s, p_1, "w")
+                    updateStats(g_2, seconda_s, tipo, p_2, "l")
                     
                 } else if (p_2 > p_1) {
-                    
-                    update_tabellino["punteggio_2"] = doc.data()["punteggio_2"] + p_vittoria;
-                    updateStats(g_1, tipo, "l")
-                    updateStats(g_2, tipo, "w")
+                    /*Vinto seconda squadra*/
+                    update_tabellino["partite"][numero_partita]["punteggio_2"] = doc.data()["partite"][numero_partita]["punteggio_2"] + p_vittoria;
+                    updateStats(g_1, prima_s, tipo, p_1, "l")
+                    updateStats(g_2, seconda_s, tipo, p_2, "w")
                     
                 } else {
+                    /*Pareggio*/
+                    update_tabellino["partite"][numero_partita]["punteggio_1"] = doc.data()["partite"][numero_partita]["punteggio_1"] + p_pareggio;
+                    update_tabellino["partite"][numero_partita]["punteggio_2"] = doc.data()["partite"][numero_partita]["punteggio_2"] + p_pareggio;
+                    updateStats(g_1, prima_s, tipo, p_1, "t")
+                    updateStats(g_2, seconda_s, tipo, p_2, "t")
                     
-                    update_tabellino["punteggio_1"] = doc.data()["punteggio_1"] + p_pareggio;
-                    update_tabellino["punteggio_2"] = doc.data()["punteggio_2"] + p_pareggio;
-                    updateStats(g_1, tipo, "t")
-                    updateStats(g_2, tipo, "t")
+                }
+                
+                if (Object.keys(update_tabellino["partite"][numero_partita]["tabellino"]).length == 13 && !update_tabellino["partite"][numero_partita]["completo"]) {
                     
+                    update_tabellino["partite"][numero_partita]["completo"] = true;
+                    
+                    var tot_1 = update_tabellino["partite"][numero_partita]["punteggio_1"]
+                    var tot_2 = update_tabellino["partite"][numero_partita]["punteggio_2"]
+                    
+                    //Aggiorno classifica!!!
+                    updateStanding(tot_1, tot_2, db.collection("campionati/"+id_campionato+"/classifica").where("squadra","==", prima_s))
+                    
+                    updateStanding(tot_2, tot_1, db.collection("campionati/"+id_campionato+"/classifica").where("squadra","==", seconda_s))
+                    
+                    //closeResult()
+
                 }
                 
                 partita.update(update_tabellino)
@@ -133,45 +171,85 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
     }
 }
 
+function updateStanding(tot_1, tot_2, squadra) {
+    
+    squadra.get()
+    .then(function(querySelector) {
+        querySelector.forEach(function(doc) {
+
+            var update = doc.data()
+            update["punti_fatti"] += tot_1
+            update["punti_subiti"] += tot_2
+
+            if (tot_1 > tot_2) {   
+                update["punti"] += 2
+                update["vittorie"] += 1
+
+            } else if (tot_2 == tot_1) {
+                update["punti"] += 1
+                update["pareggi"] += 1
+
+            } else {
+                update["sconfitte"] += 1
+
+            }
+
+            db.doc("campionati/"+id_campionato+"/classifica/"+doc.id).update(update)
+            .then(function() {
+                console.log("Standing successfully updated!");
+            });
+
+        })    
+
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+    
+}
+
 
 /*PROBLEMA -> PERSONE STESSO NOME*/
 //MANCA AGGIORNARE MEDIE
-function updateStats(giocatori, tipo, risultato) {
+function updateStats(giocatori, squadra, tipo, punteggio, risultato) {
     
     giocatori.forEach(function(giocatore) {
-        var pl = db.collection("giocatori").where("name", "==", giocatore)
+        var pl = db.collection("giocatori").where("name", "==", giocatore).where("squadra", "==", squadra)
         
         pl.get()
         .then(function(querySelector) {
             querySelector.forEach(function(doc) {
-
-                var prova = db.doc("giocatori/"+doc.id+"/statistiche_1819/"+tipo)
-
-                prova.get()
-                .then(function(stat) {
                     
-                    var update_stat = {}
-
-                    switch (risultato) {
-                        case "w":
-                            update_stat["vinte"] = stat.data()["vinte"] + 1;
-                            break;
-                        case "t":
-                            update_stat["pareggiate"] = stat.data()["pareggiate"] + 1;
-                            break;
-                        case "l":
-                            update_stat["perse"] = stat.data()["perse"] + 1;
-                            break;
-                    }
-
-                    prova.update(update_stat)
-                    .then(function() {
-                        console.log("Document successfully updated!");
-                    });
+                var update_stat = doc.data()
                 
-                }).catch(function(error) {
-                    console.log("Error getting document:", error);
+                if (tiri.includes(tipo)) {
+                    
+                    var prove_svolte = update_stat["statistiche_1819"][tipo]["vinte"]+update_stat["statistiche_1819"][tipo]["pareggiate"]+update_stat["statistiche_1819"][tipo]["perse"] 
+                    
+                    var media = update_stat["statistiche_1819"][tipo]["media"] 
+                    
+                    var new_media = roundTo(((media*prove_svolte) + punteggio) / (prove_svolte + 1), 2)
+                    
+                    update_stat["statistiche_1819"][tipo]["media"] = new_media
+                    
+                }
+
+                switch (risultato) {
+                    case "w":
+                        update_stat["statistiche_1819"][tipo]["vinte"] += 1;
+                        break;
+                    case "t":
+                        update_stat["statistiche_1819"][tipo]["pareggiate"] += 1;
+                        break;
+                    case "l":
+                        update_stat["statistiche_1819"][tipo]["perse"]  += 1;
+                        break;
+                }
+
+                db.doc("giocatori/"+doc.id).update(update_stat)
+                .then(function() {
+                    console.log("Document successfully updated!");
                 });
+                
             })    
             
         }).catch(function(error) {
@@ -181,30 +259,25 @@ function updateStats(giocatori, tipo, risultato) {
     
 }
 
-function optionSelect() {
+function loadTeams() {
     
-    partita.get()
-    .then(function(doc) {
+    var match = array_giornate[id_campionato][numero_giornata][numero_partita]
         
-        var prima_s = doc.data()["prima_squadra"]
-        var seconda_s = doc.data()["seconda_squadra"]
-        
-        var legends = document.getElementsByTagName("legend")
-        legends[0].innerHTML = prima_s
-        legends[1].innerHTML = seconda_s
-        
-        var prima_select = document.getElementById("form1Squadra");
-        var seconda_select = document.getElementById("form2Squadra");
+    prima_s = match["prima_squadra"]
+    seconda_s = match["seconda_squadra"]
 
-        var giocatori_1 = db.collection("giocatori").where("squadra","==",prima_s).orderBy("name")
-        var giocatori_2 = db.collection("giocatori").where("squadra","==",seconda_s).orderBy("name")
+    var legends = document.getElementsByTagName("legend")
+    legends[0].innerHTML = prima_s
+    legends[1].innerHTML = seconda_s
 
-        addOptions(giocatori_1, prima_select)
-        addOptions(giocatori_2, seconda_select)
-        
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
-    })
+    var prima_select = document.getElementById("form1Squadra");
+    var seconda_select = document.getElementById("form2Squadra");
+    
+    $('#form1Squadra').find('option').remove();
+    $('#form2Squadra').find('option').remove();
+
+    addOptions(db.collection("giocatori").where("squadra","==",prima_s).orderBy("name"), prima_select)
+    addOptions(db.collection("giocatori").where("squadra","==",seconda_s).orderBy("name"), seconda_select)
     
 }
 
@@ -212,7 +285,8 @@ function addOptions(players, select) {
     players.get()   
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
-
+            
+            console.log(doc.data()["name"])
             var option = document.createElement("option");
             option.text = doc.data()["name"];
             select.add(option);
@@ -224,3 +298,9 @@ function addOptions(players, select) {
     });
 }
 
+function roundTo(value, decimalpositions)
+{
+    var i = value * Math.pow(10,decimalpositions);
+    i = Math.round(i);
+    return i / Math.pow(10,decimalpositions);
+}

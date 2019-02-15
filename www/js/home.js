@@ -21,7 +21,7 @@ function onLoad() {
                 console.log("Not Android")
             }
             createStandings()
-            loadUser()
+            //loadUser()
             createVariable()
             createCalendar()
         } else {

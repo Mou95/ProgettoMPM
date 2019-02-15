@@ -67,6 +67,7 @@ function createCalendar() {
             if (change.type === "modified") {
 
                 changeEntryTableCalendar(change)
+                refreshTabellino()
 
             }
             if (change.type === "added") {
@@ -95,9 +96,12 @@ function changeEntryTableCalendar(change) {
     array_giornate[campionato][giornata]["id"] = change.doc.id;
     
     refreshCalendar();
+    
 }
 
 function addLi(n) {
+    
+    $("#ulGiornate").html("")
     
     for (var i = 0; i < n; i++) {
         var li = document.createElement("li");
@@ -152,7 +156,7 @@ function createTableGiornate() {
             
             row.addEventListener("touchend", function() {
                 openTabellino()
-                createTabellino(partita["id"], camp, index_giornata, index)
+                createTabellino(partite["id"], camp, index_giornata, index)
             }, false)
 
         })
