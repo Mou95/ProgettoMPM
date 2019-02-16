@@ -700,12 +700,13 @@ to {opacity: 1}
     text-align: center;
     display: inline-block;
     font-weight: bold;
+    border-top: 3px solid #ededed;
 }
 
 .giornataIntera {
     width: 100%; 
     touch-action: manipulation;
-    height: 70vh;
+    height: 60vh;
 }
 
 #tableGiornate {
@@ -759,7 +760,7 @@ to {opacity: 1}
 }
 
 .selected {
-    border-bottom: 3px solid green; 
+    border-bottom: 3px solid #f59c00; 
 }
 
 #selCampionato {

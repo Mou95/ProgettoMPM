@@ -112,23 +112,41 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
                     "p_2" : p_2
                 }
                 
+                if (prova == "6" || prova == "7") {
+                    if (update_tabellino["partite"][numero_partita]["tabellino"]["6"] != null && update_tabellino["partite"][numero_partita]["tabellino"]["7"] != null) {
+                        /*Calcolo punto aggiuntivo tecnico*/
+                        
+                        var sum_prima_squadra = update_tabellino["partite"][numero_partita]["tabellino"]["6"]["p_1"] + update_tabellino["partite"][numero_partita]["tabellino"]["7"]["p_1"]
+                        var sum_seconda_squadra = update_tabellino["partite"][numero_partita]["tabellino"]["6"]["p_2"] + update_tabellino["partite"][numero_partita]["tabellino"]["7"]["p_2"]
+                        
+                        console.log("TECNICO "+sum_prima_squadra+" "+sum_seconda_squadra)
+                        
+                        if (sum_prima_squadra > sum_seconda_squadra) {
+                            update_tabellino["partite"][numero_partita]["punteggio_1"] += 1;
+
+                        } else if (sum_seconda_squadra > sum_prima_squadra) {
+                            update_tabellino["partite"][numero_partita]["punteggio_2"] += 1;               
+                        }
+                    }                       
+                }
+                
                 /*Update risultato totale e statistiche giocatori*/
                 if (p_1 > p_2) {
                     /*Vinto prima squadra*/
-                    update_tabellino["partite"][numero_partita]["punteggio_1"] = doc.data()["partite"][numero_partita]["punteggio_1"] + p_vittoria;
+                    update_tabellino["partite"][numero_partita]["punteggio_1"] += p_vittoria; p_vittoria;
                     updateStats(g_1, prima_s, p_1, "w")
                     updateStats(g_2, seconda_s, tipo, p_2, "l")
                     
                 } else if (p_2 > p_1) {
                     /*Vinto seconda squadra*/
-                    update_tabellino["partite"][numero_partita]["punteggio_2"] = doc.data()["partite"][numero_partita]["punteggio_2"] + p_vittoria;
+                    update_tabellino["partite"][numero_partita]["punteggio_2"] += p_vittoria;
                     updateStats(g_1, prima_s, tipo, p_1, "l")
                     updateStats(g_2, seconda_s, tipo, p_2, "w")
                     
                 } else {
                     /*Pareggio*/
-                    update_tabellino["partite"][numero_partita]["punteggio_1"] = doc.data()["partite"][numero_partita]["punteggio_1"] + p_pareggio;
-                    update_tabellino["partite"][numero_partita]["punteggio_2"] = doc.data()["partite"][numero_partita]["punteggio_2"] + p_pareggio;
+                    update_tabellino["partite"][numero_partita]["punteggio_1"] += p_pareggio;
+                    update_tabellino["partite"][numero_partita]["punteggio_2"] += p_pareggio;
                     updateStats(g_1, prima_s, tipo, p_1, "t")
                     updateStats(g_2, seconda_s, tipo, p_2, "t")
                     

@@ -1,48 +1,10 @@
 /*GESTIRE LOGICA CON NUMERI CALCOLATI DOPO CREAZIONE TABELLE*/
 
 var db = firebase.firestore();
-
-/*function loadLogic() {
-    console.log("dfs");
-    giornate[active].classList.add("show");
-    $( ".giornataIntera" ).on( "swiperight", swipeRight );
-    $( ".giornataIntera" ).on( "swipeleft", swipeLeft );
-    $( ".NumeroGiornata" ).on( "tap", selectTable );
-}
-
-function swipeRight( event ){
-    if (active > 0) {
-        console.log("swiped");
-        giornate[active].classList.remove("show");
-        n_giornate[active].classList.remove("selected");
-        active -= 1;
-        giornate[active].classList.add("show");
-        n_giornate[active].classList.add("selected");
-    }
-}
-
-function swipeLeft( event ){
-    if (active < n - 1) {
-        console.log("swiped");
-        giornate[active].classList.remove("show");
-        n_giornate[active].classList.remove("selected");
-        active += 1;
-        giornate[active].classList.add("show");
-        n_giornate[active].classList.add("selected");
-    }
-}
-
-function selectTable( event ) {
-    var new_active = Array.prototype.indexOf.call(n_giornate, event.target);
-    
-    if (new_active != active) {
-        giornate[active].classList.remove("show");
-        n_giornate[active].classList.remove("selected");
-        active = new_active;
-        giornate[active].classList.add("show");
-        n_giornate[active].classList.add("selected");
-    } 
-}*/
+var active_day = 0;
+var n_giornate;
+var all_giornate;
+var tbody_giornate;
 
 var array_giornate = {
     A1_1819: [],
@@ -58,6 +20,59 @@ var tableCalendar = document.getElementById("tableGiornate");
 var navCalendar = document.getElementById("ulGiornate")
 var titleCalendar = document.getElementById("titleCalendar")
 
+function loadLogicCalendar() {
+    tbody_giornate = tableCalendar.getElementsByTagName("tbody");
+    
+    selectActiveDay()
+
+    $( ".giornataIntera" ).on( "swiperight", swipeRightCalendar );
+    $( ".giornataIntera" ).on( "swipeleft", swipeLeftCalendar );
+    $( ".NumeroGiornata" ).on( "tap", selectTableCalendar );
+}
+
+function swipeRightCalendar( event ){
+    if (active_day > 0) {
+
+        tbody_giornate[active_day].style.display = "none";
+        all_giornate[active_day].classList.remove("selected");
+        
+        active_day -= 1;
+        
+        tbody_giornate[active_day].style.display = "table-row-group";
+        all_giornate[active_day].classList.add("selected");
+        all_giornate[active_day].scrollIntoView({behavior: "smooth", block: "end", inline: "center"})
+    }
+}
+
+function swipeLeftCalendar( event ){
+    if (active_day < n_giornate - 1) {
+
+        tbody_giornate[active_day].style.display = "none";
+        all_giornate[active_day].classList.remove("selected");
+        
+        active_day += 1;
+        
+        tbody_giornate[active_day].style.display = "table-row-group";
+        all_giornate[active_day].classList.add("selected");
+        all_giornate[active_day].scrollIntoView({behavior: "smooth", block: "end", inline: "center"})
+    }
+}
+
+function selectTableCalendar( event ) {
+    var new_active = Array.prototype.indexOf.call(all_giornate, event.target);
+    
+    if (new_active != active_day) {
+        
+        tbody_giornate[active_day].style.display = "none";
+        all_giornate[active_day].classList.remove("selected");
+        
+        active_day = new_active;
+        
+        tbody_giornate[active_day].style.display = "table-row-group";
+        all_giornate[active_day].classList.add("selected");
+        all_giornate[active_day].scrollIntoView({behavior: "smooth", block: "end", inline: "center"})
+    } 
+}
 
 function createCalendar() {
     var giornate = db.collection("giornate").orderBy("numero", "asc");
@@ -82,7 +97,6 @@ function createCalendar() {
         })
     });
 
-    //loadLogic()
 }
 
 function changeEntryTableCalendar(change) {
@@ -109,6 +123,8 @@ function addLi(n) {
         li.appendChild(document.createTextNode("Giornata "+ (i+1)))
         navCalendar.appendChild(li)
     }
+    
+    all_giornate = navCalendar.getElementsByClassName("NumeroGiornata");
 }
 
 function createTableGiornate() {
@@ -119,18 +135,20 @@ function createTableGiornate() {
     
     var camp = document.getElementById("selCampionato").value;
     
-    addLi(array_giornate[camp].length)
+    n_giornate = array_giornate[camp].length
+    
+    addLi(n_giornate)
     
     array_giornate[camp].forEach(function(partite, index_giornata) {
-        
+
         console.log("new body")
-        
+
         var tbody = document.createElement("tbody");
-        
+
         partite.forEach(function(partita, index) {
-            
+
             console.log("Id "+partite["id"]+" "+index)
-            
+
             var row = tbody.insertRow(0);
 
             /*var uri = "tabellino.html?idg="+giornata.id+"&idp="+doc.id;
@@ -153,19 +171,18 @@ function createTableGiornate() {
             var td = row.insertCell(3);
             td.classList.add("SecondaSquadra");
             td.appendChild(document.createTextNode(partita["seconda_squadra"]));
-            
+
             row.addEventListener("touchend", function() {
                 openTabellino()
                 createTabellino(partite["id"], camp, index_giornata, index)
             }, false)
 
         })
-        
+
         tableCalendar.appendChild(tbody)
     })
-    
-    tableCalendar.getElementsByTagName("tbody")[0].style.display = "table-row-group";
 
+    loadLogicCalendar()
     console.log("Create table ")
     
 }
@@ -194,6 +211,17 @@ function refreshCalendar() {
     console.log(titleC[document.getElementById("selCampionato").value])
     
     titleCalendar.innerHTML = titleC[document.getElementById("selCampionato").value]
+    
     createTableGiornate()
+    
+}
+
+/*Seleziona la giornata più vicina temporalemente*/
+function selectActiveDay() {
+    active_day = 0;
+    
+    tbody_giornate[active_day].style.display = "table-row-group";
+    all_giornate[active_day].classList.add("selected");
+    all_giornate[active_day].scrollIntoView({behavior: "smooth", block: "end", inline: "center"})
 }
 
