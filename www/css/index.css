@@ -66,6 +66,10 @@ button {
     width: 100%;
     z-index: 1;
     display: table;
+    background-image: url('../img/TuttoBOCCE 500px.png');
+    background-size: 60vw;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .statusBar h1 {
@@ -126,7 +130,7 @@ button {
     text-align: center;
     width: 20%;
     height: 100%;
-    background-size: 10vw;
+    background-size: 70%;
 }
 
 .menuBarIos {
@@ -141,72 +145,115 @@ button {
 
 .menuBarAndroid .active {
     background-color: #f59c00;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .menuBarAndroid .statistiche {
-    background-image: url('../img/stats.png');
+    background-image: url('../img/Statistiche_A.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .menuBarAndroid .homepage {
-    background-image: url('../img/home.png');
+    background-image: url('../img/Home_A.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .menuBarAndroid .risultati {
-    background-image: url('../img/result.png');
+    background-image: url('../img/Calendario_A.png');
     background-repeat: no-repeat;
     background-position: center;
+    background-size: 90%;
 }
 
 .menuBarAndroid .classifiche {
-    background-image: url('../img/standing.png');
+    background-image: url('../img/Classifiche_A.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .menuBarAndroid .utente {
-    background-image: url('../img/team.png');
+    background-image: url('../img/Profilo_A.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.menuBarIos .active {
-    background-color: white;
+.menuBarAndroid #changeImg.statistiche{
+    background-image: url('../img/Statistiche_B.png');
+}
+
+.menuBarAndroid #changeImg.homepage {
+    background-image: url('../img/Home_B.png');
+}
+
+.menuBarAndroid #changeImg.risultati {
+    background-image: url('../img/Calendario_B.png');
+}
+
+.menuBarAndroid #changeImg.classifiche {
+    background-image: url('../img/Classifiche_B.png');
+}
+
+.menuBarAndroid #changeImg.utente {
+    background-image: url('../img/Profilo_B.png');
 }
 
 .menuBarIos .statistiche {
-    background-image: url('../img/stats.png');
+    background-image: url('../img/Statistiche_B.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .menuBarIos .homepage {
-    background-image: url('../img/home.png');
+    background-image: url('../img/Home_B.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .menuBarIos .risultati {
-    background-image: url('../img/result.png');
+    background-image: url('../img/Calendario_B.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .menuBarIos .classifiche {
-    background-image: url('../img/standing.png');
+    background-image: url('../img/Classifiche_B.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .menuBarIos .utente {
-    background-image: url('../img/team.png');
+    background-image: url('../img/Profilo_B.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
+.menuBarIos #changeImg.statistiche{
+    background-image: url('../img/Statistiche_A.png');
+
+}
+
+.menuBarIos #changeImg.homepage {
+    background-image: url('../img/Home_A.png');
+}
+
+.menuBarIos #changeImg.risultati {
+    background-image: url('../img/Calendario_A.png');
+}
+
+.menuBarIos #changeImg.classifiche {
+    background-image: url('../img/Classifiche_A.png');
+}
+
+.menuBarIos #changeImg.utente {
+    background-image: url('../img/Profilo_A.png');
+}
+
+.menuBarIos .active {
+    background-color: white;
+}
 
 .marginBarTop {
     height: var(--top);
@@ -221,13 +268,13 @@ button {
 }
 
 #logo {
-    background-image: url('../img/logo.png');
+    background-image: url('../img/Logo accedi 500x700px.png');
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: contain;
     background-position: center;
-    height: 256px;
     width: 100%;
-    margin-top: 10%;
+    height: 50vh;
+    margin-top: 10%; 
 }
 
 #login{
@@ -257,10 +304,12 @@ button {
 }
 
 .logoLogin {
-    height: 170px;
-    background-image: url('../img/logo.png');
+    height: 25vh;
+    background-image: url('../img/Logo%20tondo%20300px.png');
     background-position: center;
     background-repeat: no-repeat;
+    background-size: contain;
+    margin: 5% 0;
 }
 
 .container {    
@@ -321,7 +370,7 @@ button {
 
 #user h1 {
     height:100%;
-    background-image: url('../img/user.png');
+    background-image: url('../img/Logo%20tondo%20300px.png');
     background-repeat: no-repeat;
     background-size: contain;
     width: 30%;

@@ -7,6 +7,11 @@ function onLoad() {
             console.log(user)
             console.log(device.platform)
             //navigator.notification.alert(device.platform, function(){})
+            
+            if(window.MobileAccessibility) {
+                window.MobileAccessibility.usePreferredTextZoom(false);
+            }
+            
             if (device.platform == "Android") {
                 StatusBar.styleBlackTranslucent();
                 document.documentElement.style.setProperty('--bottom', '0px');

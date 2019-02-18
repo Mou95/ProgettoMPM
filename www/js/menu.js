@@ -26,8 +26,11 @@ function manageNav(index) {
     if (activePage != index) {
         /*Devo cambiare pagina*/
         navs[activePage].classList.remove("active");
+        navs[activePage].id = "";
         
         activePage = index;
+        
+        navs[activePage].id = "changeImg";
         navs[activePage].classList.add("active");
         var show = document.getElementsByClassName("page_show")[0]
         show.classList.remove("page_show");

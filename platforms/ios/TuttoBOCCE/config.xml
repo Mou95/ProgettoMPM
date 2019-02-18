@@ -29,6 +29,12 @@
         <param name="ios-package" value="CDVStatusBar" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="NetworkStatus">
+        <param name="ios-package" value="CDVConnection" />
+    </feature>
+    <feature name="MobileAccessibility">
+        <param name="ios-package" onload="true" value="CDVMobileAccessibility" />
+    </feature>
     <name>TuttoBOCCE</name>
     <description>
         L'app che ti terrà aggiornato sul mondo delle bocce italiane.

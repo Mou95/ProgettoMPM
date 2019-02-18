@@ -1,6 +1,10 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady( event ) {
+    
+    if(window.MobileAccessibility) {
+       window.MobileAccessibility.usePreferredTextZoom(false);
+    }
     console.log('Received Event:'+ event );
     var login = document.getElementById('login');
     var user = firebase.auth().currentUser;
