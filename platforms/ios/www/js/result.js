@@ -88,12 +88,7 @@ function sendResult( event ) {
 function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2, p_1, p_2) {
     if (g_1.length == n && g_2.length == n && p_1 >= min && p_1 <= max && p_2 >= min && p_2 <= max) {
         console.log("posso inserire il tabellino")
-        /*COSE DA FARE NOW
-        - aggiornare docuemnto con tabellino V
-        - aggioranre statistiche giocatore v
-        - aggioranre punteggio totale partita V
-        - aggioranre se tabellino completo o no
-        */
+        
         console.log(id_giornata)
         var partita = db.doc("giornate/"+id_giornata)
         
@@ -170,6 +165,8 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
                 
                 partita.update(update_tabellino)
                 .then(function() {
+                    
+                    navigator.notification.alert("Tabellino aggiornato!!", function(){}, "Successo!")
                     console.log("Document successfully updated!");
                 });
                 
@@ -177,6 +174,7 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
                 
             } else {
                 /*Tabellino già presente*/
+                navigator.notification.alert("Il tabellino contiene già la partita che hai inserito", function(){}, "Attenzione!")
                 console.log("tabellino già presente")
             }
         }).catch(function(error) {
@@ -185,6 +183,7 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
         
         
     } else {
+        navigator.notification.alert("I dati che hai inserito non sono corretti", function(){}, "Errore!")
         console.log("Valori sballati")
     }
 }
@@ -226,8 +225,6 @@ function updateStanding(tot_1, tot_2, squadra) {
 }
 
 
-/*PROBLEMA -> PERSONE STESSO NOME*/
-//MANCA AGGIORNARE MEDIE
 function updateStats(giocatori, squadra, tipo, punteggio, risultato) {
     
     giocatori.forEach(function(giocatore) {

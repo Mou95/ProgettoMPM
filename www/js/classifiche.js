@@ -1,10 +1,3 @@
-//TODO:
-/* 
-GESTIRE ERRORI DB
-CREARE FUNZIONE DEDICATA A UNICO CAMPIONATO COSì PER RENDERE + SEMPLICE UPDATE
-*/
-
-
 var created = false;
 var db = firebase.firestore();
 var classifiche = document.getElementById("page_classifiche").getElementsByClassName("classifica")

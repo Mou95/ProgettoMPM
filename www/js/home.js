@@ -3,6 +3,11 @@ function onLoad() {
     firebase.auth().onAuthStateChanged(function(user) {
         console.log("check user")
         if (user) {
+            
+            createStandings()
+            loadUser()
+            createVariable()
+            createCalendar()
             // User is signed in.
             console.log(user)
             console.log(device.platform)
@@ -12,7 +17,7 @@ function onLoad() {
                 window.MobileAccessibility.usePreferredTextZoom(false);
             }
             
-            if (device.platform == "Android") {
+            if (device.platform != "iOS") {
                 StatusBar.styleBlackTranslucent();
                 document.documentElement.style.setProperty('--bottom', '0px');
                 document.documentElement.style.setProperty('--top', '90px');
@@ -25,10 +30,6 @@ function onLoad() {
                 document.getElementById("navMenu").classList.add("menuBarIos")
                 console.log("Not Android")
             }
-            createStandings()
-            loadUser()
-            createVariable()
-            createCalendar()
         } else {
             //user is signed out
             window.open("index.html", "_self")

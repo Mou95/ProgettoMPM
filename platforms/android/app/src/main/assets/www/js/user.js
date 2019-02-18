@@ -53,11 +53,7 @@ function changePsw() {
 
             user.updatePassword(new_psw).then(function() {
               // Update successful.
-                navigator.notification.alert("Password cambiata!", function() {
-                    
-                    window.open("home.html", "_self");
-                    
-                }, "Successo") 
+                navigator.notification.alert("Password cambiata!", function() {}, "Successo") 
 
 
             }).catch(function(error) {

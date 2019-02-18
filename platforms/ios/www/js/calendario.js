@@ -1,5 +1,3 @@
-/*GESTIRE LOGICA CON NUMERI CALCOLATI DOPO CREAZIONE TABELLE*/
-
 var db = firebase.firestore();
 var active_day = 0;
 var n_giornate;
@@ -19,15 +17,23 @@ var titleC = {
 var tableCalendar = document.getElementById("tableGiornate");
 var navCalendar = document.getElementById("ulGiornate")
 var titleCalendar = document.getElementById("titleCalendar")
+var loaded = false;
 
 function loadLogicCalendar() {
     tbody_giornate = tableCalendar.getElementsByTagName("tbody");
-    
-    selectActiveDay()
 
-    $( ".giornataIntera" ).on( "swiperight", swipeRightCalendar );
-    $( ".giornataIntera" ).on( "swipeleft", swipeLeftCalendar );
+    selectActiveDay()
+    
     $( ".NumeroGiornata" ).on( "tap", selectTableCalendar );
+    
+    if (!loaded) {
+
+        $( ".giornataIntera" ).on( "swiperight", swipeRightCalendar );
+        $( ".giornataIntera" ).on( "swipeleft", swipeLeftCalendar );
+        
+        
+        loaded = true
+    }
 }
 
 function swipeRightCalendar( event ){
@@ -218,6 +224,11 @@ function refreshCalendar() {
 
 /*Seleziona la giornata più vicina temporalemente*/
 function selectActiveDay() {
+    
+    for (var i = 0; i<tbody_giornate.length; i++) {
+        tbody_giornate[i].style.display = "none";
+    }
+    
     active_day = 0;
     
     tbody_giornate[active_day].style.display = "table-row-group";

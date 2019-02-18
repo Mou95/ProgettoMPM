@@ -6,11 +6,11 @@ function onDeviceReady( event ) {
        window.MobileAccessibility.usePreferredTextZoom(false);
     }
     console.log('Received Event:'+ event );
+    
     var login = document.getElementById('login');
     var user = firebase.auth().currentUser;
     if (user) {
-        //logged in
-        navigator.notification.alert("logged", function(){})
+        
         console.log('user logged');
         window.open('home.html', "_self"); 
         

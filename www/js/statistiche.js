@@ -1,9 +1,4 @@
 /* TODO
-- MIGLIORARE CREAZIONE/ELIMINAZIONE TABELLE E SELEZIONE TABLE SHOW
-- FILTRARE TABELLE PER NOME DEL GIOCATORE
-- PREVEDERE PULSANTE CERCA
-- GESTIONE ERRORI
-- FILTERING PRIMA DI CREAZIONE TABELLA
 - ELIMINARE GIOCATORI CHE NON HANNO FATTO QUELLE PROVE
 */
 var dots_stat = document.getElementById("page_statistiche").getElementsByClassName("dot")
@@ -144,8 +139,9 @@ function changeEntryTableStat(campionato, change) {
 }
 
 function refreshTable() {
-    if (campionato.value != "" && specialita.value != "") {
+    if (specialita.value != "") {
         
+        document.getElementById("infoStat").style.display = "none";
         deleteTable();
         
         /*Calcola statistiche*/

@@ -105,6 +105,7 @@ function createTabellino(id, camp, giornata, index) {
     completo = match["completo"]
     
     if (!completo) {
+        console.log("Aggiungo button")
         document.getElementsByClassName("addButton")[0].style.display = "block";
         
     } else {

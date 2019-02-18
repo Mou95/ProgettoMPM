@@ -1,24 +1,22 @@
 var activePage = 2;
 var navs = document.getElementById("navMenu").getElementsByTagName("div")
 
-function getQueryVariable(variable) {
-    var query = window.location.search.substring(1);
-    console.log(decodeURI(query))
-    var vars = query.split("&");
-
-    for (var i=0; i < vars.length; i++) {
-       var pair = vars[i].split("=");
-        
-       if(pair[0] == variable) {
-           return pair[1].replace('%20',' ');
-       }
-    }
-    return(false);
-}
-
 function removeButtonNavigation() {
     document.getElementsByClassName("backButton")[0].style.display = "none";
     document.getElementsByClassName("addButton")[0].style.display = "none";
+    
+    document.removeEventListener("backbutton", closeTabellino); 
+    document.removeEventListener("backbutton", closeResult);  
+    /*document.addEventListener("backbutton", function(){
+        navigator.notification.confirm("Vuoi tornare alla pagina iniziale?", function(buttonIndex) {
+
+        if (buttonIndex == 1) {
+            firebase.auth().signOut();
+            window.open("index.html", "_self")
+        }
+
+    }, "Conferma", ["Sì", "No"]) 
+    })*/
 }
 
 function manageNav(index) {

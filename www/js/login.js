@@ -17,16 +17,3 @@ access.addEventListener('touchend', function(e) {
         navigator.notification.alert("Email o Password errate", function(){}, "Attenzione")
     });
 }, false);
-
-$(function(){
-    var $body = $('body'); 
-
-    /* bind events */
-    $(document)
-    .on('focus', 'input', function() {
-        $body.addClass('fixfixed');
-    })
-    .on('blur', 'input', function() {
-        $body.removeClass('fixfixed');
-    });
-})

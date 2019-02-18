@@ -104,7 +104,7 @@ button {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    background-color: #4CAF50;
+    background-color: #f59c00;
     float: right;
     position: fixed;
     top : 0;
@@ -336,23 +336,17 @@ button {
     font-size: 14pt;
 }
 
-.fixfixed .formButton {
-    position: absolute; 
-} 
-
 .formButton {
     background-color: #f59c00;
     border: none;
     color: white;
     display: block;
-    width: 80%;
+    width: 100%;
     font-size: 24pt;
     text-transform: uppercase;
     font-weight: bold;
     padding: 5px 0;
-    position: fixed;
-    bottom: 7%;
-    left: 10%;
+    margin: 20px 0 0 0;
 }
 /*Homepage*/
 
@@ -422,7 +416,7 @@ button {
 
 .psw_input {
     background-color: #ededed;
-    color: #c6c6c6;
+    color: black;
     text-align: left;
     width: 90%;
     margin: 5px 5%;
@@ -449,10 +443,6 @@ button {
 }
 
 /*Classifiche*/
-#page_classifiche {
-    
-}
-
 #classifica-slider {
     height: 70vh;
     touch-action: manipulation;
@@ -640,6 +630,12 @@ to {opacity: 1}
 }
 
 /*Statistiche*/
+#infoStat {
+    margin: 80px 3%;
+    font-weight: bold;
+    font-size: 10pt;
+}
+
 #stat-slider {
     height: 70vh;
     touch-action: manipulation;
