@@ -97,20 +97,15 @@ button {
 }
 
 .addButton {
-    height: 40px;
-    border: none;
-    width: 10%;
-    background-image: url('../img/add.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
     background-color: #f59c00;
-    float: right;
-    position: fixed;
-    top : 0;
-    right: 15px;
-    z-index: 1;
-    display: none;
+    border: none;
+    color: white;
+    width: 60%;
+    font-size: 10pt;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 0;
+    margin: 5px 20%;
 }
 
 /*Nav*/
@@ -376,15 +371,20 @@ button {
 #nome_user {
     margin-left: 7%;
     color: #3c3c3b;
+    width: 53%;
 }
 
 #username_user {
     font-size: 14pt;
     font-weight: bold;
+    overflow: scroll;
+    width: 90%;
 }
 
 #email_user {
     font-size: 7pt;
+    overflow: hidden;
+    width: 90%;
 }
 
 .userButton {
@@ -616,7 +616,7 @@ button {
 
 @-webkit-keyframes fade {
     from {opacity: .5} 
-to {opacity: 1}
+    to {opacity: 1}
 }
 
 @keyframes fade {
@@ -778,18 +778,31 @@ to {opacity: 1}
     background-color: #ededed;
 }
 
-#tableGiornate td {
-    border: 0.1em solid gray;
-    overflow: hidden;
-    padding: 15px 0.2em;
+#dataGiornata {
+    padding: 5px;
+    background-color: #3c3c3b;
+    color: white;
+    font-weight: bold;
 }
+
+#tableGiornate tr {
+    border: 1px solid #3c3c3b;
+}
+
+#tableGiornate td {
+    overflow: hidden;
+}
+
+
 
 .PrimaSquadra {
     width: 30%;
+    padding: 15px 0.2em;
 }
 
 .PunteggioPrimaSquadra {
     width: 10%;
+    font-weight: bold;
 }
 
 .StatoPartita {
@@ -798,6 +811,7 @@ to {opacity: 1}
 
 .PunteggioSecondaSquadra {
     width: 10%;
+    font-weight: bold;
 }
 
 .SecondaSquadra {
@@ -858,7 +872,7 @@ to {opacity: 1}
     text-transform: none;
     table-layout: fixed;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
 }
 
 #TableIncontro td {

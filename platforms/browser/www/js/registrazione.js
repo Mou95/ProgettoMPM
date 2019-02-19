@@ -1,7 +1,7 @@
 $.mobile.autoInitializePage = false;
 
 var regist = document.getElementsByClassName('formButton')[0]
-regist.addEventListener('touchend', function(e) {
+regist.addEventListener('click', function(e) {
         e.preventDefault();
         //Take value from form
         let email = document.getElementById("email").value;
@@ -32,7 +32,7 @@ regist.addEventListener('touchend', function(e) {
                                   // An error happened.
                                 });
                             }
-                        });
+                        }, "Successo");
 
                        
                         

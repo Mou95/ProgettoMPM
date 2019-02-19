@@ -2,7 +2,7 @@ var access = document.getElementsByClassName('formButton')[0]
 var accedi = document.getElementById("email")
 $.mobile.autoInitializePage = false;
 
-access.addEventListener('touchend', function(e) {
+access.addEventListener('click', function(e) {
     e.preventDefault()
     //Take value from form
     var email =document.getElementById("email").value;

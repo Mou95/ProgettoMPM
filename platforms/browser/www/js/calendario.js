@@ -1,5 +1,5 @@
 var db = firebase.firestore();
-var active_day = 0;
+var active_day;
 var n_giornate;
 var all_giornate;
 var tbody_giornate;
@@ -95,6 +95,7 @@ function createCalendar() {
 
                 var add = change.doc.data()["partite"];
                 add["id"] = change.doc.id;
+                add["data"] = change.doc.data()["data"]
 
                 array_giornate[change.doc.data()["campionato"]].push(add)
 
@@ -114,6 +115,7 @@ function changeEntryTableCalendar(change) {
     //var id = array_giornate[campionato][giornata]["id"]
     array_giornate[campionato][giornata] = change.doc.data()["partite"]
     array_giornate[campionato][giornata]["id"] = change.doc.id;
+    array_giornate[campionato][giornata]["data"] = change.doc.data()["data"];
     
     refreshCalendar();
     
@@ -157,11 +159,6 @@ function createTableGiornate() {
 
             var row = tbody.insertRow(0);
 
-            /*var uri = "tabellino.html?idg="+giornata.id+"&idp="+doc.id;
-            var res = uri;
-
-            row.onclick = function(){window.open(res, "_self")}*/
-
             var td = row.insertCell(0);
             td.classList.add("PrimaSquadra");
             td.appendChild(document.createTextNode(partita["prima_squadra"]));
@@ -178,13 +175,32 @@ function createTableGiornate() {
             td.classList.add("SecondaSquadra");
             td.appendChild(document.createTextNode(partita["seconda_squadra"]));
 
-            row.addEventListener("touchend", function() {
+            row.addEventListener("click", function() {
                 openTabellino()
                 createTabellino(partite["id"], camp, index_giornata, index)
             }, false)
 
         })
+        
+        var row = tbody.insertRow(0);
+        var td = row.insertCell(0);
+        td.id = "dataGiornata";
+        td.colSpan = "4"
+        
+        var today = partite["data"].toDate();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
 
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+          dd = '0' + dd;
+        } 
+        if (mm < 10) {
+          mm = '0' + mm;
+        } 
+        var today = dd + '/' + mm + '/' + yyyy;
+        td.appendChild(document.createTextNode(today));
+        
         tableCalendar.appendChild(tbody)
     })
 
@@ -195,6 +211,7 @@ function createTableGiornate() {
 
 function openTabellino() {
     
+    console.log("Open Tabellino")
     document.getElementById("page_calendario").classList.remove("page_show")
     document.getElementById("page_calendario").classList.add("no_page_show")
     
@@ -225,14 +242,45 @@ function refreshCalendar() {
 /*Seleziona la giornata più vicina temporalemente*/
 function selectActiveDay() {
     
+    var camp = document.getElementById("selCampionato").value;
+    
+    var min = Number.POSITIVE_INFINITY;
+    console.log(min)
+    var data = Date.now();
+    console.log(data)
     for (var i = 0; i<tbody_giornate.length; i++) {
         tbody_giornate[i].style.display = "none";
+        
+        console.log("DATA " +data)
+        console.log("MENO "+array_giornate[camp][i]["data"])
+        console.log(dateDifference(data, array_giornate[camp][i]["data"].toDate()))
+        
+        var diff = dateDifference(data, array_giornate[camp][i]["data"].toDate());
+        if (diff < min) {
+            min = diff;
+            active_day = i;
+        }
     }
     
-    active_day = 0;
+    console.log(active_day)
     
     tbody_giornate[active_day].style.display = "table-row-group";
     all_giornate[active_day].classList.add("selected");
     all_giornate[active_day].scrollIntoView({behavior: "smooth", block: "end", inline: "center"})
+}
+    
+function dateDifference(date1, date2) {
+    
+    //Get 1 day in milliseconds
+  var one_day=1000*60*60*24;
+
+  var date2_ms = date2.getTime();
+
+  // Calculate the difference in milliseconds
+  var difference_ms = date2_ms - date1;
+    
+  // Convert back to days and return
+  return Math.abs(Math.round(difference_ms/one_day)); 
+
 }
 

@@ -2,16 +2,14 @@ var db = firebase.firestore()
 var form = document.getElementsByTagName("form")[0]
 var prima_s, seconda_s;
 
-document.getElementById("inviaResult").addEventListener("touchend", sendResult, false)
+document.getElementById("inviaResult").addEventListener("click", sendResult, false)
 
 function logicAddResult() {
     
-    document.getElementsByClassName("addButton")[0].style.display = "none";
-    
     document.removeEventListener("backbutton", closeTabellino); 
-    document.getElementsByClassName("backButton")[0].removeEventListener("touchend", closeTabellino); 
+    document.getElementsByClassName("backButton")[0].removeEventListener("click", closeTabellino); 
     
-    document.getElementsByClassName("backButton")[0].addEventListener("touchend", closeResult, false);
+    document.getElementsByClassName("backButton")[0].addEventListener("click", closeResult, false);
 
     document.addEventListener("backbutton", closeResult, false); 
     
@@ -29,7 +27,7 @@ function closeResult(e) {
     document.getElementById("page_tabellino").classList.remove("no_page_show")
   
     document.removeEventListener("backbutton", closeResult);  
-    document.getElementsByClassName("backButton")[0].removeEventListener("touchend", closeResult); 
+    document.getElementsByClassName("backButton")[0].removeEventListener("click", closeResult); 
 
     logicTabellino()
     refreshTabellino()

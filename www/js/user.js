@@ -12,7 +12,7 @@ function loadUser(){
         var change = document.getElementById("pswButton");
         var conferma = document.getElementById("newPswButton");
 
-        log.addEventListener("touchend", function() {
+        log.addEventListener("click", function() {
 
             navigator.notification.confirm("Vuoi fare il logout?", function(buttonIndex) {
 
@@ -25,7 +25,7 @@ function loadUser(){
 
         }, false);
 
-        change.addEventListener("touchend", function() {
+        change.addEventListener("click", function() {
             var psw = document.getElementById("changePsw");
             if (psw.style.display === "block")
                 psw.style.display = "none";
@@ -33,7 +33,7 @@ function loadUser(){
                 psw.style.display = "block";
         }, false);
 
-        conferma.addEventListener("touchend", changePsw, false);
+        conferma.addEventListener("click", changePsw, false);
 
     } else {
         //user is signed out

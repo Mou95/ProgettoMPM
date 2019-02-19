@@ -3,7 +3,6 @@ var navs = document.getElementById("navMenu").getElementsByTagName("div")
 
 function removeButtonNavigation() {
     document.getElementsByClassName("backButton")[0].style.display = "none";
-    document.getElementsByClassName("addButton")[0].style.display = "none";
     
     document.removeEventListener("backbutton", closeTabellino); 
     document.removeEventListener("backbutton", closeResult);  

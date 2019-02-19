@@ -109,8 +109,8 @@ $(function(){
     console.log("swiped");
     $( "#classifica-slider" ).on( "swiperight", swipeRight );
     $( "#classifica-slider" ).on( "swipeleft", swipeLeft );
-    $( "#backArrow_class" ).on( "touchend", swipeRight );
-    $( "#forwArrow_class" ).on( "touchend", swipeLeft );
+    $( "#backArrow_class" ).on( "tap", swipeRight );
+    $( "#forwArrow_class" ).on( "tap", swipeLeft );
 });
 
 function swipeRight( event ){

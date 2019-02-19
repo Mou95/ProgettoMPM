@@ -35,8 +35,8 @@ $(function(){
     console.log("swiped");
     $( "#stat-slider" ).on( "swiperight", swipeRightStat );
     $( "#stat-slider" ).on( "swipeleft", swipeLeftStat );
-    $( "#backArrow_stat" ).on( "touchend", swipeRightStat );
-    $( "#forwArrow_stat" ).on( "touchend", swipeLeftStat );
+    $( "#backArrow_stat" ).on( "tap", swipeRightStat );
+    $( "#forwArrow_stat" ).on( "tap", swipeLeftStat );
 });
 
 function swipeRightStat( event ){

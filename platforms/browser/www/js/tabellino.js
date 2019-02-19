@@ -1,7 +1,7 @@
 var db = firebase.firestore();
 var id_giornata, id_campionato, numero_giornata, numero_partita;
 
-document.getElementsByClassName("addButton")[0].addEventListener("touchend", function() {
+document.getElementsByClassName("addButton")[0].addEventListener("click", function() {
         document.getElementById("page_tabellino").classList.remove("page_show")
         document.getElementById("page_tabellino").classList.add("no_page_show")
         document.getElementById("page_result").classList.add("page_show")
@@ -13,7 +13,7 @@ document.getElementsByClassName("addButton")[0].addEventListener("touchend", fun
     }, false)
 
 function logicTabellino() {
-    document.getElementsByClassName("backButton")[0].addEventListener("touchend", closeTabellino, false);
+    document.getElementsByClassName("backButton")[0].addEventListener("click", closeTabellino, false);
 
     document.addEventListener("backbutton", closeTabellino, false); 
     
@@ -31,7 +31,6 @@ function closeTabellino(e) {
     
     document.removeEventListener("backbutton", closeTabellino);  
     document.getElementsByClassName("backButton")[0].style.display = "none";
-    document.getElementsByClassName("addButton")[0].style.display = "none";
     
 }
 
@@ -106,10 +105,10 @@ function createTabellino(id, camp, giornata, index) {
     
     if (!completo) {
         console.log("Aggiungo button")
-        document.getElementsByClassName("addButton")[0].style.display = "block";
+        document.getElementById("footerTabellini").style.display = "block";
         
     } else {
-        document.getElementsByClassName("addButton")[0].style.display = "none";
+        document.getElementById("footerTabellini").style.display = "none";
     }
     
     var table = document.getElementById("TableIncontro");
@@ -182,10 +181,11 @@ function refreshTabellino() {
     createTabellino(id_giornata, id_campionato, numero_giornata, numero_partita)
     
     if (!completo) {
-        document.getElementsByClassName("addButton")[0].style.display = "block";
+        console.log("Aggiungo button")
+        document.getElementById("footerTabellini").style.display = "block";
         
     } else {
-        document.getElementsByClassName("addButton")[0].style.display = "none";
+        document.getElementById("footerTabellini").style.display = "none";
     }
 }
 

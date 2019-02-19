@@ -17,7 +17,7 @@ function onLoad() {
                 window.MobileAccessibility.usePreferredTextZoom(false);
             }
             
-            if (device.platform != "iOS") {
+            if (device.platform == "iOS") {
                 StatusBar.styleBlackTranslucent();
                 document.documentElement.style.setProperty('--bottom', '0px');
                 document.documentElement.style.setProperty('--top', '90px');
@@ -36,6 +36,10 @@ function onLoad() {
         }
     });
 }
+
+document.addEventListener("offline", function() {
+    navigator.notification.alert("Alcune funzionalità potrebbero essere non utilizzabili", function(){}, "SEI OFFLINE!")
+})
 
 
 
