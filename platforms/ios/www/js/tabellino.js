@@ -29,7 +29,8 @@ function closeTabellino(e) {
     document.getElementById("page_tabellino").classList.remove("page_show")
     document.getElementById("page_tabellino").classList.add("no_page_show")
     
-    document.removeEventListener("backbutton", closeTabellino);  
+    document.removeEventListener("backbutton", closeTabellino); 
+    document.addEventListener("backbutton", returnIndex, false)
     document.getElementsByClassName("backButton")[0].style.display = "none";
     
 }

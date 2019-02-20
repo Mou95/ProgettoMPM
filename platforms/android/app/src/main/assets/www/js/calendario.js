@@ -19,7 +19,8 @@ var navCalendar = document.getElementById("ulGiornate")
 var titleCalendar = document.getElementById("titleCalendar")
 var loaded = false;
 
-function loadLogicCalendar() {
+function loadLogicCalendar() {  
+    
     tbody_giornate = tableCalendar.getElementsByTagName("tbody");
 
     selectActiveDay()
@@ -28,8 +29,8 @@ function loadLogicCalendar() {
     
     if (!loaded) {
 
-        $( ".giornataIntera" ).on( "swiperight", swipeRightCalendar );
-        $( ".giornataIntera" ).on( "swipeleft", swipeLeftCalendar );
+        $( "#giornataIntera" ).on( "swiperight", swipeRightCalendar );
+        $( "#giornataIntera" ).on( "swipeleft", swipeLeftCalendar );
         
         
         loaded = true
@@ -93,6 +94,7 @@ function createCalendar() {
             }
             if (change.type === "added") {
 
+                console.log("ASd")
                 var add = change.doc.data()["partite"];
                 add["id"] = change.doc.id;
                 add["data"] = change.doc.data()["data"]
@@ -176,6 +178,7 @@ function createTableGiornate() {
             td.appendChild(document.createTextNode(partita["seconda_squadra"]));
 
             row.addEventListener("click", function() {
+                document.removeEventListener("backbutton", returnIndex)
                 openTabellino()
                 createTabellino(partite["id"], camp, index_giornata, index)
             }, false)
@@ -189,7 +192,7 @@ function createTableGiornate() {
         
         var today = partite["data"].toDate();
         var dd = today.getDate();
-        var mm = today.getMonth() + 1; //January is 0!
+        var mm = today.getMonth() + 1; 
 
         var yyyy = today.getFullYear();
         if (dd < 10) {
@@ -252,8 +255,7 @@ function selectActiveDay() {
         tbody_giornate[i].style.display = "none";
         
         console.log("DATA " +data)
-        console.log("MENO "+array_giornate[camp][i]["data"])
-        console.log(dateDifference(data, array_giornate[camp][i]["data"].toDate()))
+        console.log(array_giornate[camp][i]["data"].toDate())
         
         var diff = dateDifference(data, array_giornate[camp][i]["data"].toDate());
         if (diff < min) {

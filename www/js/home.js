@@ -6,18 +6,19 @@ function onLoad() {
             
             createStandings()
             loadUser()
-            createVariable()
+            createStats()
             createCalendar()
             // User is signed in.
             console.log(user)
             console.log(device.platform)
-            //navigator.notification.alert(device.platform, function(){})
+            
+            document.addEventListener("backbutton", returnIndex, false)
             
             if(window.MobileAccessibility) {
                 window.MobileAccessibility.usePreferredTextZoom(false);
             }
             
-            if (device.platform == "iOS") {
+            if (device.platform != "iOS") {
                 StatusBar.styleBlackTranslucent();
                 document.documentElement.style.setProperty('--bottom', '0px');
                 document.documentElement.style.setProperty('--top', '90px');

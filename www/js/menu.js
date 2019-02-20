@@ -6,8 +6,12 @@ function removeButtonNavigation() {
     
     document.removeEventListener("backbutton", closeTabellino); 
     document.removeEventListener("backbutton", closeResult);  
-    /*document.addEventListener("backbutton", function(){
-        navigator.notification.confirm("Vuoi tornare alla pagina iniziale?", function(buttonIndex) {
+    document.removeEventListener("backbutton", returnIndex)
+    document.addEventListener("backbutton", returnIndex, false)
+}
+
+function returnIndex(){
+    navigator.notification.confirm("Vuoi tornare alla pagina iniziale?", function(buttonIndex) {
 
         if (buttonIndex == 1) {
             firebase.auth().signOut();
@@ -15,7 +19,6 @@ function removeButtonNavigation() {
         }
 
     }, "Conferma", ["Sì", "No"]) 
-    })*/
 }
 
 function manageNav(index) {
@@ -38,11 +41,26 @@ function manageNav(index) {
                 document.getElementById("page_statistiche").classList.add("page_show")
                 document.getElementById("page_statistiche").classList.remove("no_page_show")
                 
+                var $footer = $('#footerStat');
+                var $content = $('#stat-slider');
+
+                var height = $(window).height() - $footer.height() - 140;
+                $content.height(height);
+                
                 break;
             case 1: 
                  document.getElementById("page_calendario").classList.add("page_show")
                 document.getElementById("page_calendario").classList.remove("no_page_show")
-                createTableGiornate()
+                
+                var $header = $('#header_calendario');
+                var $footer = $('#footerCalendar');
+                var $content = $('#giornataIntera');
+
+                var height = $(window).height() - $header.height() - $footer.height() - 140;
+                $content.height(height); 
+                
+                refreshCalendar()
+                
                 break;
             case 2:
                 document.getElementById("page_home").classList.add("page_show")
@@ -52,6 +70,12 @@ function manageNav(index) {
             case 3:
                 document.getElementById("page_classifiche").classList.add("page_show")
                 document.getElementById("page_classifiche").classList.remove("no_page_show")
+                
+                var $footer = $('#footerClassifica');
+                var $content = $('#classifica-slider');
+
+                var height = $(window).height() - $footer.height() - 140;
+                $content.height(height);
                 
                 break;
             case 4: 

@@ -50,7 +50,6 @@
             <p id="titleStat">Serie A1 18/19</p>
             <button class="arrowClass show" id="forwArrow_stat"></button>
         </div>
-        <p id="infoStat">Seleziona una specialità per visualizzare le statistiche!!</p>
         <div id="stat-slider">
             <div class="classifica">
                 <table id="tableStatProve" class="table" summary="Tabella della statistiche scelte">
@@ -100,7 +99,7 @@
                 </table>
             </div>
         </div>
-        <div class="dot-slider">
+        <div class="dot-slider" id="footerStat">
             <div id="filtraStat">
                 <select class="selezioneStat" id="selSpecialita" onchange=refreshTable()>
                     <option value="" disabled selected>Specialità</option>
@@ -133,7 +132,7 @@
                 </ul>
             </div>
         </div>
-        <div class="giornataIntera">
+        <div id="giornataIntera">
             <table id="tableGiornate">
                 <colgroup>
                     <col class="PrimaSquadra" >
@@ -149,12 +148,11 @@
                         <th scole="col"></th>
                     </tr>
                 </thead>
-
             </table>
 
         </div>
         
-        <div class="dot-slider">
+        <div class="dot-slider" id="footerCalendar">
             <p>Clicca sul match per visualizzare il tabellino</p>
             <div id="filtraCalendar">
                 <select id="selCampionato" onchange=refreshCalendar()>
@@ -304,7 +302,7 @@
     
     <div id="page_result" class="no_page_show">
         <div id="formResult">
-        
+            <p>Seleziona la specialità, i giocatori e il risultato, infine premi INVIA per farlo sapere a tutti!!</p>
             <form>
                 <select id="provaForm">
                     <option value="" disabled selected>Seleziona la prova</option>
@@ -408,7 +406,7 @@
                 </table>
             </div>
         </div>
-        <div class="dot-slider">
+        <div class="dot-slider" id="footerClassifica">
             <p class="legendaClassifica">V vittorie / n pareggi / p sconfitte</p>
             <p class="legendaClassifica">+ punti fatti / - punti subiti / pt punti totali</p>
             <span class="dot active-dot"></span> 
@@ -442,8 +440,6 @@
             <button class="userButton" id="logoutButton">Logout</button>
         </div>
     </div>
-    
-    <div class="marginBarBottom"></div>
     
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/home.js"></script>

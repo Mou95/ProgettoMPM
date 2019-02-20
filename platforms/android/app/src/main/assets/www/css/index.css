@@ -3,6 +3,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family:fontPersonalizzato, 'Arial';
 }
 
 :root {
@@ -32,7 +33,7 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    font-family:fontPersonalizzato, 'Helvetica';
+    font-family:fontPersonalizzato, 'Arial';
     font-size:12pt;
     height:100%;
     width:100%;
@@ -254,9 +255,6 @@ button {
     height: var(--top);
 }
 
-.marginBarBottom {
-    height: var(--bottom);
-}
 /*Index*/
 #bodyIndex {
     background-color: #f59c00;
@@ -284,12 +282,13 @@ button {
     border: none;
     color: #f59c00;
     display: block;
-    margin: 15px 0 0 0;
+    margin: 20px 0 0 0;
     width: 100%;
     font-size: 24pt;
     text-transform: uppercase;
     font-weight: bold;
     padding: 5px 0;
+   
 }
 
 
@@ -328,7 +327,7 @@ button {
     text-align: center;
     font-weight: lighter;
     color: #3c3c3b;
-    font-size: 14pt;
+    font-size: 12pt;
 }
 
 .formButton {
@@ -477,15 +476,17 @@ button {
 }
 
 #backArrow_class {
-    background-image: url(../img/left-arrow.png);
+    background-image: url(../img/back-2.png);
     left: 15px;
     float: left;
+    background-color: #3c3c3b;
 }
 
 #forwArrow_class {
-    background-image: url(../img/right-arrow.png);
+    background-image: url(../img/right-arrow-2.png);
     right: 15px;
     float: right;
+    background-color: #3c3c3b;
 }
 
 .titleTabelle p {
@@ -507,7 +508,7 @@ button {
     table-layout: fixed;
     overflow: hidden;
     color: black;
-    margin-bottom: calc(var(--bottom) + 95px);
+    margin-bottom: calc(var(--bottom) + 65px);
 }
 
 .table thead {
@@ -630,27 +631,28 @@ button {
 }
 
 /*Statistiche*/
-#infoStat {
-    margin: 80px 3%;
-    font-weight: bold;
-    font-size: 10pt;
+#tableStatTiri,
+#tableStatProve {
+    margin-bottom: calc(var(--bottom) + 95px);
 }
 
 #stat-slider {
-    height: 70vh;
+    margin-top: 50px;
     touch-action: manipulation;
 }
 
 #backArrow_stat {
-    background-image: url(../img/left-arrow.png);
+    background-image: url(../img/back-2.png);
     left: 15px;
     float: left;
+    background-color: #3c3c3b;
 }
 
 #forwArrow_stat {
-    background-image: url(../img/right-arrow.png);
+    background-image: url(../img/right-arrow-2.png);
     right: 15px;
     float: right;
+    background-color: #3c3c3b;
 }
 
 .giocatore_s {
@@ -696,7 +698,7 @@ button {
     margin-right: 5%;
     font-weight: lighter;
     border: 1px solid #f59c00;
-    font-family: fontPersonalizzato;
+   
     font-size: 9pt;
 }
 
@@ -707,7 +709,7 @@ button {
     border: 1px solid #f59c00;
     font-weight: lighter;
     padding: 2px 3px;
-    font-family: fontPersonalizzato;
+   
     font-size: 9pt;
 }
 
@@ -748,10 +750,9 @@ button {
     border-top: 3px solid #ededed;
 }
 
-.giornataIntera {
+#giornataIntera {
     width: 100%; 
     touch-action: manipulation;
-    height: 60vh;
 }
 
 #tableGiornate {
@@ -760,6 +761,7 @@ button {
     text-align: center;
     background-color: white;
     border-collapse: collapse;
+    margin-bottom: calc(var(--bottom) + 75px);
 }
 
 #tableGiornate thead {
@@ -767,7 +769,7 @@ button {
 }
 
 #tableGiornate tbody {
-    display: none;
+    /*display: none;*/
 }
 
 #tableGiornate tbody tr:nth-child(odd){
@@ -829,7 +831,7 @@ button {
     width: 40%;
     font-weight: lighter;
     border: 1px solid #f59c00;
-    font-family: fontPersonalizzato;
+   
     font-size: 9pt;
     margin: 7px 0;
 }
@@ -877,7 +879,7 @@ button {
 
 #TableIncontro td {
     font-size: 10pt;
-    border: 0.1em solid gray;
+    border: 0.1em solid #3c3c3b;
     overflow: hidden;
     padding: 0.7em 0.2em;
     font-weight: bold;
@@ -899,11 +901,15 @@ button {
 .Specialita {
     width: 33%;
     font-weight: bold;
-    color: #f59c00;
+    color: #3c3c3b;
     background-color: #ededed;
 }
 
 .PrimoPunteggio {
+    width: 16.5%;
+}
+
+.SecondoPunteggio {
     width: 16.5%;
 }
 
@@ -914,8 +920,15 @@ button {
 
 /*Aggiungi Risultati*/
 #formResult {
-    margin-top: 10%;
     background-color: #ededed;
+    padding-bottom: 4%;
+    margin-bottom: calc(var(--bottom) + 20px);
+}
+
+#formResult p {
+    color: #3c3c3b;
+    text-align: center;
+    padding-top: 2%;
 }
 
 #provaForm {
@@ -923,26 +936,23 @@ button {
     background-color: #f59c00;
     color: white;
     width: 60%;
-    margin: 5% 20%;
-    font-weight: lighter;
-    font-family: fontPersonalizzato;
+    margin: 5% 20% 4% 20%;
+    border: 1px solid #f59c00;
 }
 
 .formSquadre {
-    margin: 5% 10%;
     border: none;
-    
 }
 
 .formSquadre legend {
     text-align: center;
-    
     font-weight: bold;
+    font-size: 15pt;
 }
 
 .formSquadre select {
     width: 60%;
-    margin: 5% 20%;
+    margin: 4% 20%;
     padding: 5px;
 }
 
@@ -950,6 +960,8 @@ button {
     width: 30%;
     margin-left: 35%;
     padding: 10px;
+    text-align: center;
+    margin-bottom: 4%;
 }
 
 #inviaResult {
@@ -957,12 +969,12 @@ button {
     border: none;
     color: white;
     display: block;
-    width: 80%;
+    width: 60%;
     font-size: 15pt;
     text-transform: uppercase;
     font-weight: bold;
     padding: 5px 0;
-    margin-left: 10%;
+    margin-left: 20%;
 }
 
 .show {

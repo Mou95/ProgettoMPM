@@ -80,7 +80,7 @@ function setArrowsStat() {
     } 
 }
 
-function createVariable() {
+function createStats() {
     
     var i = 0;
     campionato.forEach(function(camp) {
@@ -141,7 +141,7 @@ function changeEntryTableStat(campionato, change) {
 function refreshTable() {
     if (specialita.value != "") {
         
-        document.getElementById("infoStat").style.display = "none";
+        //document.getElementById("infoStat").style.display = "none";
         deleteTable();
         
         /*Calcola statistiche*/
