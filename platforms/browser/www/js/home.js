@@ -1,8 +1,24 @@
 $.mobile.autoInitializePage = false;
+    
+/*document.addEventListener("offline", function() {
+    navigator.notification.alert("Alcune funzionalità potrebbero essere non utilizzabili", function(){
+        window.open("error.html", "_self")
+    }, "SEI OFFLINE!")
+})*/
+
+/*document.addEventListener("online", function() {
+    navigator.notification.alert("ONLINE", loadAll, "ONLINE!")
+})*/
+
 function onLoad() {
     firebase.auth().onAuthStateChanged(function(user) {
         console.log("check user")
         if (user) {
+            
+            var $content = $('#homeContent');
+
+            var height = $(window).height() - 90;
+            $content.height(height);
             
             createStandings()
             loadUser()
@@ -31,6 +47,7 @@ function onLoad() {
                 document.getElementById("navMenu").classList.add("menuBarIos")
                 console.log("Not Android")
             }
+            
         } else {
             //user is signed out
             window.open("index.html", "_self")
@@ -38,9 +55,7 @@ function onLoad() {
     });
 }
 
-document.addEventListener("offline", function() {
-    navigator.notification.alert("Alcune funzionalità potrebbero essere non utilizzabili", function(){}, "SEI OFFLINE!")
-})
+
 
 
 
