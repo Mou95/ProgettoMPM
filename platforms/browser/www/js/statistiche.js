@@ -81,8 +81,6 @@ function setArrowsStat() {
 }
 
 function createStats() {
-    
-    var i = 0;
     campionato.forEach(function(camp) {
         
         var squadre_camp = squadre.where("campionato", "==", camp)
@@ -100,11 +98,9 @@ function createStats() {
                         if (change.type === "modified") {
 
                             changeEntryTableStat(camp, change)
-                            
-
                         }
                         if (change.type === "added") {
-
+                            
                             array_player[camp].push(change.doc.data())
 
                         }
@@ -112,14 +108,10 @@ function createStats() {
                     })
                 });
             })
-
-
         })
         .catch(function(error) {
             console.log("Error getting documents: ", error);
-        });
-    
-        i++;    
+        });  
     }) 
     
 }
@@ -141,24 +133,15 @@ function changeEntryTableStat(campionato, change) {
 function refreshTable() {
     if (specialita.value != "") {
         
-        //document.getElementById("infoStat").style.display = "none";
         deleteTable();
         
-        /*Calcola statistiche*/
-        console.log("Entrato")
         var spec_id = specialita.value;
 
         console.log("Filtro "+spec_id)
 
-        /*Cerco tutti i giocatori delle squadre che fanno parte del campionato scelto*/
-
         createTable(spec_id)
         
-    } else {
-        
-        /*Do Nothing*/
-        
-    }
+    } 
 }
 
 function deleteTable() {
@@ -177,7 +160,7 @@ function deleteTable() {
 }
     
 function createTable(spec_id) {
-    
+    console.log(array_player)
     var medie;
     var table_to_create;
     
@@ -193,10 +176,11 @@ function createTable(spec_id) {
     
     console.log("Inizio creazione tabella")
     
+    console.log(array_player[campionato[active_stat]].length)
+    
     array_player[campionato[active_stat]].forEach(function(player) {
         
         if(player["name"].includes(nome.value)) {
-            
             tbody.appendChild(createTableRow(player, medie, spec_id))
 
         }
