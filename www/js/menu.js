@@ -11,9 +11,14 @@ function removeButtonNavigation() {
 }
 
 function returnIndex(){
-    navigator.notification.confirm("Vuoi tornare alla pagina iniziale?", function(buttonIndex) {
+    navigator.notification.confirm("Vuoi tornare alla pagina iniziale e fare il logout?", function(buttonIndex) {
 
         if (buttonIndex == 1) {
+            
+            if (window.localStorage.getItem("email") != null) {
+                window.localStorage.removeItem("email");
+                window.localStorage.removeItem("psw");
+            }
             firebase.auth().signOut();
             window.open("index.html", "_self")
         }
