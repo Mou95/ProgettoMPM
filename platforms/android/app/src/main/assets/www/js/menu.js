@@ -59,7 +59,7 @@ function manageNav(index) {
                 var height = $(window).height() - $header.height() - $footer.height() - 140;
                 $content.height(height); 
                 
-                refreshCalendar()
+                refreshCalendar(true)
                 
                 break;
             case 2:

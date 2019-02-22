@@ -19,11 +19,36 @@ var navCalendar = document.getElementById("ulGiornate")
 var titleCalendar = document.getElementById("titleCalendar")
 var loaded = false;
 
-function loadLogicCalendar() {  
+function loadLogicCalendar(loadNewDay) {  
     
     tbody_giornate = tableCalendar.getElementsByTagName("tbody");
 
-    selectActiveDay()
+    var camp = document.getElementById("selCampionato").value;
+    
+    var min = Number.POSITIVE_INFINITY;
+   
+    var data = Date.now();
+
+    for (var i = 0; i<tbody_giornate.length; i++) {
+        tbody_giornate[i].style.display = "none";
+        
+        console.log("DATA " +data)
+        console.log(array_giornate[camp][i]["data"].toDate())
+        
+        if (loadNewDay) {
+            var diff = dateDifference(data, array_giornate[camp][i]["data"].toDate());
+            if (diff < min) {
+                min = diff;
+                active_day = i;
+            }
+        }
+    }
+    
+    console.log(active_day)
+    
+    tbody_giornate[active_day].style.display = "table-row-group";
+    all_giornate[active_day].classList.add("selected");
+    all_giornate[active_day].scrollIntoView({behavior: "smooth", block: "end", inline: "center"})
     
     $( ".NumeroGiornata" ).on( "tap", selectTableCalendar );
     
@@ -87,7 +112,7 @@ function createCalendar() {
     giornate.onSnapshot(function(snapshot) {
         snapshot.docChanges().forEach(function(change) {
             if (change.type === "modified") {
-
+                change.doc.data();
                 changeEntryTableCalendar(change)
                 refreshTabellino()
 
@@ -114,12 +139,11 @@ function changeEntryTableCalendar(change) {
     var campionato = change.doc.data()["campionato"];  
     var giornata = change.doc.data()["numero"]-1; 
     
-    //var id = array_giornate[campionato][giornata]["id"]
     array_giornate[campionato][giornata] = change.doc.data()["partite"]
     array_giornate[campionato][giornata]["id"] = change.doc.id;
     array_giornate[campionato][giornata]["data"] = change.doc.data()["data"];
     
-    refreshCalendar();
+    refreshCalendar(false)
     
 }
 
@@ -137,7 +161,7 @@ function addLi(n) {
     all_giornate = navCalendar.getElementsByClassName("NumeroGiornata");
 }
 
-function createTableGiornate() {
+function createTableGiornate(loadNewDay) {
     
     console.log("start")
     
@@ -206,9 +230,8 @@ function createTableGiornate() {
         
         tableCalendar.appendChild(tbody)
     })
-
-    loadLogicCalendar()
-    console.log("Create table ")
+    
+    loadLogicCalendar(loadNewDay)
     
 }
 
@@ -224,7 +247,7 @@ function openTabellino() {
     
 }
 
-function refreshCalendar() {
+function refreshCalendar(reloadLogic) {
     
     tableCalendar.querySelectorAll('tbody').forEach(function(tbody) {
         tableCalendar.removeChild(tbody);
@@ -238,39 +261,10 @@ function refreshCalendar() {
     
     titleCalendar.innerHTML = titleC[document.getElementById("selCampionato").value]
     
-    createTableGiornate()
+    createTableGiornate(reloadLogic)
     
 }
 
-/*Seleziona la giornata più vicina temporalemente*/
-function selectActiveDay() {
-    
-    var camp = document.getElementById("selCampionato").value;
-    
-    var min = Number.POSITIVE_INFINITY;
-    console.log(min)
-    var data = Date.now();
-    console.log(data)
-    for (var i = 0; i<tbody_giornate.length; i++) {
-        tbody_giornate[i].style.display = "none";
-        
-        console.log("DATA " +data)
-        console.log(array_giornate[camp][i]["data"].toDate())
-        
-        var diff = dateDifference(data, array_giornate[camp][i]["data"].toDate());
-        if (diff < min) {
-            min = diff;
-            active_day = i;
-        }
-    }
-    
-    console.log(active_day)
-    
-    tbody_giornate[active_day].style.display = "table-row-group";
-    all_giornate[active_day].classList.add("selected");
-    all_giornate[active_day].scrollIntoView({behavior: "smooth", block: "end", inline: "center"})
-}
-    
 function dateDifference(date1, date2) {
     
     //Get 1 day in milliseconds

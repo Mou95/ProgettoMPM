@@ -16,7 +16,23 @@ function onDeviceReady( event ) {
         
     } else {
         //logged out
-        login.style.display = "block";
+        if (window.localStorage.getItem("email") != null) {
+            var email = window.localStorage.getItem("email");
+            var psw = window.localStorage.getItem("psw");
+            
+            console.log("WOOOOOW")
+            
+            firebase.auth().signInWithEmailAndPassword(email, psw)
+            .then(function() {
+                console.log("Chiamata a firebase con successo")
+                window.open("home.html", "_self")
+            }).catch(function(error) {
+                //Handle errors
+                login.style.display = "block";
+            });
+        } else {
+            login.style.display = "block";
+        }
     }
     
     if (device.platform == "Android") {

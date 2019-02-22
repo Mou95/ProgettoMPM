@@ -17,6 +17,11 @@ function loadUser(){
             navigator.notification.confirm("Vuoi fare il logout?", function(buttonIndex) {
 
                 if (buttonIndex == 1) {
+                    
+                    if (window.localStorage.getItem("email") != null) {
+                        window.localStorage.removeItem("email");
+                        window.localStorage.removeItem("psw");
+                    }
                     firebase.auth().signOut();
                     window.open("index.html", "_self")
                 }

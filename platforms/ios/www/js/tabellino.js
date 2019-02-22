@@ -180,15 +180,17 @@ function createTabellino(id, camp, giornata, index) {
 function refreshTabellino() {
     if (id_giornata != null) {
         createTabellino(id_giornata, id_campionato, numero_giornata, numero_partita)
+
+
+        if (!completo) {
+            console.log("Aggiungo button")
+            document.getElementById("footerTabellini").style.display = "block";
+
+        } else {
+            document.getElementById("footerTabellini").style.display = "none";
+        }
     }
     
-    if (!completo) {
-        console.log("Aggiungo button")
-        document.getElementById("footerTabellini").style.display = "block";
-        
-    } else {
-        document.getElementById("footerTabellini").style.display = "none";
-    }
 }
 
 

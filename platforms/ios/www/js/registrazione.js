@@ -29,13 +29,10 @@ regist.addEventListener('click', function(e) {
                                     window.open("home.html", "_self")
                                   // Update successful.
                                 }).catch(function(error) {
-                                  // An error happened.
+                                    console.log("Errore aggiornamento username")
                                 });
                             }
-                        }, "Successo");
-
-                       
-                        
+                        });
                     }, "Attenzione")
                     
                 }).catch(function(error) {
