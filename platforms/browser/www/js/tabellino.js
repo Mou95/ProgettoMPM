@@ -177,9 +177,10 @@ function createTabellino(id, camp, giornata, index) {
     refreshMatches()
     
 }
-
 function refreshTabellino() {
-    createTabellino(id_giornata, id_campionato, numero_giornata, numero_partita)
+    if (id_giornata != null) {
+        createTabellino(id_giornata, id_campionato, numero_giornata, numero_partita)
+    }
     
     if (!completo) {
         console.log("Aggiungo button")

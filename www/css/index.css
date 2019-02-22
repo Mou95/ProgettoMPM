@@ -640,6 +640,10 @@ button {
     touch-action: manipulation;
 }
 
+#suggerStat {
+    
+}
+
 #backArrow_stat {
     background-image: url(../img/back-2.png);
     left: 15px;

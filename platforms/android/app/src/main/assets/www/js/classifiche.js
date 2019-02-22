@@ -40,7 +40,7 @@ function createStandings() {
                     console.log("Document data:", campionato.data()["nome"]);
 
                     /*Create standing*/
-                    var standing = db.collection("campionati/"+campionato.id+"/classifica").orderBy("punti","desc")
+                    var standing = db.collection("campionati/"+campionato.id+"/classifica").orderBy("punti","desc").orderBy("punti_fatti","desc").orderBy("punti_subiti","asc")
                     
                     var table = document.getElementById(campionato.id)
                     var tbody = document.createElement('tbody')
