@@ -14,9 +14,6 @@ function onLoad() {
     firebase.auth().onAuthStateChanged(function(user) {
         console.log("check user")
         if (user) {
-            navigator.notification.alert($(".statusBar").width(), function(){}, "Successo!")
-                    
-            
             
             var $content = $('#homeContent');
 
