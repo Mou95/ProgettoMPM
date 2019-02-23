@@ -15,10 +15,15 @@ function onLoad() {
         console.log("check user")
         if (user) {
             
+            
             var $content = $('#homeContent');
 
             var height = $(window).height() - 90;
             $content.height(height);
+            
+            document.getElementById("page_home").classList.remove("no_page_show");
+            document.getElementById("page_home").classList.add("page_show");
+            
             
             createStandings()
             loadUser()

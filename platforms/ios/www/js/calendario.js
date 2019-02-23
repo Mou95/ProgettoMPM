@@ -204,6 +204,7 @@ function createTableGiornate(loadNewDay) {
             row.addEventListener("click", function() {
                 document.removeEventListener("backbutton", returnIndex)
                 openTabellino()
+                console.log("CIAO "+partite["id"]+" "+camp+" "+index_giornata+" "+index)
                 createTabellino(partite["id"], camp, index_giornata, index)
             }, false)
 
