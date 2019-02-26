@@ -100,7 +100,9 @@
             </div>
         </div>
         <div class="dot-slider" id="footerStat">
+            <p class="legendaClassifica">V vittorie / n pareggi / p sconfitte / m punteggio medio</p>
             <div id="filtraStat">
+                <p>Seleziona una specialità per visualizzare le statistiche</p>
                 <select class="selezioneStat" id="selSpecialita" onchange=refreshTable()>
                     <option value="" disabled selected>Specialità</option>
                     <option value="individuale">Individuale</option>
@@ -114,7 +116,6 @@
                 </select>
                 <input id="nomeGiocatore" type="search" onchange=refreshTable() placeholder="Cerca giocatore...">
             </div>
-            <p class="legendaClassifica">V vittorie / n pareggi / p sconfitte / m punteggio medio</p>
             <span class="dot active-dot"></span> 
             <span class="dot"></span> 
             <p>Scorri a destra/sinistra per cambiare campionato</p>
@@ -372,7 +373,7 @@
                 <p id="titleClass">Serie A1 18/19</p>
                 <button class="arrowClass show" id="forwArrow_class"></button>
             </div>
-            <div class="classifica show fade">
+            <div class="classifica show">
                 <table id="A1_1819" class="table" >
                     <colgroup>
                         <col class="posizione" >
@@ -398,7 +399,7 @@
                     </thead>
                 </table>
             </div>
-            <div class="classifica fade">
+            <div class="classifica">
                 <table id="A2_1819_est" class="table" summary="Tabella della classifica relativa al campionato scelto">
                     <colgroup>
                         <col class="posizione" >

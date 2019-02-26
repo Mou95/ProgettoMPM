@@ -24,10 +24,12 @@ function onLoad() {
             document.getElementById("page_home").classList.add("page_show");
             
             
+            createCalendar()
             createStandings()
             loadUser()
             createStats()
-            createCalendar()
+        
+
             // User is signed in.
             console.log(user)
             console.log(device.platform)

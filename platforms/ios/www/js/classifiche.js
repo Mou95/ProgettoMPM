@@ -1,4 +1,3 @@
-var created = false;
 var db = firebase.firestore();
 var classifiche = document.getElementById("page_classifiche").getElementsByClassName("classifica")
 var dots = document.getElementById("page_classifiche").getElementsByClassName("dot")
@@ -24,84 +23,80 @@ var championship = [
 ]
 
 function createStandings() {
-    if (!created) {
-        created = true;
-        console.log("Creando le tabelle");
-        
-        title.innerHTML = championship[active_class];
-        
-        var leagues = db.collection("campionati");
+    console.log("Creando le tabelle");
 
-        leagues.get()
-        .then(function(querySnapshot) {
-            querySnapshot.forEach(function(campionato) {
+    title.innerHTML = championship[active_class];
 
-                if (campionato.exists) {
-                    console.log("Document data:", campionato.data()["nome"]);
+    var leagues = db.collection("campionati");
 
-                    /*Create standing*/
-                    var standing = db.collection("campionati/"+campionato.id+"/classifica").orderBy("punti","desc").orderBy("punti_fatti","desc").orderBy("punti_subiti","asc")
-                    
-                    var table = document.getElementById(campionato.id)
-                    var tbody = document.createElement('tbody')
-                    var i = 1;
-                    
-                    /*Add listener to change table on database modify*/
-                    standing
-                    .onSnapshot(function(snapshot) {
-                        snapshot.docChanges().forEach(function(change) {
-                            if (change.type === "modified") {
-                                console.log("Modified data: ", change.doc.data());
-                                
-                                changeEntryTable(campionato.id, change)
-                                
-                            }
-                            
-                            if (change.type === "added") {
-                                console.log("Added data: ", change.doc.data());
-                                
-                                var tr = document.createElement('tr');
+    leagues.get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(campionato) {
 
-                                var td = document.createElement('td');
+            if (campionato.exists) {
+                console.log("Document data:", campionato.data()["nome"]);
 
-                                td.classList.add("posizione"); 
+                /*Create standing*/
+                var standing = db.collection("campionati/"+campionato.id+"/classifica").orderBy("punti","desc").orderBy("punti_fatti","desc").orderBy("punti_subiti","asc")
 
-                                td.appendChild(document.createTextNode(i))
+                var table = document.getElementById(campionato.id)
+                var tbody = document.createElement('tbody')
+                var i = 1;
+
+                /*Add listener to change table on database modify*/
+                standing
+                .onSnapshot(function(snapshot) {
+                    snapshot.docChanges().forEach(function(change) {
+                        if (change.type === "modified") {
+                            console.log("Modified data: ", change.doc.data());
+
+                            changeEntryTable(campionato.id, change)
+
+                        }
+
+                        if (change.type === "added") {
+                            console.log("Added data: ", change.doc.data());
+
+                            var tr = document.createElement('tr');
+
+                            var td = document.createElement('td');
+
+                            td.classList.add("posizione"); 
+
+                            td.appendChild(document.createTextNode(i))
+
+                            tr.appendChild(td);
+
+                            for (var key in property_table) {
+
+                                td = document.createElement('td');
+                                td.classList.add(property_table[key]);  
+
+                                td.appendChild(document.createTextNode(change.doc.data()[property_table[key]]))
 
                                 tr.appendChild(td);
-
-                                for (var key in property_table) {
-
-                                    td = document.createElement('td');
-                                    td.classList.add(property_table[key]);  
-
-                                    td.appendChild(document.createTextNode(change.doc.data()[property_table[key]]))
-
-                                    tr.appendChild(td);
-                                }
-
-                                tbody.appendChild(tr);
-
-                                i++; 
                             }
-                        })
-                        
-                        table.appendChild(tbody);
-                        
-                    });
 
-                } else {
-                    // doc.data() will be undefined in this case
-                    created = false;
-                    console.log("No such document!");
-                }
-                
-            })
-        }).catch(function(error) {
-            created = false;
-            console.log("Error getting document:", error);
-        });
-    }
+                            tbody.appendChild(tr);
+
+                            i++; 
+                        }
+                    })
+
+                    table.appendChild(tbody);
+
+                });
+
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+
+        })
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+    
 }
 
 $(function(){

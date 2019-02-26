@@ -108,7 +108,7 @@ function selectTableCalendar( event ) {
 
 function createCalendar() {
     var giornate = db.collection("giornate").orderBy("numero", "asc");
-    
+
     giornate.onSnapshot(function(snapshot) {
         snapshot.docChanges().forEach(function(change) {
             if (change.type === "modified") {
@@ -130,6 +130,7 @@ function createCalendar() {
 
         })
     });
+    
 
 }
 
@@ -249,6 +250,7 @@ function openTabellino() {
 }
 
 function refreshCalendar(reloadLogic) {
+    console.log("REFRESH")
     
     tableCalendar.querySelectorAll('tbody').forEach(function(tbody) {
         tableCalendar.removeChild(tbody);

@@ -2,6 +2,12 @@ var access = document.getElementsByClassName('formButton')[0]
 var accedi = document.getElementById("email")
 $.mobile.autoInitializePage = false;
 
+var backLogin = document.getElementsByClassName("backButtonMenu")[0]
+
+backLogin.addEventListener("click", function() {
+    window.open("index.html", "_self")
+})
+
 access.addEventListener('click', function(e) {
     e.preventDefault()
     //Take value from form

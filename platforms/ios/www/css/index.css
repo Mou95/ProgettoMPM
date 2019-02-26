@@ -285,6 +285,20 @@ button {
 
 
 /*Registrazione and Login*/
+.backButtonMenu {
+    border: none;
+    width: 30px;
+    height: 30px;
+    background-image: url('../img/left-arrow.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #ededed;
+    float: left;
+    margin-left: 8px;
+    z-index: 1;
+}
+
 .bodyLogin {
     background-color: #ededed;
 }
@@ -295,7 +309,7 @@ button {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    margin: 5% 0;
+    margin: 5% 48px 5% 0;
 }
 
 .container {    
@@ -438,7 +452,6 @@ button {
 
 /*Classifiche*/
 #classifica-slider {
-    height: 70vh;
     touch-action: manipulation;
 }
 
@@ -586,6 +599,7 @@ button {
 
 .legendaClassifica {
     text-transform: uppercase;
+    margin-top: 3px;
 }
 
 .dot {
@@ -603,23 +617,6 @@ button {
     background-color: #3c3c3b;
 }
 
-.fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-    from {opacity: .5} 
-    to {opacity: 1}
-}
-
-@keyframes fade {
-    from {opacity: .5} 
-    to {opacity: 1}
-}
-
 .dot-slider p {
     font-size: 7pt;
     width: 100%;
@@ -634,10 +631,6 @@ button {
 #stat-slider {
     margin-top: 50px;
     touch-action: manipulation;
-}
-
-#suggerStat {
-    
 }
 
 #backArrow_stat {
@@ -683,9 +676,13 @@ button {
     width: 14%;
 }
 
-#filtraStat{
-    margin-top: 10px;
-    margin-bottom: 6px;
+#filtraStat p {
+    margin-bottom: 3px;
+}
+
+#filtraStat {
+    margin-top: 5px;
+    margin-bottom: 3px;
     font-size: 8pt;
 }
 
@@ -697,7 +694,6 @@ button {
     margin-right: 5%;
     font-weight: lighter;
     border: 1px solid #f59c00;
-   
     font-size: 9pt;
 }
 
@@ -1001,7 +997,7 @@ button {
     background-color: #ededed;
     border-left: 4px solid #f59c00;
     border-right: none;
-    padding-left: 2%;
+    padding-left: 4%;
 }
 
 .imgDiv {
@@ -1015,8 +1011,8 @@ button {
 }
 
 .spiegazione {
-    text-align: center;
-    width: 68%;
+    text-align: left;
+    width: 66%;
     font-size: 12pt;
 }
 

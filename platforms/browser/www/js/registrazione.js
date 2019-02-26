@@ -1,5 +1,11 @@
 $.mobile.autoInitializePage = false;
 
+var back = document.getElementsByClassName("backButtonMenu")[0]
+
+back.addEventListener("click", function() {
+    window.open("index.html", "_self")
+})
+
 var regist = document.getElementsByClassName('formButton')[0]
 regist.addEventListener('click', function(e) {
         e.preventDefault();
