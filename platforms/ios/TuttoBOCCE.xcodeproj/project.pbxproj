@@ -360,7 +360,7 @@
 				INFOPLIST_FILE = "TuttoBOCCE/TuttoBOCCE-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1";
 				PRODUCT_NAME = "TuttoBOCCE";
 			};
 			name = Debug;
@@ -382,7 +382,7 @@
 				INFOPLIST_FILE = "TuttoBOCCE/TuttoBOCCE-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1";
 				PRODUCT_NAME = "TuttoBOCCE";
 			};
 			name = Release;
@@ -411,6 +411,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				TARGETED_DEVICE_FAMILY = "1";
 			};
 			name = Debug;
 		};
@@ -437,6 +438,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				TARGETED_DEVICE_FAMILY = "1";
 			};
 			name = Release;
 		};

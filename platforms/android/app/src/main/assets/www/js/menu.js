@@ -84,7 +84,7 @@ function manageNav(index) {
                 
                 break;
             case 4: 
-                document.getElementById("page_user").classList.add("page_show")
+                 document.getElementById("page_user").classList.add("page_show")
                 document.getElementById("page_user").classList.remove("no_page_show")
                 
                 break;

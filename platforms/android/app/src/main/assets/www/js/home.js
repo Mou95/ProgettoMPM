@@ -1,10 +1,8 @@
 $.mobile.autoInitializePage = false;
-    
-/*document.addEventListener("offline", function() {
-    navigator.notification.alert("Alcune funzionalità potrebbero essere non utilizzabili", function(){
-        window.open("error.html", "_self")
+document.addEventListener("offline", function() {
+    navigator.notification.alert("Alcune funzionalità potrebbero non essere utilizzabili", function(){
     }, "SEI OFFLINE!")
-})*/
+})
 
 /*document.addEventListener("online", function() {
     navigator.notification.alert("ONLINE", loadAll, "ONLINE!")

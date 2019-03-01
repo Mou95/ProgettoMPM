@@ -44,6 +44,10 @@ button {
     outline: none;
 }
 
+select {
+    outline: none;
+}
+
 .hide {
     text-indent: 100%;
     white-space: nowrap;
@@ -918,6 +922,7 @@ button {
     background-color: #ededed;
     padding-bottom: 4%;
     margin-bottom: calc(var(--bottom) + 20px);
+    padding-top: 4%;
 }
 
 #formResult p {
@@ -947,7 +952,7 @@ button {
 
 .formSquadre select {
     width: 60%;
-    margin: 4% 20%;
+    margin: 0 20% 4% 20%;
     padding: 5px;
 }
 
@@ -970,6 +975,13 @@ button {
     font-weight: bold;
     padding: 5px 0;
     margin-left: 20%;
+}
+
+#formResult label {
+    text-align: center;
+    font-size: 8pt;
+    margin: 5% 20% 0 20%;
+    text-transform: uppercase;
 }
 
 /*Homepage*/

@@ -303,7 +303,6 @@
     
     <div id="page_result" class="no_page_show">
         <div id="formResult">
-            <p>Seleziona la specialità, i giocatori e il risultato, infine premi INVIA per farlo sapere a tutti!!</p>
             <form>
                 <select id="provaForm">
                     <option value="" disabled selected>Seleziona la prova</option>
@@ -323,12 +322,14 @@
                 </select>
                 <fieldset class="formSquadre">
                     <legend></legend>
+                    <label for="form1Squadra">Seleziona il/i giocatore/i:</label>
                     <select multiple="multiple" id="form1Squadra" >
                     </select>
                     <input class="punteggio" id="punteggio1Squadra" type="number" placeholder="Punti..."/>
                 </fieldset>
                 <fieldset class="formSquadre">
                     <legend></legend>
+                    <label for="form2Squadra">Seleziona il/i giocatore/i:</label>
                     <select multiple="multiple" id="form2Squadra">
                     </select>
                     <input class="punteggio"  id="punteggio2Squadra" type="number" placeholder="Punti..."/>
