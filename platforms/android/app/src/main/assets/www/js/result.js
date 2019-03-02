@@ -161,21 +161,23 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
 
                 }
                 
-                navigator.notification.confirm("Specialità: "+prova+" \nBRB: Ballabene, Bruzzone, Ferrero \nChiavarese: Peppino Peppino Peppino\n\nRisultato: "+p_1+"-"+p_2, function(buttonIndex) {
+                /*navigator.notification.confirm("Specialità: "+prova+" \nBRB: Ballabene, Bruzzone, Ferrero \nChiavarese: Peppino Peppino Peppino\n\nRisultato: "+p_1+"-"+p_2, function(buttonIndex) {
 
                     if (buttonIndex == 1) {
 
-                        partita.update(update_tabellino)
-                        .then(function() {
-
-                            navigator.notification.alert("Tabellino aggiornato!!", function(){}, "Successo!")
-                            console.log("Document successfully updated!");
-                        });
                         
-                        form.reset()
                     }
 
-                }, "Conferma", ["Invia", "Annulla"]) 
+                }, "Conferma", ["Invia", "Annulla"]) */
+                
+                partita.update(update_tabellino)
+                .then(function() {
+
+                    navigator.notification.alert("Tabellino aggiornato!!", function(){}, "Successo!")
+                    console.log("Document successfully updated!");
+                });
+
+                form.reset()
                 
             } else {
                 /*Tabellino già presente*/
