@@ -40,8 +40,10 @@ body {
     background-color: white;
 }
 
-button {
+button, input {
     outline: none;
+    -webkit-appearance: none;
+    border-radius: 0;
 }
 
 select {
@@ -694,28 +696,11 @@ select {
     padding: 2px;
     background-color: #f59c00;
     color: white;
-    width: 40%;
-    margin-right: 5%;
+    width: 50%;
     font-weight: lighter;
     border: 1px solid #f59c00;
     font-size: 9pt;
 }
-
-#nomeGiocatore {
-    background-color: white;
-    color: #f59c00;
-    width: 40%;
-    border: 1px solid #f59c00;
-    font-weight: lighter;
-    padding: 2px 3px;
-   
-    font-size: 9pt;
-}
-
-#nomeGiocatore::placeholder {
-    color: #f59c00;
-}
-
 
 /*Calendario*/
 #header_calendario {
@@ -827,7 +812,7 @@ select {
     padding: 2px;
     background-color: #f59c00;
     color: white;
-    width: 40%;
+    width: 50%;
     font-weight: lighter;
     border: 1px solid #f59c00;
    
@@ -962,6 +947,7 @@ select {
     padding: 10px;
     text-align: center;
     margin-bottom: 4%;
+    border: none;
 }
 
 #inviaResult {
@@ -990,30 +976,24 @@ select {
     height: 100%;
 }
 
+#first {
+    height: 24%;
+}
+
 .divHome {
     width: 100%;
-    height: 20%;
+    height: 19%;
     background-color: white;
     display: flex;
     align-items: center;
-    border-right: 4px solid #f59c00;
+    border-bottom: 1px solid #f59c00;
 }
 
-.divHome span {
+#intro {
     font-weight: bold;
-    display: block;
-    text-align: center;
-}
-
-.odd {
-    background-color: #ededed;
-    border-left: 4px solid #f59c00;
-    border-right: none;
-    padding-left: 4%;
 }
 
 .imgDiv {
-    
     background-position: center;
     background-repeat: no-repeat;
     width: 20%;
@@ -1025,7 +1005,11 @@ select {
 .spiegazione {
     text-align: left;
     width: 66%;
-    font-size: 12pt;
+    font-size: 11pt;
+}
+
+.last {
+    border-bottom: none;
 }
 
 #logoHome {

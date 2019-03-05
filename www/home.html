@@ -6,8 +6,8 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data:" />
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src * gap: file:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src * 'unsafe-inline' 'unsafe-eval'">
 
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
@@ -114,7 +114,6 @@
                     <option value="progressivo_3">Progressivo a 3</option>
                     <option value="tiro_tecnico">Tiro Tecnico</option>
                 </select>
-                <input id="nomeGiocatore" type="search" onchange=refreshTable() placeholder="Cerca giocatore...">
             </div>
             <span class="dot active-dot"></span> 
             <span class="dot"></span> 
@@ -344,23 +343,23 @@
     
     <div id="page_home" class="no_page_show">
         <div id="homeContent">
-            <div class="divHome">
+            <div class="divHome" id="first">
                 <div id="logoHome" class="imgDiv hide">Logo</div>
                 <p class="spiegazione" id="intro">TuttoBOCCE è la prima app che ti tiene aggiornato sul mondo delle bocce italiane</p>
             </div>
-            <div class="divHome odd">
-                <p class="spiegazione">Scopri le statistiche di tutti i giocatori, divise per specialità</p>
+            <div class="divHome">
                 <div id="logoStat" class="imgDiv hide">Logo</div>
+                <p class="spiegazione">Scopri le statistiche di tutti i giocatori, divise per specialità</p>
             </div>
             <div class="divHome">
                 <div id="logoCalen" class="imgDiv hide">Logo</div>
                 <p class="spiegazione">Sei spettatore di una partita di campionato? Aggiorna LIVE il tabellino per tutti gli utenti</p>
             </div>
-            <div class="divHome odd">
-                <p class="spiegazione">Consulta tutte le classifiche dei principali campionati italiani</p>
-                <div id="logoClass" class="imgDiv hide">Logo</div>
-            </div>
             <div class="divHome">
+                <div id="logoClass" class="imgDiv hide">Logo</div>
+                <p class="spiegazione">Consulta tutte le classifiche dei principali campionati italiani</p>
+            </div>
+            <div class="divHome last">
                 <div id="logoUtente" class="imgDiv hide">Logo</div>
                 <p class="spiegazione">Gestisci il tuo profilo di TuttoBOCCE</p>
             </div>

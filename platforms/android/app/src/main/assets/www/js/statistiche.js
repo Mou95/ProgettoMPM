@@ -15,7 +15,6 @@ var specialita = document.getElementById("selSpecialita");
 var tableProve = document.getElementById("tableStatProve");
 var tableTiri = document.getElementById("tableStatTiri");
 var tables = document.getElementById("stat-slider").getElementsByClassName("classifica");
-var nome = document.getElementById("nomeGiocatore");
 var title_stat = document.getElementById("titleStat");
 var db = firebase.firestore();
 
@@ -180,10 +179,7 @@ function createTable(spec_id) {
     
     array_player[campionato[active_stat]].forEach(function(player) {
         
-        if(player["name"].includes(nome.value)) {
-            tbody.appendChild(createTableRow(player, medie, spec_id))
-
-        }
+        tbody.appendChild(createTableRow(player, medie, spec_id))
 
     })
     
