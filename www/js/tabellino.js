@@ -2,6 +2,12 @@ var db = firebase.firestore();
 var id_giornata, id_campionato, numero_giornata, numero_partita;
 
 document.getElementsByClassName("addButton")[0].addEventListener("click", function() {
+        var $footer = $('#footerResult');
+        var $content = $('#formResult');
+    
+        var height = $(window).height() - $footer.height() - 140;
+        $content.height(height);
+    
         document.getElementById("page_tabellino").classList.remove("page_show")
         document.getElementById("page_tabellino").classList.add("no_page_show")
         document.getElementById("page_result").classList.add("page_show")
