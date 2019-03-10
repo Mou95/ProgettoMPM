@@ -12,6 +12,7 @@ access.addEventListener('click', function(e) {
     e.preventDefault()
     //Take value from form
     var email = document.getElementById("email").value;
+	email = email.replace(/\s/g, '');
     var psw = document.getElementById("psw").value;
     var saveCredential = document.getElementById("keepLogin").checked;
 
