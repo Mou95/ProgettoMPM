@@ -10,7 +10,8 @@ var regist = document.getElementsByClassName('formButton')[0]
 regist.addEventListener('click', function(e) {
         e.preventDefault();
         //Take value from form
-        let email = document.getElementById("email").value;
+        var email = document.getElementById("email").value;
+		email = email.replace(/\s/g, '');
         let psw = document.getElementById("psw").value;
         let r_psw = document.getElementById("psw-repeat").value;
 
