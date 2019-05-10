@@ -2,7 +2,18 @@
 var db = firebase.firestore();
 var id_giornata, id_campionato, numero_giornata, numero_partita;
 
-document.getElementsByClassName("addButton")[0].addEventListener("click", function() {
+document.getElementsByClassName("addHalfButton")[1].addEventListener("click", function() {
+
+    navigator.notification.prompt(
+        'Descrivi l\'errore',  // message
+        function(){},                  // callback to invoke
+        'Errore',            // title
+        ['Invia','Annulla'],             // buttonLabels
+        ''                 // defaultText
+    );
+})
+
+document.getElementsByClassName("addHalfButton")[0].addEventListener("click", function() {
     
         document.getElementById("page_tabellino").classList.remove("page_show")
         document.getElementById("page_tabellino").classList.add("no_page_show")

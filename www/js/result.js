@@ -79,7 +79,7 @@ function sendResult( event ) {
 
         }
     } else {
-         navigator.notification.alert("Alcuni campi non sono stati inseriti!!", function(){}, "Successo!")
+         navigator.notification.alert("Alcuni campi non sono stati inseriti!!", function(){}, "Errore!")
     }
 }
 
