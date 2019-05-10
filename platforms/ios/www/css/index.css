@@ -906,15 +906,11 @@ select {
 /*Aggiungi Risultati*/
 #formResult {
     background-color: #ededed;
-    padding-bottom: 4%;
-    margin-bottom: calc(var(--bottom) + 20px);
-    padding-top: 4%;
+    margin-top: 50px;
 }
 
 #formResult p {
     color: #3c3c3b;
-    padding-top: 2%;
-    
 }
 
 #provaForm {
@@ -922,7 +918,7 @@ select {
     background-color: #f59c00;
     color: white;
     width: 60%;
-    margin: 5% 20% 4% 20%;
+    margin: 15% 20% 4% 20%;
     border: 1px solid #f59c00;
     text-align-last:center;
     font-weight: bold;
@@ -932,7 +928,7 @@ select {
     border: none;
     width: 49%;
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .formSquadre legend {
@@ -974,12 +970,6 @@ select {
     text-align: center;
     font-size: 8pt;
     margin: 5% 10% 0 10%;
-}
-
-#footerResult ul {
-    font-size: 7pt;
-    margin: 0 8%;
-    text-align: left;
 }
 
 #footerResult p {

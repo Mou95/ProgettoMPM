@@ -17,8 +17,8 @@ function logicAddResult() {
     
 }
 
-function closeResult(e) {
-    e.preventDefault(); 
+function closeResult() {
+    //e.preventDefault(); 
         
     document.getElementById("page_result").classList.remove("page_show")
     document.getElementById("page_result").classList.add("no_page_show")
@@ -43,9 +43,9 @@ function sendResult( event ) {
     var g_2 = $('#form2Squadra').val();
     var p_1 = parseInt($('#punteggio1Squadra').val());
     var p_2 = parseInt($('#punteggio2Squadra').val());
-     
-    if (prova != null && g_1 != null && g_2 != null && p_1 != null && p_2 != null) {
-    
+    console.log(p_1,p_2)
+    if (prova != null && g_1 != null && g_2 != null && !isNaN(p_1) && !isNaN(p_2)) {
+        console.log("P1",p_1)
         switch(prova) {
             case "1":
                 checkResult(1, 0, 40, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
@@ -79,118 +79,117 @@ function sendResult( event ) {
 
         }
     } else {
-        /*PRINT ERROR MESSAGE*/
+         navigator.notification.alert("Alcuni campi non sono stati inseriti!!", function(){}, "Successo!")
     }
 }
 
 function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2, p_1, p_2) {
-    if (g_1.length == n && g_2.length == n && p_1 >= min && p_1 <= max && p_2 >= min && p_2 <= max) {
-        console.log("posso inserire il tabellino")
-        
-        console.log(id_giornata)
-        var partita = db.doc("giornate/"+id_giornata)
-        
-        partita.get()
-        .then(function(doc) {
-            var tabellino = doc.data()["partite"][numero_partita]["tabellino"] 
-            
-            if (tabellino[prova] == null) {
-                
-                /*Update tabellino*/
-                var update_tabellino = doc.data()
-                update_tabellino["partite"][numero_partita]["tabellino"] [prova] = {
-                    "g_1" : g_1,
-                    "g_2" : g_2,
-                    "p_1" : p_1,
-                    "p_2" : p_2
-                }
-                
-                if (prova == "6" || prova == "7") {
-                    if (update_tabellino["partite"][numero_partita]["tabellino"]["6"] != null && update_tabellino["partite"][numero_partita]["tabellino"]["7"] != null) {
-                        /*Calcolo punto aggiuntivo tecnico*/
-                        
-                        var sum_prima_squadra = update_tabellino["partite"][numero_partita]["tabellino"]["6"]["p_1"] + update_tabellino["partite"][numero_partita]["tabellino"]["7"]["p_1"]
-                        var sum_seconda_squadra = update_tabellino["partite"][numero_partita]["tabellino"]["6"]["p_2"] + update_tabellino["partite"][numero_partita]["tabellino"]["7"]["p_2"]
-                        
-                        console.log("TECNICO "+sum_prima_squadra+" "+sum_seconda_squadra)
-                        
-                        if (sum_prima_squadra > sum_seconda_squadra) {
-                            update_tabellino["partite"][numero_partita]["punteggio_1"] += 1;
+    //if (g_1.length == n && g_2.length == n && p_1 >= min && p_1 <= max && p_2 >= min && p_2 <= max) {
+    //numero giocatori
+    if (g_1.length == n && g_2.length == n) {
+        //punteggio corretto
+        if (p_1 >= min && p_1 <= max && p_2 >= min && p_2 <= max) {
+            console.log("posso inserire il tabellino")
 
-                        } else if (sum_seconda_squadra > sum_prima_squadra) {
-                            update_tabellino["partite"][numero_partita]["punteggio_2"] += 1;               
-                        }
-                    }                       
-                }
-                
-                /*Update risultato totale e statistiche giocatori*/
-                if (p_1 > p_2) {
-                    /*Vinto prima squadra*/
-                    update_tabellino["partite"][numero_partita]["punteggio_1"] += p_vittoria; p_vittoria;
-                    updateStats(g_1, prima_s, p_1, "w")
-                    updateStats(g_2, seconda_s, tipo, p_2, "l")
-                    
-                } else if (p_2 > p_1) {
-                    /*Vinto seconda squadra*/
-                    update_tabellino["partite"][numero_partita]["punteggio_2"] += p_vittoria;
-                    updateStats(g_1, prima_s, tipo, p_1, "l")
-                    updateStats(g_2, seconda_s, tipo, p_2, "w")
-                    
-                } else {
-                    /*Pareggio*/
-                    update_tabellino["partite"][numero_partita]["punteggio_1"] += p_pareggio;
-                    update_tabellino["partite"][numero_partita]["punteggio_2"] += p_pareggio;
-                    updateStats(g_1, prima_s, tipo, p_1, "t")
-                    updateStats(g_2, seconda_s, tipo, p_2, "t")
-                    
-                }
-                
-                if (Object.keys(update_tabellino["partite"][numero_partita]["tabellino"]).length == 13 && !update_tabellino["partite"][numero_partita]["completo"]) {
-                    
-                    update_tabellino["partite"][numero_partita]["completo"] = true;
-                    
-                    var tot_1 = update_tabellino["partite"][numero_partita]["punteggio_1"]
-                    var tot_2 = update_tabellino["partite"][numero_partita]["punteggio_2"]
-                    
-                    //Aggiorno classifica!!!
-                    updateStanding(tot_1, tot_2, db.collection("campionati/"+id_campionato+"/classifica").where("squadra","==", prima_s))
-                    
-                    updateStanding(tot_2, tot_1, db.collection("campionati/"+id_campionato+"/classifica").where("squadra","==", seconda_s))
-                    
-                    //closeResult()
+            console.log(id_giornata)
+            var partita = db.doc("giornate/"+id_giornata)
 
-                }
-                
-                /*navigator.notification.confirm("Specialità: "+prova+" \nBRB: Ballabene, Bruzzone, Ferrero \nChiavarese: Peppino Peppino Peppino\n\nRisultato: "+p_1+"-"+p_2, function(buttonIndex) {
+            partita.get()
+            .then(function(doc) {
+                var tabellino = doc.data()["partite"][numero_partita]["tabellino"] 
 
-                    if (buttonIndex == 1) {
+                if (tabellino[prova] == null) {
 
-                        
+                    /*Update tabellino*/
+                    var update_tabellino = doc.data()
+                    update_tabellino["partite"][numero_partita]["tabellino"] [prova] = {
+                        "g_1" : g_1,
+                        "g_2" : g_2,
+                        "p_1" : p_1,
+                        "p_2" : p_2
                     }
 
-                }, "Conferma", ["Invia", "Annulla"]) */
-                
-                partita.update(update_tabellino)
-                .then(function() {
+                    if (prova == "6" || prova == "7") {
+                        if (update_tabellino["partite"][numero_partita]["tabellino"]["6"] != null && update_tabellino["partite"][numero_partita]["tabellino"]["7"] != null) {
+                            /*Calcolo punto aggiuntivo tecnico*/
 
-                    navigator.notification.alert("Tabellino aggiornato!!", function(){}, "Successo!")
-                    console.log("Document successfully updated!");
-                });
+                            var sum_prima_squadra = update_tabellino["partite"][numero_partita]["tabellino"]["6"]["p_1"] + update_tabellino["partite"][numero_partita]["tabellino"]["7"]["p_1"]
+                            var sum_seconda_squadra = update_tabellino["partite"][numero_partita]["tabellino"]["6"]["p_2"] + update_tabellino["partite"][numero_partita]["tabellino"]["7"]["p_2"]
 
-                form.reset()
-                
-            } else {
-                /*Tabellino già presente*/
-                navigator.notification.alert("Il tabellino contiene già la partita che hai inserito", function(){}, "Attenzione!")
-                console.log("tabellino già presente")
-            }
-        }).catch(function(error) {
-            console.log("Error getting document:", error);
-        });
-        
+                            console.log("TECNICO "+sum_prima_squadra+" "+sum_seconda_squadra)
+
+                            if (sum_prima_squadra > sum_seconda_squadra) {
+                                update_tabellino["partite"][numero_partita]["punteggio_1"] += 1;
+
+                            } else if (sum_seconda_squadra > sum_prima_squadra) {
+                                update_tabellino["partite"][numero_partita]["punteggio_2"] += 1;               
+                            }
+                        }                       
+                    }
+
+                    /*Update risultato totale e statistiche giocatori*/
+                    if (p_1 > p_2) {
+                        /*Vinto prima squadra*/
+                        update_tabellino["partite"][numero_partita]["punteggio_1"] += p_vittoria; p_vittoria;
+                        updateStats(g_1, prima_s, p_1, "w")
+                        updateStats(g_2, seconda_s, tipo, p_2, "l")
+
+                    } else if (p_2 > p_1) {
+                        /*Vinto seconda squadra*/
+                        update_tabellino["partite"][numero_partita]["punteggio_2"] += p_vittoria;
+                        updateStats(g_1, prima_s, tipo, p_1, "l")
+                        updateStats(g_2, seconda_s, tipo, p_2, "w")
+
+                    } else {
+                        /*Pareggio*/
+                        update_tabellino["partite"][numero_partita]["punteggio_1"] += p_pareggio;
+                        update_tabellino["partite"][numero_partita]["punteggio_2"] += p_pareggio;
+                        updateStats(g_1, prima_s, tipo, p_1, "t")
+                        updateStats(g_2, seconda_s, tipo, p_2, "t")
+
+                    }
+
+                    if (Object.keys(update_tabellino["partite"][numero_partita]["tabellino"]).length == 13 && !update_tabellino["partite"][numero_partita]["completo"]) {
+
+                        update_tabellino["partite"][numero_partita]["completo"] = true;
+
+                        var tot_1 = update_tabellino["partite"][numero_partita]["punteggio_1"]
+                        var tot_2 = update_tabellino["partite"][numero_partita]["punteggio_2"]
+
+                        //Aggiorno classifica!!!
+                        updateStanding(tot_1, tot_2, db.collection("campionati/"+id_campionato+"/classifica").where("squadra","==", prima_s))
+
+                        updateStanding(tot_2, tot_1, db.collection("campionati/"+id_campionato+"/classifica").where("squadra","==", seconda_s))
+
+                        //closeResult()
+
+                    }
+
+                    partita.update(update_tabellino)
+                    .then(function() {
+
+                        navigator.notification.alert("Tabellino aggiornato!!", function(){
+                             closeResult()
+                        }, "Successo!")
+                        console.log("Document successfully updated!");
+                    });
+
+                    form.reset()
+
+                } else {
+                    /*Tabellino già presente*/
+                    navigator.notification.alert("Il tabellino contiene già la partita che hai inserito", function(){}, "Attenzione!")
+                    console.log("tabellino già presente")
+                }
+            }).catch(function(error) {
+                console.log("Error getting document:", error);
+            });
+        } else {
+            navigator.notification.alert("Il punteggio inserito non è corretto", function(){}, "Errore!")
+        }
         
     } else {
-        navigator.notification.alert("I dati che hai inserito non sono corretti", function(){}, "Errore!")
+        navigator.notification.alert("Il numero dei giocatori selezionati non è corretto per la specialità scelta", function(){}, "Errore!")
         console.log("Valori sballati")
     }
 }
