@@ -5,11 +5,25 @@ var id_giornata, id_campionato, numero_giornata, numero_partita;
 document.getElementsByClassName("addHalfButton")[1].addEventListener("click", function() {
 
     navigator.notification.prompt(
-        'Descrivi l\'errore',  // message
-        function(){},                  // callback to invoke
-        'Errore',            // title
-        ['Invia','Annulla'],             // buttonLabels
-        ''                 // defaultText
+        'Descrivi l\'errore che hai trovato in questo tabellino, verrà ricontrollato e risolto',  // message
+        function(results){
+            if (results.buttonIndex == 1) {
+                db.collection("errori").add({
+                    id_camp: id_campionato,
+                    numero_giornata: numero_giornata + 1,
+                    numero_partita: numero_partita,
+                    descrizione: results.input1
+                })
+                .then(function(docRef) {
+                    console.log("Document written with ID: ", docRef.id);
+                })
+                .catch(function(error) {
+                    console.error("Error adding document: ", error);
+                });
+            }
+        },                  // callback to invoke
+        'Segnalazione errore',            // title
+        ['Invia','Annulla']          // buttonLabels
     );
 })
 
