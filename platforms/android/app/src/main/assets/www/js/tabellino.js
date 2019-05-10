@@ -1,3 +1,4 @@
+
 var db = firebase.firestore();
 var id_giornata, id_campionato, numero_giornata, numero_partita;
 
@@ -201,5 +202,4 @@ function refreshTabellino() {
     }
     
 }
-
 

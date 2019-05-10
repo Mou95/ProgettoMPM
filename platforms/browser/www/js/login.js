@@ -1,3 +1,4 @@
+
 var access = document.getElementsByClassName('formButton')[0]
 var accedi = document.getElementById("email")
 $.mobile.autoInitializePage = false;
@@ -30,3 +31,4 @@ access.addEventListener('click', function(e) {
         navigator.notification.alert("Email o Password errate", function(){}, "Attenzione")
     });
 }, false);
+

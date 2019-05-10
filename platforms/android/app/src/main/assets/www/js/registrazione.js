@@ -1,3 +1,4 @@
+
 $.mobile.autoInitializePage = false;
 
 var back = document.getElementsByClassName("backButtonMenu")[0]
@@ -67,3 +68,4 @@ regist.addEventListener('click', function(e) {
             });
         }
     }, false);
+
