@@ -187,7 +187,7 @@ function setArrowsStat() {
 
 function createStats() {
     
-    if (window.localStorage.getItem("stats") == null) {
+    if (window.localStorage.getItem("stats") != null) {
         
         console.log("READ FROM locale")
         array_player = JSON.parse(window.localStorage.getItem("stats"));
