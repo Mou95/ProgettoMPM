@@ -128,8 +128,8 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
                     /*Update risultato totale e statistiche giocatori*/
                     if (p_1 > p_2) {
                         /*Vinto prima squadra*/
-                        update_tabellino["partite"][numero_partita]["punteggio_1"] += p_vittoria; p_vittoria;
-                        updateStats(g_1, prima_s, p_1, "w")
+                        update_tabellino["partite"][numero_partita]["punteggio_1"] += p_vittoria;
+                        updateStats(g_1, prima_s, tipo, p_1, "w")
                         updateStats(g_2, seconda_s, tipo, p_2, "l")
 
                     } else if (p_2 > p_1) {
@@ -231,6 +231,8 @@ function updateStanding(tot_1, tot_2, squadra) {
 
 function updateStats(giocatori, squadra, tipo, punteggio, risultato) {
     
+    console.log("squadra"+squadra)
+    
     giocatori.forEach(function(giocatore) {
         var pl = db.collection("giocatori").where("name", "==", giocatore).where("squadra", "==", squadra)
         
@@ -267,9 +269,6 @@ function updateStats(giocatori, squadra, tipo, punteggio, risultato) {
                         update_stat["statistiche_1920"][tipo]["perse"]  += 1;
                         break;
                 }
-                
-                changeEntryTableStat("A2_1920_est", giocatore, squadra, update_stat)
-
                 db.doc("giocatori/"+doc.id).update(update_stat)
                 .then(function() {
                     console.log("Document successfully updated!");

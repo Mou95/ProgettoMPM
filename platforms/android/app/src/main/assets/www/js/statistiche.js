@@ -186,50 +186,34 @@ function setArrowsStat() {
 }*/
 
 function createStats() {
-    
-    if (window.localStorage.getItem("stats") != null) {
-        
-        console.log("READ FROM locale")
-        array_player = JSON.parse(window.localStorage.getItem("stats"));
-        console.log(array_player)
-        array_player["A2_1920_est"].forEach(function(pl) {
-            console.log(pl["name"]);
+
+    console.log("READ FROM DATABASE")
+    giocatori.onSnapshot(function(snapshot) {
+        snapshot.docChanges().forEach(function(change) {
+            if (change.type === "modified") {
+
+                changeEntryTableStat("A2_1920_est", change)
+            }
+            if (change.type === "added") {
+
+                array_player["A2_1920_est"].push(change.doc.data())
+
+            }
+
         })
-        
-    } else {
-
-        console.log("READ FROM DATABASE")
-        giocatori.onSnapshot(function(snapshot) {
-            snapshot.docChanges().forEach(function(change) {
-                /*if (change.type === "modified") {
-
-                    changeEntryTableStat("A2_1920_est", change)
-                }*/
-                if (change.type === "added") {
-
-                    array_player["A2_1920_est"].push(change.doc.data())
-
-                }
-
-            })
-        }); 
-        
-        window.localStorage.setItem("stats", JSON.stringify(array_player));
-
-    }
+    }); 
     
 }
 
-function changeEntryTableStat(campionato, name, squadra, update_stat) {
+function changeEntryTableStat(campionato, change) {
     //console.log(campionato+" "+change.doc.data()["name"])
 
     array_player[campionato].forEach(function(player) {
-        if (player["name"] == name && player["squadra"] == squadra) {
-            array_player[campionato][array_player[campionato].indexOf(player)] = update_stat
+        if (player["name"] == change.doc.data()["name"] && player["squadra"] == change.doc.data()["squadra"]) {
+            array_player[campionato][array_player[campionato].indexOf(player)] = change.doc.data()
         }
     })
-    
-    window.localStorage.setItem("stats", JSON.stringify(array_player));
+
     refreshTable();
 }
 
@@ -290,11 +274,17 @@ function createTable(spec_id) {
 
     })
     
+    
+    
         
-    if (medie)
+    if (medie) {
         tables[1].classList.add("show");
-    else
+        sort("tableStatTiri",5)
+    }
+    else {
         tables[0].classList.add("show");
+        sort("tableStatProve",2)
+    }
     console.log("Set show")
     
 }
@@ -343,7 +333,46 @@ function createTableRow(player, medie, spec_id) {
     }
 
     return tr
-        
+           
+}
+
+function sort(id,n) {
     
+    var table, rows, switching, i, x, y, shouldSwitch, t;
+    table = document.getElementById(id);
+    switching = true;
+
+    while (switching) {
+
+        switching = false;
+        rows = table.rows;
+        
+        console.log(rows.length+"lenght")
+        for (i = 1; i < (rows.length - 1); i++) {
+          
+            shouldSwitch = false;
+
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            
+            console.log(x.innerHTML.toLowerCase()+" "+y.innerHTML.toLowerCase())
+
+            if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
+
+                console.log(x.innerHTML.toLowerCase()+" "+y.innerHTML.toLowerCase())
+                shouldSwitch = true;
+                break;
+            }
+        }
+        if (shouldSwitch) {
+            
+            console.log(rows[i].getElementsByTagName("TD")[0].innerHTML+ " "+rows[i+1].getElementsByTagName("TD")[0].innerHTML)
+        
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            
+            switching = true;
+        }
+    }
+
 }
 
