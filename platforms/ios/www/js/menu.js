@@ -57,11 +57,13 @@ function manageNav(index) {
                  document.getElementById("page_calendario").classList.add("page_show")
                 document.getElementById("page_calendario").classList.remove("no_page_show")
                 
-                var $header = $('#header_calendario');
+                var $header = $('#ulGiornate');
                 var $footer = $('#footerCalendar');
                 var $content = $('#giornataIntera');
+                
+                console.log("Height"+$(window).height()+$header.height()+$footer.height())
 
-                var height = $(window).height() - $header.height() - $footer.height() - 140;
+                var height = $(window).height() - $footer.height() - 190;
                 $content.height(height); 
                 
                 refreshCalendar(true)

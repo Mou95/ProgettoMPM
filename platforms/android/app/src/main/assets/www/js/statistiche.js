@@ -1,9 +1,9 @@
 /* TODO
 - ELIMINARE GIOCATORI CHE NON HANNO FATTO QUELLE PROVE
 */
-var dots_stat = document.getElementById("page_statistiche").getElementsByClassName("dot")
-var campionato = ["A1_1819", "A2_1819_est"];
-var name_campionati = ["Serie A1 18/19", "Serie a2 est 18/19"];
+/*var dots_stat = document.getElementById("page_statistiche").getElementsByClassName("dot")*/
+var campionato = ["A2_1920_est"];
+var name_campionati = ["Serie A2 Est 19/20"];
 
 var n = campionato.length;
 var backArrow_stat = document.getElementById("backArrow_stat");
@@ -18,18 +18,126 @@ var tables = document.getElementById("stat-slider").getElementsByClassName("clas
 var title_stat = document.getElementById("titleStat");
 var db = firebase.firestore();
 
-var campionati = db.collection("campionati")
 var squadre = db.collection("squadre");
 var giocatori = db.collection("giocatori");
 
-var tiri = ["staffetta", "progressivo_6", "progressivo_3", "tiro_tecnico", "combinato"]
+var tiri = ["staffetta", "progressivo_3", "tiro_tecnico", "combinato"]
 
 var array_player = {
-    A1_1819: [],
-    A2_1819_est: []
+    A2_1920_est: []
 }
 
-$(function(){
+/*db.collection("giocatori").where("squadra","==","Pontese").get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            db.collection("giocatori").doc(doc.id).delete()
+            .then(function() {
+                console.log("Document successfully deleted!");
+            }).catch(function(error) {
+                console.error("Error removing document: ", error);
+            });
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });*/
+
+
+/*db.collection("giocatori").get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            return db.doc("giocatori/"+doc.id).update({
+                statistiche_1920: {
+                    combinato: {
+                        perse:0,
+                        vinte:0,
+                        pareggiate:0,
+                        media:0
+                    },
+                    progressivo_3: {
+                        perse:0,
+                        vinte:0,
+                        pareggiate:0,
+                        media:0
+                    },
+                    staffetta: {
+                        perse:0,
+                        vinte:0,
+                        pareggiate:0,
+                        media:0
+                    },
+                    tiro_tecnico: {
+                        perse:0,
+                        vinte:0,
+                        pareggiate:0,
+                        media:0
+                    },
+                    individuale: {
+                        perse:0,
+                        vinte:0,
+                        pareggiate:0
+                    },
+                    coppia: {
+                        perse:0,
+                        vinte:0,
+                        pareggiate:0
+                    },
+                    terna: {
+                        perse:0,
+                        vinte:0,
+                        pareggiate:0
+                    }
+                }  
+                
+            })
+            .then(function() {
+                console.log("Document successfully updated!");
+            })
+            .catch(function(error) {
+                // The document probably doesn't exist.
+                console.error("Error updating document: ", error);
+            });
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });*/
+
+
+/*for (var i=5; i<19; i++) {
+    db.collection("giornate").doc("g"+i).set({
+        numero: i,
+        campionato: "A2_1920_est",
+        partite:[
+            {
+                completo:false, 
+                prima_squadra:"", 
+                seconda_squadra:"",
+                punteggio_1:0,
+                punteggio_2:0,
+                tabellino:{}
+            },
+            {completo:false, prima_squadra:"", seconda_squadra:"",
+                punteggio_1:0,punteggio_2:0,tabellino:{}},
+            {completo:false, prima_squadra:"", seconda_squadra:"",
+                punteggio_1:0,punteggio_2:0,tabellino:{}},
+            {completo:false, prima_squadra:"", seconda_squadra:"",
+                punteggio_1:0,punteggio_2:0,tabellino:{}},
+            {completo:false, prima_squadra:"", seconda_squadra:"",
+                punteggio_1:0,punteggio_2:0,tabellino:{}}                                
+        ]
+    })
+    .then(function() {
+        console.log("Document successfully written!");
+    })
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
+}*/
+
+/*$(function(){
     // Bind the swipeHandler callback function to the swipe event on classifica-slider
     console.log("swiped");
     $( "#stat-slider" ).on( "swiperight", swipeRightStat );
@@ -73,45 +181,43 @@ function setArrowsStat() {
         forwArrow_stat.classList.remove("show");
         
     } else {
-        /*Both arrow*/
         backArrow_stat.classList.add("show");
         forwArrow_stat.classList.add("show");
     } 
-}
+}*/
 
 function createStats() {
-    campionato.forEach(function(camp) {
         
-        var squadre_camp = squadre.where("campionato", "==", camp)
-        
-        squadre_camp.get()   
-        .then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
+    var squadre_camp = squadre.where("campionato", "==", "A2_1920_est")
 
-                console.log("Squadra ", doc.data()["squadra"])
-                var players = giocatori.where("squadra","==",doc.data()["squadra"])
+    squadre_camp.get()   
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
 
-                
-                players.onSnapshot(function(snapshot) {
-                    snapshot.docChanges().forEach(function(change) {
-                        if (change.type === "modified") {
+            console.log("Squadra ", doc.data()["squadra"])
+            var players = giocatori.where("squadra","==",doc.data()["squadra"])
 
-                            changeEntryTableStat(camp, change)
-                        }
-                        if (change.type === "added") {
-                            
-                            array_player[camp].push(change.doc.data())
 
-                        }
-                        
-                    })
-                });
-            })
+            players.onSnapshot(function(snapshot) {
+                snapshot.docChanges().forEach(function(change) {
+                    if (change.type === "modified") {
+
+                        changeEntryTableStat("A2_1920_est", change)
+                    }
+                    if (change.type === "added") {
+
+                        array_player["A2_1920_est"].push(change.doc.data())
+
+                    }
+
+                })
+            });
         })
-        .catch(function(error) {
-            console.log("Error getting documents: ", error);
-        });  
-    }) 
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });  
+
     
 }
 
@@ -179,7 +285,10 @@ function createTable(spec_id) {
     
     array_player[campionato[active_stat]].forEach(function(player) {
         
-        tbody.appendChild(createTableRow(player, medie, spec_id))
+        if (player["statistiche_1920"][spec_id]["vinte"]+player["statistiche_1920"][spec_id]["pareggiate"]+player["statistiche_1920"][spec_id]["perse"] != 0) {
+        
+            tbody.appendChild(createTableRow(player, medie, spec_id))
+        }
 
     })
     
@@ -193,6 +302,8 @@ function createTable(spec_id) {
 }
 
 function createTableRow(player, medie, spec_id) {
+    
+
 
     var tr = document.createElement('tr');
 
@@ -201,40 +312,42 @@ function createTableRow(player, medie, spec_id) {
     td.classList.add("giocatore_s");  
     td.appendChild(document.createTextNode(player["name"]))
     tr.appendChild(td);
-    
+
     /*Squadra*/
     var td = document.createElement('td');
     td.classList.add("squadra_s");  
     td.appendChild(document.createTextNode(player["squadra"]))
     tr.appendChild(td);
-    
+
     /*Vinte*/
     var td = document.createElement('td');
     td.classList.add("vittorie_s");  
-    td.appendChild(document.createTextNode(player["statistiche_1819"][spec_id]["vinte"]))
+    td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["vinte"]))
     tr.appendChild(td);
-    
+
     /*Pareggiate*/
     var td = document.createElement('td');
     td.classList.add("pareggi_s");  
-    td.appendChild(document.createTextNode(player["statistiche_1819"][spec_id]["pareggiate"]))
+    td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["pareggiate"]))
     tr.appendChild(td);
-    
+
     /*Perse*/
     var td = document.createElement('td');
     td.classList.add("sconfitte_s");  
-    td.appendChild(document.createTextNode(player["statistiche_1819"][spec_id]["perse"]))
+    td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["perse"]))
     tr.appendChild(td);
-    
+
     if (medie) {
         /*Perse*/
         var td = document.createElement('td');
         td.classList.add("medie_s");  
-        td.appendChild(document.createTextNode(player["statistiche_1819"][spec_id]["media"]))
+        td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["media"]))
         tr.appendChild(td);
-        
+
     }
-    
+
     return tr
+        
+    
 }
 

@@ -141,10 +141,12 @@ function createTabellino(id, camp, giornata, index) {
     
     if (!completo) {
         console.log("Aggiungo button")
-        document.getElementById("footerTabellini").style.display = "block";
+        document.getElementById("addResultButton").disabled = false;
+        document.getElementById("addResultButton").style.opacity = 1;
         
     } else {
-        document.getElementById("footerTabellini").style.display = "none";
+        document.getElementById("addResultButton").disabled = true;
+        document.getElementById("addResultButton").style.opacity = 0.5;
     }
     
     var table = document.getElementById("TableIncontro");
@@ -218,11 +220,13 @@ function refreshTabellino() {
 
 
         if (!completo) {
-            console.log("Aggiungo button")
-            document.getElementById("footerTabellini").style.display = "block";
-
+            
+            document.getElementById("addResultButton").disabled = false;
+            document.getElementById("addResultButton").style.opacity = 1;
+        
         } else {
-            document.getElementById("footerTabellini").style.display = "none";
+            document.getElementById("addResultButton").disabled = true;
+            document.getElementById("addResultButton").style.opacity = 0.5;
         }
     }
     

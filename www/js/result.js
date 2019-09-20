@@ -71,10 +71,8 @@ function sendResult( event ) {
                 checkResult(1, 0, 50, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
                 break;
             case "8":
-                checkResult(1, 0, 55, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
-                break;
             case "9":
-                checkResult(1, 0, 55, 1, 0, prova, tipo,  g_1, g_2, p_1, p_2);
+                checkResult(1, 0, 55, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
                 break;
 
         }
@@ -244,25 +242,29 @@ function updateStats(giocatori, squadra, tipo, punteggio, risultato) {
                 
                 if (tiri.includes(tipo)) {
                     
-                    var prove_svolte = update_stat["statistiche_1819"][tipo]["vinte"]+update_stat["statistiche_1819"][tipo]["pareggiate"]+update_stat["statistiche_1819"][tipo]["perse"] 
+                    var prove_svolte = update_stat["statistiche_1920"][tipo]["vinte"]+update_stat["statistiche_1920"][tipo]["pareggiate"]+update_stat["statistiche_1920"][tipo]["perse"] 
                     
-                    var media = update_stat["statistiche_1819"][tipo]["media"] 
+                    var media = update_stat["statistiche_1920"][tipo]["media"] 
+                    
+                    console.log(prove_svolte+" "+media+" "+punteggio)
                     
                     var new_media = roundTo(((media*prove_svolte) + punteggio) / (prove_svolte + 1), 2)
                     
-                    update_stat["statistiche_1819"][tipo]["media"] = new_media
+                    console.log("MEDIA"+new_media)
+                    
+                    update_stat["statistiche_1920"][tipo]["media"] = new_media
                     
                 }
 
                 switch (risultato) {
                     case "w":
-                        update_stat["statistiche_1819"][tipo]["vinte"] += 1;
+                        update_stat["statistiche_1920"][tipo]["vinte"] += 1;
                         break;
                     case "t":
-                        update_stat["statistiche_1819"][tipo]["pareggiate"] += 1;
+                        update_stat["statistiche_1920"][tipo]["pareggiate"] += 1;
                         break;
                     case "l":
-                        update_stat["statistiche_1819"][tipo]["perse"]  += 1;
+                        update_stat["statistiche_1920"][tipo]["perse"]  += 1;
                         break;
                 }
 

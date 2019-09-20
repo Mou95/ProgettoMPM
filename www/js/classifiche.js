@@ -18,8 +18,7 @@ var property_table = [
 ]
 
 var championship = [
-    "Serie A1 18/19",
-    "Serie A2 Est 18/19"
+    "Serie A2 2019/20"
 ]
 
 function createStandings() {
@@ -27,79 +26,76 @@ function createStandings() {
 
     title.innerHTML = championship[active_class];
 
-    var leagues = db.collection("campionati");
+    var leagues = db.doc("campionati/A2_1920_est");
+    
+    leagues.get().then(function(campionato) {
 
-    leagues.get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(campionato) {
+        if (campionato.exists) {
+            console.log("Document data:", campionato.data()["nome"]);
 
-            if (campionato.exists) {
-                console.log("Document data:", campionato.data()["nome"]);
+            /*Create standing*/
+            var standing = db.collection("campionati/"+campionato.id+"/classifica").orderBy("punti","desc").orderBy("punti_fatti","desc").orderBy("punti_subiti","asc")
 
-                /*Create standing*/
-                var standing = db.collection("campionati/"+campionato.id+"/classifica").orderBy("punti","desc").orderBy("punti_fatti","desc").orderBy("punti_subiti","asc")
+            var table = document.getElementById(campionato.id)
+            var tbody = document.createElement('tbody')
+            var i = 1;
 
-                var table = document.getElementById(campionato.id)
-                var tbody = document.createElement('tbody')
-                var i = 1;
+            /*Add listener to change table on database modify*/
+            standing
+            .onSnapshot(function(snapshot) {
+                snapshot.docChanges().forEach(function(change) {
+                    if (change.type === "modified") {
+                        console.log("Modified data: ", change.doc.data());
 
-                /*Add listener to change table on database modify*/
-                standing
-                .onSnapshot(function(snapshot) {
-                    snapshot.docChanges().forEach(function(change) {
-                        if (change.type === "modified") {
-                            console.log("Modified data: ", change.doc.data());
+                        changeEntryTable(campionato.id, change)
 
-                            changeEntryTable(campionato.id, change)
+                    }
 
-                        }
+                    if (change.type === "added") {
+                        console.log("Added data: ", change.doc.data());
 
-                        if (change.type === "added") {
-                            console.log("Added data: ", change.doc.data());
+                        var tr = document.createElement('tr');
 
-                            var tr = document.createElement('tr');
+                        var td = document.createElement('td');
 
-                            var td = document.createElement('td');
+                        td.classList.add("posizione"); 
 
-                            td.classList.add("posizione"); 
+                        td.appendChild(document.createTextNode(i))
 
-                            td.appendChild(document.createTextNode(i))
+                        tr.appendChild(td);
+
+                        for (var key in property_table) {
+
+                            td = document.createElement('td');
+                            td.classList.add(property_table[key]);  
+
+                            td.appendChild(document.createTextNode(change.doc.data()[property_table[key]]))
 
                             tr.appendChild(td);
-
-                            for (var key in property_table) {
-
-                                td = document.createElement('td');
-                                td.classList.add(property_table[key]);  
-
-                                td.appendChild(document.createTextNode(change.doc.data()[property_table[key]]))
-
-                                tr.appendChild(td);
-                            }
-
-                            tbody.appendChild(tr);
-
-                            i++; 
                         }
-                    })
 
-                    table.appendChild(tbody);
+                        tbody.appendChild(tr);
 
-                });
+                        i++; 
+                    }
+                })
 
-            } else {
-                // doc.data() will be undefined in this case
-                console.log("No such document!");
-            }
+                table.appendChild(tbody);
 
-        })
+            });
+
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+
     }).catch(function(error) {
         console.log("Error getting document:", error);
     });
     
 }
 
-$(function(){
+/*$(function(){
     // Bind the swipeHandler callback function to the swipe event on classifica-slider
     console.log("swiped");
     $( "#classifica-slider" ).on( "swiperight", swipeRight );
@@ -147,11 +143,10 @@ function setArrows() {
         forwArrow.classList.remove("show");
         
     } else {
-        /*Both arrow*/
         backArrow.classList.add("show");
         forwArrow.classList.add("show");
     } 
-}
+}*/
 
 function changeEntryTable(id, change) {
     

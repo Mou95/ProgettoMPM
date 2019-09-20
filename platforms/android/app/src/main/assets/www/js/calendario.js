@@ -5,13 +5,11 @@ var all_giornate;
 var tbody_giornate;
 
 var array_giornate = {
-    A1_1819: [],
-    A2_1819_est: []
+    A2_1920_est: []
 }
 
 var titleC = {
-    A1_1819: "Serie A1 18/19",
-    A2_1819_est: "Serie A2 Est 18/19"
+    A2_1920_est: "Serie A2 Est 19/20"
 }
 
 var tableCalendar = document.getElementById("tableGiornate");
@@ -23,7 +21,7 @@ function loadLogicCalendar(loadNewDay) {
     
     tbody_giornate = tableCalendar.getElementsByTagName("tbody");
 
-    var camp = document.getElementById("selCampionato").value;
+    var camp = /*document.getElementById("selCampionato").value*/"A2_1920_est";
     
     var min = Number.POSITIVE_INFINITY;
    
@@ -168,11 +166,13 @@ function createTableGiornate(loadNewDay) {
     
     /*Tabella*/
     
-    var camp = document.getElementById("selCampionato").value;
+    var camp = /*document.getElementById("selCampionato").value*/"A2_1920_est";
     
-    n_giornate = array_giornate[camp].length
+    n_giornate = array_giornate[camp].length;
     
-    addLi(n_giornate)
+    console.log(n_giornate)
+    
+    addLi(n_giornate);
     
     array_giornate[camp].forEach(function(partite, index_giornata) {
 
@@ -260,9 +260,9 @@ function refreshCalendar(reloadLogic) {
         navCalendar.removeChild(li);
     }); 
     
-    console.log(titleC[document.getElementById("selCampionato").value])
+    //console.log(titleC[document.getElementById("selCampionato").value])
     
-    titleCalendar.innerHTML = titleC[document.getElementById("selCampionato").value]
+    //titleCalendar.innerHTML = titleC[document.getElementById("selCampionato").value]
     
     createTableGiornate(reloadLogic)
     
