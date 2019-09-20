@@ -18,7 +18,6 @@ var tables = document.getElementById("stat-slider").getElementsByClassName("clas
 var title_stat = document.getElementById("titleStat");
 var db = firebase.firestore();
 
-var squadre = db.collection("squadre");
 var giocatori = db.collection("giocatori");
 
 var tiri = ["staffetta", "progressivo_3", "tiro_tecnico", "combinato"]
@@ -187,51 +186,50 @@ function setArrowsStat() {
 }*/
 
 function createStats() {
+    
+    if (window.localStorage.getItem("stats") == null) {
         
-    var squadre_camp = squadre.where("campionato", "==", "A2_1920_est")
-
-    squadre_camp.get()   
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-
-            console.log("Squadra ", doc.data()["squadra"])
-            var players = giocatori.where("squadra","==",doc.data()["squadra"])
-
-
-            players.onSnapshot(function(snapshot) {
-                snapshot.docChanges().forEach(function(change) {
-                    if (change.type === "modified") {
-
-                        changeEntryTableStat("A2_1920_est", change)
-                    }
-                    if (change.type === "added") {
-
-                        array_player["A2_1920_est"].push(change.doc.data())
-
-                    }
-
-                })
-            });
+        console.log("READ FROM locale")
+        array_player = JSON.parse(window.localStorage.getItem("stats"));
+        console.log(array_player)
+        array_player["A2_1920_est"].forEach(function(pl) {
+            console.log(pl["name"]);
         })
-    })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });  
+        
+    } else {
 
+        console.log("READ FROM DATABASE")
+        giocatori.onSnapshot(function(snapshot) {
+            snapshot.docChanges().forEach(function(change) {
+                /*if (change.type === "modified") {
+
+                    changeEntryTableStat("A2_1920_est", change)
+                }*/
+                if (change.type === "added") {
+
+                    array_player["A2_1920_est"].push(change.doc.data())
+
+                }
+
+            })
+        }); 
+        
+        window.localStorage.setItem("stats", JSON.stringify(array_player));
+
+    }
     
 }
 
-function changeEntryTableStat(campionato, change) {
-    console.log(campionato+" "+change.doc.data()["name"])
-    var squadra = change.doc.data()["squadra"];  
-    var name = change.doc.data()["name"]; 
+function changeEntryTableStat(campionato, name, squadra, update_stat) {
+    //console.log(campionato+" "+change.doc.data()["name"])
 
     array_player[campionato].forEach(function(player) {
         if (player["name"] == name && player["squadra"] == squadra) {
-            array_player[campionato][array_player[campionato].indexOf(player)] = change.doc.data()
+            array_player[campionato][array_player[campionato].indexOf(player)] = update_stat
         }
     })
     
+    window.localStorage.setItem("stats", JSON.stringify(array_player));
     refreshTable();
 }
 
@@ -302,8 +300,6 @@ function createTable(spec_id) {
 }
 
 function createTableRow(player, medie, spec_id) {
-    
-
 
     var tr = document.createElement('tr');
 

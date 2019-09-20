@@ -267,6 +267,8 @@ function updateStats(giocatori, squadra, tipo, punteggio, risultato) {
                         update_stat["statistiche_1920"][tipo]["perse"]  += 1;
                         break;
                 }
+                
+                changeEntryTableStat("A2_1920_est", giocatore, squadra, update_stat)
 
                 db.doc("giocatori/"+doc.id).update(update_stat)
                 .then(function() {
