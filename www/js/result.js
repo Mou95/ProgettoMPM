@@ -19,6 +19,7 @@ function logicAddResult() {
 
 function closeResult() {
     //e.preventDefault(); 
+    form.reset();
         
     document.getElementById("page_result").classList.remove("page_show")
     document.getElementById("page_result").classList.add("no_page_show")

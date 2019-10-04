@@ -5,11 +5,13 @@ var all_giornate;
 var tbody_giornate;
 
 var array_giornate = {
+    A1_1920: [],
     A2_1920_est: []
 }
 
 var titleC = {
-    A2_1920_est: "Serie A2 Est 19/20"
+    A1_1920: "Serie A1 2019/20",
+    A2_1920_est: "Serie A2 Est 2019/20"
 }
 
 var tableCalendar = document.getElementById("tableGiornate");
@@ -21,7 +23,7 @@ function loadLogicCalendar(loadNewDay) {
     
     tbody_giornate = tableCalendar.getElementsByTagName("tbody");
 
-    var camp = /*document.getElementById("selCampionato").value*/"A2_1920_est";
+    var camp = document.getElementById("selCampionato").value;
     
     var min = Number.POSITIVE_INFINITY;
    
@@ -166,7 +168,7 @@ function createTableGiornate(loadNewDay) {
     
     /*Tabella*/
     
-    var camp = /*document.getElementById("selCampionato").value*/"A2_1920_est";
+    var camp = document.getElementById("selCampionato").value;
     
     n_giornate = array_giornate[camp].length;
     
@@ -260,9 +262,9 @@ function refreshCalendar(reloadLogic) {
         navCalendar.removeChild(li);
     }); 
     
-    //console.log(titleC[document.getElementById("selCampionato").value])
+    console.log(titleC[document.getElementById("selCampionato").value])
     
-    //titleCalendar.innerHTML = titleC[document.getElementById("selCampionato").value]
+    titleCalendar.innerHTML = titleC[document.getElementById("selCampionato").value]
     
     createTableGiornate(reloadLogic)
     
@@ -282,4 +284,5 @@ function dateDifference(date1, date2) {
   return Math.abs(Math.round(difference_ms/one_day)); 
 
 }
+
 

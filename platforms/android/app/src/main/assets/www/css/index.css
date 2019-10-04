@@ -456,6 +456,10 @@ select {
     border-bottom: 2px solid #ededed;
 }
 
+#footerUser p {
+    font-weight: bold;
+}
+
 /*Classifiche*/
 #classifica-slider {
     touch-action: manipulation;

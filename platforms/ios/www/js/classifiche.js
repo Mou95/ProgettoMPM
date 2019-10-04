@@ -18,7 +18,8 @@ var property_table = [
 ]
 
 var championship = [
-    "Serie A2 2019/20"
+    "Serie A1 2019/20",
+    "Serie A2 Est 2019/20"
 ]
 
 function createStandings() {
@@ -26,76 +27,79 @@ function createStandings() {
 
     title.innerHTML = championship[active_class];
 
-    var leagues = db.doc("campionati/A2_1920_est");
-    
-    leagues.get().then(function(campionato) {
+    var leagues = db.collection("campionati");
 
-        if (campionato.exists) {
-            console.log("Document data:", campionato.data()["nome"]);
+    leagues.get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(campionato) {
 
-            /*Create standing*/
-            var standing = db.collection("campionati/"+campionato.id+"/classifica").orderBy("punti","desc").orderBy("punti_fatti","desc").orderBy("punti_subiti","asc")
+            if (campionato.exists) {
+                console.log("Document data:", campionato.data()["nome"]);
 
-            var table = document.getElementById(campionato.id)
-            var tbody = document.createElement('tbody')
-            var i = 1;
+                /*Create standing*/
+                var standing = db.collection("campionati/"+campionato.id+"/classifica").orderBy("punti","desc").orderBy("punti_fatti","desc").orderBy("punti_subiti","asc")
 
-            /*Add listener to change table on database modify*/
-            standing
-            .onSnapshot(function(snapshot) {
-                snapshot.docChanges().forEach(function(change) {
-                    if (change.type === "modified") {
-                        console.log("Modified data: ", change.doc.data());
+                var table = document.getElementById(campionato.id)
+                var tbody = document.createElement('tbody')
+                var i = 1;
 
-                        changeEntryTable(campionato.id, change)
+                /*Add listener to change table on database modify*/
+                standing
+                .onSnapshot(function(snapshot) {
+                    snapshot.docChanges().forEach(function(change) {
+                        if (change.type === "modified") {
+                            console.log("Modified data: ", change.doc.data());
 
-                    }
+                            changeEntryTable(campionato.id, change)
 
-                    if (change.type === "added") {
-                        console.log("Added data: ", change.doc.data());
-
-                        var tr = document.createElement('tr');
-
-                        var td = document.createElement('td');
-
-                        td.classList.add("posizione"); 
-
-                        td.appendChild(document.createTextNode(i))
-
-                        tr.appendChild(td);
-
-                        for (var key in property_table) {
-
-                            td = document.createElement('td');
-                            td.classList.add(property_table[key]);  
-
-                            td.appendChild(document.createTextNode(change.doc.data()[property_table[key]]))
-
-                            tr.appendChild(td);
                         }
 
-                        tbody.appendChild(tr);
+                        if (change.type === "added") {
+                            console.log("Added data: ", change.doc.data());
 
-                        i++; 
-                    }
-                })
+                            var tr = document.createElement('tr');
 
-                table.appendChild(tbody);
+                            var td = document.createElement('td');
 
-            });
+                            td.classList.add("posizione"); 
 
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-        }
+                            td.appendChild(document.createTextNode(i))
 
+                            tr.appendChild(td);
+
+                            for (var key in property_table) {
+
+                                td = document.createElement('td');
+                                td.classList.add(property_table[key]);  
+
+                                td.appendChild(document.createTextNode(change.doc.data()[property_table[key]]))
+
+                                tr.appendChild(td);
+                            }
+
+                            tbody.appendChild(tr);
+
+                            i++; 
+                        }
+                    })
+
+                    table.appendChild(tbody);
+
+                });
+
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+
+        })
     }).catch(function(error) {
         console.log("Error getting document:", error);
     });
     
 }
 
-/*$(function(){
+$(function(){
     // Bind the swipeHandler callback function to the swipe event on classifica-slider
     console.log("swiped");
     $( "#classifica-slider" ).on( "swiperight", swipeRight );
@@ -143,10 +147,11 @@ function setArrows() {
         forwArrow.classList.remove("show");
         
     } else {
+        /*Both arrow*/
         backArrow.classList.add("show");
         forwArrow.classList.add("show");
     } 
-}*/
+}
 
 function changeEntryTable(id, change) {
     
@@ -178,12 +183,24 @@ function sortPoint(id) {
 
             x = rows[i].getElementsByTagName("TD")[7];
             y = rows[i + 1].getElementsByTagName("TD")[7];
+            
+            w = rows[i].getElementsByTagName("TD")[5];
+            z = rows[i + 1].getElementsByTagName("TD")[5];
 
             if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
 
                 console.log(x.innerHTML.toLowerCase()+" "+y.innerHTML.toLowerCase())
                 shouldSwitch = true;
                 break;
+                
+            } else {
+                //discrima i pareggi
+                if (parseInt(x.innerHTML) == parseInt(y.innerHTML) && parseInt(w.innerHTML) < parseInt(z.innerHTML)) {
+                    console.log("Pareggi sort")
+                    shouldSwitch = true;
+                    break;
+                }
+                
             }
         }
         if (shouldSwitch) {

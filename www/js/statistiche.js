@@ -1,31 +1,3 @@
-/* TODO
-- ELIMINARE GIOCATORI CHE NON HANNO FATTO QUELLE PROVE
-*/
-/*var dots_stat = document.getElementById("page_statistiche").getElementsByClassName("dot")*/
-var campionato = ["A2_1920_est"];
-var name_campionati = ["Serie A2 Est 19/20"];
-
-var n = campionato.length;
-var backArrow_stat = document.getElementById("backArrow_stat");
-var forwArrow_stat = document.getElementById("forwArrow_stat");
-
-
-var active_stat = 0;
-var specialita = document.getElementById("selSpecialita");
-var tableProve = document.getElementById("tableStatProve");
-var tableTiri = document.getElementById("tableStatTiri");
-var tables = document.getElementById("stat-slider").getElementsByClassName("classifica");
-var title_stat = document.getElementById("titleStat");
-var db = firebase.firestore();
-
-var giocatori = db.collection("giocatori");
-
-var tiri = ["staffetta", "progressivo_3", "tiro_tecnico", "combinato"]
-
-var array_player = {
-    A2_1920_est: []
-}
-
 /*db.collection("giocatori").where("squadra","==","Pontese").get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
@@ -42,73 +14,96 @@ var array_player = {
         console.log("Error getting documents: ", error);
     });*/
 
+var t = [
+    "Tonejc D.",
+    "Petric A.",
+    "Ortolano A.",
+    "Cavallo S.",
+    "Tabone W." ,
+    "Rossatto D.",
+    "Suini M.", 
+    "Parise P.", 
+    "Zanier S.", 
+    "Agnesini V." 
+]
 
-/*db.collection("giocatori").get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            return db.doc("giocatori/"+doc.id).update({
-                statistiche_1920: {
-                    combinato: {
-                        perse:0,
-                        vinte:0,
-                        pareggiate:0,
-                        media:0
-                    },
-                    progressivo_3: {
-                        perse:0,
-                        vinte:0,
-                        pareggiate:0,
-                        media:0
-                    },
-                    staffetta: {
-                        perse:0,
-                        vinte:0,
-                        pareggiate:0,
-                        media:0
-                    },
-                    tiro_tecnico: {
-                        perse:0,
-                        vinte:0,
-                        pareggiate:0,
-                        media:0
-                    },
-                    individuale: {
-                        perse:0,
-                        vinte:0,
-                        pareggiate:0
-                    },
-                    coppia: {
-                        perse:0,
-                        vinte:0,
-                        pareggiate:0
-                    },
-                    terna: {
-                        perse:0,
-                        vinte:0,
-                        pareggiate:0
-                    }
-                }  
-                
-            })
-            .then(function() {
-                console.log("Document successfully updated!");
-            })
-            .catch(function(error) {
-                // The document probably doesn't exist.
-                console.error("Error updating document: ", error);
-            });
-        });
+/*t.forEach(function(gioc) {
+    db.collection("squadre").add({
+        campionato: "A1_1920",
+        squadra: gioc,
+        
+
+    }).then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });*/
+        console.error("Error adding document: ", error);
+    });
+
+})*/
+
+/*t.forEach(function(gioc) {
+    db.collection("giocatori").add({
+        name: gioc,
+        squadra: "Borgonese",
+        statistiche_1920: {
+            combinato: {
+                perse:0,
+                vinte:0,
+                pareggiate:0,
+                media:0
+            },
+            progressivo_3: {
+                perse:0,
+                vinte:0,
+                pareggiate:0,
+                media:0
+            },
+            staffetta: {
+                perse:0,
+                vinte:0,
+                pareggiate:0,
+                media:0
+            },
+            tiro_tecnico: {
+                perse:0,
+                vinte:0,
+                pareggiate:0,
+                media:0
+            },
+            individuale: {
+                perse:0,
+                vinte:0,
+                pareggiate:0
+            },
+            coppia: {
+                perse:0,
+                vinte:0,
+                pareggiate:0
+            },
+            terna: {
+                perse:0,
+                vinte:0,
+                pareggiate:0
+            }
+        }  
+
+    }).then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+
+})*/
 
 
-/*for (var i=5; i<19; i++) {
-    db.collection("giornate").doc("g"+i).set({
+        
+
+/*for (var i=1; i<15; i++) {
+    db.collection("giornate").doc("g"+i+"_A1").set({
         numero: i,
-        campionato: "A2_1920_est",
+        campionato: "A1_1920",
         partite:[
             {
                 completo:false, 
@@ -123,9 +118,8 @@ var array_player = {
             {completo:false, prima_squadra:"", seconda_squadra:"",
                 punteggio_1:0,punteggio_2:0,tabellino:{}},
             {completo:false, prima_squadra:"", seconda_squadra:"",
-                punteggio_1:0,punteggio_2:0,tabellino:{}},
-            {completo:false, prima_squadra:"", seconda_squadra:"",
-                punteggio_1:0,punteggio_2:0,tabellino:{}}                                
+                punteggio_1:0,punteggio_2:0,tabellino:{}}
+                                     
         ]
     })
     .then(function() {
@@ -136,7 +130,35 @@ var array_player = {
     });
 }*/
 
-/*$(function(){
+var dots_stat = document.getElementById("page_statistiche").getElementsByClassName("dot")
+var campionato = ["A1_1920", "A2_1920_est"];
+var name_campionati = ["Serie A1 2019/20", "Serie A2 est 2019/20"];
+
+var n = campionato.length;
+var backArrow_stat = document.getElementById("backArrow_stat");
+var forwArrow_stat = document.getElementById("forwArrow_stat");
+
+
+var active_stat = 0;
+var specialita = document.getElementById("selSpecialita");
+var tableProve = document.getElementById("tableStatProve");
+var tableTiri = document.getElementById("tableStatTiri");
+var tables = document.getElementById("stat-slider").getElementsByClassName("classifica");
+var title_stat = document.getElementById("titleStat");
+var db = firebase.firestore();
+
+var campionati = db.collection("campionati")
+var squadre = db.collection("squadre");
+var giocatori = db.collection("giocatori");
+
+var tiri = ["staffetta", "progressivo_3", "tiro_tecnico", "combinato"]
+
+var array_player = {
+    A1_1920: [],
+    A2_1920_est: []
+}
+
+$(function(){
     // Bind the swipeHandler callback function to the swipe event on classifica-slider
     console.log("swiped");
     $( "#stat-slider" ).on( "swiperight", swipeRightStat );
@@ -180,40 +202,59 @@ function setArrowsStat() {
         forwArrow_stat.classList.remove("show");
         
     } else {
+        /*Both arrow*/
         backArrow_stat.classList.add("show");
         forwArrow_stat.classList.add("show");
     } 
-}*/
+}
 
 function createStats() {
+    campionato.forEach(function(camp) {
+        
+        var squadre_camp = squadre.where("campionato", "==", camp)
+        
+        squadre_camp.get()   
+        .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
 
-    console.log("READ FROM DATABASE")
-    giocatori.onSnapshot(function(snapshot) {
-        snapshot.docChanges().forEach(function(change) {
-            if (change.type === "modified") {
+                console.log("Squadra ", doc.data()["squadra"])
+                var players = giocatori.where("squadra","==",doc.data()["squadra"])
 
-                changeEntryTableStat("A2_1920_est", change)
-            }
-            if (change.type === "added") {
+                
+                players.onSnapshot(function(snapshot) {
+                    snapshot.docChanges().forEach(function(change) {
+                        if (change.type === "modified") {
 
-                array_player["A2_1920_est"].push(change.doc.data())
+                            changeEntryTableStat(camp, change)
+                        }
+                        if (change.type === "added") {
+                            
+                            array_player[camp].push(change.doc.data())
 
-            }
-
+                        }
+                        
+                    })
+                });
+            })
         })
-    }); 
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });  
+    }) 
     
 }
 
 function changeEntryTableStat(campionato, change) {
-    //console.log(campionato+" "+change.doc.data()["name"])
+    console.log(campionato+" "+change.doc.data()["name"])
+    var squadra = change.doc.data()["squadra"];  
+    var name = change.doc.data()["name"]; 
 
     array_player[campionato].forEach(function(player) {
-        if (player["name"] == change.doc.data()["name"] && player["squadra"] == change.doc.data()["squadra"]) {
+        if (player["name"] == name && player["squadra"] == squadra) {
             array_player[campionato][array_player[campionato].indexOf(player)] = change.doc.data()
         }
     })
-
+    
     refreshTable();
 }
 
@@ -271,11 +312,10 @@ function createTable(spec_id) {
         
             tbody.appendChild(createTableRow(player, medie, spec_id))
         }
-
+        
     })
     
-    
-    
+        
         
     if (medie) {
         tables[1].classList.add("show");
@@ -298,42 +338,41 @@ function createTableRow(player, medie, spec_id) {
     td.classList.add("giocatore_s");  
     td.appendChild(document.createTextNode(player["name"]))
     tr.appendChild(td);
-
+    
     /*Squadra*/
     var td = document.createElement('td');
     td.classList.add("squadra_s");  
     td.appendChild(document.createTextNode(player["squadra"]))
     tr.appendChild(td);
-
+    
     /*Vinte*/
     var td = document.createElement('td');
     td.classList.add("vittorie_s");  
     td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["vinte"]))
     tr.appendChild(td);
-
+    
     /*Pareggiate*/
     var td = document.createElement('td');
     td.classList.add("pareggi_s");  
     td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["pareggiate"]))
     tr.appendChild(td);
-
+    
     /*Perse*/
     var td = document.createElement('td');
     td.classList.add("sconfitte_s");  
     td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["perse"]))
     tr.appendChild(td);
-
+    
     if (medie) {
         /*Perse*/
         var td = document.createElement('td');
         td.classList.add("medie_s");  
         td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["media"]))
         tr.appendChild(td);
-
+        
     }
-
+    
     return tr
-           
 }
 
 function sort(id,n) {
@@ -355,6 +394,9 @@ function sort(id,n) {
             x = rows[i].getElementsByTagName("TD")[n];
             y = rows[i + 1].getElementsByTagName("TD")[n];
             
+            w = rows[i].getElementsByTagName("TD")[3];
+            z = rows[i + 1].getElementsByTagName("TD")[3];
+            
             console.log(x.innerHTML.toLowerCase()+" "+y.innerHTML.toLowerCase())
 
             if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
@@ -362,6 +404,16 @@ function sort(id,n) {
                 console.log(x.innerHTML.toLowerCase()+" "+y.innerHTML.toLowerCase())
                 shouldSwitch = true;
                 break;
+            
+            } else {
+                //discrima i pareggi
+                if (id == "tableStatProve") {
+                    if (parseInt(x.innerHTML) == parseInt(y.innerHTML) && parseInt(w.innerHTML) < parseInt(z.innerHTML)) {
+                        console.log("Pareggi sort")
+                        shouldSwitch = true;
+                        break;
+                    } 
+                }
             }
         }
         if (shouldSwitch) {
