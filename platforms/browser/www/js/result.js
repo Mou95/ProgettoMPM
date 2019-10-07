@@ -54,15 +54,15 @@ function sendResult( event ) {
             case "2":
             case "10":
             case "13":
-                checkResult(2, 0, 13, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
+                checkResult(2, 0, 11, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
                 break;
             case "3":
             case "11":
             case "12":
-                checkResult(1, 0, 13, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
+                checkResult(1, 0, 11, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
                 break;
             case "4":
-                checkResult(3, 0, 13, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
+                checkResult(3, 0, 11, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
                 break;
             case "5":
                 checkResult(2, 0, 65, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
@@ -83,7 +83,6 @@ function sendResult( event ) {
 }
 
 function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2, p_1, p_2) {
-    //if (g_1.length == n && g_2.length == n && p_1 >= min && p_1 <= max && p_2 >= min && p_2 <= max) {
     //numero giocatori
     if (g_1.length == n && g_2.length == n) {
         //punteggio corretto
@@ -98,6 +97,8 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
                 var tabellino = doc.data()["partite"][numero_partita]["tabellino"] 
 
                 if (tabellino[prova] == null) {
+                    
+                    var user = firebase.auth().currentUser;
 
                     /*Update tabellino*/
                     var update_tabellino = doc.data()
@@ -105,7 +106,8 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
                         "g_1" : g_1,
                         "g_2" : g_2,
                         "p_1" : p_1,
-                        "p_2" : p_2
+                        "p_2" : p_2,
+                        "user" : user.email
                     }
 
                     if (prova == "6" || prova == "7") {

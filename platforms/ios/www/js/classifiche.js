@@ -18,8 +18,9 @@ var property_table = [
 ]
 
 var championship = [
-    "Serie A1 2019/20",
-    "Serie A2 Est 2019/20"
+    "Serie A1 19/20",
+    "Serie A2 Est 19/20",
+    "Serie A2 Ovest 19/20"
 ]
 
 function createStandings() {

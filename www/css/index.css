@@ -863,7 +863,7 @@ select {
     text-transform: none;
     table-layout: fixed;
     overflow: hidden;
-    margin-bottom: calc(var(--bottom) + 60px);
+    margin-bottom: calc(var(--bottom) + 60px + 50px);
 }
 
 #TableIncontro td {
@@ -902,9 +902,28 @@ select {
     width: 16.5%;
 }
 
-#Totale td {
-    font-size: 16px;
+#Totale {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    border-collapse: collapse;
+}
+
+#Totale p {
+    width: 50%;
+    font-size: 14pt;
+    overflow: hidden;
+    z-index: 1;
+    display: block;
+    text-align: center;
+    float: left;
     font-weight: bold;
+    padding: 8px 0;
+    border-top: 1px solid #3c3c3b;
+    border-right: 0.5px solid #3c3c3b;
+    border-left: 0.5px solid #3c3c3b;
+    border-bottom: 1px solid #3c3c3b;
 }
 
 .addHalfButton {

@@ -1,51 +1,41 @@
-/*db.collection("giocatori").where("squadra","==","Pontese").get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            db.collection("giocatori").doc(doc.id).delete()
-            .then(function() {
-                console.log("Document successfully deleted!");
-            }).catch(function(error) {
-                console.error("Error removing document: ", error);
-            });
-        });
-    })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });*/
 
 var t = [
-    "Tonejc D.",
-    "Petric A.",
-    "Ortolano A.",
-    "Cavallo S.",
-    "Tabone W." ,
-    "Rossatto D.",
-    "Suini M.", 
-    "Parise P.", 
-    "Zanier S.", 
-    "Agnesini V." 
+"Pittarelli L.",
+"Strocco G.",
+"Croveri M.",
+"Franco C.",
+"Ariello D.",
+"Ronco M.",
+"Nicolino E.",
+"Luciano P.L.",
+"Favaretto E.",
+"Sacco G.",
+"Borca M.",
+"Porta A."
 ]
 
 /*t.forEach(function(gioc) {
-    db.collection("squadre").add({
-        campionato: "A1_1920",
+    db.collection("campionati/A2_1920_ovest/classifica").add({
         squadra: gioc,
-        
-
-    }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        punti: 0,
+        punti_fatti: 0,
+        punti_subiti: 0,
+        vittorie: 0,
+        sconfitte: 0,
+        pareggi: 0
+    })
+    .then(function() {
+        console.log("Document successfully written!");
     })
     .catch(function(error) {
-        console.error("Error adding document: ", error);
+        console.error("Error writing document: ", error);
     });
-
 })*/
 
 /*t.forEach(function(gioc) {
     db.collection("giocatori").add({
         name: gioc,
-        squadra: "Borgonese",
+        squadra: "Pozzo Strada",
         statistiche_1920: {
             combinato: {
                 perse:0,
@@ -94,16 +84,14 @@ var t = [
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
-
-})*/
-
-
+})
+*/
         
 
-/*for (var i=1; i<15; i++) {
-    db.collection("giornate").doc("g"+i+"_A1").set({
+/*for (var i=1; i<19; i++) {
+    db.collection("giornate").doc("g"+i+"_A2_O").set({
         numero: i,
-        campionato: "A1_1920",
+        campionato: "A2_1920_ovest",
         partite:[
             {
                 completo:false, 
@@ -113,6 +101,8 @@ var t = [
                 punteggio_2:0,
                 tabellino:{}
             },
+            {completo:false, prima_squadra:"", seconda_squadra:"",
+                punteggio_1:0,punteggio_2:0,tabellino:{}},
             {completo:false, prima_squadra:"", seconda_squadra:"",
                 punteggio_1:0,punteggio_2:0,tabellino:{}},
             {completo:false, prima_squadra:"", seconda_squadra:"",
@@ -131,8 +121,8 @@ var t = [
 }*/
 
 var dots_stat = document.getElementById("page_statistiche").getElementsByClassName("dot")
-var campionato = ["A1_1920", "A2_1920_est"];
-var name_campionati = ["Serie A1 2019/20", "Serie A2 est 2019/20"];
+var campionato = ["A1_1920", "A2_1920_est",  "A2_1920_ovest"];
+var name_campionati = ["Serie A1 19/20", "Serie A2 est 19/20", "Serie A2 ovest 19/20"];
 
 var n = campionato.length;
 var backArrow_stat = document.getElementById("backArrow_stat");
@@ -155,7 +145,8 @@ var tiri = ["staffetta", "progressivo_3", "tiro_tecnico", "combinato"]
 
 var array_player = {
     A1_1920: [],
-    A2_1920_est: []
+    A2_1920_est: [],
+    A2_1920_ovest: []
 }
 
 $(function(){

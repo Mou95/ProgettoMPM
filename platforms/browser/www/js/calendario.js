@@ -6,12 +6,14 @@ var tbody_giornate;
 
 var array_giornate = {
     A1_1920: [],
-    A2_1920_est: []
+    A2_1920_est: [],
+    A2_1920_ovest: []
 }
 
 var titleC = {
     A1_1920: "Serie A1 2019/20",
-    A2_1920_est: "Serie A2 Est 2019/20"
+    A2_1920_est: "Serie A2 Est 2019/20",
+    A2_1920_ovest: "Serie A2 Ovest 2019/20"
 }
 
 var tableCalendar = document.getElementById("tableGiornate");

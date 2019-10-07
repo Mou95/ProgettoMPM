@@ -47,7 +47,7 @@
     <div id="page_statistiche" class="no_page_show">
         <div class="titleTabelle">
             <button class="arrowClass" id="backArrow_stat"></button>
-            <p id="titleStat">Serie A1 2019/20</p>
+            <p id="titleStat">Serie A1 19/20</p>
             <button class="arrowClass show" id="forwArrow_stat"></button>
         </div>
         <div id="stat-slider">
@@ -116,6 +116,7 @@
             </div>
             <span class="dot active-dot"></span> 
             <span class="dot"></span> 
+            <span class="dot"></span> 
             <p>Scorri a destra/sinistra per cambiare campionato</p>
         </div>
     
@@ -157,6 +158,7 @@
                 <select id="selCampionato" onchange=refreshCalendar(true)>
                     <option value="A1_1920" selected>Serie A1 2019/20</option>
                     <option value="A2_1920_est">Serie A2 Est 2019/20</option>
+                    <option value="A2_1920_ovest">Serie A2 Ovest 2019/20</option>
                 </select>
             </div> 
             <p>Scorri a destra/sinistra per cambiare giornata</p>
@@ -287,19 +289,23 @@
                     <td class="PrimoPunteggio"></td>
                     <td class="SecondoPunteggio"></td>
                 </tr>
-                <tr id="Totale">
+                <!--<tr id="Totale">
                     <td colspan="2" id="PrimaSquadraTot"></td>
                     <td colspan="2" id="SecondaSquadraTot"></td>
-                </tr>
+                </tr>-->
             </tbody>
         </table>
+        <div id="Totale">
+            <p id="PrimaSquadraTot"></p>
+            <p id="SecondaSquadraTot"></p>
+        </div>  
         <div class="dot-slider" id="footerTabellini">
             <button type="button" id="addResultButton" class="addHalfButton" >Aggiungi risultati</button>
             <button type="button" class="addHalfButton" >Segnala errore</button>
             <p>Clicca qui per aggiungere i risultati mancanti o segnalare un errore</p>
         </div>
     </div>
-    
+ 
     <div id="page_result" class="no_page_show">
 		<div class="titleTabelle">
             <p id="titleStat">Risultati</p>
@@ -428,12 +434,39 @@
                     </thead>            
                 </table>
             </div>
+            <div class="classifica">
+                <table id="A2_1920_ovest" class="table" summary="Tabella della classifica relativa al campionato scelto">
+                    <colgroup>
+                        <col class="posizione" >
+                        <col class="squadra" >
+                        <col class="vittorie" >
+                        <col class="pareggi" >
+                        <col class="sconfitte" >
+                        <col class="punti_fatti" >
+                        <col class="punti_subiti" >
+                        <col class="punti" >
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Squadra</th>
+                            <th scope="col">V</th>
+                            <th scole="col">N</th>
+                            <th scope="col">P</th>
+                            <th scole="col">+</th>
+                            <th scope="col">-</th>
+                            <th scole="col">Pt</th>
+                        </tr>
+                    </thead>            
+                </table>
+            </div>
         </div>
         <div class="dot-slider" id="footerClassifica">
             <p class="legendaClassifica">V vittorie / n pareggi / p sconfitte</p>
             <p class="legendaClassifica">+ punti fatti / - punti subiti / pt punti totali</p>
             <span class="dot active-dot"></span> 
-            <span class="dot"></span> 
+            <span class="dot"></span>
+            <span class="dot"></span>
             <p>Scorri a destra/sinistra per vedere tutte le classifiche</p>
         </div>
     

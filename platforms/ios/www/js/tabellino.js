@@ -7,15 +7,18 @@ document.getElementsByClassName("addHalfButton")[1].addEventListener("click", fu
     navigator.notification.prompt(
         'Descrivi l\'errore che hai trovato in questo tabellino, verrà ricontrollato e risolto',  // message
         function(results){
+            var user = firebase.auth().currentUser;
             if (results.buttonIndex == 1) {
                 db.collection("errori").add({
                     id_camp: id_campionato,
                     numero_giornata: numero_giornata + 1,
                     numero_partita: numero_partita,
-                    descrizione: results.input1
+                    descrizione: results.input1,
+                    user: user.email
                 })
                 .then(function(docRef) {
                     console.log("Document written with ID: ", docRef.id);
+                    navigator.notification.alert("Segnalazione inviata", function(){}, "Successo!")
                 })
                 .catch(function(error) {
                     console.error("Error adding document: ", error);
@@ -48,6 +51,12 @@ document.getElementsByClassName("addHalfButton")[0].addEventListener("click", fu
     }, false)
 
 function logicTabellino() {
+    var $footer_tab = $('#footerTabellini');
+
+    $('#Totale').css("bottom",  $footer_tab.height() + 6);
+    
+    
+                
     document.getElementsByClassName("backButton")[0].addEventListener("click", closeTabellino, false);
 
     document.addEventListener("backbutton", closeTabellino, false); 
@@ -106,7 +115,7 @@ function refreshMatches() {
     }
     
     /*Aggiorno il totale*/
-    var tot = document.getElementById("Totale").getElementsByTagName("td");
+    var tot = document.getElementById("Totale").getElementsByTagName("p");
     points_1 = parseInt(tot[0].innerHTML);
     points_2 = parseInt(tot[1].innerHTML);
     
