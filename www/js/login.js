@@ -1,6 +1,7 @@
 
 var access = document.getElementsByClassName('formButton')[0]
 var accedi = document.getElementById("email")
+
 $.mobile.autoInitializePage = false;
 
 var backLogin = document.getElementsByClassName("backButtonMenu")[0]

@@ -1,5 +1,6 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
+
 function onDeviceReady( event ) {
     
     if(window.MobileAccessibility) {
