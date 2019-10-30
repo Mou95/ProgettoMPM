@@ -249,6 +249,12 @@ function updateStats(giocatori, squadra, tipo, punteggio, risultato) {
                     
                     var prove_svolte = update_stat["statistiche_1920"][tipo]["vinte"]+update_stat["statistiche_1920"][tipo]["pareggiate"]+update_stat["statistiche_1920"][tipo]["perse"] 
                     
+                    var lista_prove = []
+                    if (update_stat["statistiche_1920"][tipo]["lista"] != null) 
+                        lista_prove = update_stat["statistiche_1920"][tipo]["lista"]
+                    
+                    lista_prove.push(punteggio)
+                    
                     var media = update_stat["statistiche_1920"][tipo]["media"] 
                     
                     console.log(prove_svolte+" "+media+" "+punteggio)
@@ -258,6 +264,7 @@ function updateStats(giocatori, squadra, tipo, punteggio, risultato) {
                     console.log("MEDIA"+new_media)
                     
                     update_stat["statistiche_1920"][tipo]["media"] = new_media
+                    update_stat["statistiche_1920"][tipo]["lista"] = lista_prove
                     
                 }
 
