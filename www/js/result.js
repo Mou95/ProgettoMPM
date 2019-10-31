@@ -3,6 +3,8 @@ var form = document.getElementsByTagName("form")[0]
 var prima_s, seconda_s;
 
 document.getElementById("inviaResult").addEventListener("click", sendResult, false)
+console.log("Add listener enabled")
+document.getElementById("inviaResult").disabled = false;
 
 function logicAddResult() {
     
@@ -37,6 +39,9 @@ function closeResult() {
 
 function sendResult( event ) {
     event.preventDefault()
+    
+    document.getElementById("inviaResult").disabled = true;
+    console.log("Disabled")
     
     var tipo = $("#provaForm option:selected").attr('class');
     var prova = $("#provaForm").val();
@@ -78,7 +83,10 @@ function sendResult( event ) {
 
         }
     } else {
-         navigator.notification.alert("Alcuni campi non sono stati inseriti!!", function(){}, "Errore!")
+        navigator.notification.alert("Alcuni campi non sono stati inseriti!!", function(){
+            document.getElementById("inviaResult").disabled = false;
+            console.log("Enabled")
+        }, "Errore!")
     }
 }
 
@@ -170,7 +178,9 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
                     .then(function() {
 
                         navigator.notification.alert("Tabellino aggiornato!!", function(){
-                             closeResult()
+                            closeResult()
+                            document.getElementById("inviaResult").disabled = false;
+                            console.log("Enabled")
                         }, "Successo!")
                         console.log("Document successfully updated!");
                     });
@@ -179,18 +189,26 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
 
                 } else {
                     /*Tabellino già presente*/
-                    navigator.notification.alert("Il tabellino contiene già la partita che hai inserito", function(){}, "Attenzione!")
+                    navigator.notification.alert("Il tabellino contiene già la partita che hai inserito", function(){
+                        document.getElementById("inviaResult").disabled = false;
+                        console.log("Enabled")
+                    }, "Attenzione!")
                     console.log("tabellino già presente")
                 }
             }).catch(function(error) {
                 console.log("Error getting document:", error);
             });
         } else {
-            navigator.notification.alert("Il punteggio inserito non è corretto", function(){}, "Errore!")
+            navigator.notification.alert("Il punteggio inserito non è corretto", function(){
+                document.getElementById("inviaResult").disabled = false;
+                console.log("Enabled")
+            }, "Errore!")
         }
         
     } else {
-        navigator.notification.alert("Il numero dei giocatori selezionati non è corretto per la specialità scelta", function(){}, "Errore!")
+        navigator.notification.alert("Il numero dei giocatori selezionati non è corretto per la specialità scelta", function(){
+            document.getElementById("inviaResult").disabled = false;
+            console.log("Enabled")}, "Errore!")
         console.log("Valori sballati")
     }
 }
