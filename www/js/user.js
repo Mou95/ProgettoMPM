@@ -80,7 +80,7 @@ function changePsw() {
 
 
 /*CALCOLO GIORNATA*/
-document.getElementById("resettaDati").addEventListener("click", function() {
+/*document.getElementById("resettaDati").addEventListener("click", function() {
 
     navigator.notification.confirm("Vuoi eliminare statistiche e classifiche?", function(buttonIndex) {
         if (buttonIndex == 1) {
@@ -306,11 +306,11 @@ function calcolaStat() {
 
                     console.log(partita)
 
-                    /*update_tabellino["partite"][i]["completo"] = true;
+                    update_tabellino["partite"][i]["completo"] = true;
                     db.doc("giornate/"+doc.id).update(update_tabellino)
                     .then(function() {
                         console.log("Document successfully updated!");
-                    });*/
+                    });
 
                     i++;
                 })
@@ -415,4 +415,4 @@ function calcolaClassifiche() {
 
 }
 
-
+*/

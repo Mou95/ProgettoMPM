@@ -30,7 +30,7 @@ function onLoad() {
             createStats()
             
             if (window.localStorage.getItem("news") == null) {
-                navigator.notification.alert("Seguendo i vostri consigli ho aggiunto alcune novità:\n- I risultati sono MODIFICABILI\n- Una volta inserito il risultato di una partita è possibile modificarlo inserendo di nuovo il punteggio (quindi ora è possibile inserire i risultati parziali es. 3,4 scarto del pto ecc..\n- Le STATISTICHE e le CLASSIFICHE non verranno più aggiornate in tempo reale, ma solamente una volta che sarò certo che tutti i tabellini non contengano errori (entro la sera stessa spero)\n\n\n GRAZIE A TUTTI E CONTINUATE AD USARE TUTTOBOCCE)", function(){window.localStorage.setItem("news",true)}, "Cosa c'è di nuovo in TuttoBOCCE?")
+                navigator.notification.alert("Seguendo i vostri consigli ho aggiunto alcune novità:\n- I risultati sono MODIFICABILI\n- Una volta inserito il risultato di una partita è possibile modificarlo inserendo di nuovo il punteggio (quindi ora è possibile inserire i risultati parziali es. 3,4 scarto del pto ecc..\n- Le STATISTICHE e le CLASSIFICHE non verranno più aggiornate in tempo reale, ma solamente una volta che sarò certo che tutti i tabellini non contengano errori (entro la sera stessa spero)\n\n\nGRAZIE A TUTTI E CONTINUATE AD USARE TUTTOBOCCE)", function(){window.localStorage.setItem("news",true)}, "Cosa c'è di nuovo in TuttoBOCCE?")
             }
         
 
