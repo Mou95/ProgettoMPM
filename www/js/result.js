@@ -37,11 +37,58 @@ function closeResult() {
     
 }
 
+function getOldTabellino(selectObject) {
+    var value = selectObject.value;  
+    
+    var partita = db.doc("giornate/"+id_giornata)
+    
+    var g_1 = document.getElementById('form1Squadra');
+    var g_2 = document.getElementById('form2Squadra');
+    var p_1 = $('#punteggio1Squadra');
+    var p_2 = $('#punteggio2Squadra');
+
+    partita.get()
+    .then(function(doc) {
+        
+        var tabellino = doc.data()["partite"][numero_partita]["tabellino"] 
+        
+        if (tabellino[value] != null) {
+            /*Partita già presente*/
+            console.log("Riprendo valori")
+            p_1.val(tabellino[value]["p_1"])
+            p_2.val(tabellino[value]["p_2"])
+            
+            var optionsToSelect = tabellino[value]["g_1"];
+            
+            for (var i = 0, l = g_1.options.length, o; i < l; i++ )
+            {
+                o = g_1.options[i];
+                if ( optionsToSelect.indexOf( o.text ) != -1 )
+                {
+                    o.selected = true;
+                }
+            }
+            
+            var optionsToSelect = tabellino[value]["g_2"];
+            
+            for (var i = 0, l=g_2.options.length, o; i < l; i++ )
+            {
+                o = g_2.options[i];
+                if ( optionsToSelect.indexOf( o.text ) != -1 )
+                {
+                    o.selected = true;
+                }
+            }
+        }
+        
+    }).catch(function(error) {
+            console.log("Error getting document:", error);
+    });
+}
+
 function sendResult( event ) {
     event.preventDefault()
     
-    document.getElementById("inviaResult").disabled = true;
-    console.log("Disabled")
     
     var tipo = $("#provaForm option:selected").attr('class');
     var prova = $("#provaForm").val();
@@ -84,8 +131,6 @@ function sendResult( event ) {
         }
     } else {
         navigator.notification.alert("Alcuni campi non sono stati inseriti!!", function(){
-            document.getElementById("inviaResult").disabled = false;
-            console.log("Enabled")
         }, "Errore!")
     }
 }
@@ -104,22 +149,54 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
             .then(function(doc) {
                 var tabellino = doc.data()["partite"][numero_partita]["tabellino"] 
 
-                if (tabellino[prova] == null) {
+                //if (tabellino[prova] == null) {
+                
+                    var already_set = false
+                    var ex_p1 = 0
+                    var ex_p2 = 0
+                    
+                    if (tabellino[prova] != null) {
+                        already_set = true
+                        ex_p1 = tabellino[prova]["p_1"]
+                        ex_p2 = tabellino[prova]["p_2"]
+                    }
                     
                     var user = firebase.auth().currentUser;
 
                     /*Update tabellino*/
                     var update_tabellino = doc.data()
-                    update_tabellino["partite"][numero_partita]["tabellino"] [prova] = {
+                    update_tabellino["partite"][numero_partita]["tabellino"][prova] = {
                         "g_1" : g_1,
                         "g_2" : g_2,
                         "p_1" : p_1,
                         "p_2" : p_2,
                         "user" : user.email
                     }
-
+                
+                
+                    /*TODO*/
                     if (prova == "6" || prova == "7") {
                         if (update_tabellino["partite"][numero_partita]["tabellino"]["6"] != null && update_tabellino["partite"][numero_partita]["tabellino"]["7"] != null) {
+                            
+                            
+                            if (already_set) {
+                                p_1_1 = tabellino["6"]["p_1"]
+                                p_1_2 = tabellino["6"]["p_2"]
+                                p_2_1 = tabellino["7"]["p_1"]
+                                p_2_2 = tabellino["7"]["p_2"]
+                                
+                                var sum_prima_squadra = p_1_1 + p_2_1
+                                var sum_seconda_squadra = p_1_2 + p_2_2
+
+                                console.log("TECNICO "+sum_prima_squadra+" "+sum_seconda_squadra)
+
+                                if (sum_prima_squadra > sum_seconda_squadra) {
+                                    update_tabellino["partite"][numero_partita]["punteggio_1"] -= 1;
+
+                                } else if (sum_seconda_squadra > sum_prima_squadra) {
+                                    update_tabellino["partite"][numero_partita]["punteggio_2"] -= 1;               
+                                }
+                            }
                             /*Calcolo punto aggiuntivo tecnico*/
 
                             var sum_prima_squadra = update_tabellino["partite"][numero_partita]["tabellino"]["6"]["p_1"] + update_tabellino["partite"][numero_partita]["tabellino"]["7"]["p_1"]
@@ -137,28 +214,48 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
                     }
 
                     /*Update risultato totale e statistiche giocatori*/
+                    if (already_set) {
+                        
+                        if (ex_p1 > ex_p2) {
+                            /*Vinto prima squadra*/
+                            update_tabellino["partite"][numero_partita]["punteggio_1"] -= p_vittoria;
+
+                        } else if (ex_p2 > ex_p1) {
+                            /*Vinto seconda squadra*/
+                            update_tabellino["partite"][numero_partita]["punteggio_2"] -= p_vittoria;
+
+                        } else {
+                            /*Pareggio*/
+                            update_tabellino["partite"][numero_partita]["punteggio_1"] -= p_pareggio;
+                            update_tabellino["partite"][numero_partita]["punteggio_2"] -= p_pareggio;
+
+                        }
+                    }
+                        
                     if (p_1 > p_2) {
                         /*Vinto prima squadra*/
                         update_tabellino["partite"][numero_partita]["punteggio_1"] += p_vittoria;
-                        updateStats(g_1, prima_s, tipo, p_1, "w")
-                        updateStats(g_2, seconda_s, tipo, p_2, "l")
+                        //updateStats(g_1, prima_s, tipo, p_1, "w")
+                        //updateStats(g_2, seconda_s, tipo, p_2, "l")
 
                     } else if (p_2 > p_1) {
                         /*Vinto seconda squadra*/
                         update_tabellino["partite"][numero_partita]["punteggio_2"] += p_vittoria;
-                        updateStats(g_1, prima_s, tipo, p_1, "l")
-                        updateStats(g_2, seconda_s, tipo, p_2, "w")
+                        //updateStats(g_1, prima_s, tipo, p_1, "l")
+                        //updateStats(g_2, seconda_s, tipo, p_2, "w")
 
                     } else {
                         /*Pareggio*/
                         update_tabellino["partite"][numero_partita]["punteggio_1"] += p_pareggio;
                         update_tabellino["partite"][numero_partita]["punteggio_2"] += p_pareggio;
-                        updateStats(g_1, prima_s, tipo, p_1, "t")
-                        updateStats(g_2, seconda_s, tipo, p_2, "t")
+                        //updateStats(g_1, prima_s, tipo, p_1, "t")
+                        //updateStats(g_2, seconda_s, tipo, p_2, "t")
 
                     }
+                        
+                    
 
-                    if (Object.keys(update_tabellino["partite"][numero_partita]["tabellino"]).length == 13 && !update_tabellino["partite"][numero_partita]["completo"]) {
+                    /*if (Object.keys(update_tabellino["partite"][numero_partita]["tabellino"]).length == 13 && !update_tabellino["partite"][numero_partita]["completo"]) {
 
                         update_tabellino["partite"][numero_partita]["completo"] = true;
 
@@ -172,7 +269,7 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
 
                         //closeResult()
 
-                    }
+                    }*/
 
                     partita.update(update_tabellino)
                     .then(function() {
@@ -187,127 +284,107 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
 
                     form.reset()
 
-                } else {
+                //} else {
                     /*Tabellino già presente*/
-                    navigator.notification.alert("Il tabellino contiene già la partita che hai inserito", function(){
+                    /*navigator.notification.alert("Il tabellino contiene già la partita che hai inserito", function(){
                         document.getElementById("inviaResult").disabled = false;
                         console.log("Enabled")
                     }, "Attenzione!")
                     console.log("tabellino già presente")
-                }
+                }*/
             }).catch(function(error) {
                 console.log("Error getting document:", error);
             });
         } else {
             navigator.notification.alert("Il punteggio inserito non è corretto", function(){
-                document.getElementById("inviaResult").disabled = false;
-                console.log("Enabled")
             }, "Errore!")
         }
         
     } else {
-        navigator.notification.alert("Il numero dei giocatori selezionati non è corretto per la specialità scelta", function(){
-            document.getElementById("inviaResult").disabled = false;
-            console.log("Enabled")}, "Errore!")
+        navigator.notification.alert("Il numero dei giocatori selezionati non è corretto per la specialità scelta", function(){}, "Errore!")
         console.log("Valori sballati")
     }
 }
 
-function updateStanding(tot_1, tot_2, squadra) {
+function updateStanding(tot_1, tot_2, squadra, map_class, id_campionato) {
     
-    squadra.get()
-    .then(function(querySelector) {
-        querySelector.forEach(function(doc) {
+    map_class[squadra]["data"]
+    map_class[squadra]["data"]["punti_fatti"] += tot_1
+    map_class[squadra]["data"]["punti_subiti"] += tot_2
 
-            var update = doc.data()
-            update["punti_fatti"] += tot_1
-            update["punti_subiti"] += tot_2
+    if (tot_1 > tot_2) {   
+        map_class[squadra]["data"]["punti"] += 2
+        map_class[squadra]["data"]["vittorie"] += 1
 
-            if (tot_1 > tot_2) {   
-                update["punti"] += 2
-                update["vittorie"] += 1
+    } else if (tot_2 == tot_1) {
+        map_class[squadra]["data"]["punti"] += 1
+        map_class[squadra]["data"]["pareggi"] += 1
 
-            } else if (tot_2 == tot_1) {
-                update["punti"] += 1
-                update["pareggi"] += 1
+    } else {
+        map_class[squadra]["data"]["sconfitte"] += 1
 
-            } else {
-                update["sconfitte"] += 1
-
-            }
-
-            db.doc("campionati/"+id_campionato+"/classifica/"+doc.id).update(update)
-            .then(function() {
-                console.log("Standing successfully updated!");
-            });
-
-        })    
-
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
-    });
+    }
     
+    return map_class
 }
 
 
-function updateStats(giocatori, squadra, tipo, punteggio, risultato) {
+function updateStats(giocatori, squadra, tipo, punteggio, risultato, map_giocatori) {
     
     console.log("squadra"+squadra)
     
     giocatori.forEach(function(giocatore) {
-        var pl = db.collection("giocatori").where("name", "==", giocatore).where("squadra", "==", squadra)
         
-        pl.get()
+        console.log(giocatore)
+        
+        /*pl.get()
         .then(function(querySelector) {
             querySelector.forEach(function(doc) {
                     
                 var update_stat = doc.data()
-                
-                if (tiri.includes(tipo)) {
-                    
-                    var prove_svolte = update_stat["statistiche_1920"][tipo]["vinte"]+update_stat["statistiche_1920"][tipo]["pareggiate"]+update_stat["statistiche_1920"][tipo]["perse"] 
-                    
-                    var lista_prove = []
-                    if (update_stat["statistiche_1920"][tipo]["lista"] != null) 
-                        lista_prove = update_stat["statistiche_1920"][tipo]["lista"]
-                    
-                    lista_prove.push(punteggio)
-                    
-                    var media = update_stat["statistiche_1920"][tipo]["media"] 
-                    
-                    console.log(prove_svolte+" "+media+" "+punteggio)
-                    
-                    var new_media = roundTo(((media*prove_svolte) + punteggio) / (prove_svolte + 1), 2)
-                    
-                    console.log("MEDIA"+new_media)
-                    
-                    update_stat["statistiche_1920"][tipo]["media"] = new_media
-                    update_stat["statistiche_1920"][tipo]["lista"] = lista_prove
-                    
-                }
+                */
+        if (tiri.includes(tipo)) {
 
-                switch (risultato) {
-                    case "w":
-                        update_stat["statistiche_1920"][tipo]["vinte"] += 1;
-                        break;
-                    case "t":
-                        update_stat["statistiche_1920"][tipo]["pareggiate"] += 1;
-                        break;
-                    case "l":
-                        update_stat["statistiche_1920"][tipo]["perse"]  += 1;
-                        break;
-                }
-                db.doc("giocatori/"+doc.id).update(update_stat)
-                .then(function() {
-                    console.log("Document successfully updated!");
-                });
-                
-            })    
+            var prove_svolte = map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["vinte"]+map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["pareggiate"]+map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["perse"] 
+
+            var lista_prove = []
+            if (map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["lista"] != null) 
+                lista_prove = map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["lista"]
+
+            lista_prove.push(punteggio)
+
+            var media = map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["media"] 
+
+            console.log(prove_svolte+" "+media+" "+punteggio)
+
+            var new_media = roundTo(((media*prove_svolte) + punteggio) / (prove_svolte + 1), 2)
+
+            console.log("MEDIA"+new_media)
+
+            map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["media"] = new_media
+            map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["lista"] = lista_prove
+
+        }
+
+        switch (risultato) {
+            case "w":
+                map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["vinte"] += 1;
+                break;
+            case "t":
+                map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["pareggiate"] += 1;
+                break;
+            case "l":
+                map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["perse"]  += 1;
+                break;
+        }
+        /*db.doc("giocatori/"+doc.id).update(update_stat)
+        .then(function() {
+            console.log("Document successfully updated!");
+        });*/
+
+    })    
             
-        }).catch(function(error) {
-            console.log("Error getting document:", error);
-        });
-    })
+    return map_giocatori
     
 }
 

@@ -1,21 +1,25 @@
 
 var t = [
-"Pittarelli L.",
-"Strocco G.",
-"Croveri M.",
-"Franco C.",
-"Ariello D.",
-"Ronco M.",
-"Nicolino E.",
-"Luciano P.L.",
-"Favaretto E.",
-"Sacco G.",
-"Borca M.",
-"Porta A."
 ]
 
+/*db.collection("giocatori").where("name", "==", "Gilemi G.")
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doccc) {
+            // doc.data() is never undefined for query doc snapshots
+            db.collection("giocatori").doc(doccc.id).delete().then(function() {
+                console.log("Document successfully deleted!");
+            }).catch(function(error) {
+                console.error("Error removing document: ", error);
+            });
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });*/
+
 /*t.forEach(function(gioc) {
-    db.collection("campionati/A2_1920_ovest/classifica").add({
+    db.collection("campionati/A1_1920_F/classifica").add({
         squadra: gioc,
         punti: 0,
         punti_fatti: 0,
@@ -33,9 +37,22 @@ var t = [
 })*/
 
 /*t.forEach(function(gioc) {
+    db.collection("squadre").add({
+        squadra: gioc,
+        campionato: "A1_1920_F"
+    })
+    .then(function() {
+        console.log("Document successfully written!");
+    })
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
+})*/
+
+/*t.forEach(function(gioc) {
     db.collection("giocatori").add({
         name: gioc,
-        squadra: "Pozzo Strada",
+        squadra: "Buttrio",
         statistiche_1920: {
             combinato: {
                 perse:0,
@@ -70,11 +87,6 @@ var t = [
                 perse:0,
                 vinte:0,
                 pareggiate:0
-            },
-            terna: {
-                perse:0,
-                vinte:0,
-                pareggiate:0
             }
         }  
 
@@ -84,14 +96,14 @@ var t = [
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
-})
-*/
-        
+})*/
 
-/*for (var i=1; i<19; i++) {
-    db.collection("giornate").doc("g"+i+"_A2_O").set({
+       
+
+/*for (var i=1; i<12; i++) {
+    db.collection("giornate").doc("g"+i+"_A1_F").set({
         numero: i,
-        campionato: "A2_1920_ovest",
+        campionato: "A1_1920_F",
         partite:[
             {
                 completo:false, 
@@ -101,10 +113,6 @@ var t = [
                 punteggio_2:0,
                 tabellino:{}
             },
-            {completo:false, prima_squadra:"", seconda_squadra:"",
-                punteggio_1:0,punteggio_2:0,tabellino:{}},
-            {completo:false, prima_squadra:"", seconda_squadra:"",
-                punteggio_1:0,punteggio_2:0,tabellino:{}},
             {completo:false, prima_squadra:"", seconda_squadra:"",
                 punteggio_1:0,punteggio_2:0,tabellino:{}},
             {completo:false, prima_squadra:"", seconda_squadra:"",
@@ -121,8 +129,8 @@ var t = [
 }*/
 
 var dots_stat = document.getElementById("page_statistiche").getElementsByClassName("dot")
-var campionato = ["A1_1920", "A2_1920_est",  "A2_1920_ovest"];
-var name_campionati = ["Serie A1 19/20", "Serie A2 est 19/20", "Serie A2 ovest 19/20"];
+var campionato = ["A1_1920", "A2_1920_est",  "A2_1920_ovest"/*, "A1_1920_F"*/];
+var name_campionati = ["Serie A1 19/20", "Serie A2 est 19/20", "Serie A2 ovest 19/20"/*, "Serie A1 Femm 19/20"*/];
 
 var n = campionato.length;
 var backArrow_stat = document.getElementById("backArrow_stat");
@@ -146,7 +154,8 @@ var tiri = ["staffetta", "progressivo_3", "tiro_tecnico", "combinato"]
 var array_player = {
     A1_1920: [],
     A2_1920_est: [],
-    A2_1920_ovest: []
+    A2_1920_ovest: []/*,
+    A1_1920_F: []*/
 }
 
 $(function(){
@@ -236,7 +245,6 @@ function createStats() {
 }
 
 function changeEntryTableStat(campionato, change) {
-    console.log(campionato+" "+change.doc.data()["name"])
     var squadra = change.doc.data()["squadra"];  
     var name = change.doc.data()["name"]; 
 
@@ -255,8 +263,6 @@ function refreshTable() {
         deleteTable();
         
         var spec_id = specialita.value;
-
-        console.log("Filtro "+spec_id)
 
         createTable(spec_id)
         
@@ -279,7 +285,6 @@ function deleteTable() {
 }
     
 function createTable(spec_id) {
-    console.log(array_player)
     var medie;
     var table_to_create;
     
@@ -294,17 +299,22 @@ function createTable(spec_id) {
     var tbody = table_to_create.getElementsByTagName('tbody')[0]
     
     console.log("Inizio creazione tabella")
+    console.log(spec_id+" "+active_stat)
+    if (spec_id == "terna" && active_stat == 3) {
+        console.log("Dont show")
+        
+    } else {
+        array_player[campionato[active_stat]].forEach(function(player) {
+        
+            if (player["statistiche_1920"][spec_id]["vinte"]+player["statistiche_1920"][spec_id]["pareggiate"]+player["statistiche_1920"][spec_id]["perse"] != 0) {
+
+                tbody.appendChild(createTableRow(player, medie, spec_id))
+            }
+
+        })
+    }
     
-    console.log(array_player[campionato[active_stat]].length)
     
-    array_player[campionato[active_stat]].forEach(function(player) {
-        
-        if (player["statistiche_1920"][spec_id]["vinte"]+player["statistiche_1920"][spec_id]["pareggiate"]+player["statistiche_1920"][spec_id]["perse"] != 0) {
-        
-            tbody.appendChild(createTableRow(player, medie, spec_id))
-        }
-        
-    })
     
         
         
@@ -316,7 +326,6 @@ function createTable(spec_id) {
         tables[0].classList.add("show");
         sort("tableStatProve",2)
     }
-    console.log("Set show")
     
 }
 
@@ -377,7 +386,6 @@ function sort(id,n) {
         switching = false;
         rows = table.rows;
         
-        console.log(rows.length+"lenght")
         for (i = 1; i < (rows.length - 1); i++) {
           
             shouldSwitch = false;
@@ -387,12 +395,8 @@ function sort(id,n) {
             
             w = rows[i].getElementsByTagName("TD")[3];
             z = rows[i + 1].getElementsByTagName("TD")[3];
-            
-            console.log(x.innerHTML.toLowerCase()+" "+y.innerHTML.toLowerCase())
 
-            if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
-
-                console.log(x.innerHTML.toLowerCase()+" "+y.innerHTML.toLowerCase())
+            if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
                 shouldSwitch = true;
                 break;
             
@@ -400,7 +404,7 @@ function sort(id,n) {
                 //discrima i pareggi
                 if (id == "tableStatProve") {
                     if (parseInt(x.innerHTML) == parseInt(y.innerHTML) && parseInt(w.innerHTML) < parseInt(z.innerHTML)) {
-                        console.log("Pareggi sort")
+                        
                         shouldSwitch = true;
                         break;
                     } 
@@ -408,8 +412,6 @@ function sort(id,n) {
             }
         }
         if (shouldSwitch) {
-            
-            console.log(rows[i].getElementsByTagName("TD")[0].innerHTML+ " "+rows[i+1].getElementsByTagName("TD")[0].innerHTML)
         
             rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
             

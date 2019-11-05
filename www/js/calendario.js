@@ -7,13 +7,15 @@ var tbody_giornate;
 var array_giornate = {
     A1_1920: [],
     A2_1920_est: [],
-    A2_1920_ovest: []
+    A2_1920_ovest: []/*,
+    A1_1920_F: []*/
 }
 
 var titleC = {
     A1_1920: "Serie A1 2019/20",
     A2_1920_est: "Serie A2 Est 2019/20",
-    A2_1920_ovest: "Serie A2 Ovest 2019/20"
+    A2_1920_ovest: "Serie A2 Ovest 2019/20"/*,
+    A1_1920_F: "Serie A1 Femm 2019/20"*/
 }
 
 var tableCalendar = document.getElementById("tableGiornate");
@@ -34,7 +36,7 @@ function loadLogicCalendar(loadNewDay) {
     for (var i = 0; i<tbody_giornate.length; i++) {
         tbody_giornate[i].style.display = "none";
         
-        console.log("DATA " +data)
+        console.log("DATA " +array_giornate)
         console.log(array_giornate[camp][i]["data"].toDate())
         
         if (loadNewDay) {

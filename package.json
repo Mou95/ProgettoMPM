@@ -1,6 +1,6 @@
 {
-  "name": "com.phonegap.helloworld",
-  "version": "1.0.0",
+  "name": "com.mauro.tuttobocce",
+  "version": "1.0.1",
   "displayName": "TuttoBOCCE",
   "cordova": {
     "platforms": [

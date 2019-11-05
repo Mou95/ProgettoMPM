@@ -1,7 +1,7 @@
 var db = firebase.firestore();
 var classifiche = document.getElementById("page_classifiche").getElementsByClassName("classifica")
 var dots = document.getElementById("page_classifiche").getElementsByClassName("dot")
-var n = classifiche.length;
+var n_champ = classifiche.length;
 var active_class = 0;
 var title = document.getElementById("titleClass");
 var backArrow = document.getElementById("backArrow_class");
@@ -20,7 +20,8 @@ var property_table = [
 var championship = [
     "Serie A1 19/20",
     "Serie A2 Est 19/20",
-    "Serie A2 Ovest 19/20"
+    "Serie A2 Ovest 19/20"/*,
+    "Serie A1 Femm 19/20"*/
 ]
 
 function createStandings() {
@@ -125,10 +126,12 @@ function swipeRight( event ){
 }
 
 function swipeLeft( event ){
-    if (active_class < n - 1) {
+    if (active_class < n_champ - 1) {
         classifiche[active_class].classList.remove("show")
         dots[active_class].classList.remove("active-dot")
+        
         active_class += 1;
+        
         classifiche[active_class].classList.add("show")
         dots[active_class].classList.add("active-dot")
         title.innerHTML = championship[active_class]
@@ -139,11 +142,13 @@ function swipeLeft( event ){
 
 function setArrows() {
     
+    console.log(n_champ+" "+active_class)
+    
     if (active_class == 0) {
         backArrow.classList.remove("show");
         forwArrow.classList.add("show");
         
-    } else if (active_class == n-1) {
+    } else if (active_class == n_champ-1) {
         backArrow.classList.add("show");
         forwArrow.classList.remove("show");
         
