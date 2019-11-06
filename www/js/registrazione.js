@@ -46,7 +46,7 @@ regist.addEventListener('click', function(e) {
                                 });
                             }
                         });
-                    }, "Attenzione")
+                    }, "Conferma")
                     
                 }).catch(function(error) {
                     //Handle errors

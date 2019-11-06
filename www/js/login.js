@@ -1,6 +1,7 @@
 
 var access = document.getElementsByClassName('formButton')[0]
 var accedi = document.getElementById("email")
+var forgot = document.getElementsByClassName('forgotButton')[0]
 
 $.mobile.autoInitializePage = false;
 
@@ -33,3 +34,29 @@ access.addEventListener('click', function(e) {
     });
 }, false);
 
+forgot.addEventListener('click', function(e) {
+    //Take value from form
+    var email = document.getElementById("email").value;
+	email = email.replace(/\s/g, '');
+    
+    if (email != "") {
+        firebase.auth().sendPasswordResetEmail(email)
+        .then(function() {
+            
+            navigator.notification.alert("Email inviata, controlla la tua posta", function(){}, "Conferma")
+        }).catch(function(error) {
+            //Handle errors
+            var errorCode = error.code;
+            switch (errorCode) {
+                case "auth/invalid-email":
+                    navigator.notification.alert("L'email inserita non esiste", function(){}, "Attenzione")
+                    break;
+                case "auth/user-not-found":
+                    navigator.notification.alert("Non esiste nessun utente con questa mail", function(){}, "Attenzione")
+                    break;
+            }
+        });
+    } else {
+        navigator.notification.alert("Inserisci la mail dell'account di cui vuoi resettare la password", function(){}, "Attenzione")
+    }
+}, false);

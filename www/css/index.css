@@ -355,6 +355,33 @@ select {
     margin: 20px 0 0 0;
 }
 
+#resetPsw {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+#resetPsw p {
+    margin: 0 10%;
+    font-size: 8pt;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.forgotButton {
+    background-color: #f59c00;
+    border: none;
+    color: white;
+    display: block;
+    width: 80%;
+    font-size: 13pt;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 0;
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
+
 #keepLogin {
     -webkit-appearance: checkbox;
 }
