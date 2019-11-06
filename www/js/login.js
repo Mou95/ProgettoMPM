@@ -3,7 +3,7 @@ var access = document.getElementsByClassName('formButton')[0]
 var accedi = document.getElementById("email")
 var forgot = document.getElementsByClassName('forgotButton')[0]
 
-$.mobile.autoInitializePage = false;
+
 
 var backLogin = document.getElementsByClassName("backButtonMenu")[0]
 

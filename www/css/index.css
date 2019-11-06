@@ -357,8 +357,7 @@ select {
 
 #resetPsw {
     width: 100%;
-    position: fixed;
-    bottom: 0;
+    margin-top: 15%;
 }
 
 #resetPsw p {
