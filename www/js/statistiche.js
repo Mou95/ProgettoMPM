@@ -1,5 +1,5 @@
 
-var t = [
+var t = ["Gilemi G."
 ]
 
 /*db.collection("giocatori").where("name", "==", "Gilemi G.")
@@ -52,7 +52,7 @@ var t = [
 /*t.forEach(function(gioc) {
     db.collection("giocatori").add({
         name: gioc,
-        squadra: "Buttrio",
+        squadra: "Mondovì",
         statistiche_1920: {
             combinato: {
                 perse:0,
@@ -158,17 +158,33 @@ var array_player = {
     A1_1920_F: []*/
 }
 
-$(function(){
-    // Bind the swipeHandler callback function to the swipe event on classifica-slider
-    console.log("swiped");
-    $( "#stat-slider" ).on( "swiperight", swipeRightStat );
-    $( "#stat-slider" ).on( "swipeleft", swipeLeftStat );
-    $( "#backArrow_stat" ).on( "tap", swipeRightStat );
-    $( "#forwArrow_stat" ).on( "tap", swipeLeftStat );
+
+// Bind the swipeHandler callback function to the swipe event on classifica-slider
+
+var mc_stat = new Hammer.Manager(document.getElementById("stat-slider"));
+
+var swipe_stat = new Hammer.Swipe();
+
+mc_stat.add(swipe_stat);
+
+mc_stat.on("swiperight", function(ev) {
+   swipeRightStat()
 });
 
-function swipeRightStat( event ){
-    
+mc_stat.on("swipeleft", function(ev) {
+   swipeLeftStat()
+});
+/*$( "#stat-slider" ).on( "swiperight", swipeRightStat );
+$( "#stat-slider" ).on( "swipeleft", swipeLeftStat );*/
+/*$( "#backArrow_stat" ).on( "tap", swipeRightStat );
+$( "#forwArrow_stat" ).on( "tap", swipeLeftStat );*/
+
+document.getElementById("backArrow_stat").addEventListener("click", swipeRightStat)
+document.getElementById("forwArrow_stat").addEventListener("click", swipeLeftStat)
+
+
+function swipeRightStat(){
+    console.log("swipe right")
     if (active_stat > 0) {
         dots_stat[active_stat].classList.remove("active-dot")
         active_stat -= 1;
@@ -179,7 +195,8 @@ function swipeRightStat( event ){
     refreshTable()
 }
 
-function swipeLeftStat( event ){
+function swipeLeftStat(){
+    console.log("Swipe left")
     if (active_stat < n - 1) {
         dots_stat[active_stat].classList.remove("active-dot")
         active_stat += 1;
@@ -192,7 +209,7 @@ function swipeLeftStat( event ){
 }
 
 function setArrowsStat() {
-    
+    console.log("arrow")
     if (active_stat == 0) {
         backArrow_stat.classList.remove("show");
         forwArrow_stat.classList.add("show");
@@ -265,7 +282,7 @@ function refreshTable() {
         var spec_id = specialita.value;
 
         createTable(spec_id)
-        
+        console.log("finito")
     } 
 }
 

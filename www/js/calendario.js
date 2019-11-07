@@ -54,12 +54,31 @@ function loadLogicCalendar(loadNewDay) {
     all_giornate[active_day].classList.add("selected");
     all_giornate[active_day].scrollIntoView({behavior: "smooth", block: "end", inline: "center"})
     
-    $( ".NumeroGiornata" ).on( "tap", selectTableCalendar );
+    console.log(document.getElementsByClassName("NumeroGiornata").length)
+    for (i=0; i<document.getElementsByClassName("NumeroGiornata").length; i++ ) {
+        document.getElementsByClassName("NumeroGiornata")[i].addEventListener("click", selectTableCalendar)
+    }
+    //$( ".NumeroGiornata" ).on( "tap", selectTableCalendar );
     
     if (!loaded) {
+        console.log("CALENDAR")
+        
+        var mc_calend = new Hammer.Manager(document.getElementById("giornataIntera"));
 
-        $( "#giornataIntera" ).on( "swiperight", swipeRightCalendar );
-        $( "#giornataIntera" ).on( "swipeleft", swipeLeftCalendar );
+        var swipe_calend = new Hammer.Swipe();
+
+        mc_calend.add(swipe_calend);
+
+        mc_calend.on("swiperight", function(ev) {
+           swipeRightCalendar()
+        });
+
+        mc_calend.on("swipeleft", function(ev) {
+           swipeLeftCalendar()
+        });
+
+        /*$( "#giornataIntera" ).on( "swiperight", swipeRightCalendar );
+        $( "#giornataIntera" ).on( "swipeleft", swipeLeftCalendar );*/
         
         
         loaded = true
@@ -123,7 +142,6 @@ function createCalendar() {
             }
             if (change.type === "added") {
 
-                console.log("ASd")
                 var add = change.doc.data()["partite"];
                 add["id"] = change.doc.id;
                 add["data"] = change.doc.data()["data"]

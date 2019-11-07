@@ -101,17 +101,29 @@ function createStandings() {
     
 }
 
-$(function(){
-    // Bind the swipeHandler callback function to the swipe event on classifica-slider
-    console.log("swiped");
-    $( "#classifica-slider" ).on( "swiperight", swipeRight );
-    $( "#classifica-slider" ).on( "swipeleft", swipeLeft );
-    $( "#backArrow_class" ).on( "tap", swipeRight );
-    $( "#forwArrow_class" ).on( "tap", swipeLeft );
+
+// Bind the swipeHandler callback function to the swipe event on classifica-slider
+var mc_class = new Hammer.Manager(document.getElementById("classifica-slider"));
+
+var swipe_class = new Hammer.Swipe();
+
+mc_class.add(swipe_class);
+
+mc_class.on("swiperight", function(ev) {
+   swipeRight()
 });
 
+mc_class.on("swipeleft", function(ev) {
+   swipeLeft()
+});
+
+/*$( "#classifica-slider" ).on( "swiperight", swipeRight );
+$( "#classifica-slider" ).on( "swipeleft", swipeLeft );
+document.getElementById("backArrow_class").addEventListener("click", swipeRight)
+document.getElementById("forwArrow_class").addEventListener("click", swipeLeft)*/
+
+
 function swipeRight( event ){
-    console.log(event.message)
     
     if (active_class > 0) {
         classifiche[active_class].classList.remove("show")

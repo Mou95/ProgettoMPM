@@ -37,8 +37,8 @@ function onDeviceReady( event ) {
     
 }
 
-document.addEventListener("offline", function() {
+/*document.addEventListener("offline", function() {
     navigator.notification.alert("Alcune funzionalità potrebbero non essere utilizzabili", function(){
     }, "SEI OFFLINE!")
-})
+})*/
 
