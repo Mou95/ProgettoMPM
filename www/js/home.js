@@ -49,7 +49,7 @@ function onLoad() {
         if (user) {
             
             /*db.collection("utenti").doc(user.uid).set({
-                
+                mail: user.email
             })
             .then(function() {
                 var $content = $('#homeContent');
