@@ -48,7 +48,7 @@ function onLoad() {
         console.log("check user")
         if (user) {
             
-            db.collection("utenti").doc(user.uid).set({
+            /*db.collection("utenti").doc(user.uid).set({
                 
             })
             .then(function() {
@@ -92,9 +92,45 @@ function onLoad() {
             })
             .catch(function(error) {
                 console.error("Error writing document: ", error);
-            });
+            });*/
             
-            
+            var $content = $('#homeContent');
+
+            var height = $(window).height() - 90;
+            $content.height(height);
+
+            document.getElementById("page_home").classList.remove("no_page_show");
+            document.getElementById("page_home").classList.add("page_show");
+
+
+            createCalendar()
+            createStandings()
+            loadUser()
+            createStats()
+
+            // User is signed in.
+            console.log("USER "+user)
+            console.log(device.platform)
+
+            document.addEventListener("backbutton", returnIndex, false)
+
+            if(window.MobileAccessibility) {
+                window.MobileAccessibility.usePreferredTextZoom(false);
+            }
+
+            if (device.platform != "iOS") {
+                StatusBar.styleBlackTranslucent();
+                document.documentElement.style.setProperty('--bottom', '0px');
+                document.documentElement.style.setProperty('--top', '90px');
+                document.getElementById("navMenu").classList.add("menuBarAndroid")
+                console.log("Android")
+
+            } else {
+                document.documentElement.style.setProperty('--bottom', '50px');
+                document.documentElement.style.setProperty('--top', '40px');
+                document.getElementById("navMenu").classList.add("menuBarIos")
+                console.log("Not Android")
+            }
             
         } else {
             //user is signed out

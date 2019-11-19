@@ -306,11 +306,11 @@ function calcolaStat() {
 
                     console.log(partita)
 
-                    update_tabellino["partite"][i]["completo"] = true;
+                    /*update_tabellino["partite"][i]["completo"] = true;
                     db.doc("giornate/"+doc.id).update(update_tabellino)
                     .then(function() {
                         console.log("Document successfully updated!");
-                    });
+                    });*/
 
                     i++;
                 })
@@ -414,5 +414,4 @@ function calcolaClassifiche() {
     });
 
 }
-
 
