@@ -80,7 +80,7 @@ function changePsw() {
 
 
 /*CALCOLO GIORNATA*/
-/*document.getElementById("resettaDati").addEventListener("click", function() {
+document.getElementById("resettaDati").addEventListener("click", function() {
 
     navigator.notification.confirm("Vuoi eliminare statistiche e classifiche?", function(buttonIndex) {
         if (buttonIndex == 1) {
@@ -415,4 +415,4 @@ function calcolaClassifiche() {
 
 }
 
-*/
+

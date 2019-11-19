@@ -65,7 +65,9 @@ function loadLogicCalendar(loadNewDay) {
         
         var mc_calend = new Hammer.Manager(document.getElementById("giornataIntera"));
 
-        var swipe_calend = new Hammer.Swipe();
+        var swipe_calend = new Hammer.Swipe({
+            direction: 6
+        });
 
         mc_calend.add(swipe_calend);
 

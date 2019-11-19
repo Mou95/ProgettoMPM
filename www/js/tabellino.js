@@ -63,6 +63,10 @@ function logicTabellino() {
     
     document.getElementsByClassName("backButton")[0].style.display = "block";
     
+    if (window.localStorage.getItem("tabelliniPartial") == null) {
+        navigator.notification.alert("I risultati parziali saranno colorati in modo diverso (AZZURRO) per essere distinguibili da quelli finali", function(){window.localStorage.setItem("tabelliniPartial",true)}, "Novità!")
+    }
+    
 }
 
 function closeTabellino(e) {
@@ -79,10 +83,17 @@ function closeTabellino(e) {
     
 }
 
-function refreshMatches() {
+
+
+function refreshMatches(match) {
+    console.log("REFRESH")
     var tr = document.getElementById("TableIncontro").getElementsByTagName("tr")
+    var prova = 1;
+    
 
     for (var i = 0; i < tr.length - 1; i += 2 ) {
+        
+        var map = match["tabellino"][prova]
         
         var w1, t, w2
         var td_sq = tr[i].getElementsByTagName("td");
@@ -93,24 +104,34 @@ function refreshMatches() {
         td_sq[2].style.backgroundColor = "white";
         
         if (!isNaN(points_1) && !isNaN(points_2)) {
-            console.log(points_1+" "+points_2)
-
-            if (points_1 > points_2) {
-                /*First team win*/
-                td_sq[0].style.backgroundColor = "#33d641";
-                console.log("1")
-            } else if (points_1 < points_2) {
-                /*Second team win*/
-                td_sq[2].style.backgroundColor = "#33d641";
-                console.log("2")
+            
+            if (map["conclusa"] == null || map["conclusa"] == true) {
+                console.log(map["conclusa"])
+                
+                if (points_1 > points_2) {
+                    /*First team win*/
+                    td_sq[0].style.backgroundColor = "#33d641";
+                    console.log("1")
+                } else if (points_1 < points_2) {
+                    /*Second team win*/
+                    td_sq[2].style.backgroundColor = "#33d641";
+                    console.log("2")
+                } else {
+                    /*Tie game*/
+                    console.log("3")
+                    td_sq[0].style.backgroundColor = "#f7f302";
+                    td_sq[2].style.backgroundColor = "#f7f302";
+                }
             } else {
-                /*Tie game*/
-                console.log("3")
-                td_sq[0].style.backgroundColor = "#f7f302";
-                td_sq[2].style.backgroundColor = "#f7f302";
+                td_sq[0].style.backgroundColor = "#9ff5ed";
+                td_sq[2].style.backgroundColor = "#9ff5ed";
             }
+
+            
             
         }
+        
+        prova++
 
     }
     
@@ -220,7 +241,7 @@ function createTabellino(id, camp, giornata, index) {
 
     }
 
-    refreshMatches()
+    refreshMatches(match)
     
 }
 function refreshTabellino() {

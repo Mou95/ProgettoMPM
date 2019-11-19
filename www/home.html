@@ -340,6 +340,10 @@
                     </select>
                     <input class="punteggio"  id="punteggio2Squadra" type="number" required placeholder="Punti..."/>
                 </fieldset>
+                <input type="radio" name="group1" class="partialResult" id="partialResult1" value="Parziale" />
+                <label for="partialResult1" class="partialLabel" id="partialLabel1">Risultato parziale</label>
+                <input type="radio" name="group1" class="partialResult" id="partialResult2" value="Finale" />
+                <label for="partialResult2" class="partialLabel" id="partialLabel2">Risultato finale</label>
                 <input id="inviaResult" type="submit" value="INVIA">
             </form>
         </div>
@@ -516,9 +520,9 @@
 
             </div>
             <button class="userButton" id="logoutButton">Logout</button>
-            <!--<button class="userButton" id="resettaDati">Resetta</button>
+            <button class="userButton" id="resettaDati">Resetta</button>
             <button class="userButton" id="calcolaClassifiche">Calcola Classifiche</button>
-            <button class="userButton" id="calcolaStat">Calcola Statistiche</button>-->
+            <button class="userButton" id="calcolaStat">Calcola Statistiche</button>
         </div>
         <div class="dot-slider" id="footerUser">
             <p>Ti piace TUTTOBOCCE?</p>

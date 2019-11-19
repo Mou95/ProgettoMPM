@@ -1,6 +1,7 @@
 
-var t = ["Gilemi G."
+var t = ["Perin S.E."
 ]
+
 
 /*db.collection("giocatori").where("name", "==", "Gilemi G.")
     .get()
@@ -14,7 +15,48 @@ var t = ["Gilemi G."
             });
         });
     })
-    .catch(function(error) {
+    .then(function() {
+        db.collection("giocatori").add({
+        name: "Gilemi G.",
+        squadra: "Mondovì",
+        statistiche_1920: {
+            combinato: {
+                perse:0,
+                vinte:0,
+                pareggiate:0,
+                media:0
+            },
+            progressivo_3: {
+                perse:0,
+                vinte:0,
+                pareggiate:0,
+                media:0
+            },
+            staffetta: {
+                perse:0,
+                vinte:0,
+                pareggiate:0,
+                media:0
+            },
+            tiro_tecnico: {
+                perse:0,
+                vinte:0,
+                pareggiate:0,
+                media:0
+            },
+            individuale: {
+                perse:0,
+                vinte:0,
+                pareggiate:0
+            },
+            coppia: {
+                perse:0,
+                vinte:0,
+                pareggiate:0
+            }
+        }  
+    })
+    }).catch(function(error) {
         console.log("Error getting documents: ", error);
     });*/
 
@@ -52,7 +94,7 @@ var t = ["Gilemi G."
 /*t.forEach(function(gioc) {
     db.collection("giocatori").add({
         name: gioc,
-        squadra: "Mondovì",
+        squadra: "Pozzo Strada",
         statistiche_1920: {
             combinato: {
                 perse:0,
@@ -163,7 +205,9 @@ var array_player = {
 
 var mc_stat = new Hammer.Manager(document.getElementById("stat-slider"));
 
-var swipe_stat = new Hammer.Swipe();
+var swipe_stat = new Hammer.Swipe({
+    direction: 6
+});
 
 mc_stat.add(swipe_stat);
 

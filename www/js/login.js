@@ -18,13 +18,16 @@ access.addEventListener('click', function(e) {
     var psw = document.getElementById("psw").value;
     var saveCredential = document.getElementById("keepLogin").checked;
 
-    //Manage and control password
-    if (saveCredential) {
-        window.localStorage.setItem("email", email);
-        window.localStorage.setItem("psw", psw);
-    }
+    
     
     firebase.auth().signInWithEmailAndPassword(email, psw).then(function() {
+        
+        //Manage and control password
+        if (saveCredential) {
+            window.localStorage.setItem("email", email);
+            window.localStorage.setItem("psw", psw);
+        }
+        
         console.log("Chiamata a firebase con successo")
         window.open("home.html", "_self")
     }).catch(function(error) {
@@ -35,18 +38,18 @@ access.addEventListener('click', function(e) {
 
 forgot.addEventListener('click', function(e) {
     
-    navigator.notification.confirm("Ti verrà inviata una mail dove potrai resettare la password, continuare?",               function(buttonIndex) {
-
-            if (buttonIndex == 1) {
-
-                var email = document.getElementById("email").value;
-                email = email.replace(/\s/g, '');
+    navigator.notification.prompt(
+        'Inserisci la mail del profilo utente di cui hai dimenticato la password',  // message
+        function(results){
+            
+            if (results.buttonIndex == 1) {
+                var email = results.input1
 
                 if (email != "") {
                     firebase.auth().sendPasswordResetEmail(email)
                     .then(function() {
 
-                        navigator.notification.alert("Email inviata, controlla la tua posta", function(){}, "Conferma")
+                        navigator.notification.alert("Email inviata all'indirizzo specificato, controlla la tua posta", function(){}, "Conferma")
                     }).catch(function(error) {
                         //Handle errors
                         var errorCode = error.code;
@@ -60,11 +63,14 @@ forgot.addEventListener('click', function(e) {
                         }
                     });
                 } else {
-                    navigator.notification.alert("Inserisci la mail dell'account di cui vuoi resettare la password", function(){}, "Attenzione")
+                    navigator.notification.alert("Nessun indirizzo mail inserito", function(){}, "Attenzione")
                 }
             }
-
-        }, "Conferma", ["Sì", "Annulla"]) 
+        },                  // callback to invoke
+        'Passord Dimenticata',            // title
+        ['Invia','Annulla']          // buttonLabels
+    );
+    
     
     
     //Take value from form

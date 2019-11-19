@@ -20,8 +20,6 @@ function onDeviceReady( event ) {
         var email = window.localStorage.getItem("email");
         var psw = window.localStorage.getItem("psw");
 
-        console.log("WOOOOOW")
-
         firebase.auth().signInWithEmailAndPassword(email, psw)
         .then(function() {
             console.log("Chiamata a firebase con successo")

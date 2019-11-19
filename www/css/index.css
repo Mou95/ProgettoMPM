@@ -991,6 +991,7 @@ select {
     width: 49%;
     display: inline-block;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .formSquadre legend {
@@ -1015,6 +1016,7 @@ select {
     border: none;
 }
 
+
 #inviaResult {
     background-color: #f59c00;
     border: none;
@@ -1025,13 +1027,25 @@ select {
     text-transform: uppercase;
     font-weight: bold;
     padding: 5px 0;
-    margin: 5% 20% 0 20%;
+    margin: 10% 20% 0 20%;
 }
 
-#formResult label {
+#formResult fieldset label {
     text-align: center;
     font-size: 8pt;
     margin: 5% 10% 0 10%;
+}
+
+.partialResult {
+    margin-left: 30%;
+    margin-bottom: 15px;
+    -webkit-appearance: radio;
+}
+
+.partialLabel {
+    font-size: 11pt;
+    margin-bottom: 15px;
+    font-weight: bold;
 }
 
 #footerResult p {

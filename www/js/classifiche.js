@@ -105,7 +105,9 @@ function createStandings() {
 // Bind the swipeHandler callback function to the swipe event on classifica-slider
 var mc_class = new Hammer.Manager(document.getElementById("classifica-slider"));
 
-var swipe_class = new Hammer.Swipe();
+var swipe_class = new Hammer.Swipe({
+    direction: 6
+});
 
 mc_class.add(swipe_class);
 
@@ -118,9 +120,9 @@ mc_class.on("swipeleft", function(ev) {
 });
 
 /*$( "#classifica-slider" ).on( "swiperight", swipeRight );
-$( "#classifica-slider" ).on( "swipeleft", swipeLeft );
+$( "#classifica-slider" ).on( "swipeleft", swipeLeft );*/
 document.getElementById("backArrow_class").addEventListener("click", swipeRight)
-document.getElementById("forwArrow_class").addEventListener("click", swipeLeft)*/
+document.getElementById("forwArrow_class").addEventListener("click", swipeLeft)
 
 
 function swipeRight( event ){

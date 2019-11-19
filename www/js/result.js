@@ -17,6 +17,10 @@ function logicAddResult() {
     
     document.getElementsByClassName("backButton")[0].style.display = "block";
     
+    if (window.localStorage.getItem("resultPartial") == null) {
+        navigator.notification.alert("Da oggi è possibile specificare se il risultato che state inserendo è parziale o finale prima di inviare il punteggio!", function(){window.localStorage.setItem("resultPartial",true)}, "Novità!")
+    }
+    
 }
 
 function closeResult() {
@@ -37,6 +41,7 @@ function closeResult() {
     
 }
 
+
 function getOldTabellino(selectObject) {
     var value = selectObject.value;  
     
@@ -44,6 +49,8 @@ function getOldTabellino(selectObject) {
     
     var g_1 = document.getElementById('form1Squadra');
     var g_2 = document.getElementById('form2Squadra');
+    g_1.selectedIndex = -1;
+    g_2.selectedIndex = -1;
     var p_1 = $('#punteggio1Squadra');
     var p_2 = $('#punteggio2Squadra');
 
@@ -88,54 +95,70 @@ function getOldTabellino(selectObject) {
 
 function sendResult( event ) {
     event.preventDefault()
-    
-    
+        
     var tipo = $("#provaForm option:selected").attr('class');
     var prova = $("#provaForm").val();
     var g_1 = $('#form1Squadra').val();
     var g_2 = $('#form2Squadra').val();
     var p_1 = parseInt($('#punteggio1Squadra').val());
     var p_2 = parseInt($('#punteggio2Squadra').val());
+    
     console.log(p_1,p_2)
-    if (prova != null && g_1 != null && g_2 != null && !isNaN(p_1) && !isNaN(p_2)) {
-        console.log("P1",p_1)
-        switch(prova) {
-            case "1":
-                checkResult(1, 0, 40, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
-                break;
-            case "2":
-            case "10":
-            case "13":
-                checkResult(2, 0, 11, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
-                break;
-            case "3":
-            case "11":
-            case "12":
-                checkResult(1, 0, 11, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
-                break;
-            case "4":
-                checkResult(3, 0, 11, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
-                break;
-            case "5":
-                checkResult(2, 0, 65, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
-                break;
-            case "6":
-            case "7":
-                checkResult(1, 0, 50, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
-                break;
-            case "8":
-            case "9":
-                checkResult(1, 0, 55, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2);
-                break;
+    if ($("input[name='group1']:checked").val()) {
+        if (prova != null && g_1 != null && g_2 != null && !isNaN(p_1) && !isNaN(p_2)) {
+            console.log("P1",p_1)
+            
+            var final = document.getElementById("partialResult2").checked;
+            
+            switch(prova) {
+                case "1":
+                    checkResult(1, 0, 40, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2, final);
+                    break;
+                case "2":
+                case "10":
+                case "13":
+                    checkResult(2, 0, 11, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2, final);
+                    break;
+                case "3":
+                case "11":
+                case "12":
+                    checkResult(1, 0, 11, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2, final);
+                    break;
+                case "4":
+                    checkResult(3, 0, 11, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2, final);
+                    break;
+                case "5":
+                    checkResult(2, 0, 65, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2, final);
+                    break;
+                case "6":
+                case "7":
+                    checkResult(1, 0, 50, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2, final);
+                    break;
+                case "8":
+                case "9":
+                    checkResult(1, 0, 55, 2, 1, prova, tipo,  g_1, g_2, p_1, p_2, final);
+                    break;
 
+            }
+            
+        } else {
+            navigator.notification.alert("Alcuni campi non sono stati inseriti!!", function(){
+            }, "Errore!")
         }
+    
     } else {
-        navigator.notification.alert("Alcuni campi non sono stati inseriti!!", function(){
+        navigator.notification.alert("Specifica se si tratta di un risultato parziale o finale", function(){
         }, "Errore!")
     }
+    
+    
+    
+        
+    
+            
 }
 
-function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2, p_1, p_2) {
+function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2, p_1, p_2, final) {
     //numero giocatori
     if (g_1.length == n && g_2.length == n) {
         //punteggio corretto
@@ -170,7 +193,8 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
                         "g_2" : g_2,
                         "p_1" : p_1,
                         "p_2" : p_2,
-                        "user" : user.email
+                        "user" : user.email,
+                        "conclusa": final
                     }
                 
                 
