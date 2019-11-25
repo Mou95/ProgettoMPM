@@ -103,7 +103,7 @@ function onLoad() {
             });
         } else {
 
-            navigator.notification.alert("La tua app non è aggiornata all'ultima vesione. Aggiornala subito per poter continuare ad utilizzarla", function(){
+            navigator.notification.alert("La tua app non è aggiornata all'ultima versione. Aggiornala subito per poter continuare ad utilizzarla", function(){
                 window.location.href='https://play.google.com/store/apps/details?id=com.mauro.tuttobocce';
             }, "Aggiornamento!")
 
