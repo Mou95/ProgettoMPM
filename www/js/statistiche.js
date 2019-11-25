@@ -2,6 +2,16 @@
 var t = ["Perin S.E."
 ]
 
+/*var xxx = 0
+db.collection("utenti")
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doccc) {
+            xxx += 1
+            console.log(xxx)
+        });
+    })
+*/
 
 /*db.collection("giocatori").where("name", "==", "Gilemi G.")
     .get()
@@ -53,13 +63,18 @@ var t = ["Perin S.E."
                 perse:0,
                 vinte:0,
                 pareggiate:0
+            },
+            totale: {
+                perse:0,
+                vinte:0,
+                pareggiate:0
             }
         }  
     })
     }).catch(function(error) {
         console.log("Error getting documents: ", error);
-    });*/
-
+    });
+*/
 /*t.forEach(function(gioc) {
     db.collection("campionati/A1_1920_F/classifica").add({
         squadra: gioc,
@@ -361,23 +376,16 @@ function createTable(spec_id) {
     
     console.log("Inizio creazione tabella")
     console.log(spec_id+" "+active_stat)
-    if (spec_id == "terna" && active_stat == 3) {
-        console.log("Dont show")
         
-    } else {
-        array_player[campionato[active_stat]].forEach(function(player) {
-        
-            if (player["statistiche_1920"][spec_id]["vinte"]+player["statistiche_1920"][spec_id]["pareggiate"]+player["statistiche_1920"][spec_id]["perse"] != 0) {
 
-                tbody.appendChild(createTableRow(player, medie, spec_id))
-            }
+    array_player[campionato[active_stat]].forEach(function(player) {
 
-        })
-    }
-    
-    
-    
-        
+        if (player["statistiche_1920"][spec_id]["vinte"]+player["statistiche_1920"][spec_id]["pareggiate"]+player["statistiche_1920"][spec_id]["perse"] != 0) {
+
+            tbody.appendChild(createTableRow(player, medie, spec_id))
+        }
+
+    })
         
     if (medie) {
         tables[1].classList.add("show");
@@ -405,24 +413,25 @@ function createTableRow(player, medie, spec_id) {
     td.classList.add("squadra_s");  
     td.appendChild(document.createTextNode(player["squadra"]))
     tr.appendChild(td);
-    
+        
     /*Vinte*/
     var td = document.createElement('td');
     td.classList.add("vittorie_s");  
     td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["vinte"]))
     tr.appendChild(td);
-    
+
     /*Pareggiate*/
     var td = document.createElement('td');
     td.classList.add("pareggi_s");  
     td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["pareggiate"]))
     tr.appendChild(td);
-    
+
     /*Perse*/
     var td = document.createElement('td');
     td.classList.add("sconfitte_s");  
     td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["perse"]))
     tr.appendChild(td);
+    
     
     if (medie) {
         /*Perse*/
@@ -456,6 +465,9 @@ function sort(id,n) {
             
             w = rows[i].getElementsByTagName("TD")[3];
             z = rows[i + 1].getElementsByTagName("TD")[3];
+            
+            h = rows[i].getElementsByTagName("TD")[4];
+            k = rows[i + 1].getElementsByTagName("TD")[4];
 
             if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
                 shouldSwitch = true;
@@ -465,6 +477,11 @@ function sort(id,n) {
                 //discrima i pareggi
                 if (id == "tableStatProve") {
                     if (parseInt(x.innerHTML) == parseInt(y.innerHTML) && parseInt(w.innerHTML) < parseInt(z.innerHTML)) {
+                        
+                        shouldSwitch = true;
+                        break;
+                    } 
+                    if (parseInt(x.innerHTML) == parseInt(y.innerHTML) && parseInt(w.innerHTML) == parseInt(z.innerHTML) && parseInt(h.innerHTML) > parseInt(k.innerHTML)) {
                         
                         shouldSwitch = true;
                         break;

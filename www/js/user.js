@@ -80,7 +80,7 @@ function changePsw() {
 
 
 /*CALCOLO GIORNATA*/
-/*document.getElementById("resettaDati").addEventListener("click", function() {
+document.getElementById("resettaDati").addEventListener("click", function() {
 
     navigator.notification.confirm("Vuoi eliminare statistiche e classifiche?", function(buttonIndex) {
         if (buttonIndex == 1) {
@@ -247,6 +247,14 @@ function calcolaStat() {
             giocatori[doc.data()["name"]+doc.data()["squadra"]] = {}
             
             giocatori[doc.data()["name"]+doc.data()["squadra"]]["data"] = doc.data()
+            
+            
+            giocatori[doc.data()["name"]+doc.data()["squadra"]]["data"]["statistiche_1920"]["totale"] = {}
+
+            giocatori[doc.data()["name"]+doc.data()["squadra"]]["data"]["statistiche_1920"]["totale"]["vinte"] = 0
+            giocatori[doc.data()["name"]+doc.data()["squadra"]]["data"]["statistiche_1920"]["totale"]["pareggiate"] = 0
+            giocatori[doc.data()["name"]+doc.data()["squadra"]]["data"]["statistiche_1920"]["totale"]["perse"] = 0      
+            
             giocatori[doc.data()["name"]+doc.data()["squadra"]]["id"] = doc.id
             
             
@@ -258,15 +266,15 @@ function calcolaStat() {
 
             var update_tabellino = doc.data()
 
-            var i = 0;
+            var i = 0; 
             var id_campionato = update_tabellino["campionato"]
 
-            if (Date.now() >= update_tabellino["data"].toDate()) {
+            if (Date.now() >= update_tabellino["data"].toDate()) { 
 
                 console.log(doc.id)
 
                 doc.data()["partite"].forEach(function(partita) {
-                    var prima_s = partita["prima_squadra"]
+                    var prima_s = partita["prima_squadra"] 
                     var seconda_s = partita["seconda_squadra"]
 
                     console.log(prima_s+" "+seconda_s)
@@ -275,14 +283,14 @@ function calcolaStat() {
                         for (var prova in partita["tabellino"]) {
 
                             console.log(tipo[prova])
-
+ 
                             var p_1 = partita["tabellino"][prova]["p_1"]
                             var p_2 = partita["tabellino"][prova]["p_2"]
                             var g_1 = partita["tabellino"][prova]["g_1"]
                             var g_2 = partita["tabellino"][prova]["g_2"]
 
-                            console.log(p_1+" "+p_2)
-                            console.log(g_1+" "+g_2)
+                            console.log(p_1+" "+p_2) 
+                            console.log(g_1+" "+g_2) 
 
                             if (p_1 > p_2) {
                                 //Vinto prima squadra
@@ -311,7 +319,7 @@ function calcolaStat() {
                     .then(function() {
                         console.log("Document successfully updated!");
                     });*/
-                    /*
+                    
                     i++;
                 })
 
@@ -415,4 +423,4 @@ function calcolaClassifiche() {
 
 }
 
-*/
+

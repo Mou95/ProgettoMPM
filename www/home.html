@@ -105,6 +105,7 @@
                 <p>Seleziona una specialità per visualizzare le statistiche</p>
                 <select class="selezioneStat" id="selSpecialita" onchange=refreshTable()>
                     <option value="" disabled selected>Specialità</option>
+                    <option value="totale">Totale</option>
                     <option value="individuale">Individuale</option>
                     <option value="coppia">Coppia</option>
                     <option value="terna">Terna</option>
@@ -520,9 +521,9 @@
 
             </div>
             <button class="userButton" id="logoutButton">Logout</button>
-            <!--<button class="userButton" id="resettaDati">Resetta</button>
+            <button class="userButton" id="resettaDati">Resetta</button>
             <button class="userButton" id="calcolaClassifiche">Calcola Classifiche</button>
-            <button class="userButton" id="calcolaStat">Calcola Statistiche</button>-->
+            <button class="userButton" id="calcolaStat">Calcola Statistiche</button>
         </div>
         <div class="dot-slider" id="footerUser">
             <p>Ti piace TUTTOBOCCE?</p>
@@ -533,7 +534,6 @@
     </div>
     
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/home.js"></script>
     <script type="text/javascript" src="js/classifiche.js"></script>
     <script type="text/javascript" src="js/menu.js"></script>
     <script type="text/javascript" src="js/user.js"></script>
@@ -541,6 +541,7 @@
     <script type="text/javascript" src="js/calendario.js"></script>
     <script type="text/javascript" src="js/tabellino.js"></script>
     <script type="text/javascript" src="js/result.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
 </body>
 
 </html>

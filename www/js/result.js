@@ -49,8 +49,7 @@ function getOldTabellino(selectObject) {
     
     var g_1 = document.getElementById('form1Squadra');
     var g_2 = document.getElementById('form2Squadra');
-    g_1.selectedIndex = -1;
-    g_2.selectedIndex = -1;
+    
     var p_1 = $('#punteggio1Squadra');
     var p_2 = $('#punteggio2Squadra');
 
@@ -61,6 +60,8 @@ function getOldTabellino(selectObject) {
         
         if (tabellino[value] != null) {
             /*Partita già presente*/
+            g_1.selectedIndex = -1;
+            g_2.selectedIndex = -1;
             console.log("Riprendo valori")
             p_1.val(tabellino[value]["p_1"])
             p_2.val(tabellino[value]["p_2"])
@@ -392,12 +393,15 @@ function updateStats(giocatori, squadra, tipo, punteggio, risultato, map_giocato
 
         switch (risultato) {
             case "w":
+                map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"]["totale"]["vinte"] += 1
                 map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["vinte"] += 1;
                 break;
             case "t":
+                map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"]["totale"]["pareggiate"] += 1
                 map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["pareggiate"] += 1;
                 break;
             case "l":
+                map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"]["totale"]["perse"] += 1
                 map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["perse"]  += 1;
                 break;
         }
