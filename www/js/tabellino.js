@@ -63,10 +63,6 @@ function logicTabellino() {
     
     document.getElementsByClassName("backButton")[0].style.display = "block";
     
-    if (window.localStorage.getItem("tabelliniPartial") == null) {
-        navigator.notification.alert("I risultati parziali saranno colorati in modo diverso (AZZURRO) per essere distinguibili da quelli finali", function(){window.localStorage.setItem("tabelliniPartial",true)}, "Novità!")
-    }
-    
 }
 
 function closeTabellino(e) {

@@ -683,13 +683,18 @@ select {
     background-color: #3c3c3b;
 }
 
+.posizione_s {
+    width: 6%;
+    text-align: center;
+}
+
 .giocatore_s {
-    width: 33%;
+    width: 28%;
     text-align: left;
 }
 
 .squadra_s {
-    width: 29%;
+    width: 28%;
     text-align: left;
 }
 
