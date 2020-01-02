@@ -209,7 +209,7 @@ function sortPoint(id) {
 
             if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
 
-                console.log(x.innerHTML.toLowerCase()+" "+y.innerHTML.toLowerCase())
+                //console.log(x.innerHTML.toLowerCase()+" "+y.innerHTML.toLowerCase())
                 shouldSwitch = true;
                 break;
                 

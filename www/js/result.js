@@ -281,19 +281,13 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
                     
 
                     /*if (Object.keys(update_tabellino["partite"][numero_partita]["tabellino"]).length == 13 && !update_tabellino["partite"][numero_partita]["completo"]) {
-
                         update_tabellino["partite"][numero_partita]["completo"] = true;
-
                         var tot_1 = update_tabellino["partite"][numero_partita]["punteggio_1"]
                         var tot_2 = update_tabellino["partite"][numero_partita]["punteggio_2"]
-
                         //Aggiorno classifica!!!
                         updateStanding(tot_1, tot_2, db.collection("campionati/"+id_campionato+"/classifica").where("squadra","==", prima_s))
-
                         updateStanding(tot_2, tot_1, db.collection("campionati/"+id_campionato+"/classifica").where("squadra","==", seconda_s))
-
                         //closeResult()
-
                     }*/
 
                     partita.update(update_tabellino)

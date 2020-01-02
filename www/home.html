@@ -6,8 +6,10 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    
+    <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height,  viewport-fit=cover">
     <meta http-equiv="Content-Security-Policy" content="default-src * gap: file:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src * 'unsafe-inline' 'unsafe-eval'">
+    
+    
 
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
@@ -46,14 +48,17 @@
     
     <div id="page_statistiche" class="no_page_show">
         <div class="titleTabelle">
-            <button class="arrowClass" id="backArrow_stat"></button>
+            
             <p id="titleStat">Serie A1 19/20</p>
-            <button class="arrowClass show" id="forwArrow_stat"></button>
+            
         </div>
+        <button class="arrowClass" id="backArrow_stat"></button>
+        <button class="arrowClass show" id="forwArrow_stat"></button>
         <div id="stat-slider">
             <div class="classifica">
                 <table id="tableStatProve" class="table" summary="Tabella della statistiche scelte">
                     <colgroup>
+                        <col class="posizione_s" >
                         <col class="giocatore_s" >
                         <col class="squadra_s" >
                         <col class="vittorie_s" >
@@ -62,6 +67,7 @@
                     </colgroup>
                     <thead>
                         <tr>
+                            <th scope="col"></th>
                             <th scope="col">Giocatore</th>
                             <th scope="col">Squadra</th>
                             <th scope="col">V</th>
@@ -73,10 +79,12 @@
                         
                     </tbody>
                 </table>
+                
             </div>
             <div class="classifica">
                 <table id="tableStatTiri" class="table" summary="Tabella della statistiche scelte">
                     <colgroup>
+                        <col class="posizione_s" >
                         <col class="giocatore_s" >
                         <col class="squadra_s" >
                         <col class="vittorie_s" >
@@ -86,6 +94,7 @@
                     </colgroup>
                     <thead>
                         <tr>
+                            <th scope="col"></th>
                             <th scope="col">Giocatore</th>
                             <th scope="col">Squadra</th>
                             <th scope="col">V</th>
@@ -97,6 +106,9 @@
                     <tbody>
                     </tbody>
                 </table>
+            </div>
+                
+            <div class='trfooter'>
             </div>
         </div>
         <div class="dot-slider" id="footerStat">
@@ -118,7 +130,6 @@
             <span class="dot active-dot"></span> 
             <span class="dot"></span> 
             <span class="dot"></span> 
-            <!--<span class="dot"></span>--> 
             <p>Scorri a destra/sinistra per cambiare campionato</p>
         </div>
     

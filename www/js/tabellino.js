@@ -53,7 +53,7 @@ document.getElementsByClassName("addHalfButton")[0].addEventListener("click", fu
 function logicTabellino() {
     var $footer_tab = $('#footerTabellini');
 
-    $('#Totale').css("bottom",  $footer_tab.height() + 6);
+    $('#Totale').css("bottom",  $footer_tab.height() + 13);
     
     
                 
@@ -62,10 +62,6 @@ function logicTabellino() {
     document.addEventListener("backbutton", closeTabellino, false); 
     
     document.getElementsByClassName("backButton")[0].style.display = "block";
-    
-    if (window.localStorage.getItem("tabelliniPartial") == null) {
-        navigator.notification.alert("I risultati parziali saranno colorati in modo diverso (AZZURRO) per essere distinguibili da quelli finali", function(){window.localStorage.setItem("tabelliniPartial",true)}, "Novità!")
-    }
     
 }
 

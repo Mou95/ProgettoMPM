@@ -1,5 +1,5 @@
 
-var t = ["Perin S.E."
+var t = [
 ]
 
 /*var xxx = 0
@@ -8,10 +8,12 @@ db.collection("utenti")
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doccc) {
             xxx += 1
-            console.log(xxx)
         });
     })
-*/
+    .then(function() {
+        console.log(xxx)
+    })*/
+
 
 /*db.collection("giocatori").where("name", "==", "Gilemi G.")
     .get()
@@ -64,6 +66,11 @@ db.collection("utenti")
                 vinte:0,
                 pareggiate:0
             },
+            terna: {
+                perse:0,
+                vinte:0,
+                pareggiate:0
+            },
             totale: {
                 perse:0,
                 vinte:0,
@@ -109,7 +116,7 @@ db.collection("utenti")
 /*t.forEach(function(gioc) {
     db.collection("giocatori").add({
         name: gioc,
-        squadra: "Pozzo Strada",
+        squadra: "Tre Stelle",
         statistiche_1920: {
             combinato: {
                 perse:0,
@@ -144,6 +151,16 @@ db.collection("utenti")
                 perse:0,
                 vinte:0,
                 pareggiate:0
+            },
+            terna: {
+                perse:0,
+                vinte:0,
+                pareggiate:0
+            },
+            totale: {
+                perse:0,
+                vinte:0,
+                pareggiate:0
             }
         }  
 
@@ -153,8 +170,8 @@ db.collection("utenti")
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
-})*/
-
+})
+*/
        
 
 /*for (var i=1; i<12; i++) {
@@ -241,6 +258,28 @@ $( "#forwArrow_stat" ).on( "tap", swipeLeftStat );*/
 document.getElementById("backArrow_stat").addEventListener("click", swipeRightStat)
 document.getElementById("forwArrow_stat").addEventListener("click", swipeLeftStat)
 
+$('#selSpecialita').on('focus',function() {
+    console.log("scroll")
+    $("body").addClass("fixfixed");
+    $("html, body").animate({ scrollTop: 0 }, 100);
+    $("#footerStat").hide()
+});
+
+$('#selSpecialita').on('blur, focusout',function() {
+    console.log("scrollout")
+    $("body").removeClass("fixfixed");
+    $("#footerStat").show()
+});
+
+
+$('#navMenu').on('click', function(e) {
+    $.each($('#selSpecialita'), function(i, select) {
+        if ( $(select).data('dropkick') ) {
+            $(select).dropkick('close');
+        }
+    });
+});
+
 
 function swipeRightStat(){
     console.log("swipe right")
@@ -252,6 +291,10 @@ function swipeRightStat(){
     }
     setArrowsStat()
     refreshTable()
+    
+    var footer_tab = $('#tableStatProve');
+
+    console.log(footer_tab.css("margin-bottom"))
 }
 
 function swipeLeftStat(){
@@ -377,30 +420,37 @@ function createTable(spec_id) {
     console.log("Inizio creazione tabella")
     console.log(spec_id+" "+active_stat)
         
-
+    var i=1;
     array_player[campionato[active_stat]].forEach(function(player) {
+        
 
         if (player["statistiche_1920"][spec_id]["vinte"]+player["statistiche_1920"][spec_id]["pareggiate"]+player["statistiche_1920"][spec_id]["perse"] != 0) {
 
-            tbody.appendChild(createTableRow(player, medie, spec_id))
+            tbody.appendChild(createTableRow(i, player, medie, spec_id))
+            i++;
         }
 
     })
         
     if (medie) {
         tables[1].classList.add("show");
-        sort("tableStatTiri",5)
+        sort("tableStatTiri",6)
     }
     else {
         tables[0].classList.add("show");
-        sort("tableStatProve",2)
+        sort("tableStatProve",3)
     }
     
 }
 
-function createTableRow(player, medie, spec_id) {
+function createTableRow(i, player, medie, spec_id) {
 
     var tr = document.createElement('tr');
+    /*Posizione*/
+    var td = document.createElement('td');
+    td.classList.add("posizione_s");  
+    td.appendChild(document.createTextNode(i))
+    tr.appendChild(td);
 
     /*Giocatore*/
     var td = document.createElement('td');
@@ -463,11 +513,11 @@ function sort(id,n) {
             x = rows[i].getElementsByTagName("TD")[n];
             y = rows[i + 1].getElementsByTagName("TD")[n];
             
-            w = rows[i].getElementsByTagName("TD")[3];
-            z = rows[i + 1].getElementsByTagName("TD")[3];
+            w = rows[i].getElementsByTagName("TD")[4];
+            z = rows[i + 1].getElementsByTagName("TD")[4];
             
-            h = rows[i].getElementsByTagName("TD")[4];
-            k = rows[i + 1].getElementsByTagName("TD")[4];
+            h = rows[i].getElementsByTagName("TD")[5];
+            k = rows[i + 1].getElementsByTagName("TD")[5];
 
             if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
                 shouldSwitch = true;
@@ -490,6 +540,12 @@ function sort(id,n) {
             }
         }
         if (shouldSwitch) {
+            
+             t = rows[i].getElementsByTagName("TD")[0].innerHTML;
+            
+            rows[i].getElementsByTagName("TD")[0].innerHTML = rows[i+1].getElementsByTagName("TD")[0].innerHTML;
+            
+            rows[i+1].getElementsByTagName("TD")[0].innerHTML = t;
         
             rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
             

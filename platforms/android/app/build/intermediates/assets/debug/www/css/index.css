@@ -1,0 +1,1124 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:fontPersonalizzato, 'Arial';
+}
+
+:root {
+    --top: 40px;
+    --bottom: 50px;
+}
+
+@font-face {
+  font-family: fontPersonalizzato;
+  src: url(../font/Montserrat-Regular.otf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: fontPersonalizzato;
+  src: url(../font/Montserrat-Bold.otf);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: fontPersonalizzato;
+  src: url(../font/Montserrat-Light.otf);
+  font-weight: lighter;
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    font-family:fontPersonalizzato, 'Arial';
+    font-size:12pt;
+    height:100%;
+    width:100%;
+    background-color: white;
+}
+
+button, input {
+    outline: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+select {
+    outline: none;
+}
+
+.hide {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.page_show {
+    display: block;
+}
+
+.no_page_show {
+    display: none;
+}
+
+/*Header*/
+.statusBar {
+    background-color: #f59c00;
+    height: 40px;
+    position: fixed;
+    top : 0;
+    width: 100%;
+    z-index: 1;
+    background-image: url('../img/TuttoBOCCE 500px.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60%;
+}
+
+.backButton {
+    height: 30px;
+    border: none;
+    width: 10%;
+    background-image: url('../img/left-arrow.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #f59c00;
+    float: left;
+    position: fixed;
+    top : 5px;
+    left: 10px;
+    z-index: 1;
+    display: none;
+}
+
+.addButton {
+    background-color: #f59c00;
+    border: none;
+    color: white;
+    width: 60%;
+    font-size: 10pt;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 0;
+    margin: 5px 20%;
+}
+
+/*Nav*/
+.menuBarAndroid {
+    z-index: 1;
+    width: 100%;
+    background-color: white;
+    overflow: auto;
+    height: 50px;
+    position: fixed;
+    top: 40px;
+    border-bottom: 1px solid #f59c00;
+}
+
+#navMenu div {
+    float: left;
+    text-align: center;
+    width: 20%;
+    height: 100%;
+    background-size: 70%;
+}
+
+.menuBarIos {
+    z-index: 1;
+    width: 100%;
+    background-color: #f59c00;
+    overflow: auto;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+}
+
+.menuBarAndroid .active {
+    background-color: #f59c00;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menuBarAndroid .statistiche {
+    background-image: url('../img/Statistiche_A.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menuBarAndroid .homepage {
+    background-image: url('../img/Home_A.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menuBarAndroid .risultati {
+    background-image: url('../img/Calendario_A.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 90%;
+}
+
+.menuBarAndroid .classifiche {
+    background-image: url('../img/Classifiche_A.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menuBarAndroid .utente {
+    background-image: url('../img/Profilo_A.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menuBarAndroid #changeImg.statistiche{
+    background-image: url('../img/Statistiche_B.png');
+}
+
+.menuBarAndroid #changeImg.homepage {
+    background-image: url('../img/Home_B.png');
+}
+
+.menuBarAndroid #changeImg.risultati {
+    background-image: url('../img/Calendario_B.png');
+}
+
+.menuBarAndroid #changeImg.classifiche {
+    background-image: url('../img/Classifiche_B.png');
+}
+
+.menuBarAndroid #changeImg.utente {
+    background-image: url('../img/Profilo_B.png');
+}
+
+.menuBarIos .statistiche {
+    background-image: url('../img/Statistiche_B.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menuBarIos .homepage {
+    background-image: url('../img/Home_B.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menuBarIos .risultati {
+    background-image: url('../img/Calendario_B.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menuBarIos .classifiche {
+    background-image: url('../img/Classifiche_B.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menuBarIos .utente {
+    background-image: url('../img/Profilo_B.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menuBarIos #changeImg.statistiche{
+    background-image: url('../img/Statistiche_A.png');
+
+}
+
+.menuBarIos #changeImg.homepage {
+    background-image: url('../img/Home_A.png');
+}
+
+.menuBarIos #changeImg.risultati {
+    background-image: url('../img/Calendario_A.png');
+}
+
+.menuBarIos #changeImg.classifiche {
+    background-image: url('../img/Classifiche_A.png');
+}
+
+.menuBarIos #changeImg.utente {
+    background-image: url('../img/Profilo_A.png');
+}
+
+.menuBarIos .active {
+    background-color: white;
+}
+
+.marginBarTop {
+    height: var(--top);
+}
+
+/*Index*/
+#bodyIndex {
+    background-color: #f59c00;
+}
+
+#logo {
+    background-image: url('../img/Logo accedi 500x700px.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    height: 50vh;
+    margin-top: 10%; 
+}
+
+#login{
+    margin-top: 10%;
+    margin-left: 10%;
+    width: 80%;
+    display: none;
+}
+
+.loginButton {
+    background-color: white;
+    border: none;
+    color: #f59c00;
+    display: block;
+    margin: 20px 0 0 0;
+    width: 100%;
+    font-size: 24pt;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 0;
+   
+}
+
+
+/*Registrazione and Login*/
+.backButtonMenu {
+    border: none;
+    width: 30px;
+    height: 30px;
+    background-image: url('../img/left-arrow.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #ededed;
+    float: left;
+    margin-left: 8px;
+    z-index: 1;
+}
+
+.bodyLogin {
+    background-color: #ededed;
+}
+
+.logoLogin {
+    height: 25vh;
+    background-image: url('../img/Logo%20tondo%20300px.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 5% 48px 5% 0;
+}
+
+.container {    
+    margin: 0 10%;
+    width: 80%; 
+}
+
+.container label {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 11pt;
+}
+
+.input_login {
+    width: 100%;
+    padding: 8px 0;
+    margin: 0 0 15px 0;
+    display: inline-block;
+    border: none;
+    background: white;
+    text-align: center;
+    font-weight: lighter;
+    color: #3c3c3b;
+    font-size: 12pt;
+}
+
+.formButton {
+    background-color: #f59c00;
+    border: none;
+    color: white;
+    display: block;
+    width: 100%;
+    font-size: 24pt;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 0;
+    margin: 20px 0 0 0;
+}
+
+#resetPsw {
+    width: 100%;
+    margin-top: 15%;
+}
+
+#resetPsw p {
+    margin: 0 10%;
+    font-size: 8pt;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.forgotButton {
+    background-color: #f59c00;
+    border: none;
+    color: white;
+    display: block;
+    width: 80%;
+    font-size: 13pt;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 0;
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
+
+#keepLogin {
+    -webkit-appearance: checkbox;
+}
+
+/*Utente*/
+#user {
+    height: 80vh; 
+}
+
+#dati_user {
+    height: 35%;
+    display: flex;
+    align-items:center;
+    background-color: #ededed;
+}
+
+#user h1 {
+    height:100%;
+    background-image: url('../img/Logo%20tondo%20300px.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 30%;
+    margin-left: 10%;
+    background-position: center;
+    float: left;
+}
+
+#nome_user {
+    margin-left: 7%;
+    color: #3c3c3b;
+    width: 53%;
+}
+
+#username_user {
+    font-size: 14pt;
+    font-weight: bold;
+    overflow: scroll;
+    width: 90%;
+}
+
+#email_user {
+    font-size: 7pt;
+    overflow: hidden;
+    width: 90%;
+}
+
+.userButton {
+    padding: 16px 20px;
+    border: none;
+    width: 100%;
+    text-transform: uppercase;
+    color: #3c3c3b;
+    font-weight: bold;
+    font-size: 11pt;
+    text-align: left;
+    background-color: white;
+}
+
+#newPswButton {
+    background-color: green;
+    margin: 5% 0;
+    width: 100%;
+}
+
+#changePsw {
+    width: 100%;
+    display: none;
+}
+
+#changePsw label {
+    display: none;
+}
+
+.psw_input {
+    background-color: #ededed;
+    color: black;
+    text-align: left;
+    width: 90%;
+    margin: 5px 5%;
+    padding: 8px;
+    display: inline-block;
+    border: none;font-weight: lighter;
+    font-size: 13pt;
+}
+
+#newPswButton {
+    background-color: #f59c00;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 50%;
+    margin: 10px 5% 5% 45%;
+    padding: 5px;
+    text-align: center;
+}
+
+#logoutButton {
+    border-top: 2px solid #ededed;
+    border-bottom: 2px solid #ededed;
+}
+
+#footerUser p {
+    font-weight: bold;
+}
+
+/*Classifiche*/
+#classifica-slider {
+    touch-action: manipulation;
+}
+
+.titleTabelle {
+    background-color: #3c3c3b;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    font-size: 16pt;
+    font-weight: bold;
+    height: 50px;
+    position: fixed;
+    top: var(--top);
+    width: 100%;
+    z-index: 1;
+    display: table;
+}
+
+.arrowClass {
+    display: none; 
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 10%;
+    border: none;
+    position: fixed;
+    top : var(--top);
+    z-index: 1;
+}
+
+#backArrow_class {
+    background-image: url(../img/back-2.png);
+    left: 15px;
+    float: left;
+    background-color: #3c3c3b;
+}
+
+#forwArrow_class {
+    background-image: url(../img/right-arrow-2.png);
+    right: 15px;
+    float: right;
+    background-color: #3c3c3b;
+}
+
+.titleTabelle p {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.classifica {
+    text-transform: none;
+    display: none;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    table-layout: fixed;
+    overflow: hidden;
+    color: black;
+    margin-bottom: calc(var(--bottom) + 65px);
+}
+
+.table thead {
+    font-weight: bold;
+    background-color: #f59c00;
+}
+
+.table th {
+    padding: 2px 0;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table tbody tr:nth-child(odd){
+    background-color: white;
+}
+
+.table tbody tr:nth-child(even){
+    background-color: #ededed;
+}
+
+.table tbody {
+    font-size: 10pt;
+}
+
+.table tbody td {
+    padding: 4px 5px;
+}
+
+.posizione {
+    width: 10%; 
+}
+
+.squadra {
+    width: 40%;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.vittorie {
+    width: 8%;
+    color: #0f961f;
+}
+
+.pareggi {
+    width: 8%;
+    color: #f59c00;
+}
+
+.sconfitte {
+    width: 8%;
+    color: #be1622;
+}
+
+.punti_fatti {
+    width: 8%;
+}
+
+.punti_subiti {
+    width: 8%;
+}
+
+.punti {
+    width: 10%;
+    color: black;
+    font-weight: bold;
+}
+
+.dot-slider {
+    text-align: center;
+    position: fixed;
+    bottom: var(--bottom);
+    width: 100%;
+    z-index: 1;
+    background-color: white;
+    padding-bottom: 5px;
+}
+
+.legendaClassifica {
+    text-transform: uppercase;
+    margin-top: 3px;
+}
+
+.dot {
+    cursor: pointer;
+    height: 10px;
+    width: 10px;
+    margin: 0 2px;
+    background-color: #c6c6c6;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active-dot {
+    background-color: #3c3c3b;
+}
+
+.dot-slider p {
+    font-size: 7pt;
+    width: 100%;
+}
+
+/*Statistiche*/
+#tableStatTiri,
+#tableStatProve {
+    margin-bottom: calc(var(--bottom) + 95px);
+}
+
+#stat-slider {
+    margin-top: 50px;
+    touch-action: manipulation;
+}
+
+#backArrow_stat {
+    background-image: url(../img/back-2.png);
+    left: 15px;
+    float: left;
+    background-color: #3c3c3b;
+}
+
+#forwArrow_stat {
+    background-image: url(../img/right-arrow-2.png);
+    right: 15px;
+    float: right;
+    background-color: #3c3c3b;
+}
+
+.giocatore_s {
+    width: 33%;
+    text-align: left;
+}
+
+.squadra_s {
+    width: 29%;
+    text-align: left;
+}
+
+.vittorie_s {
+    width: 8%;
+    color: #0f961f;
+}
+
+.pareggi_s {
+    width: 8%;
+    color: #f59c00;
+}
+
+.sconfitte_s {
+    width: 8%;
+    color: #be1622;
+}
+
+.media_s {
+    width: 14%;
+}
+
+#filtraStat p {
+    margin-bottom: 3px;
+}
+
+#filtraStat {
+    margin-top: 5px;
+    margin-bottom: 3px;
+    font-size: 8pt;
+}
+
+#selSpecialita {
+    padding: 2px;
+    background-color: #f59c00;
+    color: white;
+    width: 50%;
+    font-weight: bold;
+    border: 1px solid #f59c00;
+    font-size: 9pt;
+    text-align-last: center;
+}
+
+/*Calendario*/
+#header_calendario {
+    width: 100%;
+    display: block;
+    margin-top: 50px;
+}
+
+.NavGiornate {
+    background-color: #ededed;
+    border-collapse: collapse;
+}
+
+.NavGiornate ul {
+    list-style-type: none;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap; 
+    font-size: 0;
+}
+
+.NavGiornate ul li {
+    font-size: 12px;
+    width: 24%;
+    color: #f59c00;
+    text-decoration: none;
+    padding: 1.1em 0;
+    text-align: center;
+    display: inline-block;
+    font-weight: bold;
+    border-top: 3px solid #ededed;
+}
+
+#giornataIntera {
+    width: 100%; 
+    touch-action: manipulation;
+}
+
+#tableGiornate {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    background-color: white;
+    border-collapse: collapse;
+    margin-bottom: calc(var(--bottom) + 75px);
+}
+
+#tableGiornate thead {
+    display: none;
+}
+
+#tableGiornate tbody {
+    /*display: none;*/
+}
+
+#tableGiornate tbody tr:nth-child(odd){
+    background-color: white;
+}
+
+#tableGiornate tbody tr:nth-child(even){
+    background-color: #ededed;
+}
+
+#dataGiornata {
+    padding: 5px;
+    background-color: #3c3c3b;
+    color: white;
+    font-weight: bold;
+}
+
+#tableGiornate tr {
+    border: 1px solid #3c3c3b;
+}
+
+#tableGiornate td {
+    overflow: hidden;
+}
+
+
+
+.PrimaSquadra {
+    width: 30%;
+    padding: 15px 0.2em;
+}
+
+.PunteggioPrimaSquadra {
+    width: 10%;
+    font-weight: bold;
+}
+
+.StatoPartita {
+    width: 20%;
+}
+
+.PunteggioSecondaSquadra {
+    width: 10%;
+    font-weight: bold;
+}
+
+.SecondaSquadra {
+    width: 30%;
+}
+
+.selected {
+    border-bottom: 3px solid #f59c00; 
+}
+
+#selCampionato {
+    padding: 2px;
+    background-color: #f59c00;
+    color: white;
+    width: 50%;
+    font-weight: bold;
+    border: 1px solid #f59c00;
+    text-align-last:center;
+    font-size: 9pt;
+    margin: 7px 0;
+}
+
+/*Tabellino*/
+
+#headerTabellino {
+    display: block;
+    position: fixed;
+    top: var(--top);
+    width: 100%;
+    background-color: #3c3c3b;
+    height: 40px;
+}
+
+#headerTabellino p {
+    width: 50%;
+    font-size: 15pt;
+    overflow: hidden;
+    z-index: 1;
+    display: block;
+    text-align: center;
+    float: left;
+    font-weight: bold;
+    color: white;
+    padding: 8px 0;
+}
+
+#Squadra1 {
+    border-right: 1px solid white;
+}
+
+#TableIncontro {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    background-color: white;
+    border-collapse: collapse;
+    margin-top: 40px;
+    text-transform: none;
+    table-layout: fixed;
+    overflow: hidden;
+    margin-bottom: calc(var(--bottom) + 60px + 50px);
+}
+
+#TableIncontro td {
+    font-size: 10pt;
+    border: 0.1em solid #3c3c3b;
+    overflow: hidden;
+    padding: 0.7em 0.2em;
+    font-weight: bold;
+}
+
+#TableIncontro td span {
+    text-align: center;
+    display: block;
+}
+
+.Giocatore1Squadra {
+    width: 33%;
+}
+
+.Giocatore2Squadra {
+    width: 33%;
+}
+
+.Specialita {
+    width: 33%;
+    font-weight: bold;
+    color: #3c3c3b;
+    background-color: #ededed;
+}
+
+.PrimoPunteggio {
+    width: 16.5%;
+}
+
+.SecondoPunteggio {
+    width: 16.5%;
+}
+
+#Totale {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    border-collapse: collapse;
+}
+
+#Totale p {
+    width: 50%;
+    font-size: 14pt;
+    overflow: hidden;
+    z-index: 1;
+    display: block;
+    text-align: center;
+    float: left;
+    font-weight: bold;
+    padding: 8px 0;
+    border-top: 1px solid #3c3c3b;
+    border-right: 0.5px solid #3c3c3b;
+    border-left: 0.5px solid #3c3c3b;
+    border-bottom: 1px solid #3c3c3b;
+}
+
+.addHalfButton {
+    background-color: #f59c00;
+    border: none;
+    color: white;
+    width: 40%;
+    font-size: 8pt;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 0;
+    margin: 5px 5%;    
+    float: left;
+}
+
+/*Aggiungi Risultati*/
+#formResult {
+    background-color: #ededed;
+    margin-top: 50px;
+}
+
+#formResult p {
+    color: #3c3c3b;
+}
+
+#provaForm {
+    padding: 4px;
+    background-color: #f59c00;
+    color: white;
+    width: 60%;
+    margin: 15% 20% 4% 20%;
+    border: 1px solid #f59c00;
+    text-align-last:center;
+    font-weight: bold;
+}
+
+.formSquadre {
+    border: none;
+    width: 49%;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.formSquadre legend {
+    text-align: center;
+    font-weight: bold;
+    font-size: 15pt;
+    margin-bottom: 5%;
+}
+
+.formSquadre select {
+    width: 80%;
+    margin: 0 10% 15% 10%;
+    padding: 5px;
+}
+
+.punteggio {
+    width: 60%;
+    margin-left: 20%;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10%;
+    border: none;
+}
+
+
+#inviaResult {
+    background-color: #f59c00;
+    border: none;
+    color: white;
+    display: block;
+    width: 60%;
+    font-size: 15pt;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 0;
+    margin: 10% 20% 0 20%;
+}
+
+#formResult fieldset label {
+    text-align: center;
+    font-size: 8pt;
+    margin: 5% 10% 0 10%;
+}
+
+.partialResult {
+    margin-left: 30%;
+    margin-bottom: 15px;
+    -webkit-appearance: radio;
+}
+
+.partialLabel {
+    font-size: 11pt;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+#footerResult p {
+    font-weight: bold;
+}
+
+/*Homepage*/
+#homeContent {
+    color: #3c3c3b;
+    height: 100%;
+}
+
+#first {
+    height: 24%;
+}
+
+.divHome {
+    width: 100%;
+    height: 19%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f59c00;
+}
+
+#intro {
+    font-weight: bold;
+}
+
+.imgDiv {
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 20%;
+    margin: 0 5%;
+    background-size: contain;
+    height: 100%;
+}
+
+.spiegazione {
+    text-align: left;
+    width: 66%;
+    font-size: 11pt;
+}
+
+.last {
+    border-bottom: none;
+}
+
+#logoHome {
+    background-image: url('../img/Logo%20tondo%20300px.png');
+}
+
+#logoStat {
+    background-image: url('../img/Statistiche_A.png');
+}
+
+#logoCalen {
+    background-image: url('../img/Calendario_A.png');
+}
+
+#logoClass {
+    background-image: url('../img/Classifiche_A.png');
+}
+
+#logoUtente {
+    background-image: url('../img/Profilo_A.png');
+}
+
+#intro {
+    font-size: 13pt;
+    font-weight: bold;
+}
+
+.show {
+    display: block;
+}

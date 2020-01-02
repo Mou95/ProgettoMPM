@@ -36,8 +36,8 @@ function loadLogicCalendar(loadNewDay) {
     for (var i = 0; i<tbody_giornate.length; i++) {
         tbody_giornate[i].style.display = "none";
         
-        console.log("DATA " +array_giornate)
-        console.log(array_giornate[camp][i]["data"].toDate())
+        //console.log("DATA " +array_giornate)
+        //console.log(array_giornate[camp][i]["data"].toDate())
         
         if (loadNewDay) {
             var diff = dateDifference(data, array_giornate[camp][i]["data"].toDate());
@@ -137,6 +137,7 @@ function createCalendar() {
     giornate.onSnapshot(function(snapshot) {
         snapshot.docChanges().forEach(function(change) {
             if (change.type === "modified") {
+                
                 change.doc.data();
                 changeEntryTableCalendar(change)
                 refreshTabellino()
@@ -160,7 +161,6 @@ function createCalendar() {
 
 function changeEntryTableCalendar(change) {
     
-    console.log(change.doc.data())
     var campionato = change.doc.data()["campionato"];  
     var giornata = change.doc.data()["numero"]-1; 
     
@@ -208,7 +208,7 @@ function createTableGiornate(loadNewDay) {
 
         partite.forEach(function(partita, index) {
 
-            console.log("Id "+partite["id"]+" "+index)
+            //console.log("Id "+partite["id"]+" "+index)
 
             var row = tbody.insertRow(0);
 
@@ -276,7 +276,6 @@ function openTabellino() {
 }
 
 function refreshCalendar(reloadLogic) {
-    console.log("REFRESH")
     
     tableCalendar.querySelectorAll('tbody').forEach(function(tbody) {
         tableCalendar.removeChild(tbody);

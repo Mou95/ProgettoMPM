@@ -38,6 +38,7 @@ body {
     height:100%;
     width:100%;
     background-color: white;
+    padding-top: env(safe-area-inset-top); /* iOS 11.2 */
 }
 
 button, input {
@@ -355,6 +356,32 @@ select {
     margin: 20px 0 0 0;
 }
 
+#resetPsw {
+    width: 100%;
+    margin-top: 15%;
+}
+
+#resetPsw p {
+    margin: 0 10%;
+    font-size: 8pt;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.forgotButton {
+    background-color: #f59c00;
+    border: none;
+    color: white;
+    display: block;
+    width: 80%;
+    font-size: 13pt;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 0;
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
+
 #keepLogin {
     -webkit-appearance: checkbox;
 }
@@ -657,13 +684,18 @@ select {
     background-color: #3c3c3b;
 }
 
+.posizione_s {
+    width: 6%;
+    text-align: center;
+}
+
 .giocatore_s {
-    width: 33%;
+    width: 28%;
     text-align: left;
 }
 
 .squadra_s {
-    width: 29%;
+    width: 28%;
     text-align: left;
 }
 
@@ -965,6 +997,7 @@ select {
     width: 49%;
     display: inline-block;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .formSquadre legend {
@@ -989,6 +1022,7 @@ select {
     border: none;
 }
 
+
 #inviaResult {
     background-color: #f59c00;
     border: none;
@@ -999,13 +1033,25 @@ select {
     text-transform: uppercase;
     font-weight: bold;
     padding: 5px 0;
-    margin: 5% 20% 0 20%;
+    margin: 10% 20% 0 20%;
 }
 
-#formResult label {
+#formResult fieldset label {
     text-align: center;
     font-size: 8pt;
     margin: 5% 10% 0 10%;
+}
+
+.partialResult {
+    margin-left: 30%;
+    margin-bottom: 15px;
+    -webkit-appearance: radio;
+}
+
+.partialLabel {
+    font-size: 11pt;
+    margin-bottom: 15px;
+    font-weight: bold;
 }
 
 #footerResult p {

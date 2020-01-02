@@ -2,7 +2,7 @@ function onLoad() {
     
     var db = firebase.firestore()
     
-    db.doc("versione/v1.1.3").get()
+    db.doc("versione/v1.1.4").get()
     .then(function(doc) {
         
 
@@ -42,17 +42,13 @@ function onLoad() {
 
                         if (device.platform != "iOS") {
                             StatusBar.styleBlackTranslucent();
-                            document.documentElement.style.setProperty('--bottom', '0px');
-                            document.documentElement.style.setProperty('--top', '90px');
-                            document.getElementById("navMenu").classList.add("menuBarAndroid")
-                            console.log("Android")
 
-                        } else {
-                            document.documentElement.style.setProperty('--bottom', '50px');
-                            document.documentElement.style.setProperty('--top', '40px');
-                            document.getElementById("navMenu").classList.add("menuBarIos")
-                            console.log("Not Android")
                         }
+                        document.documentElement.style.setProperty('--bottom', '0px');
+                        document.documentElement.style.setProperty('--top', '90px');
+                        document.getElementById("navMenu").classList.add("menuBarAndroid")
+                        console.log("Android")
+
                     })
                     .catch(function(error) {
                         console.error("Error writing document: ", error);
