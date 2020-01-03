@@ -1,4 +1,31 @@
-
-
-DOMINI G. QUADRI
-
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /utenti/{docId} {
+      allow read, write: if request.auth.uid != null;
+    }
+    
+    match /campionati/{docId} {
+      allow read, write: if exists(/databases/$(database)/documents/utenti/$(request.auth.uid));
+    }
+    
+    match /campionati/{docId}/classifica/{doc} {
+      allow read, write: if exists(/databases/$(database)/documents/utenti/$(request.auth.uid));
+    }
+    
+    match /giornate/{docId} {
+      allow read, write: if exists(/databases/$(database)/documents/utenti/$(request.auth.uid));
+    }
+    
+    match /squadre/{docId} {
+      allow read, write: if exists(/databases/$(database)/documents/utenti/$(request.auth.uid));
+    }
+    
+    match /errori/{docId} {
+      allow read, write: if exists(/databases/$(database)/documents/utenti/$(request.auth.uid));
+    }
+    
+    match /giocatori/{docId} {
+      allow read, write: if exists(/databases/$(database)/documents/utenti/$(request.auth.uid));
+    }
+  }
+}
