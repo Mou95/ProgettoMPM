@@ -25,7 +25,7 @@
         }
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+    <script src="https://hammerjs.github.io/dist/hammer.js"></script>
     <title>TuttoBOCCE</title>
 </head>
 
@@ -54,6 +54,7 @@
             <div class="classifica">
                 <table id="tableStatProve" class="table" summary="Tabella della statistiche scelte">
                     <colgroup>
+                        <col class="posizione_s" >
                         <col class="giocatore_s" >
                         <col class="squadra_s" >
                         <col class="vittorie_s" >
@@ -62,6 +63,7 @@
                     </colgroup>
                     <thead>
                         <tr>
+                            <th scope="col"></th>
                             <th scope="col">Giocatore</th>
                             <th scope="col">Squadra</th>
                             <th scope="col">V</th>
@@ -77,6 +79,7 @@
             <div class="classifica">
                 <table id="tableStatTiri" class="table" summary="Tabella della statistiche scelte">
                     <colgroup>
+                        <col class="posizione_s" >
                         <col class="giocatore_s" >
                         <col class="squadra_s" >
                         <col class="vittorie_s" >
@@ -86,6 +89,7 @@
                     </colgroup>
                     <thead>
                         <tr>
+                            <th scope="col"></th>
                             <th scope="col">Giocatore</th>
                             <th scope="col">Squadra</th>
                             <th scope="col">V</th>
@@ -105,6 +109,7 @@
                 <p>Seleziona una specialità per visualizzare le statistiche</p>
                 <select class="selezioneStat" id="selSpecialita" onchange=refreshTable()>
                     <option value="" disabled selected>Specialità</option>
+                    <option value="totale">Totale</option>
                     <option value="individuale">Individuale</option>
                     <option value="coppia">Coppia</option>
                     <option value="terna">Terna</option>
@@ -117,6 +122,7 @@
             <span class="dot active-dot"></span> 
             <span class="dot"></span> 
             <span class="dot"></span> 
+            <!--<span class="dot"></span>--> 
             <p>Scorri a destra/sinistra per cambiare campionato</p>
         </div>
     
@@ -159,6 +165,7 @@
                     <option value="A1_1920" selected>Serie A1 2019/20</option>
                     <option value="A2_1920_est">Serie A2 Est 2019/20</option>
                     <option value="A2_1920_ovest">Serie A2 Ovest 2019/20</option>
+                    <!--<option value="A1_1920_F">Serie A1 Femminile 2019/20</option>-->
                 </select>
             </div> 
             <p>Scorri a destra/sinistra per cambiare giornata</p>
@@ -289,10 +296,6 @@
                     <td class="PrimoPunteggio"></td>
                     <td class="SecondoPunteggio"></td>
                 </tr>
-                <!--<tr id="Totale">
-                    <td colspan="2" id="PrimaSquadraTot"></td>
-                    <td colspan="2" id="SecondaSquadraTot"></td>
-                </tr>-->
             </tbody>
         </table>
         <div id="Totale">
@@ -312,7 +315,7 @@
         </div>
         <div id="formResult">
             <form>
-                <select id="provaForm" required>
+                <select id="provaForm" onchange="getOldTabellino(this)" required>
                     <option value="" disabled selected>Seleziona la prova</option>
                     <option class="combinato" value="1">Combinato</option>
                     <option class="coppia" value="2">1&#176 Coppia</option>
@@ -342,11 +345,12 @@
                     </select>
                     <input class="punteggio"  id="punteggio2Squadra" type="number" required placeholder="Punti..."/>
                 </fieldset>
+                <input type="radio" name="group1" class="partialResult" id="partialResult1" value="Parziale" />
+                <label for="partialResult1" class="partialLabel" id="partialLabel1">Risultato parziale</label>
+                <input type="radio" name="group1" class="partialResult" id="partialResult2" value="Finale" />
+                <label for="partialResult2" class="partialLabel" id="partialLabel2">Risultato finale</label>
                 <input id="inviaResult" type="submit" value="INVIA">
             </form>
-        </div>
-        <div class="dot-slider" id="footerResult">
-            <p>Inserire solamente il risultato finale delle partite</p>
         </div>
     </div>
     
@@ -460,6 +464,32 @@
                     </thead>            
                 </table>
             </div>
+            <!--<div class="classifica">
+                <table id="A1_1920_F" class="table" summary="Tabella della classifica relativa al campionato scelto">
+                    <colgroup>
+                        <col class="posizione" >
+                        <col class="squadra" >
+                        <col class="vittorie" >
+                        <col class="pareggi" >
+                        <col class="sconfitte" >
+                        <col class="punti_fatti" >
+                        <col class="punti_subiti" >
+                        <col class="punti" >
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Squadra</th>
+                            <th scope="col">V</th>
+                            <th scole="col">N</th>
+                            <th scope="col">P</th>
+                            <th scole="col">+</th>
+                            <th scope="col">-</th>
+                            <th scole="col">Pt</th>
+                        </tr>
+                    </thead>            
+                </table>
+            </div>-->
         </div>
         <div class="dot-slider" id="footerClassifica">
             <p class="legendaClassifica">V vittorie / n pareggi / p sconfitte</p>
@@ -467,6 +497,7 @@
             <span class="dot active-dot"></span> 
             <span class="dot"></span>
             <span class="dot"></span>
+            <!--<span class="dot"></span>-->
             <p>Scorri a destra/sinistra per vedere tutte le classifiche</p>
         </div>
     
@@ -494,6 +525,9 @@
 
             </div>
             <button class="userButton" id="logoutButton">Logout</button>
+            <button class="userButton" id="resettaDati">Resetta</button>
+            <button class="userButton" id="calcolaClassifiche">Calcola Classifiche</button>
+            <button class="userButton" id="calcolaStat">Calcola Statistiche</button>
         </div>
         <div class="dot-slider" id="footerUser">
             <p>Ti piace TUTTOBOCCE?</p>
@@ -504,7 +538,6 @@
     </div>
     
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/home.js"></script>
     <script type="text/javascript" src="js/classifiche.js"></script>
     <script type="text/javascript" src="js/menu.js"></script>
     <script type="text/javascript" src="js/user.js"></script>
@@ -512,6 +545,7 @@
     <script type="text/javascript" src="js/calendario.js"></script>
     <script type="text/javascript" src="js/tabellino.js"></script>
     <script type="text/javascript" src="js/result.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
 </body>
 
 </html>
