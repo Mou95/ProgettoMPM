@@ -33,6 +33,7 @@
         <preference name="StatusBarOverlaysWebView" value="false" />
         <preference name="StatusBarBackgroundColor" value="#000000" />     
         <preference name="StatusBarStyle" value="lightcontent" />
+        <preference name="WKWebViewOnly" value="true" />
         <icon height="57" platform="ios" src="www/res/icon/ios/icon.png" width="57" />
         <icon height="114" platform="ios" src="www/res/icon/ios/icon@2x.png" width="114" />
         <icon height="40" platform="ios" src="www/res/icon/ios/icon-40.png" width="40" />
