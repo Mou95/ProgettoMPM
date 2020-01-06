@@ -7,9 +7,9 @@ function onDeviceReady( event ) {
        window.MobileAccessibility.usePreferredTextZoom(false);
     }
     if (device.platform != "iOS") {
-        StatusBar.overlaysWebView(false);
         StatusBar.styleLightContent();
     }
+    StatusBar.overlaysWebView(false);
     console.log('Received Event:'+ event );
 
     var login = document.getElementById('login');
