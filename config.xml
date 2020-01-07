@@ -12,6 +12,7 @@
     <preference name="android-minSdkVersion" value="19" />
     <preference name="orientation" value="portrait" />
     <preference name="StatusBarDefaultScrollToTop" value="false" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="target-device" value="handset" />
     <preference name="phonegap-version" value="cli-7.1.0"/>
     <platform name="android">
@@ -29,9 +30,6 @@
         <splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
     </platform>
     <platform name="ios">
-        <preference name="StatusBarOverlaysWebView" value="false" />
-        <preference name="StatusBarBackgroundColor" value="#000000" />     
-        <preference name="StatusBarStyle" value="lightcontent" />
         <icon height="57" platform="ios" src="www/res/icon/ios/icon.png" width="57" />
         <icon height="114" platform="ios" src="www/res/icon/ios/icon@2x.png" width="114" />
         <icon height="40" platform="ios" src="www/res/icon/ios/icon-40.png" width="40" />

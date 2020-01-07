@@ -6,10 +6,9 @@ function onDeviceReady( event ) {
     if(window.MobileAccessibility) {
        window.MobileAccessibility.usePreferredTextZoom(false);
     }
-    if (device.platform != "iOS") {
-        StatusBar.styleLightContent();
-    }
-    StatusBar.overlaysWebView(false);
+    
+    
+    StatusBar.styleLightContent();
     console.log('Received Event:'+ event );
 
     var login = document.getElementById('login');
