@@ -1,41 +1,36 @@
 
 var t = [
-"Pittarelli L.",
-"Strocco G.",
-"Croveri M.",
-"Franco C.",
-"Ariello D.",
-"Ronco M.",
-"Nicolino E.",
-"Luciano P.L.",
-"Favaretto E.",
-"Sacco G.",
-"Borca M.",
-"Porta A."
 ]
 
-/*t.forEach(function(gioc) {
-    db.collection("campionati/A2_1920_ovest/classifica").add({
-        squadra: gioc,
-        punti: 0,
-        punti_fatti: 0,
-        punti_subiti: 0,
-        vittorie: 0,
-        sconfitte: 0,
-        pareggi: 0
+/*var xxx = 0
+db.collection("utenti")
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doccc) {
+            xxx += 1
+        });
     })
     .then(function() {
-        console.log("Document successfully written!");
-    })
-    .catch(function(error) {
-        console.error("Error writing document: ", error);
-    });
-})*/
+        console.log(xxx)
+    })*/
 
-/*t.forEach(function(gioc) {
-    db.collection("giocatori").add({
-        name: gioc,
-        squadra: "Pozzo Strada",
+
+/*db.collection("giocatori").where("name", "==", "Gilemi G.")
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doccc) {
+            // doc.data() is never undefined for query doc snapshots
+            db.collection("giocatori").doc(doccc.id).delete().then(function() {
+                console.log("Document successfully deleted!");
+            }).catch(function(error) {
+                console.error("Error removing document: ", error);
+            });
+        });
+    })
+    .then(function() {
+        db.collection("giocatori").add({
+        name: "Gilemi G.",
+        squadra: "Mondovì",
         statistiche_1920: {
             combinato: {
                 perse:0,
@@ -75,6 +70,97 @@ var t = [
                 perse:0,
                 vinte:0,
                 pareggiate:0
+            },
+            totale: {
+                perse:0,
+                vinte:0,
+                pareggiate:0
+            }
+        }  
+    })
+    }).catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+*/
+/*t.forEach(function(gioc) {
+    db.collection("campionati/A1_1920_F/classifica").add({
+        squadra: gioc,
+        punti: 0,
+        punti_fatti: 0,
+        punti_subiti: 0,
+        vittorie: 0,
+        sconfitte: 0,
+        pareggi: 0
+    })
+    .then(function() {
+        console.log("Document successfully written!");
+    })
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
+})*/
+
+/*t.forEach(function(gioc) {
+    db.collection("squadre").add({
+        squadra: gioc,
+        campionato: "A1_1920_F"
+    })
+    .then(function() {
+        console.log("Document successfully written!");
+    })
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
+})*/
+
+/*t.forEach(function(gioc) {
+    db.collection("giocatori").add({
+        name: gioc,
+        squadra: "Tre Stelle",
+        statistiche_1920: {
+            combinato: {
+                perse:0,
+                vinte:0,
+                pareggiate:0,
+                media:0
+            },
+            progressivo_3: {
+                perse:0,
+                vinte:0,
+                pareggiate:0,
+                media:0
+            },
+            staffetta: {
+                perse:0,
+                vinte:0,
+                pareggiate:0,
+                media:0
+            },
+            tiro_tecnico: {
+                perse:0,
+                vinte:0,
+                pareggiate:0,
+                media:0
+            },
+            individuale: {
+                perse:0,
+                vinte:0,
+                pareggiate:0
+            },
+            coppia: {
+                perse:0,
+                vinte:0,
+                pareggiate:0
+            },
+            terna: {
+                perse:0,
+                vinte:0,
+                pareggiate:0
+            },
+            totale: {
+                perse:0,
+                vinte:0,
+                pareggiate:0
             }
         }  
 
@@ -86,12 +172,12 @@ var t = [
     });
 })
 */
-        
+       
 
-/*for (var i=1; i<19; i++) {
-    db.collection("giornate").doc("g"+i+"_A2_O").set({
+/*for (var i=1; i<12; i++) {
+    db.collection("giornate").doc("g"+i+"_A1_F").set({
         numero: i,
-        campionato: "A2_1920_ovest",
+        campionato: "A1_1920_F",
         partite:[
             {
                 completo:false, 
@@ -101,10 +187,6 @@ var t = [
                 punteggio_2:0,
                 tabellino:{}
             },
-            {completo:false, prima_squadra:"", seconda_squadra:"",
-                punteggio_1:0,punteggio_2:0,tabellino:{}},
-            {completo:false, prima_squadra:"", seconda_squadra:"",
-                punteggio_1:0,punteggio_2:0,tabellino:{}},
             {completo:false, prima_squadra:"", seconda_squadra:"",
                 punteggio_1:0,punteggio_2:0,tabellino:{}},
             {completo:false, prima_squadra:"", seconda_squadra:"",
@@ -121,8 +203,8 @@ var t = [
 }*/
 
 var dots_stat = document.getElementById("page_statistiche").getElementsByClassName("dot")
-var campionato = ["A1_1920", "A2_1920_est",  "A2_1920_ovest"];
-var name_campionati = ["Serie A1 19/20", "Serie A2 est 19/20", "Serie A2 ovest 19/20"];
+var campionato = ["A1_1920", "A2_1920_est",  "A2_1920_ovest"/*, "A1_1920_F"*/];
+var name_campionati = ["Serie A1 19/20", "Serie A2 est 19/20", "Serie A2 ovest 19/20"/*, "Serie A1 Femm 19/20"*/];
 
 var n = campionato.length;
 var backArrow_stat = document.getElementById("backArrow_stat");
@@ -146,20 +228,61 @@ var tiri = ["staffetta", "progressivo_3", "tiro_tecnico", "combinato"]
 var array_player = {
     A1_1920: [],
     A2_1920_est: [],
-    A2_1920_ovest: []
+    A2_1920_ovest: []/*,
+    A1_1920_F: []*/
 }
 
-$(function(){
-    // Bind the swipeHandler callback function to the swipe event on classifica-slider
-    console.log("swiped");
-    $( "#stat-slider" ).on( "swiperight", swipeRightStat );
-    $( "#stat-slider" ).on( "swipeleft", swipeLeftStat );
-    $( "#backArrow_stat" ).on( "tap", swipeRightStat );
-    $( "#forwArrow_stat" ).on( "tap", swipeLeftStat );
+
+// Bind the swipeHandler callback function to the swipe event on classifica-slider
+
+var mc_stat = new Hammer.Manager(document.getElementById("stat-slider"));
+
+var swipe_stat = new Hammer.Swipe({
+    direction: 6
 });
 
-function swipeRightStat( event ){
-    
+mc_stat.add(swipe_stat);
+
+mc_stat.on("swiperight", function(ev) {
+   swipeRightStat()
+});
+
+mc_stat.on("swipeleft", function(ev) {
+   swipeLeftStat()
+});
+/*$( "#stat-slider" ).on( "swiperight", swipeRightStat );
+$( "#stat-slider" ).on( "swipeleft", swipeLeftStat );*/
+/*$( "#backArrow_stat" ).on( "tap", swipeRightStat );
+$( "#forwArrow_stat" ).on( "tap", swipeLeftStat );*/
+
+document.getElementById("backArrow_stat").addEventListener("click", swipeRightStat)
+document.getElementById("forwArrow_stat").addEventListener("click", swipeLeftStat)
+
+/*$('#selSpecialita').on('focus',function() {
+    console.log("scroll")
+    $("body").addClass("fixfixed");
+    $("html, body").animate({ scrollTop: 0 }, 100);
+    $("#footerStat").hide()
+});
+
+$('#selSpecialita').on('blur, focusout',function() {
+    console.log("scrollout")
+    $("body").removeClass("fixfixed");
+    $("#footerStat").show()
+});*/
+
+
+$('#navMenu').on('click', function(e) {
+    $.each($('#selSpecialita'), function(i, select) {
+        if ( $(select).data('dropkick') ) {
+            $(select).dropkick('close');
+        }
+    });
+});
+
+
+function swipeRightStat(){
+    console.log("swipe right")
     if (active_stat > 0) {
         dots_stat[active_stat].classList.remove("active-dot")
         active_stat -= 1;
@@ -168,9 +291,14 @@ function swipeRightStat( event ){
     }
     setArrowsStat()
     refreshTable()
+    
+    var footer_tab = $('#tableStatProve');
+
+    console.log(footer_tab.css("margin-bottom"))
 }
 
-function swipeLeftStat( event ){
+function swipeLeftStat(){
+    console.log("Swipe left")
     if (active_stat < n - 1) {
         dots_stat[active_stat].classList.remove("active-dot")
         active_stat += 1;
@@ -183,7 +311,7 @@ function swipeLeftStat( event ){
 }
 
 function setArrowsStat() {
-    
+    console.log("arrow")
     if (active_stat == 0) {
         backArrow_stat.classList.remove("show");
         forwArrow_stat.classList.add("show");
@@ -236,7 +364,6 @@ function createStats() {
 }
 
 function changeEntryTableStat(campionato, change) {
-    console.log(campionato+" "+change.doc.data()["name"])
     var squadra = change.doc.data()["squadra"];  
     var name = change.doc.data()["name"]; 
 
@@ -256,10 +383,8 @@ function refreshTable() {
         
         var spec_id = specialita.value;
 
-        console.log("Filtro "+spec_id)
-
         createTable(spec_id)
-        
+        console.log("finito")
     } 
 }
 
@@ -279,7 +404,6 @@ function deleteTable() {
 }
     
 function createTable(spec_id) {
-    console.log(array_player)
     var medie;
     var table_to_create;
     
@@ -294,35 +418,39 @@ function createTable(spec_id) {
     var tbody = table_to_create.getElementsByTagName('tbody')[0]
     
     console.log("Inizio creazione tabella")
-    
-    console.log(array_player[campionato[active_stat]].length)
-    
+    console.log(spec_id+" "+active_stat)
+        
+    var i=1;
     array_player[campionato[active_stat]].forEach(function(player) {
         
+
         if (player["statistiche_1920"][spec_id]["vinte"]+player["statistiche_1920"][spec_id]["pareggiate"]+player["statistiche_1920"][spec_id]["perse"] != 0) {
-        
-            tbody.appendChild(createTableRow(player, medie, spec_id))
+
+            tbody.appendChild(createTableRow(i, player, medie, spec_id))
+            i++;
         }
-        
+
     })
-    
-        
         
     if (medie) {
         tables[1].classList.add("show");
-        sort("tableStatTiri",5)
+        sort("tableStatTiri",6)
     }
     else {
         tables[0].classList.add("show");
-        sort("tableStatProve",2)
+        sort("tableStatProve",3)
     }
-    console.log("Set show")
     
 }
 
-function createTableRow(player, medie, spec_id) {
+function createTableRow(i, player, medie, spec_id) {
 
     var tr = document.createElement('tr');
+    /*Posizione*/
+    var td = document.createElement('td');
+    td.classList.add("posizione_s");  
+    td.appendChild(document.createTextNode(i))
+    tr.appendChild(td);
 
     /*Giocatore*/
     var td = document.createElement('td');
@@ -335,24 +463,25 @@ function createTableRow(player, medie, spec_id) {
     td.classList.add("squadra_s");  
     td.appendChild(document.createTextNode(player["squadra"]))
     tr.appendChild(td);
-    
+        
     /*Vinte*/
     var td = document.createElement('td');
     td.classList.add("vittorie_s");  
     td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["vinte"]))
     tr.appendChild(td);
-    
+
     /*Pareggiate*/
     var td = document.createElement('td');
     td.classList.add("pareggi_s");  
     td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["pareggiate"]))
     tr.appendChild(td);
-    
+
     /*Perse*/
     var td = document.createElement('td');
     td.classList.add("sconfitte_s");  
     td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["perse"]))
     tr.appendChild(td);
+    
     
     if (medie) {
         /*Perse*/
@@ -377,7 +506,6 @@ function sort(id,n) {
         switching = false;
         rows = table.rows;
         
-        console.log(rows.length+"lenght")
         for (i = 1; i < (rows.length - 1); i++) {
           
             shouldSwitch = false;
@@ -385,14 +513,13 @@ function sort(id,n) {
             x = rows[i].getElementsByTagName("TD")[n];
             y = rows[i + 1].getElementsByTagName("TD")[n];
             
-            w = rows[i].getElementsByTagName("TD")[3];
-            z = rows[i + 1].getElementsByTagName("TD")[3];
+            w = rows[i].getElementsByTagName("TD")[4];
+            z = rows[i + 1].getElementsByTagName("TD")[4];
             
-            console.log(x.innerHTML.toLowerCase()+" "+y.innerHTML.toLowerCase())
+            h = rows[i].getElementsByTagName("TD")[5];
+            k = rows[i + 1].getElementsByTagName("TD")[5];
 
-            if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
-
-                console.log(x.innerHTML.toLowerCase()+" "+y.innerHTML.toLowerCase())
+            if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
                 shouldSwitch = true;
                 break;
             
@@ -400,7 +527,12 @@ function sort(id,n) {
                 //discrima i pareggi
                 if (id == "tableStatProve") {
                     if (parseInt(x.innerHTML) == parseInt(y.innerHTML) && parseInt(w.innerHTML) < parseInt(z.innerHTML)) {
-                        console.log("Pareggi sort")
+                        
+                        shouldSwitch = true;
+                        break;
+                    } 
+                    if (parseInt(x.innerHTML) == parseInt(y.innerHTML) && parseInt(w.innerHTML) == parseInt(z.innerHTML) && parseInt(h.innerHTML) > parseInt(k.innerHTML)) {
+                        
                         shouldSwitch = true;
                         break;
                     } 
@@ -409,7 +541,11 @@ function sort(id,n) {
         }
         if (shouldSwitch) {
             
-            console.log(rows[i].getElementsByTagName("TD")[0].innerHTML+ " "+rows[i+1].getElementsByTagName("TD")[0].innerHTML)
+             t = rows[i].getElementsByTagName("TD")[0].innerHTML;
+            
+            rows[i].getElementsByTagName("TD")[0].innerHTML = rows[i+1].getElementsByTagName("TD")[0].innerHTML;
+            
+            rows[i+1].getElementsByTagName("TD")[0].innerHTML = t;
         
             rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
             

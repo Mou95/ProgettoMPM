@@ -17,10 +17,6 @@ function logicAddResult() {
     
     document.getElementsByClassName("backButton")[0].style.display = "block";
     
-    if (window.localStorage.getItem("resultPartial") == null) {
-        navigator.notification.alert("Da oggi è possibile specificare se il risultato che state inserendo è parziale o finale prima di inviare il punteggio!", function(){window.localStorage.setItem("resultPartial",true)}, "Novità!")
-    }
-    
 }
 
 function closeResult() {

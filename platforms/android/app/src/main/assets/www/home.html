@@ -6,7 +6,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    <meta name=”viewport” content=”initial-scale=1, width=device-width, height=device-height, viewport-fit=cover”>
+    <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height,  viewport-fit=cover">
     <meta http-equiv="Content-Security-Policy" content="default-src * gap: file:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src * 'unsafe-inline' 'unsafe-eval'">
     
     
@@ -48,10 +48,12 @@
     
     <div id="page_statistiche" class="no_page_show">
         <div class="titleTabelle">
-            <button class="arrowClass" id="backArrow_stat"></button>
+            
             <p id="titleStat">Serie A1 19/20</p>
-            <button class="arrowClass show" id="forwArrow_stat"></button>
+            
         </div>
+        <button class="arrowClass" id="backArrow_stat"></button>
+        <button class="arrowClass show" id="forwArrow_stat"></button>
         <div id="stat-slider">
             <div class="classifica">
                 <table id="tableStatProve" class="table" summary="Tabella della statistiche scelte">
@@ -77,6 +79,7 @@
                         
                     </tbody>
                 </table>
+                
             </div>
             <div class="classifica">
                 <table id="tableStatTiri" class="table" summary="Tabella della statistiche scelte">
@@ -104,6 +107,9 @@
                     </tbody>
                 </table>
             </div>
+                
+            <div class='trfooter'>
+            </div>
         </div>
         <div class="dot-slider" id="footerStat">
             <p class="legendaClassifica">V vittorie / n pareggi / p sconfitte / m punteggio medio</p>
@@ -124,7 +130,6 @@
             <span class="dot active-dot"></span> 
             <span class="dot"></span> 
             <span class="dot"></span> 
-            <!--<span class="dot"></span>--> 
             <p>Scorri a destra/sinistra per cambiare campionato</p>
         </div>
     
@@ -527,9 +532,9 @@
 
             </div>
             <button class="userButton" id="logoutButton">Logout</button>
-            <button class="userButton" id="resettaDati">Resetta</button>
+            <!--<button class="userButton" id="resettaDati">Resetta</button>
             <button class="userButton" id="calcolaClassifiche">Calcola Classifiche</button>
-            <button class="userButton" id="calcolaStat">Calcola Statistiche</button>
+            <button class="userButton" id="calcolaStat">Calcola Statistiche</button>-->
         </div>
         <div class="dot-slider" id="footerUser">
             <p>Ti piace TUTTOBOCCE?</p>

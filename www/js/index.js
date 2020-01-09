@@ -7,8 +7,6 @@ function onDeviceReady( event ) {
        window.MobileAccessibility.usePreferredTextZoom(false);
     }
     
-    
-    StatusBar.styleLightContent();
     console.log('Received Event:'+ event );
 
     var login = document.getElementById('login');

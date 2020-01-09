@@ -18,8 +18,10 @@ function onLoad() {
                     .then(function() {
                         var $content = $('#homeContent');
 
-                        var height = $(window).height() - 90;
+                        var height = $(window).height() - 90 - parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sat"));
                         $content.height(height);
+                        
+                        console.log(height)
 
                         document.getElementById("page_home").classList.remove("no_page_show");
                         document.getElementById("page_home").classList.add("page_show");
@@ -44,8 +46,6 @@ function onLoad() {
                             StatusBar.styleBlackTranslucent();
 
                         }
-                        document.documentElement.style.setProperty('--bottom', '0px');
-                        document.documentElement.style.setProperty('--top', '90px');
                         document.getElementById("navMenu").classList.add("menuBarAndroid")
                         console.log("Android")
 

@@ -7,7 +7,11 @@
 }
 
 :root {
-    --top: 90px;
+    --sat: env(safe-area-inset-top);
+    --sar: env(safe-area-inset-right);
+    --sab: env(safe-area-inset-bottom);
+    --sal: env(safe-area-inset-left);
+    --top: calc(var(--sat) + 90px);
     --bottom: 0px;
 }
 
@@ -38,8 +42,6 @@ body {
     height:100%;
     width:100%;
     background-color: white;
-    padding-top: constant(safe-area-inset-top); 
-    padding-top: env(safe-area-inset-top); /* iOS 11.2 */
 }
 
 button, input {
@@ -71,7 +73,7 @@ select {
     background-color: #f59c00;
     height: 40px;
     position: fixed;
-    top : 0;
+    top : var(--sat);
     width: 100%;
     z-index: 1;
     background-image: url('../img/TuttoBOCCE 500px.png');
@@ -91,7 +93,7 @@ select {
     background-color: #f59c00;
     float: left;
     position: fixed;
-    top : 5px;
+    top : calc(var(--sat) + 5px);
     left: 10px;
     z-index: 1;
     display: none;
@@ -117,7 +119,7 @@ select {
     overflow: auto;
     height: 50px;
     position: fixed;
-    top: 40px;
+    top: calc(var(--sat) + 40px);
     border-bottom: 1px solid #f59c00;
 }
 

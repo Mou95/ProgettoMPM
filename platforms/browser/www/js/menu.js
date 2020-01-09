@@ -61,7 +61,8 @@ function manageNav(index) {
                 var $footer = $('#footerCalendar');
                 var $content = $('#giornataIntera');
                 
-                console.log("Height"+$(window).height()+$header.height()+$footer.height())
+                console.log("Height"+$(window).height()+" "+
+                            $header.height()+" "+$footer.height())
 
                 var height = $(window).height() - $footer.height() - 190;
                 $content.height(height); 

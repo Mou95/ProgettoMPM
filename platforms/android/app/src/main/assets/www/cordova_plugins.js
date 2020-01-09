@@ -81,6 +81,7 @@ module.exports.metadata =
   "cordova-plugin-dialogs": "2.0.1",
   "cordova-plugin-statusbar": "2.4.2",
   "cordova-plugin-whitelist": "1.2.2",
+  "cordova-plugin-console": "1.0.7",
   "cordova-plugin-network-information": "2.0.2-dev",
   "phonegap-plugin-mobile-accessibility": "1.0.5-dev",
   "cordova-plugin-market": "1.2.0"

@@ -53,7 +53,7 @@ document.getElementsByClassName("addHalfButton")[0].addEventListener("click", fu
 function logicTabellino() {
     var $footer_tab = $('#footerTabellini');
 
-    $('#Totale').css("bottom",  $footer_tab.height() + 6);
+    $('#Totale').css("bottom",  $footer_tab.height() + 13);
     
     
                 

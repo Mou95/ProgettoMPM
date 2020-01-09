@@ -7,13 +7,15 @@ var tbody_giornate;
 var array_giornate = {
     A1_1920: [],
     A2_1920_est: [],
-    A2_1920_ovest: []
+    A2_1920_ovest: []/*,
+    A1_1920_F: []*/
 }
 
 var titleC = {
     A1_1920: "Serie A1 2019/20",
     A2_1920_est: "Serie A2 Est 2019/20",
-    A2_1920_ovest: "Serie A2 Ovest 2019/20"
+    A2_1920_ovest: "Serie A2 Ovest 2019/20"/*,
+    A1_1920_F: "Serie A1 Femm 2019/20"*/
 }
 
 var tableCalendar = document.getElementById("tableGiornate");
@@ -34,8 +36,8 @@ function loadLogicCalendar(loadNewDay) {
     for (var i = 0; i<tbody_giornate.length; i++) {
         tbody_giornate[i].style.display = "none";
         
-        console.log("DATA " +data)
-        console.log(array_giornate[camp][i]["data"].toDate())
+        //console.log("DATA " +array_giornate)
+        //console.log(array_giornate[camp][i]["data"].toDate())
         
         if (loadNewDay) {
             var diff = dateDifference(data, array_giornate[camp][i]["data"].toDate());
@@ -52,12 +54,33 @@ function loadLogicCalendar(loadNewDay) {
     all_giornate[active_day].classList.add("selected");
     all_giornate[active_day].scrollIntoView({behavior: "smooth", block: "end", inline: "center"})
     
-    $( ".NumeroGiornata" ).on( "tap", selectTableCalendar );
+    console.log(document.getElementsByClassName("NumeroGiornata").length)
+    for (i=0; i<document.getElementsByClassName("NumeroGiornata").length; i++ ) {
+        document.getElementsByClassName("NumeroGiornata")[i].addEventListener("click", selectTableCalendar)
+    }
+    //$( ".NumeroGiornata" ).on( "tap", selectTableCalendar );
     
     if (!loaded) {
+        console.log("CALENDAR")
+        
+        var mc_calend = new Hammer.Manager(document.getElementById("giornataIntera"));
 
-        $( "#giornataIntera" ).on( "swiperight", swipeRightCalendar );
-        $( "#giornataIntera" ).on( "swipeleft", swipeLeftCalendar );
+        var swipe_calend = new Hammer.Swipe({
+            direction: 6
+        });
+
+        mc_calend.add(swipe_calend);
+
+        mc_calend.on("swiperight", function(ev) {
+           swipeRightCalendar()
+        });
+
+        mc_calend.on("swipeleft", function(ev) {
+           swipeLeftCalendar()
+        });
+
+        /*$( "#giornataIntera" ).on( "swiperight", swipeRightCalendar );
+        $( "#giornataIntera" ).on( "swipeleft", swipeLeftCalendar );*/
         
         
         loaded = true
@@ -114,6 +137,7 @@ function createCalendar() {
     giornate.onSnapshot(function(snapshot) {
         snapshot.docChanges().forEach(function(change) {
             if (change.type === "modified") {
+                
                 change.doc.data();
                 changeEntryTableCalendar(change)
                 refreshTabellino()
@@ -121,7 +145,6 @@ function createCalendar() {
             }
             if (change.type === "added") {
 
-                console.log("ASd")
                 var add = change.doc.data()["partite"];
                 add["id"] = change.doc.id;
                 add["data"] = change.doc.data()["data"]
@@ -138,7 +161,6 @@ function createCalendar() {
 
 function changeEntryTableCalendar(change) {
     
-    console.log(change.doc.data())
     var campionato = change.doc.data()["campionato"];  
     var giornata = change.doc.data()["numero"]-1; 
     
@@ -186,7 +208,7 @@ function createTableGiornate(loadNewDay) {
 
         partite.forEach(function(partita, index) {
 
-            console.log("Id "+partite["id"]+" "+index)
+            //console.log("Id "+partite["id"]+" "+index)
 
             var row = tbody.insertRow(0);
 
@@ -254,7 +276,6 @@ function openTabellino() {
 }
 
 function refreshCalendar(reloadLogic) {
-    console.log("REFRESH")
     
     tableCalendar.querySelectorAll('tbody').forEach(function(tbody) {
         tableCalendar.removeChild(tbody);

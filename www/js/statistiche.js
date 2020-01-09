@@ -258,7 +258,7 @@ $( "#forwArrow_stat" ).on( "tap", swipeLeftStat );*/
 document.getElementById("backArrow_stat").addEventListener("click", swipeRightStat)
 document.getElementById("forwArrow_stat").addEventListener("click", swipeLeftStat)
 
-$('#selSpecialita').on('focus',function() {
+/*$('#selSpecialita').on('focus',function() {
     console.log("scroll")
     $("body").addClass("fixfixed");
     $("html, body").animate({ scrollTop: 0 }, 100);
@@ -269,7 +269,7 @@ $('#selSpecialita').on('blur, focusout',function() {
     console.log("scrollout")
     $("body").removeClass("fixfixed");
     $("#footerStat").show()
-});
+});*/
 
 
 $('#navMenu').on('click', function(e) {
