@@ -7,6 +7,7 @@ function onDeviceReady( event ) {
        window.MobileAccessibility.usePreferredTextZoom(false);
     }
     
+
     StatusBar.overlaysWebView(false);
     StatusBar.styleLightContent();
     console.log(StatusBar);
