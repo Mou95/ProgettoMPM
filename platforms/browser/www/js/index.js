@@ -7,7 +7,7 @@ function onDeviceReady( event ) {
        window.MobileAccessibility.usePreferredTextZoom(false);
     }
     
-    console.log('Received Event:'+ event );
+    console.log(StatusBar);
 
     var login = document.getElementById('login');
     var user = firebase.auth().currentUser;
