@@ -5,16 +5,20 @@ var all_giornate;
 var tbody_giornate;
 
 var array_giornate = {
-    A1_1920: [],
-    A2_1920_est: [],
-    A2_1920_ovest: []/*,
+    A1_2021: [],
+    A2_2021_A: [],
+    A2_2021_B: [],
+    A2_2021_C: [],
+    A2_2021_D: []/*,
     A1_1920_F: []*/
 }
 
 var titleC = {
-    A1_1920: "Serie A1 2019/20",
-    A2_1920_est: "Serie A2 Est 2019/20",
-    A2_1920_ovest: "Serie A2 Ovest 2019/20"/*,
+    A1_2021: "Serie A1",
+    A2_2021_A: "Serie A2 Ovest Gir. A",
+    A2_2021_B: "Serie A2 Ovest Gir. B",
+    A2_2021_C: "Serie A2 Est Gir. C",
+    A2_2021_D: "Serie A2 Est Gir. D"/*,
     A1_1920_F: "Serie A1 Femm 2019/20"*/
 }
 
@@ -36,8 +40,8 @@ function loadLogicCalendar(loadNewDay) {
     for (var i = 0; i<tbody_giornate.length; i++) {
         tbody_giornate[i].style.display = "none";
         
-        //console.log("DATA " +array_giornate)
-        //console.log(array_giornate[camp][i]["data"].toDate())
+        console.log("DATA " +array_giornate)
+        console.log(array_giornate[camp][i]["data"].toDate())
         
         if (loadNewDay) {
             var diff = dateDifference(data, array_giornate[camp][i]["data"].toDate());
@@ -132,7 +136,7 @@ function selectTableCalendar( event ) {
 }
 
 function createCalendar() {
-    var giornate = db.collection("giornate").orderBy("numero", "asc");
+    var giornate = db.collection("giornate").where("anno","==",2021).orderBy("numero", "asc");
 
     giornate.onSnapshot(function(snapshot) {
         snapshot.docChanges().forEach(function(change) {
@@ -193,6 +197,7 @@ function createTableGiornate(loadNewDay) {
     /*Tabella*/
     
     var camp = document.getElementById("selCampionato").value;
+    console.log(camp)
     
     n_giornate = array_giornate[camp].length;
     

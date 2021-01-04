@@ -7,8 +7,12 @@
 }
 
 :root {
-    --top: 40px;
-    --bottom: 50px;
+    --sat: env(safe-area-inset-top);
+    --sar: env(safe-area-inset-right);
+    --sab: env(safe-area-inset-bottom);
+    --sal: env(safe-area-inset-left);
+    --top: calc(var(--sat) + 90px);
+    --bottom: 0px;
 }
 
 @font-face {
@@ -69,7 +73,7 @@ select {
     background-color: #f59c00;
     height: 40px;
     position: fixed;
-    top : 0;
+    top : var(--sat);
     width: 100%;
     z-index: 1;
     background-image: url('../img/TuttoBOCCE 500px.png');
@@ -89,7 +93,7 @@ select {
     background-color: #f59c00;
     float: left;
     position: fixed;
-    top : 5px;
+    top : calc(var(--sat) + 5px);
     left: 10px;
     z-index: 1;
     display: none;
@@ -115,7 +119,7 @@ select {
     overflow: auto;
     height: 50px;
     position: fixed;
-    top: 40px;
+    top: calc(var(--sat) + 40px);
     border-bottom: 1px solid #f59c00;
 }
 
@@ -552,7 +556,7 @@ select {
     table-layout: fixed;
     overflow: hidden;
     color: black;
-    margin-bottom: calc(var(--bottom) + 65px);
+    margin-bottom: 65px;
 }
 
 .table thead {
@@ -630,7 +634,7 @@ select {
     width: 100%;
     z-index: 1;
     background-color: white;
-    padding-bottom: 5px;
+    padding-bottom: 12px;
 }
 
 .legendaClassifica {
@@ -658,10 +662,12 @@ select {
     width: 100%;
 }
 
-/*Statistiche*/
-#tableStatTiri,
-#tableStatProve {
-    margin-bottom: calc(var(--bottom) + 95px);
+.fixfixed #navMenu,
+.fixfixed .statusBar,
+.fixfixed .titleTabelle,
+.fixfixed #backArrow_stat,
+.fixfixed #forwArrow_stat {
+    position: absolute;
 }
 
 #stat-slider {
@@ -669,18 +675,27 @@ select {
     touch-action: manipulation;
 }
 
+.trfooter{
+    height: 50px;
+    width:100%;
+    background: transparent;
+    display: block;
+}
+
 #backArrow_stat {
     background-image: url(../img/back-2.png);
     left: 15px;
-    float: left;
     background-color: #3c3c3b;
+    position: fixed;
+    top: var(--top);
 }
 
 #forwArrow_stat {
     background-image: url(../img/right-arrow-2.png);
     right: 15px;
-    float: right;
     background-color: #3c3c3b;
+    position: fixed;
+    top: var(--top);
 }
 
 .posizione_s {
@@ -781,7 +796,7 @@ select {
     text-align: center;
     background-color: white;
     border-collapse: collapse;
-    margin-bottom: calc(var(--bottom) + 75px);
+    margin-bottom: 75px;
 }
 
 #tableGiornate thead {
@@ -894,7 +909,7 @@ select {
     text-transform: none;
     table-layout: fixed;
     overflow: hidden;
-    margin-bottom: calc(var(--bottom) + 60px + 50px);
+    margin-bottom: 110px;
 }
 
 #TableIncontro td {

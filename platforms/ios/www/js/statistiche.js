@@ -1,6 +1,17 @@
 
 var t = [
+'Artioli M.',
+'Arcilasco S.',
+'Bagnasco A.',
+'Cavallo G.',
+'Carello M.',
+'Ferraro F.',
+'Negro C.',
+'Parena G.',
+'Peano L.',
+'Zunino S.'
 ]
+
 
 /*var xxx = 0
 db.collection("utenti")
@@ -12,78 +23,11 @@ db.collection("utenti")
     })
     .then(function() {
         console.log(xxx)
-    })*/
-
-
-/*db.collection("giocatori").where("name", "==", "Gilemi G.")
-    .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doccc) {
-            // doc.data() is never undefined for query doc snapshots
-            db.collection("giocatori").doc(doccc.id).delete().then(function() {
-                console.log("Document successfully deleted!");
-            }).catch(function(error) {
-                console.error("Error removing document: ", error);
-            });
-        });
     })
-    .then(function() {
-        db.collection("giocatori").add({
-        name: "Gilemi G.",
-        squadra: "Mondovì",
-        statistiche_1920: {
-            combinato: {
-                perse:0,
-                vinte:0,
-                pareggiate:0,
-                media:0
-            },
-            progressivo_3: {
-                perse:0,
-                vinte:0,
-                pareggiate:0,
-                media:0
-            },
-            staffetta: {
-                perse:0,
-                vinte:0,
-                pareggiate:0,
-                media:0
-            },
-            tiro_tecnico: {
-                perse:0,
-                vinte:0,
-                pareggiate:0,
-                media:0
-            },
-            individuale: {
-                perse:0,
-                vinte:0,
-                pareggiate:0
-            },
-            coppia: {
-                perse:0,
-                vinte:0,
-                pareggiate:0
-            },
-            terna: {
-                perse:0,
-                vinte:0,
-                pareggiate:0
-            },
-            totale: {
-                perse:0,
-                vinte:0,
-                pareggiate:0
-            }
-        }  
-    })
-    }).catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
 */
+
 /*t.forEach(function(gioc) {
-    db.collection("campionati/A1_1920_F/classifica").add({
+    db.collection("campionati/A1_2021/classifica").add({
         squadra: gioc,
         punti: 0,
         punti_fatti: 0,
@@ -98,12 +42,12 @@ db.collection("utenti")
     .catch(function(error) {
         console.error("Error writing document: ", error);
     });
-})*/
-
+})
+*/
 /*t.forEach(function(gioc) {
     db.collection("squadre").add({
         squadra: gioc,
-        campionato: "A1_1920_F"
+        campionato: "A1_2021"
     })
     .then(function() {
         console.log("Document successfully written!");
@@ -111,32 +55,36 @@ db.collection("utenti")
     .catch(function(error) {
         console.error("Error writing document: ", error);
     });
-})*/
-
+})
+*/
 /*t.forEach(function(gioc) {
-    db.collection("giocatori").add({
+    db.collection("giocatori2021").add({ 
         name: gioc,
-        squadra: "Tre Stelle",
-        statistiche_1920: {
+        squadra: "Mondovì",
+        statistiche_2021: {
             combinato: {
+                lista:[],
                 perse:0,
                 vinte:0,
                 pareggiate:0,
                 media:0
             },
             progressivo_3: {
+                lista:[],
                 perse:0,
                 vinte:0,
                 pareggiate:0,
                 media:0
             },
             staffetta: {
+                lista:[],
                 perse:0,
                 vinte:0,
                 pareggiate:0,
                 media:0
             },
-            tiro_tecnico: {
+            tiro_tecnico: { 
+                lista:[],
                 perse:0,
                 vinte:0,
                 pareggiate:0,
@@ -170,26 +118,29 @@ db.collection("utenti")
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
-})
-*/
+})*/
+
+
        
 
-/*for (var i=1; i<12; i++) {
-    db.collection("giornate").doc("g"+i+"_A1_F").set({
+/*for (var i=2; i<3; i++) {
+    db.collection("giornate").doc("g"+i+"_A2_2021_D").set({
         numero: i,
-        campionato: "A1_1920_F",
+        campionato: "A2_2021_D",
+        anno: 2021,
+        data: '22-8-2020 00:00',
         partite:[
             {
                 completo:false, 
-                prima_squadra:"", 
-                seconda_squadra:"",
+                prima_squadra:"Dolada", 
+                seconda_squadra:"Chiesanuova",
                 punteggio_1:0,
                 punteggio_2:0,
                 tabellino:{}
             },
-            {completo:false, prima_squadra:"", seconda_squadra:"",
+            {completo:false, prima_squadra:"Villaraspa", seconda_squadra:"Maxim",
                 punteggio_1:0,punteggio_2:0,tabellino:{}},
-            {completo:false, prima_squadra:"", seconda_squadra:"",
+            {completo:false, prima_squadra:"Pederobba", seconda_squadra:"Florida",
                 punteggio_1:0,punteggio_2:0,tabellino:{}}
                                      
         ]
@@ -203,8 +154,8 @@ db.collection("utenti")
 }*/
 
 var dots_stat = document.getElementById("page_statistiche").getElementsByClassName("dot")
-var campionato = ["A1_1920", "A2_1920_est",  "A2_1920_ovest"/*, "A1_1920_F"*/];
-var name_campionati = ["Serie A1 19/20", "Serie A2 est 19/20", "Serie A2 ovest 19/20"/*, "Serie A1 Femm 19/20"*/];
+var campionato = ["A1_2021", "A2_2021_est",  "A2_2021_ovest"];
+var name_campionati = ["Serie A1 20/21", "Serie A2 est 20/21", "Serie A2 ovest 20/21"/*, "Serie A1 Femm 19/20"*/];
 
 var n = campionato.length;
 var backArrow_stat = document.getElementById("backArrow_stat");
@@ -221,14 +172,14 @@ var db = firebase.firestore();
 
 var campionati = db.collection("campionati")
 var squadre = db.collection("squadre");
-var giocatori = db.collection("giocatori");
+var giocatori = db.collection("giocatori2021");
 
 var tiri = ["staffetta", "progressivo_3", "tiro_tecnico", "combinato"]
 
 var array_player = {
-    A1_1920: [],
-    A2_1920_est: [],
-    A2_1920_ovest: []/*,
+    A1_2021: [],
+    A2_2021_est: [],
+    A2_2021_ovest: []/*,
     A1_1920_F: []*/
 }
 
@@ -329,8 +280,8 @@ function setArrowsStat() {
 
 function createStats() {
     campionato.forEach(function(camp) {
-        
-        var squadre_camp = squadre.where("campionato", "==", camp)
+        console.log("CAMP",camp)
+        var squadre_camp = squadre.where("campionato", '==', camp)
         
         squadre_camp.get()   
         .then(function(querySnapshot) {
@@ -424,7 +375,7 @@ function createTable(spec_id) {
     array_player[campionato[active_stat]].forEach(function(player) {
         
 
-        if (player["statistiche_1920"][spec_id]["vinte"]+player["statistiche_1920"][spec_id]["pareggiate"]+player["statistiche_1920"][spec_id]["perse"] != 0) {
+        if (player["statistiche_2021"][spec_id]["vinte"]+player["statistiche_2021"][spec_id]["pareggiate"]+player["statistiche_2021"][spec_id]["perse"] != 0) {
 
             tbody.appendChild(createTableRow(i, player, medie, spec_id))
             i++;
@@ -467,19 +418,19 @@ function createTableRow(i, player, medie, spec_id) {
     /*Vinte*/
     var td = document.createElement('td');
     td.classList.add("vittorie_s");  
-    td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["vinte"]))
+    td.appendChild(document.createTextNode(player["statistiche_2021"][spec_id]["vinte"]))
     tr.appendChild(td);
 
     /*Pareggiate*/
     var td = document.createElement('td');
     td.classList.add("pareggi_s");  
-    td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["pareggiate"]))
+    td.appendChild(document.createTextNode(player["statistiche_2021"][spec_id]["pareggiate"]))
     tr.appendChild(td);
 
     /*Perse*/
     var td = document.createElement('td');
     td.classList.add("sconfitte_s");  
-    td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["perse"]))
+    td.appendChild(document.createTextNode(player["statistiche_2021"][spec_id]["perse"]))
     tr.appendChild(td);
     
     
@@ -487,7 +438,7 @@ function createTableRow(i, player, medie, spec_id) {
         /*Perse*/
         var td = document.createElement('td');
         td.classList.add("medie_s");  
-        td.appendChild(document.createTextNode(player["statistiche_1920"][spec_id]["media"]))
+        td.appendChild(document.createTextNode(player["statistiche_2021"][spec_id]["media"]))
         tr.appendChild(td);
         
     }

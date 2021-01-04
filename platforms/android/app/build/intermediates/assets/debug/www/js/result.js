@@ -174,11 +174,13 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
                     var already_set = false
                     var ex_p1 = 0
                     var ex_p2 = 0
+                    var ex_final = false
                     
                     if (tabellino[prova] != null) {
                         already_set = true
                         ex_p1 = tabellino[prova]["p_1"]
                         ex_p2 = tabellino[prova]["p_2"]
+                        ex_final = tabellino[prova]["conclusa"]
                     }
                     
                     var user = firebase.auth().currentUser;
@@ -194,9 +196,70 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
                         "conclusa": final
                     }
                 
+                    /*Calcolo punteggio totale*/
+                    update_tabellino["partite"][numero_partita]["punteggio_1"] = 0
+                    update_tabellino["partite"][numero_partita]["punteggio_2"] = 0
                 
+                    console.log(update_tabellino["partite"][numero_partita]["tabellino"])
+                    for (var i=1;i<=13;i++) {
+                        if (update_tabellino["partite"][numero_partita]["tabellino"].hasOwnProperty(i.toString()) ) {
+                            var punteggio_1 = update_tabellino["partite"][numero_partita]["tabellino"][i]["p_1"]
+                            var punteggio_2 = update_tabellino["partite"][numero_partita]["tabellino"][i]["p_2"]
+                            var partita_conlusa = update_tabellino["partite"][numero_partita]["tabellino"][i]["conclusa"]
+
+                            if (punteggio_1 > punteggio_2 && partita_conlusa) {
+                                /*Vinto prima squadra*/
+                                update_tabellino["partite"][numero_partita]["punteggio_1"] += 2;
+                                //updateStats(g_1, prima_s, tipo, p_1, "w")
+                                //updateStats(g_2, seconda_s, tipo, p_2, "l")
+
+                            } else if (punteggio_2 > punteggio_1 && partita_conlusa) {
+                                /*Vinto seconda squadra*/
+                                update_tabellino["partite"][numero_partita]["punteggio_2"] += 2;
+                                //updateStats(g_1, prima_s, tipo, p_1, "l")
+                                //updateStats(g_2, seconda_s, tipo, p_2, "w")
+
+                            } else if (punteggio_2 == punteggio_1 && partita_conlusa) {
+                                /*Pareggio*/
+                                update_tabellino["partite"][numero_partita]["punteggio_1"] += 1;
+                                update_tabellino["partite"][numero_partita]["punteggio_2"] += 1;
+                                //updateStats(g_1, prima_s, tipo, p_1, "t")
+                                //updateStats(g_2, seconda_s, tipo, p_2, "t")
+                            }
+
+
+                            console.log("Punteggio 1 "+update_tabellino["partite"][numero_partita]["punteggio_1"])
+                            console.log("Punteggio 2 "+update_tabellino["partite"][numero_partita]["punteggio_2"])
+                        }
+                    }
+                        
+                
+                    //Calcolo punti tiro tecnico
+                    if (update_tabellino["partite"][numero_partita]["tabellino"].hasOwnProperty("6") &&
+                       update_tabellino["partite"][numero_partita]["tabellino"].hasOwnProperty("7")) {
+                        
+                        var punteggio_1 = update_tabellino["partite"][numero_partita]["tabellino"][6]["p_1"]
+                        var punteggio_2 = update_tabellino["partite"][numero_partita]["tabellino"][6]["p_2"]
+                        var partita_conlusa = update_tabellino["partite"][numero_partita]["tabellino"][6]["conclusa"]
+
+                        var punteggio_1_2 = update_tabellino["partite"][numero_partita]["tabellino"][7]["p_1"]
+                        var punteggio_2_2 = update_tabellino["partite"][numero_partita]["tabellino"][7]["p_2"]
+                        var partita_conlusa_2 = update_tabellino["partite"][numero_partita]["tabellino"][7]["conclusa"]
+
+                        if (partita_conlusa && partita_conlusa_2) {
+                            if ((punteggio_1 > punteggio_2 && punteggio_1_2 < punteggio_2_2) || (punteggio_1 < punteggio_2 && punteggio_1_2 > punteggio_2_2)) {
+                                if (punteggio_1 + punteggio_1_2 > punteggio_2 + punteggio_2_2) {
+                                    //Punto aggiuntivo prima squadra
+                                    update_tabellino["partite"][numero_partita]["punteggio_1"] += 1;
+                                }
+                                else if (punteggio_1 + punteggio_1_2 < punteggio_2 + punteggio_2_2) {
+                                    update_tabellino["partite"][numero_partita]["punteggio_2"] += 1;
+                                }
+                            }
+                        }
+                    }
                     /*TODO*/
-                    if (prova == "6" || prova == "7") {
+                    /*if (prova == "6" || prova == "7") {
                         if (update_tabellino["partite"][numero_partita]["tabellino"]["6"] != null && update_tabellino["partite"][numero_partita]["tabellino"]["7"] != null) {
                             
                             
@@ -218,7 +281,6 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
                                     update_tabellino["partite"][numero_partita]["punteggio_2"] -= 1;               
                                 }
                             }
-                            /*Calcolo punto aggiuntivo tecnico*/
 
                             var sum_prima_squadra = update_tabellino["partite"][numero_partita]["tabellino"]["6"]["p_1"] + update_tabellino["partite"][numero_partita]["tabellino"]["7"]["p_1"]
                             var sum_seconda_squadra = update_tabellino["partite"][numero_partita]["tabellino"]["6"]["p_2"] + update_tabellino["partite"][numero_partita]["tabellino"]["7"]["p_2"]
@@ -232,21 +294,18 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
                                 update_tabellino["partite"][numero_partita]["punteggio_2"] += 1;               
                             }
                         }                       
-                    }
+                    }*/
 
                     /*Update risultato totale e statistiche giocatori*/
-                    if (already_set) {
+                    /*if (already_set) {
                         
                         if (ex_p1 > ex_p2) {
-                            /*Vinto prima squadra*/
                             update_tabellino["partite"][numero_partita]["punteggio_1"] -= p_vittoria;
 
                         } else if (ex_p2 > ex_p1) {
-                            /*Vinto seconda squadra*/
                             update_tabellino["partite"][numero_partita]["punteggio_2"] -= p_vittoria;
 
                         } else {
-                            /*Pareggio*/
                             update_tabellino["partite"][numero_partita]["punteggio_1"] -= p_pareggio;
                             update_tabellino["partite"][numero_partita]["punteggio_2"] -= p_pareggio;
 
@@ -254,41 +313,14 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
                     }
                         
                     if (p_1 > p_2) {
-                        /*Vinto prima squadra*/
                         update_tabellino["partite"][numero_partita]["punteggio_1"] += p_vittoria;
-                        //updateStats(g_1, prima_s, tipo, p_1, "w")
-                        //updateStats(g_2, seconda_s, tipo, p_2, "l")
 
                     } else if (p_2 > p_1) {
-                        /*Vinto seconda squadra*/
                         update_tabellino["partite"][numero_partita]["punteggio_2"] += p_vittoria;
-                        //updateStats(g_1, prima_s, tipo, p_1, "l")
-                        //updateStats(g_2, seconda_s, tipo, p_2, "w")
 
                     } else {
-                        /*Pareggio*/
                         update_tabellino["partite"][numero_partita]["punteggio_1"] += p_pareggio;
                         update_tabellino["partite"][numero_partita]["punteggio_2"] += p_pareggio;
-                        //updateStats(g_1, prima_s, tipo, p_1, "t")
-                        //updateStats(g_2, seconda_s, tipo, p_2, "t")
-
-                    }
-                        
-                    
-
-                    /*if (Object.keys(update_tabellino["partite"][numero_partita]["tabellino"]).length == 13 && !update_tabellino["partite"][numero_partita]["completo"]) {
-
-                        update_tabellino["partite"][numero_partita]["completo"] = true;
-
-                        var tot_1 = update_tabellino["partite"][numero_partita]["punteggio_1"]
-                        var tot_2 = update_tabellino["partite"][numero_partita]["punteggio_2"]
-
-                        //Aggiorno classifica!!!
-                        updateStanding(tot_1, tot_2, db.collection("campionati/"+id_campionato+"/classifica").where("squadra","==", prima_s))
-
-                        updateStanding(tot_2, tot_1, db.collection("campionati/"+id_campionato+"/classifica").where("squadra","==", seconda_s))
-
-                        //closeResult()
 
                     }*/
 
@@ -429,8 +461,8 @@ function loadTeams() {
     $('#form1Squadra').find('option').remove();
     $('#form2Squadra').find('option').remove();
 
-    addOptions(db.collection("giocatori").where("squadra","==",prima_s).orderBy("name"), prima_select)
-    addOptions(db.collection("giocatori").where("squadra","==",seconda_s).orderBy("name"), seconda_select)
+    addOptions(db.collection("giocatori2021").where("squadra","==",prima_s).orderBy("name"), prima_select)
+    addOptions(db.collection("giocatori2021").where("squadra","==",seconda_s).orderBy("name"), seconda_select)
     
 }
 

@@ -3,14 +3,60 @@
   <component name="ChangeListManager">
     <list default="true" id="6fcc7993-4019-4d14-bb84-364dc4519c22" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/4.1/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/4.1/fileContent/fileContent.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/4.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/4.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/android.json" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/android.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/generated/source/buildConfig/release/com/mauro/tuttobocce/BuildConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/generated/source/buildConfig/release/com/mauro/tuttobocce/BuildConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/classes/release/com/mauro/tuttobocce/BuildConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/classes/release/com/mauro/tuttobocce/BuildConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/mergeReleaseResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/mergeReleaseResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/manifests/full/release/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/manifests/full/release/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/manifests/full/release/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/manifests/full/release/output.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/manifests/instant-run/release/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/manifests/instant-run/release/output.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/res/merged/release/xml_config.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/res/merged/release/xml_config.xml.flat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/res/release/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/res/release/output.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/res/release/resources-release.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/res/release/resources-release.ap_" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/outputs/apk/release/Tuttobocce.apk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/reports/lint-results-release-fatal.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/reports/lint-results-release-fatal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/reports/lint-results-release-fatal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/reports/lint-results-release-fatal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/js/calendario.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/js/calendario.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/js/classifiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/js/classifiche.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/com/phonegap/helloworld/MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/js/result.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/js/result.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/js/statistiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/js/statistiche.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/js/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/registrazione.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/registrazione.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/browser/www/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/browser/www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/js/calendario.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/browser/www/js/calendario.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/browser/www/js/classifiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/browser/www/js/classifiche.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/js/result.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/browser/www/js/result.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/js/statistiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/browser/www/js/statistiche.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/browser/www/js/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/browser/www/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/registrazione.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/browser/www/registrazione.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/ios/www/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/ios/www/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/ios/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/ios/www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/ios/www/js/calendario.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/ios/www/js/calendario.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/ios/www/js/classifiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/ios/www/js/classifiche.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/ios/www/js/result.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/ios/www/js/result.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/ios/www/js/statistiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/ios/www/js/statistiche.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/ios/www/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/ios/www/js/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/ios/www/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/ios/www/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/ios/www/registrazione.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/ios/www/registrazione.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/js/calendario.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/js/calendario.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/js/classifiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/js/classifiche.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/js/result.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/js/result.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/js/statistiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/js/statistiche.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/js/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/registrazione.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/registrazione.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +64,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_24" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/codeStyles/Project.xml" />
+      </list>
+    </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="381" />
@@ -32,6 +86,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -70,7 +125,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
     </panes>
   </component>

@@ -18,9 +18,11 @@ var property_table = [
 ]
 
 var championship = [
-    "Serie A1 19/20",
-    "Serie A2 Est 19/20",
-    "Serie A2 Ovest 19/20"/*,
+    "Serie A1 20/21",
+    "A2 Ovest 20/21 Gir. A",
+    "A2 Ovest 20/21 Gir. B",
+    "A2 Est 20/21 Gir. C",
+    "A2 Est 20/21 Gir. D"/*,
     "Serie A1 Femm 19/20"*/
 ]
 
@@ -29,7 +31,7 @@ function createStandings() {
 
     title.innerHTML = championship[active_class];
 
-    var leagues = db.collection("campionati");
+    var leagues = db.collection("campionati").where("anno","==",2021);
 
     leagues.get()
     .then(function(querySnapshot) {
@@ -209,7 +211,7 @@ function sortPoint(id) {
 
             if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
 
-                console.log(x.innerHTML.toLowerCase()+" "+y.innerHTML.toLowerCase())
+                //console.log(x.innerHTML.toLowerCase()+" "+y.innerHTML.toLowerCase())
                 shouldSwitch = true;
                 break;
                 

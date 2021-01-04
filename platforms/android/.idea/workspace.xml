@@ -25,109 +25,158 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe4a1841-cd86-4662-8aaa-68e944f58a45" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../giocatori.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../giocatori.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/.github/PULL_REQUEST_TEMPLATE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/.jshintrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/.npmignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/CONTRIBUTING.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/NOTICE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/RELEASENOTES.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/doc/de/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/doc/de/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/doc/es/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/doc/es/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/doc/fr/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/doc/fr/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/doc/it/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/doc/it/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/doc/ja/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/doc/ja/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/doc/ko/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/doc/ko/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/doc/pl/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/doc/pl/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/doc/ru/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/doc/zh/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/doc/zh/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/plugin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/src/ios/CDVLogger.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/src/ios/CDVLogger.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/src/ubuntu/console.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/src/ubuntu/console.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/src/wp/DebugConsole.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/tests/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/tests/plugin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/tests/tests.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/www/console-via-logger.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/cordova-plugin-console/www/logger.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android.json" beforeDir="false" afterPath="$PROJECT_DIR$/android.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/cordova_plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/cordova_plugins.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/mauro/tuttobocce/BuildConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/mauro/tuttobocce/BuildConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/buildConfig/release/com/mauro/tuttobocce/BuildConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/buildConfig/release/com/mauro/tuttobocce/BuildConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/calendario.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/calendario.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/classifiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/classifiche.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/result.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/result.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/statistiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/statistiche.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/tabellino.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/tabellino.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/js/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/registrazione.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/registrazione.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-40.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-40.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-40@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-40@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-50@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-50@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-60.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-60.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-60@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-60@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-60@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-60@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-72.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-72.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-72@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-72@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-76.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-76.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-76@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-76@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-small.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-small.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-small@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-small@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-small@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon-small@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/res/icon/ios/icon@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/calendario.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/calendario.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/classifiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/classifiche.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/result.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/result.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/statistiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/statistiche.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/tabellino.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/tabellino.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/js/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/registrazione.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/registrazione.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-40.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-40.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-40@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-40@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-50@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-50@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-60.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-60.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-60@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-60@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-60@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-60@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-72.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-72.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-72@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-72@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-76.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-76.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-76@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-76@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-small.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-small.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-small@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-small@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-small@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon-small@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/release/www/res/icon/ios/icon@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/mauro/tuttobocce/BuildConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/mauro/tuttobocce/BuildConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/release/com/mauro/tuttobocce/BuildConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/release/com/mauro/tuttobocce/BuildConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugAssets/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeReleaseAssets/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeReleaseAssets/merger.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeReleaseResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeReleaseResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/debug/file-input-save-data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/debug/file-input-save-data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/debug/zip-cache/G3I_8J7THCnyCil7hjq+GPjq+Mc=" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/debug/zip-cache/G3I_8J7THCnyCil7hjq+GPjq+Mc=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageRelease/release/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageRelease/release/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageRelease/release/file-input-save-data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageRelease/release/file-input-save-data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageRelease/release/zip-cache/BEZYNPsZeMCEv9lZpL2oY_zvOi4=" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageRelease/release/zip-cache/BEZYNPsZeMCEv9lZpL2oY_zvOi4=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/output.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifests/full/release/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/manifests/full/release/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifests/full/release/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/manifests/full/release/output.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifests/instant-run/debug/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/manifests/instant-run/debug/output.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifests/instant-run/release/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/manifests/instant-run/release/output.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/debug/output.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/debug/resources-debug.ap_" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/xml_config.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/xml_config.xml.flat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/release/xml_config.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/release/xml_config.xml.flat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/release/output.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/resources-release.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/release/resources-release.ap_" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/desugar/debug/1/com/mauro/tuttobocce/BuildConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/desugar/debug/1/com/mauro/tuttobocce/BuildConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/desugar/release/1/com/mauro/tuttobocce/BuildConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/desugar/release/1/com/mauro/tuttobocce/BuildConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/release/0/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/release/0/classes.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/release/__content__.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/release/__content__.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/665/com/mauro/tuttobocce/BuildConfig.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/665/com/mauro/tuttobocce/BuildConfig.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/475/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/475/classes.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/__content__.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/__content__.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/mergeJavaRes/debug/__content__.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/mergeJavaRes/debug/__content__.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/mergeJavaRes/release/__content__.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/mergeJavaRes/release/__content__.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/preDex/release/0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/preDex/release/0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/debug/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/debug/output.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/release/Tuttobocce.apk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/release/app-release-unsigned.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/release/app-release-unsigned.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/release/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/release/output.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/reports/lint-results-release-fatal.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/reports/lint-results-release-fatal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/js/calendario.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/js/calendario.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/js/classifiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/js/classifiche.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/js/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/js/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/js/registrazione.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/js/registrazione.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/js/result.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/js/result.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/js/statistiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/js/statistiche.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/js/tabellino.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/js/tabellino.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/js/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/registrazione.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/registrazione.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/phonegap/helloworld/MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platform_www/cordova_plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/platform_www/cordova_plugins.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../browser/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../browser/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../browser/www/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../browser/www/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../browser/www/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../browser/www/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../browser/www/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/../browser/www/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../browser/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../browser/www/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../browser/www/js/calendario.js" beforeDir="false" afterPath="$PROJECT_DIR$/../browser/www/js/calendario.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../browser/www/js/classifiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/../browser/www/js/classifiche.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../browser/www/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../browser/www/js/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../browser/www/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../browser/www/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../browser/www/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../browser/www/js/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../browser/www/js/registrazione.js" beforeDir="false" afterPath="$PROJECT_DIR$/../browser/www/js/registrazione.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../browser/www/js/result.js" beforeDir="false" afterPath="$PROJECT_DIR$/../browser/www/js/result.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../browser/www/js/statistiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/../browser/www/js/statistiche.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../browser/www/js/tabellino.js" beforeDir="false" afterPath="$PROJECT_DIR$/../browser/www/js/tabellino.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../browser/www/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../browser/www/js/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../browser/www/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../browser/www/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../browser/www/registrazione.html" beforeDir="false" afterPath="$PROJECT_DIR$/../browser/www/registrazione.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/TuttoBOCCE/TuttoBOCCE-Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/TuttoBOCCE/TuttoBOCCE-Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/TuttoBOCCE/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/TuttoBOCCE/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/www/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/www/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ios/www/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/www/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/www/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ios/www/js/calendario.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/www/js/calendario.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ios/www/js/classifiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/www/js/classifiche.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/www/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/www/js/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/www/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/www/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/www/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/www/js/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/www/js/registrazione.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/www/js/registrazione.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ios/www/js/result.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/www/js/result.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ios/www/js/statistiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/www/js/statistiche.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/www/js/tabellino.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/www/js/tabellino.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ios/www/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/www/js/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ios/www/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/www/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ios/www/registrazione.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/www/registrazione.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../plugins/android.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../plugins/android.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../plugins/cordova-plugin-dialogs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../plugins/cordova-plugin-dialogs/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../plugins/fetch.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../plugins/fetch.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../www/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../www/js/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../www/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../www/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../www/js/calendario.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../www/js/calendario.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../www/js/classifiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../www/js/classifiche.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../www/js/result.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../www/js/result.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../www/js/statistiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../www/js/statistiche.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../www/js/tabellino.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../www/js/tabellino.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../www/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../www/js/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../www/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../www/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../www/registrazione.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../www/registrazione.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -187,15 +236,16 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_2_API_28" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-11-26T11:27:15.085Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-01-04T14:09:28.258Z" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="device.picker.selection" value="Pixel_2_API_24" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -320,18 +370,17 @@
       <window_info id="Resources Explorer" order="6" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="0" weight="0.31914893" />
+      <window_info anchor="bottom" id="Build" order="0" visible="true" weight="0.31914893" />
       <window_info anchor="bottom" id="Run" order="1" weight="0.33387887" />
       <window_info anchor="bottom" id="Logcat" order="2" weight="0.41694352" />
       <window_info anchor="bottom" id="TODO" order="3" weight="0.3289689" />
-      <window_info anchor="bottom" id="Android Profiler" order="4" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Android Profiler" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.3289689" />
       <window_info anchor="bottom" id="Terminal" order="6" weight="0.3289689" />
       <window_info anchor="bottom" id="Debug" order="7" />
       <window_info anchor="bottom" id="Flutter Performance" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3289689" />
-      <window_info anchor="right" id="Assistant" weight="0.32980332" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Theme Preview" order="2" />
@@ -339,6 +388,7 @@
       <window_info anchor="right" id="Flutter Outline" order="4" />
       <window_info anchor="right" id="Gradle" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Assistant" order="7" weight="0.32980332" />
     </layout>
   </component>
   <component name="editorHistoryManager">
@@ -350,21 +400,21 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CordovaLib/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
         </state>
       </provider>
+      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/mauro/tuttobocce/BuildConfig.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
+      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaWebViewImpl.java">
       <provider selected="true" editor-type-id="text-editor">

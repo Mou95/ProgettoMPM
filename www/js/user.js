@@ -80,7 +80,7 @@ function changePsw() {
 
 
 /*CALCOLO GIORNATA*/
-/*document.getElementById("resettaDati").addEventListener("click", function() {
+document.getElementById("resettaDati").addEventListener("click", function() {
 
     navigator.notification.confirm("Vuoi eliminare statistiche e classifiche?", function(buttonIndex) {
         if (buttonIndex == 1) {
@@ -368,7 +368,7 @@ function calcolaClassifiche() {
 
             var id_campionato = update_tabellino["campionato"]
 
-            if (Date.now() >= update_tabellino["data"].toDate()) {
+            if (update_tabellino["data"].toDate() <= new Date(2020,8,13)) {
 
                 console.log(doc.id)
 
@@ -382,7 +382,9 @@ function calcolaClassifiche() {
                     console.log("CAMP "+id_campionato)
 
                     //Aggiorno classifica!!!
-                    if (tot_1 != 0 && tot_2 !=0) {
+                    if (tot_1 == 0 && tot_2 ==0) {
+                        console.log("no update")
+                    } else {
                         map_class = updateStanding(tot_1, tot_2, prima_s, map_class, id_campionato)
 
                         map_class = updateStanding(tot_2, tot_1, seconda_s, map_class, id_campionato)
@@ -412,6 +414,6 @@ function calcolaClassifiche() {
         console.log("Error getting document:", error);
     });
 
-}*/
+}
 
 

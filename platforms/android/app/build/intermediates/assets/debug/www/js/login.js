@@ -44,6 +44,7 @@ forgot.addEventListener('click', function(e) {
             
             if (results.buttonIndex == 1) {
                 var email = results.input1
+                email = email.replace(/\s/g, '');
 
                 if (email != "") {
                     firebase.auth().sendPasswordResetEmail(email)

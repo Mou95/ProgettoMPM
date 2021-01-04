@@ -6,11 +6,11 @@ function onDeviceReady( event ) {
     if(window.MobileAccessibility) {
        window.MobileAccessibility.usePreferredTextZoom(false);
     }
-    if (device.platform != "iOS") {
-        StatusBar.overlaysWebView(false);
-        StatusBar.styleLightContent();
-    }
-    console.log('Received Event:'+ event );
+    
+
+    StatusBar.overlaysWebView(false);
+    StatusBar.styleLightContent();
+    console.log(StatusBar);
 
     var login = document.getElementById('login');
     var user = firebase.auth().currentUser;
