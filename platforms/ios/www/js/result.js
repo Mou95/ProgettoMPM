@@ -41,7 +41,7 @@ function closeResult() {
 function getOldTabellino(selectObject) {
     var value = selectObject.value;  
     
-    var partita = db.doc("giornate/"+id_giornata)
+    var partita = db.doc("giornate2021/"+id_giornata)
     
     var g_1 = document.getElementById('form1Squadra');
     var g_2 = document.getElementById('form2Squadra');
@@ -163,7 +163,7 @@ function checkResult(n, min, max, p_vittoria, p_pareggio, prova, tipo,  g_1, g_2
             console.log("posso inserire il tabellino")
 
             console.log(id_giornata)
-            var partita = db.doc("giornate/"+id_giornata)
+            var partita = db.doc("giornate2021/"+id_giornata)
 
             partita.get()
             .then(function(doc) {
@@ -398,15 +398,15 @@ function updateStats(giocatori, squadra, tipo, punteggio, risultato, map_giocato
                 */
         if (tiri.includes(tipo)) {
 
-            var prove_svolte = map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["vinte"]+map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["pareggiate"]+map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["perse"] 
+            var prove_svolte = map_giocatori[giocatore+""+squadra]["data"]["statistiche_2021"][tipo]["vinte"]+map_giocatori[giocatore+""+squadra]["data"]["statistiche_2021"][tipo]["pareggiate"]+map_giocatori[giocatore+""+squadra]["data"]["statistiche_2021"][tipo]["perse"] 
 
             var lista_prove = []
-            if (map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["lista"] != null) 
-                lista_prove = map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["lista"]
+            if (map_giocatori[giocatore+""+squadra]["data"]["statistiche_2021"][tipo]["lista"] != null) 
+                lista_prove = map_giocatori[giocatore+""+squadra]["data"]["statistiche_2021"][tipo]["lista"]
 
             lista_prove.push(punteggio)
 
-            var media = map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["media"] 
+            var media = map_giocatori[giocatore+""+squadra]["data"]["statistiche_2021"][tipo]["media"] 
 
             console.log(prove_svolte+" "+media+" "+punteggio)
 
@@ -414,23 +414,23 @@ function updateStats(giocatori, squadra, tipo, punteggio, risultato, map_giocato
 
             console.log("MEDIA"+new_media)
 
-            map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["media"] = new_media
-            map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["lista"] = lista_prove
+            map_giocatori[giocatore+""+squadra]["data"]["statistiche_2021"][tipo]["media"] = new_media
+            map_giocatori[giocatore+""+squadra]["data"]["statistiche_2021"][tipo]["lista"] = lista_prove
 
         }
 
         switch (risultato) {
             case "w":
-                map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"]["totale"]["vinte"] += 1
-                map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["vinte"] += 1;
+                map_giocatori[giocatore+""+squadra]["data"]["statistiche_2021"]["totale"]["vinte"] += 1
+                map_giocatori[giocatore+""+squadra]["data"]["statistiche_2021"][tipo]["vinte"] += 1;
                 break;
             case "t":
-                map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"]["totale"]["pareggiate"] += 1
-                map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["pareggiate"] += 1;
+                map_giocatori[giocatore+""+squadra]["data"]["statistiche_2021"]["totale"]["pareggiate"] += 1
+                map_giocatori[giocatore+""+squadra]["data"]["statistiche_2021"][tipo]["pareggiate"] += 1;
                 break;
             case "l":
-                map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"]["totale"]["perse"] += 1
-                map_giocatori[giocatore+""+squadra]["data"]["statistiche_1920"][tipo]["perse"]  += 1;
+                map_giocatori[giocatore+""+squadra]["data"]["statistiche_2021"]["totale"]["perse"] += 1
+                map_giocatori[giocatore+""+squadra]["data"]["statistiche_2021"][tipo]["perse"]  += 1;
                 break;
         }
         /*db.doc("giocatori/"+doc.id).update(update_stat)

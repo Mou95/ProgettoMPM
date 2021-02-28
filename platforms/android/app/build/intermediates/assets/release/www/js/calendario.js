@@ -136,7 +136,7 @@ function selectTableCalendar( event ) {
 }
 
 function createCalendar() {
-    var giornate = db.collection("giornate").where("anno","==",2021).orderBy("numero", "asc");
+    var giornate = db.collection("giornate2021").orderBy("numero", "asc");
 
     giornate.onSnapshot(function(snapshot) {
         snapshot.docChanges().forEach(function(change) {

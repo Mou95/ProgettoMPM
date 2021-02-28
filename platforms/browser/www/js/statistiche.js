@@ -1,15 +1,6 @@
 
 var t = [
-'Artioli M.',
-'Arcilasco S.',
-'Bagnasco A.',
-'Cavallo G.',
-'Carello M.',
-'Ferraro F.',
-'Negro C.',
-'Parena G.',
-'Peano L.',
-'Zunino S.'
+'Cravero M.'
 ]
 
 
@@ -60,7 +51,7 @@ db.collection("utenti")
 /*t.forEach(function(gioc) {
     db.collection("giocatori2021").add({ 
         name: gioc,
-        squadra: "Mondovì",
+        squadra: "Envie",
         statistiche_2021: {
             combinato: {
                 lista:[],
@@ -118,29 +109,29 @@ db.collection("utenti")
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
-})*/
-
+})
+*/
 
        
 
-/*for (var i=2; i<3; i++) {
-    db.collection("giornate").doc("g"+i+"_A2_2021_D").set({
+/*for (var i=1; i<11; i++) {
+    db.collection("giornate2021").doc("g"+i+"_A2_2021_D").set({
         numero: i,
         campionato: "A2_2021_D",
         anno: 2021,
-        data: '22-8-2020 00:00',
+        data: new Date(2021,02,27),
         partite:[
             {
                 completo:false, 
-                prima_squadra:"Dolada", 
-                seconda_squadra:"Chiesanuova",
+                prima_squadra:"", 
+                seconda_squadra:"",
                 punteggio_1:0,
                 punteggio_2:0,
                 tabellino:{}
             },
-            {completo:false, prima_squadra:"Villaraspa", seconda_squadra:"Maxim",
+            {completo:false, prima_squadra:"", seconda_squadra:"",
                 punteggio_1:0,punteggio_2:0,tabellino:{}},
-            {completo:false, prima_squadra:"Pederobba", seconda_squadra:"Florida",
+            {completo:false, prima_squadra:"", seconda_squadra:"",
                 punteggio_1:0,punteggio_2:0,tabellino:{}}
                                      
         ]

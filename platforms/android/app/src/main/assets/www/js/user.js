@@ -111,9 +111,9 @@ document.getElementById("calcolaClassifiche").addEventListener("click", function
 }, false);
 
 function resetAll() {
-    var giocatori = db.collection("giocatori")
+    var giocatori = db.collection("giocatori2021")
     
-    var classifiche = db.collection("campionati")
+    var classifiche = db.collection("campionati").where("anno","==",2021)
     
     classifiche.get()
     .then(function(querySnapshot) {
@@ -158,7 +158,7 @@ function resetAll() {
             
             var update = doc.data()
 
-            update["statistiche_1920"] = {
+            update["statistiche_2021"] = {
                 combinato: {
                     lista: [],
                     perse:0,
@@ -209,7 +209,7 @@ function resetAll() {
                 }
             }
 
-            db.doc("giocatori/"+doc.id).update(update)
+            db.doc("giocatori2021/"+doc.id).update(update)
             .then(function() {
                 console.log("Document successfully updated!");
             });
@@ -224,7 +224,7 @@ function resetAll() {
 
 function calcolaStat() {
     
-    var giornate = db.collection("giornate");
+    var giornate = db.collection("giornate2021");
     
     var tipo = {
         "1":"combinato",
@@ -246,7 +246,7 @@ function calcolaStat() {
     
     var giocatori = {}
     
-    db.collection("giocatori").get()
+    db.collection("giocatori2021").get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
             giocatori[doc.data()["name"]+doc.data()["squadra"]] = {}
@@ -264,6 +264,9 @@ function calcolaStat() {
 
             var i = 0; 
             var id_campionato = update_tabellino["campionato"]
+            
+            console.log(Date.now())
+            console.log(update_tabellino["data"].toDate())
 
             if (Date.now() >= update_tabellino["data"].toDate()) { 
 
@@ -318,7 +321,7 @@ function calcolaStat() {
         console.log(giocatori)
 
         for (var g in giocatori) {
-            db.doc("giocatori/"+giocatori[g]["id"]).update(giocatori[g]["data"])
+            db.doc("giocatori2021/"+giocatori[g]["id"]).update(giocatori[g]["data"])
             .then(function() {
                 console.log("Document successfully updated!");
             })
@@ -336,11 +339,11 @@ function calcolaStat() {
 
 function calcolaClassifiche() {
     
-    var giornate = db.collection("giornate");
+    var giornate = db.collection("giornate2021");
     
     var map_class = {}
         
-    db.collection("campionati").get()
+    db.collection("campionati").where("anno","==",2021).get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
             var classifiche = db.collection("campionati/"+doc.id+"/classifica")
@@ -368,7 +371,7 @@ function calcolaClassifiche() {
 
             var id_campionato = update_tabellino["campionato"]
 
-            if (update_tabellino["data"].toDate() <= new Date(2020,8,13)) {
+            if (update_tabellino["data"].toDate() <= new Date(2021,8,13)) {
 
                 console.log(doc.id)
 

@@ -2,7 +2,7 @@ function onLoad() {
     
     var db = firebase.firestore()
     
-    db.doc("versione/v1.1.4").get()
+    db.doc("versione/v1.1.5").get()
     .then(function(doc) {
         
 
